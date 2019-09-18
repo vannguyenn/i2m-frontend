@@ -1,0 +1,7 @@
+{
+  "version": "1.0.0",
+  "author": "van nguyen",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": ["packages/*", "@frontend/ui"]
+}

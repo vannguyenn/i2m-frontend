@@ -1,0 +1,16 @@
+{
+  "name": "@frontend/constants",
+  "version": "1.0.0",
+  "author": "van nguyen",
+  "description": "",
+  "main": "./src/index.ts",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "clean": "rm -rf lib && rm tsconfig.tsbuildinfo;",
+    "build": "tsc"
+  },
+  "gitHead": "e463cf3caa97419fb3fa3fec242d1d61e8289d32"
+}
