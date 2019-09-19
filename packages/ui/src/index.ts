@@ -6,5 +6,6 @@ import * as Input from './input'
 import * as Layout from './layout'
 import * as Icon from './icon'
 import * as Checkbox from './checkbox'
+import * as Select from './select'
 
-export { themes, styles, Button, Input, Layout, Form, Icon, Checkbox }
+export { themes, styles, Button, Input, Layout, Form, Icon, Checkbox, Select }

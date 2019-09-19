@@ -54,6 +54,11 @@ const LoginTitle = styled.div`
   margin-top: 20px;
   margin-bottom: 15px;
 `
+const LogoContainer = styled(Layout.Flex)`
+  position: absolute;
+  top: 30px;
+  left: 35px;
+`
 const LoginForm: React.FunctionComponent<FormRenderProps> = ({
   handleSubmit,
 }) => (
@@ -95,8 +100,16 @@ export const LoginController: React.FunctionComponent = () => {
       width="100%"
       justifyContent="center"
       alignItems="center"
+      flexDirection="column"
       style={{ height: '100%' }}
     >
+      <LogoContainer
+        width="100%"
+        flexDirection="row"
+        justifyContent="flex-start"
+      >
+        <img src="/static/image/logo.svg" />
+      </LogoContainer>
       <LoginBox>
         <IntroText>{CONSTANTS.intro}</IntroText>
         <LoginTitle>{CONSTANTS.loginTitle}</LoginTitle>

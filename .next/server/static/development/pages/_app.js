@@ -2184,6 +2184,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./packages/ui/node_modules/antd/lib/select/style/index.css":
+/*!******************************************************************!*\
+  !*** ./packages/ui/node_modules/antd/lib/select/style/index.css ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./packages/ui/src/button/Button.tsx":
 /*!*******************************************!*\
   !*** ./packages/ui/src/button/Button.tsx ***!
@@ -2563,7 +2574,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************!*\
   !*** ./packages/ui/src/index.ts ***!
   \**********************************/
-/*! exports provided: themes, styles, Button, Input, Layout, Form, Icon, Checkbox */
+/*! exports provided: themes, styles, Button, Input, Layout, Form, Icon, Checkbox, Select */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2584,6 +2595,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Icon", function() { return _icon__WEBPACK_IMPORTED_MODULE_6__; });
 /* harmony import */ var _checkbox__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./checkbox */ "./packages/ui/src/checkbox/index.ts");
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Checkbox", function() { return _checkbox__WEBPACK_IMPORTED_MODULE_7__; });
+/* harmony import */ var _select__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./select */ "./packages/ui/src/select/index.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Select", function() { return _select__WEBPACK_IMPORTED_MODULE_8__; });
+
 
 
 
@@ -2853,6 +2867,140 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Flex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Flex */ "./packages/ui/src/layout/Flex.tsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Flex", function() { return _Flex__WEBPACK_IMPORTED_MODULE_1__["Flex"]; });
 
+
+
+
+/***/ }),
+
+/***/ "./packages/ui/src/select/Select.tsx":
+/*!*******************************************!*\
+  !*** ./packages/ui/src/select/Select.tsx ***!
+  \*******************************************/
+/*! exports provided: Select, Option */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Select", function() { return Select; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Option", function() { return Option; });
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd_lib_select_style_index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd/lib/select/style/index.css */ "./packages/ui/node_modules/antd/lib/select/style/index.css");
+/* harmony import */ var antd_lib_select_style_index_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_select_style_index_css__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+var Select = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(antd__WEBPACK_IMPORTED_MODULE_0__["Select"]).withConfig({
+  displayName: "Select",
+  componentId: "sc-17f67tx-0"
+})([""]);
+var Option = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(antd__WEBPACK_IMPORTED_MODULE_0__["Select"].Option).withConfig({
+  displayName: "Select__Option",
+  componentId: "sc-17f67tx-1"
+})([""]);
+
+/***/ }),
+
+/***/ "./packages/ui/src/select/SelectField.tsx":
+/*!************************************************!*\
+  !*** ./packages/ui/src/select/SelectField.tsx ***!
+  \************************************************/
+/*! exports provided: SelectField */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectField", function() { return SelectField; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Select */ "./packages/ui/src/select/Select.tsx");
+/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../form */ "./packages/ui/src/form/index.ts");
+
+
+var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/packages/ui/src/select/SelectField.tsx";
+
+
+
+
+var SelectField = function SelectField(_ref) {
+  var input = _ref.input,
+      _ref$meta = _ref.meta,
+      touched = _ref$meta.touched,
+      error = _ref$meta.error,
+      label = _ref.label,
+      _ref$options = _ref.options,
+      options = _ref$options === void 0 ? [] : _ref$options,
+      required = _ref.required,
+      layoutProps = _ref.layoutProps,
+      selectProps = _ref.selectProps,
+      rest = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["input", "meta", "label", "options", "required", "layoutProps", "selectProps"]);
+
+  var _ref2 = selectProps || {},
+      defaultValue = _ref2.defaultValue;
+
+  var value = Object(lodash__WEBPACK_IMPORTED_MODULE_3__["find"])(options, {
+    value: input.value
+  }) ? input.value : defaultValue;
+
+  var onBlurSelect = function onBlurSelect(event) {
+    return input.onBlur(event);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_form__WEBPACK_IMPORTED_MODULE_5__["FormControl"], {
+    label: label,
+    touched: touched,
+    error: error,
+    required: required,
+    layoutProps: layoutProps,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_Select__WEBPACK_IMPORTED_MODULE_4__["Select"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    onChange: input.onChange,
+    value: value,
+    onBlur: onBlurSelect
+  }, rest, selectProps, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47
+    },
+    __self: this
+  }), options.map(function (_ref3) {
+    var value = _ref3.value,
+        label = _ref3.label;
+    return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_Select__WEBPACK_IMPORTED_MODULE_4__["Option"], {
+      key: value,
+      value: value,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 55
+      },
+      __self: this
+    }, label);
+  })));
+};
+
+/***/ }),
+
+/***/ "./packages/ui/src/select/index.ts":
+/*!*****************************************!*\
+  !*** ./packages/ui/src/select/index.ts ***!
+  \*****************************************/
+/*! exports provided: SelectField */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SelectField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectField */ "./packages/ui/src/select/SelectField.tsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SelectField", function() { return _SelectField__WEBPACK_IMPORTED_MODULE_0__["SelectField"]; });
 
 
 

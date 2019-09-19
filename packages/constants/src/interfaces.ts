@@ -23,3 +23,8 @@ export interface ICloudResponse {
   success: boolean
   message: string
 }
+
+export interface ISelectOption {
+  value: any
+  label: string | React.ReactNode
+}
