@@ -1,5 +1,5 @@
 {
-  "../features/login": [
+  "../features/home": [
     {
       "id": "./packages/ui/node_modules/antd/lib/form/style/index.css",
       "name": "./packages/ui/node_modules/antd/lib/form/style/index.css",
@@ -7,8 +7,8 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": "./features/login/LoginController.tsx",
-      "name": "./features/login/LoginController.tsx",
+      "id": "./features/home/HomeController.tsx",
+      "name": "./features/home/HomeController.tsx",
       "file": "static/chunks/1.js",
       "publicPath": "static/chunks/1.js"
     }

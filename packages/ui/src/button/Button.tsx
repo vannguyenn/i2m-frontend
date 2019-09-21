@@ -1,7 +1,7 @@
 import { Button as AntButton } from 'antd'
 import styled from 'styled-components'
 import { ButtonProps } from 'antd/lib/button'
-import { width, height, WidthProps, SpaceProps, space } from 'styled-system'
+import { width, WidthProps, SpaceProps, space } from 'styled-system'
 import 'antd/lib/button/style/index.css'
 
 export interface IButtonProps extends ButtonProps, WidthProps, SpaceProps {}
@@ -24,6 +24,5 @@ export const Button = styled(AntButton)<IButtonProps>`
     /* box-shadow: 0px 3px 5px rgba(255, 98, 101, 0.4); */
   }
   ${width};
-  ${height};
   ${space};
 `

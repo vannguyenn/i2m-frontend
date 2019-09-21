@@ -50,8 +50,17 @@ const LoginTitle = styled.div`
   color: #000;
   font-weight: 600;
   font-size: 30px;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 15px;
+`
+const LogoImg = styled.img`
+  width: 155px;
+  height: 50px;
+`
+const LogoContainer = styled(Layout.Flex)`
+  position: absolute;
+  top: 30px;
+  left: 35px;
 `
 const RegisterForm: React.FunctionComponent<FormRenderProps> = ({
   handleSubmit,
@@ -79,14 +88,18 @@ const RegisterForm: React.FunctionComponent<FormRenderProps> = ({
       name={FORM_FIELDS.category.name}
       label={FORM_FIELDS.category.label}
       placeholder={FORM_FIELDS.category.placeholder}
-      component={Select.SelectField}
+      component={Select.MultipleSelectField}
+      options={[
+        { value: '1', label: 'Van xinh dep' },
+        { value: '2', label: 'Beauty' },
+      ]}
     />
 
     <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-      <Button.Button width="180px" height="43px">
+      <Button.Button width="180px" style={{ height: '43px' }}>
         {CONSTANTS.login}
       </Button.Button>
-      <Button.Button type="primary" width="180px" height="43px">
+      <Button.Button type="primary" width="180px" style={{ height: '43px' }}>
         {CONSTANTS.register}
       </Button.Button>
     </Layout.Flex>
@@ -99,8 +112,16 @@ export const RegisterController: React.FunctionComponent = () => {
       width="100%"
       justifyContent="center"
       alignItems="center"
+      flexDirection="column"
       style={{ height: '100%' }}
     >
+      <LogoContainer
+        width="100%"
+        flexDirection="row"
+        justifyContent="flex-start"
+      >
+        <LogoImg src="/static/image/logo.svg" />
+      </LogoContainer>
       <LoginBox>
         <IntroText>{CONSTANTS.intro}</IntroText>
         <LoginTitle>{CONSTANTS.loginTitle}</LoginTitle>

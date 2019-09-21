@@ -51,13 +51,17 @@ const LoginTitle = styled.div`
   color: #000;
   font-weight: 600;
   font-size: 30px;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 15px;
 `
 const LogoContainer = styled(Layout.Flex)`
   position: absolute;
   top: 30px;
   left: 35px;
+`
+const LogoImg = styled.img`
+  width: 155px;
+  height: 50px;
 `
 const LoginForm: React.FunctionComponent<FormRenderProps> = ({
   handleSubmit,
@@ -85,10 +89,10 @@ const LoginForm: React.FunctionComponent<FormRenderProps> = ({
       />
     </Layout.Flex>
     <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-      <Button.Button width="180px" height="43px">
+      <Button.Button width="180px" style={{ height: '43px' }}>
         {CONSTANTS.register}
       </Button.Button>
-      <Button.Button type="primary" width="180px" height="43px">
+      <Button.Button type="primary" width="180px" style={{ height: '43px' }}>
         {CONSTANTS.login}
       </Button.Button>
     </Layout.Flex>
@@ -108,7 +112,7 @@ export const LoginController: React.FunctionComponent = () => {
         flexDirection="row"
         justifyContent="flex-start"
       >
-        <img src="/static/image/logo.svg" />
+        <LogoImg src="/static/image/logo.svg" />
       </LogoContainer>
       <LoginBox>
         <IntroText>{CONSTANTS.intro}</IntroText>
