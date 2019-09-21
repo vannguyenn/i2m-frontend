@@ -1,6 +1,10 @@
-import React from "react";
-export default class extends React.Component {
-  render() {
-    return <div>Hello Next.js</div>;
-  }
-}
+import * as React from 'react'
+
+import dynamic from 'next/dynamic'
+
+const HomeFeature = dynamic(() => import('../features/home'), {
+  ssr: false,
+})
+
+const HomePage: React.FunctionComponent = () => <HomeFeature />
+export default HomePage

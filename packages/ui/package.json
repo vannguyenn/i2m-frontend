@@ -1,0 +1,32 @@
+{
+  "name": "@frontend/ui",
+  "version": "1.0.0",
+  "author": "van nguyen",
+  "description": "FE Commons - UI",
+  "main": "./src/index.ts",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "clean": "rm -rf lib && rm tsconfig.tsbuildinfo;",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
+    "antd": "3.16.3",
+    "moment": "^2.24.0",
+    "styled-components": "4.3.2",
+    "styled-system": "5.1.0",
+    "typescript": "3.4.5"
+  },
+  "devDependencies": {
+    "@types/react-grid-layout": "0.16.7",
+    "@types/classnames": "2.2.9",
+    "@types/react-dom": "16.8.4",
+    "@types/styled-components": "4.1.8",
+    "@types/styled-system": "5.0.1"
+  },
+  "gitHead": "e463cf3caa97419fb3fa3fec242d1d61e8289d32"
+}
