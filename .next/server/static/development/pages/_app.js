@@ -2385,7 +2385,7 @@ __webpack_require__.r(__webpack_exports__);
 var Card = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(antd__WEBPACK_IMPORTED_MODULE_0__["Card"]).withConfig({
   displayName: "Card",
   componentId: "sc-1bx5rm2-0"
-})(["-webkit-box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);-moz-box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);", ";", ";"], styled_system__WEBPACK_IMPORTED_MODULE_3__["width"], styled_system__WEBPACK_IMPORTED_MODULE_3__["space"]);
+})(["-webkit-box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);-moz-box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);.ant-card-cover{img{max-width:500px;max-height:330px;width:500px;height:330px;}}", ";", ";"], styled_system__WEBPACK_IMPORTED_MODULE_3__["width"], styled_system__WEBPACK_IMPORTED_MODULE_3__["space"]);
 
 /***/ }),
 

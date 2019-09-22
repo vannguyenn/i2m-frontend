@@ -121,7 +121,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -146,7 +146,7 @@ var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/
 
 
 var InfluencerDetail = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(function () {
-  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../../features/influencer/detail */ "./features/influencer/detail/index.ts"));
+  return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../../features/influencer/detail */ "./features/influencer/detail/index.ts"));
 }, {
   ssr: false,
   loadableGenerated: {
@@ -173,7 +173,7 @@ var InfluencerDetailPage = function InfluencerDetailPage(_ref) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!********************************************!*\
   !*** multi ./pages/influencers/detail.tsx ***!
   \********************************************/
@@ -479,6 +479,17 @@ module.exports = require("prop-types-exact");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-chartjs-2":
+/*!**********************************!*\
+  !*** external "react-chartjs-2" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-chartjs-2");
 
 /***/ }),
 

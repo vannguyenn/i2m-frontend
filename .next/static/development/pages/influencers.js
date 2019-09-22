@@ -3868,7 +3868,7 @@ var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/
 
 
 var InfluencerList = next_dynamic__WEBPACK_IMPORTED_MODULE_1___default()(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e("styles"), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../../features/influencer/list */ "./features/influencer/list/index.ts"));
+  return Promise.all(/*! import() */[__webpack_require__.e("styles"), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../../features/influencer/list */ "./features/influencer/list/index.ts"));
 }, {
   ssr: false,
   loadableGenerated: {
@@ -3893,7 +3893,7 @@ var InfluencerListPage = function InfluencerListPage() {
 
 /***/ }),
 
-/***/ 10:
+/***/ 14:
 /*!*************************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Finfluencers&absolutePagePath=%2FUsers%2Fvanthihongnguyen%2FDocuments%2Ffpt%2FCAPSTONE%2Fi2m-frontend%2Fpages%2Finfluencers%2Findex.tsx ***!
   \*************************************************************************************************************************************************************************************/
@@ -3916,5 +3916,5 @@ module.exports = dll_01f9a3fa864a7b7414d8;
 
 /***/ })
 
-},[[10,"static/runtime/webpack.js"]]]);
+},[[14,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=influencers.js.map

@@ -25,18 +25,24 @@ const TabItem = styled.li<{ isActive: boolean }>`
     font-weight: 600;
   }
 `
+export const TAB_KEYS = {
+  stats: 'stats',
+  media: 'media',
+  analytics: 'analytics',
+}
+
 const tabs = [
   {
     title: 'Stats',
-    name: 'stats',
+    name: TAB_KEYS.stats,
   },
   {
     title: 'Media',
-    name: 'media',
+    name: TAB_KEYS.media,
   },
   {
     title: 'Analytics',
-    name: 'analytics',
+    name: TAB_KEYS.analytics,
   },
 ]
 

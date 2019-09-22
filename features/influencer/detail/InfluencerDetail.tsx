@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { MasterLayout, Layout, Avatar } from '@frontend/ui'
 import styled from 'styled-components'
-import { Tab } from './component/Tab'
+import { Tab, TAB_KEYS } from './component/Tab'
+import { StatsSection } from './component/StatsSection'
+import { MediaSection } from './component/MediaSection'
 
 const Content = styled(Layout.Flex)`
   min-height: calc(100vh - 180px);
@@ -34,6 +36,18 @@ const NumberText = styled.div`
   margin-right: 5px;
 `
 
+const AvatarContainer = styled.div`
+  position: relative;
+`
+const BlueTick = styled.div`
+  position: absolute;
+  right: -10px;
+  bottom: 5px;
+  img {
+    width: 20px;
+    height: 20px;
+  }
+`
 export interface IInfluencerDetailProps {
   profileUrl?: string
   fullname: string
@@ -43,6 +57,11 @@ export interface IInfluencerDetailProps {
   numOfFollowing: number
   email?: string
   tab: string
+}
+
+const tabContents = {
+  [TAB_KEYS.stats]: () => <StatsSection />,
+  [TAB_KEYS.media]: () => <MediaSection />,
 }
 
 export const InfluencerDetail: React.FunctionComponent<
@@ -57,6 +76,7 @@ export const InfluencerDetail: React.FunctionComponent<
   email,
   tab,
 }) => {
+  const TabContent = tabContents[tab]
   return (
     <MasterLayout.MasterLayout>
       <Content flexDirection="column">
@@ -66,10 +86,16 @@ export const InfluencerDetail: React.FunctionComponent<
           bg="white"
         >
           <GeneralInfo flexDirection="row" alignItems="flex-start">
-            <Avatar.Avatar
-              size={150}
-              src={profileUrl || '/static/image/user.png'}
-            />
+            <AvatarContainer>
+              <Avatar.Avatar
+                size={150}
+                src={profileUrl || '/static/image/user.png'}
+              />
+              <BlueTick>
+                <img src="/static/image/blue-tick.svg" />
+              </BlueTick>
+            </AvatarContainer>
+
             <Layout.Flex
               flexDirection="column"
               ml="50px"
@@ -100,6 +126,7 @@ export const InfluencerDetail: React.FunctionComponent<
           </GeneralInfo>
           <Tab tab={tab} />
         </Layout.Flex>
+        <TabContent />
       </Content>
     </MasterLayout.MasterLayout>
   )

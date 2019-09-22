@@ -9548,7 +9548,7 @@ var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/
 
 
 var InfluencerDetail = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e("styles"), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../../features/influencer/detail */ "./features/influencer/detail/index.ts"));
+  return Promise.all(/*! import() */[__webpack_require__.e("styles"), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../../features/influencer/detail */ "./features/influencer/detail/index.ts"));
 }, {
   ssr: false,
   loadableGenerated: {
