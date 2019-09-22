@@ -34,7 +34,7 @@ const colors = {
   yellow100: '#f8e71c',
   yellow15: '#fefcdd',
 
-  red100: '#e2574c',
+  red100: '#979797',
   red85: '#ca3d32',
   red75: '#b23228',
   red45: '#f2b3ae',

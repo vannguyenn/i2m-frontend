@@ -10,6 +10,8 @@ import * as Select from './select'
 import * as Card from './card'
 import * as Avatar from './avatar'
 import * as Divider from './divider'
+import * as MasterLayout from './master-layout'
+import * as Slider from './slider'
 
 export {
   themes,
@@ -24,4 +26,6 @@ export {
   Card,
   Avatar,
   Divider,
+  MasterLayout,
+  Slider,
 }

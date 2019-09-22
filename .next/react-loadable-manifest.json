@@ -1,14 +1,28 @@
 {
-  "../features/home": [
+  "../../features/influencer/detail": [
     {
-      "id": "./packages/ui/node_modules/antd/lib/form/style/index.css",
-      "name": "./packages/ui/node_modules/antd/lib/form/style/index.css",
+      "id": 0,
+      "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": "./features/home/HomeController.tsx",
-      "name": "./features/home/HomeController.tsx",
+      "id": "./features/influencer/detail/InfluencerDetail.tsx",
+      "name": "./features/influencer/detail/InfluencerDetail.tsx",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "../../features/influencer/list": [
+    {
+      "id": 0,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": "./features/influencer/list/InfluencerList.tsx",
+      "name": "./features/influencer/list/InfluencerList.tsx",
       "file": "static/chunks/1.js",
       "publicPath": "static/chunks/1.js"
     }

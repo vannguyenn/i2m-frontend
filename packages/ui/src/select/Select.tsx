@@ -108,7 +108,7 @@ export const Select = styled(SelectRender)<SelectProps>`
       height: 40px;
 
       .ant-select-selection__rendered {
-        line-height: 40px;
+        line-height: 36px;
       }
     }
 
@@ -116,7 +116,7 @@ export const Select = styled(SelectRender)<SelectProps>`
     &.ant-select-open .ant-select-selection {
       box-shadow: none;
       transition: 0s all;
-
+      border-width: 1.5px;
       &:focus,
       &:active,
       &:hover {
@@ -131,12 +131,14 @@ export const Select = styled(SelectRender)<SelectProps>`
     }
     .ant-select-selection--multiple > ul > li,
     .ant-select-selection--multiple .ant-select-selection__rendered > ul > li {
-      height: 32px;
+      height: 30px;
       line-height: 30px;
     }
     ${multipleSelectStyle};
   }
-
+  &.ant-select-focused {
+    border-color: ${({ theme }) => theme.colors.primary};
+  }
   ${dropdownCss};
 `
 
