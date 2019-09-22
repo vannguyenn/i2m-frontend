@@ -12,6 +12,7 @@ import * as Avatar from './avatar'
 import * as Divider from './divider'
 import * as MasterLayout from './master-layout'
 import * as Slider from './slider'
+import * as Table from './table'
 
 export {
   themes,
@@ -28,4 +29,5 @@ export {
   Divider,
   MasterLayout,
   Slider,
+  Table,
 }

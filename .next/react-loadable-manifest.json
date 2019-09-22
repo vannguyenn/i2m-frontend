@@ -1,8 +1,8 @@
 {
   "../../features/influencer/detail": [
     {
-      "id": 0,
-      "name": null,
+      "id": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
+      "name": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
@@ -11,20 +11,6 @@
       "name": "./features/influencer/detail/InfluencerDetail.tsx",
       "file": "static/chunks/1.js",
       "publicPath": "static/chunks/1.js"
-    }
-  ],
-  "../../features/influencer/list": [
-    {
-      "id": 0,
-      "name": null,
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    },
-    {
-      "id": "./features/influencer/list/InfluencerList.tsx",
-      "name": "./features/influencer/list/InfluencerList.tsx",
-      "file": "static/chunks/2.js",
-      "publicPath": "static/chunks/2.js"
     }
   ],
   "./noop": [

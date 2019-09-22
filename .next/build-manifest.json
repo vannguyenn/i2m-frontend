@@ -13,10 +13,6 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/influencers": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/influencers/detail": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"

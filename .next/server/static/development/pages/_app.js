@@ -2239,6 +2239,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./packages/ui/node_modules/antd/lib/pagination/style/index.css":
+/*!**********************************************************************!*\
+  !*** ./packages/ui/node_modules/antd/lib/pagination/style/index.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./packages/ui/node_modules/antd/lib/select/style/index.css":
 /*!******************************************************************!*\
   !*** ./packages/ui/node_modules/antd/lib/select/style/index.css ***!
@@ -2254,6 +2265,17 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************************!*\
   !*** ./packages/ui/node_modules/antd/lib/slider/style/index.css ***!
   \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./packages/ui/node_modules/antd/lib/table/style/index.css":
+/*!*****************************************************************!*\
+  !*** ./packages/ui/node_modules/antd/lib/table/style/index.css ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2949,7 +2971,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************!*\
   !*** ./packages/ui/src/index.ts ***!
   \**********************************/
-/*! exports provided: themes, styles, Button, Input, Layout, Form, Icon, Checkbox, Select, Card, Avatar, Divider, MasterLayout, Slider */
+/*! exports provided: themes, styles, Button, Input, Layout, Form, Icon, Checkbox, Select, Card, Avatar, Divider, MasterLayout, Slider, Table */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2982,6 +3004,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "MasterLayout", function() { return _master_layout__WEBPACK_IMPORTED_MODULE_12__; });
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./slider */ "./packages/ui/src/slider/index.ts");
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Slider", function() { return _slider__WEBPACK_IMPORTED_MODULE_13__; });
+/* harmony import */ var _table__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./table */ "./packages/ui/src/table/index.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return _table__WEBPACK_IMPORTED_MODULE_14__; });
+
 
 
 
@@ -3951,6 +3976,51 @@ var normalizeStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./global */ "./packages/ui/src/styles/global/index.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GlobalStyle", function() { return _global__WEBPACK_IMPORTED_MODULE_0__["GlobalStyle"]; });
+
+
+
+/***/ }),
+
+/***/ "./packages/ui/src/table/Table.tsx":
+/*!*****************************************!*\
+  !*** ./packages/ui/src/table/Table.tsx ***!
+  \*****************************************/
+/*! exports provided: Table */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return Table; });
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd_lib_table_style_index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd/lib/table/style/index.css */ "./packages/ui/node_modules/antd/lib/table/style/index.css");
+/* harmony import */ var antd_lib_table_style_index_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_table_style_index_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_pagination_style_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd/lib/pagination/style/index.css */ "./packages/ui/node_modules/antd/lib/pagination/style/index.css");
+/* harmony import */ var antd_lib_pagination_style_index_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_pagination_style_index_css__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+var Table = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(antd__WEBPACK_IMPORTED_MODULE_0__["Table"]).withConfig({
+  displayName: "Table",
+  componentId: "sc-1netz21-0"
+})([".ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td{background-color:#ffefef;}"]);
+
+/***/ }),
+
+/***/ "./packages/ui/src/table/index.ts":
+/*!****************************************!*\
+  !*** ./packages/ui/src/table/index.ts ***!
+  \****************************************/
+/*! exports provided: Table */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Table */ "./packages/ui/src/table/Table.tsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return _Table__WEBPACK_IMPORTED_MODULE_0__["Table"]; });
 
 
 

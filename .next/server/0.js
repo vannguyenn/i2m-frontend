@@ -20,10 +20,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component_Tab__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./component/Tab */ "./features/influencer/detail/component/Tab.tsx");
 /* harmony import */ var _component_StatsSection__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./component/StatsSection */ "./features/influencer/detail/component/StatsSection.tsx");
 /* harmony import */ var _component_MediaSection__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./component/MediaSection */ "./features/influencer/detail/component/MediaSection.tsx");
+/* harmony import */ var _component_AnalyticSection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./component/AnalyticSection */ "./features/influencer/detail/component/AnalyticSection.tsx");
 
 
 var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/features/influencer/detail/InfluencerDetail.tsx",
     _tabContents;
+
 
 
 
@@ -70,7 +72,7 @@ var tabContents = (_tabContents = {}, Object(_babel_runtime_corejs2_helpers_esm_
   return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_component_StatsSection__WEBPACK_IMPORTED_MODULE_5__["StatsSection"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 64
     },
     __self: this
   });
@@ -78,7 +80,15 @@ var tabContents = (_tabContents = {}, Object(_babel_runtime_corejs2_helpers_esm_
   return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_component_MediaSection__WEBPACK_IMPORTED_MODULE_6__["MediaSection"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 65
+    },
+    __self: this
+  });
+}), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_tabContents, _component_Tab__WEBPACK_IMPORTED_MODULE_4__["TAB_KEYS"].analytics, function () {
+  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_component_AnalyticSection__WEBPACK_IMPORTED_MODULE_7__["AnalyticSection"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66
     },
     __self: this
   });
@@ -96,14 +106,14 @@ var InfluencerDetail = function InfluencerDetail(_ref2) {
   return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["MasterLayout"].MasterLayout, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81
+      lineNumber: 83
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Content, {
     flexDirection: "column",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 84
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
@@ -114,7 +124,7 @@ var InfluencerDetail = function InfluencerDetail(_ref2) {
     bg: "white",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 85
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](GeneralInfo, {
@@ -122,13 +132,13 @@ var InfluencerDetail = function InfluencerDetail(_ref2) {
     alignItems: "flex-start",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 90
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](AvatarContainer, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 91
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Avatar"].Avatar, {
@@ -136,20 +146,20 @@ var InfluencerDetail = function InfluencerDetail(_ref2) {
     src: profileUrl || '/static/image/user.png',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 92
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](BlueTick, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 96
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("img", {
     src: "/static/image/blue-tick.svg",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 97
     },
     __self: this
   }))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
@@ -159,19 +169,19 @@ var InfluencerDetail = function InfluencerDetail(_ref2) {
     alignItems: "flex-start",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 101
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Fullname, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105
+      lineNumber: 107
     },
     __self: this
   }, fullname || 'John Doe'), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Username, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106
+      lineNumber: 108
     },
     __self: this
   }, username && "@".concat(username) || '@johndoe'), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
@@ -180,43 +190,43 @@ var InfluencerDetail = function InfluencerDetail(_ref2) {
     mt: "5px",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107
+      lineNumber: 109
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberText, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108
+      lineNumber: 110
     },
     __self: this
   }, "".concat(numOfPosts || 3.7, "K")), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberUnit, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 111
     },
     __self: this
   }, "Posts"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberText, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 112
     },
     __self: this
   }, "".concat(numOfFollowers || 1.2, "M")), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberUnit, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 113
     },
     __self: this
   }, "Followers"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberText, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 114
     },
     __self: this
   }, "".concat(numOfFollowing || 467)), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberUnit, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113
+      lineNumber: 115
     },
     __self: this
   }, "Following")), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
@@ -225,7 +235,7 @@ var InfluencerDetail = function InfluencerDetail(_ref2) {
     mt: "5px",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 115
+      lineNumber: 117
     },
     __self: this
   }, "Email:", react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
@@ -235,7 +245,7 @@ var InfluencerDetail = function InfluencerDetail(_ref2) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117
+      lineNumber: 119
     },
     __self: this
   }, email || 'johndoe@gmail.com')), react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
@@ -245,23 +255,122 @@ var InfluencerDetail = function InfluencerDetail(_ref2) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 121
+      lineNumber: 123
     },
     __self: this
   }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_component_Tab__WEBPACK_IMPORTED_MODULE_4__["Tab"], {
     tab: tab,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127
+      lineNumber: 129
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](TabContent, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 129
+      lineNumber: 131
     },
     __self: this
   })));
+};
+
+/***/ }),
+
+/***/ "./features/influencer/detail/component/AnalyticSection.tsx":
+/*!******************************************************************!*\
+  !*** ./features/influencer/detail/component/AnalyticSection.tsx ***!
+  \******************************************************************/
+/*! exports provided: AnalyticSection */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnalyticSection", function() { return AnalyticSection; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
+var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/features/influencer/detail/component/AnalyticSection.tsx";
+
+
+
+var columns = [{
+  title: 'Posts',
+  dataIndex: 'post',
+  key: 'post'
+}, {
+  title: 'Likes',
+  dataIndex: 'likes',
+  key: 'likes'
+}, {
+  title: 'Replies',
+  dataIndex: 'replies',
+  key: 'replies'
+}, {
+  title: 'Engagement Rate',
+  dataIndex: 'engagementRate',
+  key: 'engagementRate'
+}, {
+  title: 'Total Reach',
+  dataIndex: 'totalReach',
+  key: 'totalReach'
+}];
+var data = [{
+  key: '1',
+  post: 'John Brown',
+  likes: '64.2K',
+  replies: '122.0',
+  engagementRate: '4.9%',
+  totalReach: '64.3K'
+}, {
+  key: '2',
+  post: 'John Brown',
+  likes: '64.2K',
+  replies: '122.0',
+  engagementRate: '4.9%',
+  totalReach: '64.3K'
+}, {
+  key: '3',
+  post: 'John Brown',
+  likes: '64.2K',
+  replies: '122.0',
+  engagementRate: '4.9%',
+  totalReach: '64.3K'
+}];
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "AnalyticSection__Container",
+  componentId: "sc-15x8r32-0"
+})(["margin-top:30px;background:#ffffff;padding:20px;width:100%;"]);
+var Title = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "AnalyticSection__Title",
+  componentId: "sc-15x8r32-1"
+})(["font-weight:600;font-size:16px;color:", ";margin-bottom:20px;"], function (_ref) {
+  var theme = _ref.theme;
+  return theme.colors.grey100;
+});
+var AnalyticSection = function AnalyticSection() {
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Container, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76
+    },
+    __self: this
+  }, "Recent Posts Performance"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Table"].Table, {
+    dataSource: data,
+    columns: columns,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77
+    },
+    __self: this
+  }));
 };
 
 /***/ }),
@@ -3254,6 +3363,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./packages/ui/node_modules/antd/lib/pagination/style/index.css":
+/*!**********************************************************************!*\
+  !*** ./packages/ui/node_modules/antd/lib/pagination/style/index.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./packages/ui/node_modules/antd/lib/select/style/index.css":
 /*!******************************************************************!*\
   !*** ./packages/ui/node_modules/antd/lib/select/style/index.css ***!
@@ -3269,6 +3389,17 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************************!*\
   !*** ./packages/ui/node_modules/antd/lib/slider/style/index.css ***!
   \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./packages/ui/node_modules/antd/lib/table/style/index.css":
+/*!*****************************************************************!*\
+  !*** ./packages/ui/node_modules/antd/lib/table/style/index.css ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -3964,7 +4095,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************!*\
   !*** ./packages/ui/src/index.ts ***!
   \**********************************/
-/*! exports provided: themes, styles, Button, Input, Layout, Form, Icon, Checkbox, Select, Card, Avatar, Divider, MasterLayout, Slider */
+/*! exports provided: themes, styles, Button, Input, Layout, Form, Icon, Checkbox, Select, Card, Avatar, Divider, MasterLayout, Slider, Table */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3997,6 +4128,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "MasterLayout", function() { return _master_layout__WEBPACK_IMPORTED_MODULE_12__; });
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./slider */ "./packages/ui/src/slider/index.ts");
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Slider", function() { return _slider__WEBPACK_IMPORTED_MODULE_13__; });
+/* harmony import */ var _table__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./table */ "./packages/ui/src/table/index.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return _table__WEBPACK_IMPORTED_MODULE_14__; });
+
 
 
 
@@ -4966,6 +5100,51 @@ var normalizeStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _global__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./global */ "./packages/ui/src/styles/global/index.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GlobalStyle", function() { return _global__WEBPACK_IMPORTED_MODULE_0__["GlobalStyle"]; });
+
+
+
+/***/ }),
+
+/***/ "./packages/ui/src/table/Table.tsx":
+/*!*****************************************!*\
+  !*** ./packages/ui/src/table/Table.tsx ***!
+  \*****************************************/
+/*! exports provided: Table */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return Table; });
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd_lib_table_style_index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd/lib/table/style/index.css */ "./packages/ui/node_modules/antd/lib/table/style/index.css");
+/* harmony import */ var antd_lib_table_style_index_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_table_style_index_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_pagination_style_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd/lib/pagination/style/index.css */ "./packages/ui/node_modules/antd/lib/pagination/style/index.css");
+/* harmony import */ var antd_lib_pagination_style_index_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_pagination_style_index_css__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+var Table = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(antd__WEBPACK_IMPORTED_MODULE_0__["Table"]).withConfig({
+  displayName: "Table",
+  componentId: "sc-1netz21-0"
+})([".ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td{background-color:#ffefef;}"]);
+
+/***/ }),
+
+/***/ "./packages/ui/src/table/index.ts":
+/*!****************************************!*\
+  !*** ./packages/ui/src/table/index.ts ***!
+  \****************************************/
+/*! exports provided: Table */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Table */ "./packages/ui/src/table/Table.tsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return _Table__WEBPACK_IMPORTED_MODULE_0__["Table"]; });
 
 
 

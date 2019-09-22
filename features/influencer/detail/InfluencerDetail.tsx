@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Tab, TAB_KEYS } from './component/Tab'
 import { StatsSection } from './component/StatsSection'
 import { MediaSection } from './component/MediaSection'
+import { AnalyticSection } from './component/AnalyticSection'
 
 const Content = styled(Layout.Flex)`
   min-height: calc(100vh - 180px);
@@ -62,6 +63,7 @@ export interface IInfluencerDetailProps {
 const tabContents = {
   [TAB_KEYS.stats]: () => <StatsSection />,
   [TAB_KEYS.media]: () => <MediaSection />,
+  [TAB_KEYS.analytics]: () => <AnalyticSection />,
 }
 
 export const InfluencerDetail: React.FunctionComponent<
