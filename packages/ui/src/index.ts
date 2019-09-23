@@ -13,6 +13,8 @@ import * as Divider from './divider'
 import * as MasterLayout from './master-layout'
 import * as Slider from './slider'
 import * as Table from './table'
+import * as Popover from './popover'
+import * as Drawer from './drawer'
 
 export {
   themes,
@@ -30,4 +32,6 @@ export {
   MasterLayout,
   Slider,
   Table,
+  Popover,
+  Drawer,
 }

@@ -9,12 +9,11 @@ export const Card = styled(AntCard)<ICardProps>`
   -webkit-box-shadow: 11px 16px 32px -6px rgba(0, 0, 0, 0.19);
   -moz-box-shadow: 11px 16px 32px -6px rgba(0, 0, 0, 0.19);
   box-shadow: 11px 16px 32px -6px rgba(0, 0, 0, 0.19);
-
+  cursor: pointer;
   .ant-card-cover {
     img {
-      max-width: 500px;
+      max-width: 100%;
       max-height: 330px;
-      width: 500px;
       height: 330px;
     }
   }

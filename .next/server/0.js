@@ -1,700 +1,238 @@
 exports.ids = [0];
 exports.modules = {
 
-/***/ "./features/influencer/detail/InfluencerDetail.tsx":
-/*!*********************************************************!*\
-  !*** ./features/influencer/detail/InfluencerDetail.tsx ***!
-  \*********************************************************/
-/*! exports provided: InfluencerDetail */
+/***/ "./features/login/LoginController.tsx":
+/*!********************************************!*\
+  !*** ./features/login/LoginController.tsx ***!
+  \********************************************/
+/*! exports provided: LoginController */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfluencerDetail", function() { return InfluencerDetail; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _component_Tab__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./component/Tab */ "./features/influencer/detail/component/Tab.tsx");
-/* harmony import */ var _component_StatsSection__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./component/StatsSection */ "./features/influencer/detail/component/StatsSection.tsx");
-/* harmony import */ var _component_MediaSection__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./component/MediaSection */ "./features/influencer/detail/component/MediaSection.tsx");
-/* harmony import */ var _component_AnalyticSection__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./component/AnalyticSection */ "./features/influencer/detail/component/AnalyticSection.tsx");
-
-
-var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/features/influencer/detail/InfluencerDetail.tsx",
-    _tabContents;
-
-
-
-
-
-
-
-
-var Content = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
-  displayName: "InfluencerDetail__Content",
-  componentId: "sc-7py668-0"
-})(["min-height:calc(100vh - 180px);max-height:calc(100vh - 180px);overflow:auto;background:#f3f4f6;padding:20px 60px 50px 60px;"]);
-var GeneralInfo = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
-  displayName: "InfluencerDetail__GeneralInfo",
-  componentId: "sc-7py668-1"
-})(["padding:20px 20px 20px 80px;margin-bottom:30px;"]);
-var Fullname = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
-  displayName: "InfluencerDetail__Fullname",
-  componentId: "sc-7py668-2"
-})(["font-weight:600;color:#000000;font-size:24px;letter-spacing:0.5px;"]);
-var Username = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
-  displayName: "InfluencerDetail__Username",
-  componentId: "sc-7py668-3"
-})(["color:", ";font-size:16px;"], function (_ref) {
-  var theme = _ref.theme;
-  return theme.colors.dark100;
-});
-var NumberUnit = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(Username).withConfig({
-  displayName: "InfluencerDetail__NumberUnit",
-  componentId: "sc-7py668-4"
-})(["font-size:18px;margin-right:30px;"]);
-var NumberText = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
-  displayName: "InfluencerDetail__NumberText",
-  componentId: "sc-7py668-5"
-})(["font-size:18px;margin-right:5px;"]);
-var AvatarContainer = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
-  displayName: "InfluencerDetail__AvatarContainer",
-  componentId: "sc-7py668-6"
-})(["position:relative;"]);
-var BlueTick = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
-  displayName: "InfluencerDetail__BlueTick",
-  componentId: "sc-7py668-7"
-})(["position:absolute;right:-10px;bottom:5px;img{width:20px;height:20px;}"]);
-var tabContents = (_tabContents = {}, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_tabContents, _component_Tab__WEBPACK_IMPORTED_MODULE_4__["TAB_KEYS"].stats, function () {
-  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_component_StatsSection__WEBPACK_IMPORTED_MODULE_5__["StatsSection"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64
-    },
-    __self: this
-  });
-}), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_tabContents, _component_Tab__WEBPACK_IMPORTED_MODULE_4__["TAB_KEYS"].media, function () {
-  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_component_MediaSection__WEBPACK_IMPORTED_MODULE_6__["MediaSection"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 65
-    },
-    __self: this
-  });
-}), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(_tabContents, _component_Tab__WEBPACK_IMPORTED_MODULE_4__["TAB_KEYS"].analytics, function () {
-  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_component_AnalyticSection__WEBPACK_IMPORTED_MODULE_7__["AnalyticSection"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66
-    },
-    __self: this
-  });
-}), _tabContents);
-var InfluencerDetail = function InfluencerDetail(_ref2) {
-  var profileUrl = _ref2.profileUrl,
-      fullname = _ref2.fullname,
-      username = _ref2.username,
-      numOfFollowers = _ref2.numOfFollowers,
-      numOfFollowing = _ref2.numOfFollowing,
-      numOfPosts = _ref2.numOfPosts,
-      email = _ref2.email,
-      tab = _ref2.tab;
-  var TabContent = tabContents[tab];
-  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["MasterLayout"].MasterLayout, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 83
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Content, {
-    flexDirection: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 84
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "column",
-    style: {
-      position: 'relative'
-    },
-    bg: "white",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 85
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](GeneralInfo, {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 90
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](AvatarContainer, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 91
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Avatar"].Avatar, {
-    size: 150,
-    src: profileUrl || '/static/image/user.png',
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 92
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](BlueTick, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 96
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("img", {
-    src: "/static/image/blue-tick.svg",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 97
-    },
-    __self: this
-  }))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "column",
-    ml: "50px",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 101
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Fullname, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 107
-    },
-    __self: this
-  }, fullname || 'John Doe'), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Username, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 108
-    },
-    __self: this
-  }, username && "@".concat(username) || '@johndoe'), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    alignItems: "center",
-    mt: "5px",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 109
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberText, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 110
-    },
-    __self: this
-  }, "".concat(numOfPosts || 3.7, "K")), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberUnit, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 111
-    },
-    __self: this
-  }, "Posts"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberText, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 112
-    },
-    __self: this
-  }, "".concat(numOfFollowers || 1.2, "M")), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberUnit, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 113
-    },
-    __self: this
-  }, "Followers"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberText, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 114
-    },
-    __self: this
-  }, "".concat(numOfFollowing || 467)), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberUnit, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 115
-    },
-    __self: this
-  }, "Following")), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    alignItems: "center",
-    mt: "5px",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 117
-    },
-    __self: this
-  }, "Email:", react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
-    style: {
-      fontWeight: 600,
-      marginLeft: '10px'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 119
-    },
-    __self: this
-  }, email || 'johndoe@gmail.com')), react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
-    style: {
-      color: '#3c3c3c',
-      marginTop: '5px'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 123
-    },
-    __self: this
-  }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_component_Tab__WEBPACK_IMPORTED_MODULE_4__["Tab"], {
-    tab: tab,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 129
-    },
-    __self: this
-  })), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](TabContent, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 131
-    },
-    __self: this
-  })));
-};
-
-/***/ }),
-
-/***/ "./features/influencer/detail/component/AnalyticSection.tsx":
-/*!******************************************************************!*\
-  !*** ./features/influencer/detail/component/AnalyticSection.tsx ***!
-  \******************************************************************/
-/*! exports provided: AnalyticSection */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnalyticSection", function() { return AnalyticSection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginController", function() { return LoginController; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
-var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/features/influencer/detail/component/AnalyticSection.tsx";
+/* harmony import */ var react_final_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-final-form */ "react-final-form");
+/* harmony import */ var react_final_form__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_final_form__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
+var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/features/login/LoginController.tsx";
 
 
 
-var columns = [{
-  title: 'Posts',
-  dataIndex: 'post',
-  key: 'post'
-}, {
-  title: 'Likes',
-  dataIndex: 'likes',
-  key: 'likes'
-}, {
-  title: 'Replies',
-  dataIndex: 'replies',
-  key: 'replies'
-}, {
-  title: 'Engagement Rate',
-  dataIndex: 'engagementRate',
-  key: 'engagementRate'
-}, {
-  title: 'Total Reach',
-  dataIndex: 'totalReach',
-  key: 'totalReach'
-}];
-var data = [{
-  key: '1',
-  post: 'John Brown',
-  likes: '64.2K',
-  replies: '122.0',
-  engagementRate: '4.9%',
-  totalReach: '64.3K'
-}, {
-  key: '2',
-  post: 'John Brown',
-  likes: '64.2K',
-  replies: '122.0',
-  engagementRate: '4.9%',
-  totalReach: '64.3K'
-}, {
-  key: '3',
-  post: 'John Brown',
-  likes: '64.2K',
-  replies: '122.0',
-  engagementRate: '4.9%',
-  totalReach: '64.3K'
-}];
-var Container = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
-  displayName: "AnalyticSection__Container",
-  componentId: "sc-15x8r32-0"
-})(["margin-top:30px;background:#ffffff;padding:20px;width:100%;"]);
-var Title = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
-  displayName: "AnalyticSection__Title",
-  componentId: "sc-15x8r32-1"
-})(["font-weight:600;font-size:16px;color:", ";margin-bottom:20px;"], function (_ref) {
+
+
+
+var CONSTANTS = {
+  intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
+  loginTitle: 'Login your account',
+  register: 'Register',
+  login: 'Login'
+};
+var FORM_FIELDS = {
+  email: {
+    name: 'email',
+    placeholder: 'Your E-Mail',
+    label: 'E-Mail'
+  },
+  password: {
+    name: 'password',
+    placeholder: 'Your Password',
+    label: 'Password'
+  },
+  rememberMe: {
+    name: 'rememberMe',
+    label: 'Remember me'
+  }
+};
+var LoginBox = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
+  displayName: "LoginController__LoginBox",
+  componentId: "sc-1ayx8d-0"
+})(["padding:30px 40px;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,0.12),0 1px 2px rgba(0,0,0,0.24);width:500px;display:flex;justify-content:flex-start;flex-direction:column;"]);
+var IntroText = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "LoginController__IntroText",
+  componentId: "sc-1ayx8d-1"
+})(["text-transform:uppercase;color:", ";"], function (_ref) {
   var theme = _ref.theme;
   return theme.colors.grey100;
 });
-var AnalyticSection = function AnalyticSection() {
-  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Container, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 75
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 76
-    },
-    __self: this
-  }, "Recent Posts Performance"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Table"].Table, {
-    dataSource: data,
-    columns: columns,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 77
-    },
-    __self: this
-  }));
-};
+var LoginTitle = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "LoginController__LoginTitle",
+  componentId: "sc-1ayx8d-2"
+})(["color:#000;font-weight:600;font-size:30px;margin-top:15px;margin-bottom:15px;"]);
+var LogoContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
+  displayName: "LoginController__LogoContainer",
+  componentId: "sc-1ayx8d-3"
+})(["position:absolute;top:30px;left:35px;"]);
+var LogoImg = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.img.withConfig({
+  displayName: "LoginController__LogoImg",
+  componentId: "sc-1ayx8d-4"
+})(["width:155px;height:50px;"]);
 
-/***/ }),
-
-/***/ "./features/influencer/detail/component/MediaSection.tsx":
-/*!***************************************************************!*\
-  !*** ./features/influencer/detail/component/MediaSection.tsx ***!
-  \***************************************************************/
-/*! exports provided: MediaSection */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MediaSection", function() { return MediaSection; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _StatsSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StatsSection */ "./features/influencer/detail/component/StatsSection.tsx");
-/* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
-
-var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/features/influencer/detail/component/MediaSection.tsx";
-
-function _templateObject3() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  max-width: 400px;\n  max-height: 300px;\n"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  color: ", ";\n  font-size: 16px;\n"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  padding-left: 20px;\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-
-
-
-
-var Description = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div(_templateObject());
-var CardTitle = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div(_templateObject2(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.colors.dark100;
-});
-var LatestPost = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.img(_templateObject3());
-var MediaSection = function MediaSection() {
-  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["Section"], {
-    flexDirection: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["Title"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    },
-    __self: this
-  }, "Best Posts"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Description, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    },
-    __self: this
-  }, "Here are the most liked and talked about posts"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Grid, {
-    gridGap: 10,
-    gridTemplateColumns: "1fr 1fr 1fr",
-    alignContent: "center",
-    mt: "20px",
-    mb: "40px",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Card"].Card, {
-    bordered: false,
-    cover: react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("img", {
-      alt: "example",
-      src: "/static/image/cover1.jpg",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 32
-      },
-      __self: this
-    }),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 30
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
-    flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35
-    },
-    __self: this
-  }, "Most Liked Post"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
-    flexDirection: "row",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Icon"].Icon, {
-    type: "heart",
-    theme: "filled",
-    color: "#F12B2C",
-    fontSize: "18px",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["NumberTag"], {
-    style: {
-      marginLeft: '10px'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 43
-    },
-    __self: this
-  }, "25.9K")))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Card"].Card, {
-    bordered: false,
-    cover: react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("img", {
-      alt: "example",
-      src: "/static/image/cover2.jpg",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 49
-      },
-      __self: this
-    }),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
-    flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52
-    },
-    __self: this
-  }, "Most Commented Post"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
-    flexDirection: "row",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Icon"].Icon, {
-    type: "wechat",
-    theme: "filled",
-    color: "#F4AE1F",
-    fontSize: "18px",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 54
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["NumberTag"], {
-    style: {
-      marginLeft: '10px'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 60
-    },
-    __self: this
-  }, "33.0K")))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Card"].Card, {
-    bordered: false,
-    cover: react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("img", {
-      alt: "example",
-      src: "/static/image/cover3.jpg",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 66
-      },
-      __self: this
-    }),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
-    flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 68
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 69
-    },
-    __self: this
-  }, "Most Engaging Post"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
-    flexDirection: "row",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 70
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Icon"].Icon, {
-    type: "dashboard",
-    color: "#34c635",
-    fontSize: "18px",
+var LoginForm = function LoginForm(_ref2) {
+  var handleSubmit = _ref2.handleSubmit;
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Form"].Form, {
+    onSubmit: handleSubmit,
+    layout: "vertical",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 71
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["NumberTag"], {
-    style: {
-      marginLeft: '10px'
-    },
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_final_form__WEBPACK_IMPORTED_MODULE_3__["Field"], {
+    name: FORM_FIELDS.email.name,
+    label: FORM_FIELDS.email.label,
+    placeholder: FORM_FIELDS.email.placeholder,
+    component: _frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Input"].InputField,
+    prefix: react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
+      type: "mail",
+      color: "dark30",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 77
+      },
+      __self: this
+    }),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 72
     },
     __self: this
-  }, "5.3%"))))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["Title"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_final_form__WEBPACK_IMPORTED_MODULE_3__["Field"], {
+    name: FORM_FIELDS.password.name,
+    label: FORM_FIELDS.password.label,
+    placeholder: FORM_FIELDS.password.placeholder,
+    component: _frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Input"].InputPasswordField,
+    prefix: react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
+      type: "key",
+      rotate: 225,
+      color: "dark30",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 84
+      },
+      __self: this
+    }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 79
     },
     __self: this
-  }, "Latest Posts"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Grid, {
-    gridGap: 10,
-    gridTemplateColumns: "1fr 1fr 1fr",
-    alignContent: "center",
-    mt: "40px",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 78
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](LatestPost, {
-    src: "/static/image/cover4.jpg",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 84
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](LatestPost, {
-    src: "/static/image/cover5.jpg",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 85
-    },
-    __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](LatestPost, {
-    src: "/static/image/cover6.jpg",
+  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    mt: "20px",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 86
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](LatestPost, {
-    src: "/static/image/cover7.jpg",
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_final_form__WEBPACK_IMPORTED_MODULE_3__["Field"], {
+    name: FORM_FIELDS.rememberMe.name,
+    label: FORM_FIELDS.rememberMe.label,
+    render: _frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Checkbox"].CheckboxField,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 87
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](LatestPost, {
-    src: "/static/image/cover8.jpg",
+  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    mt: "10px",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 93
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](LatestPost, {
-    src: "/static/image/cover9.jpg",
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Button"].Button, {
+    width: "180px",
+    style: {
+      height: '43px'
+    },
+    onClick: function onClick() {
+      return next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_5__["PATHS"].signup);
+    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 94
+    },
+    __self: this
+  }, CONSTANTS.register), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Button"].Button, {
+    type: "primary",
+    width: "180px",
+    style: {
+      height: '43px'
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 101
+    },
+    __self: this
+  }, CONSTANTS.login)));
+};
+
+var LoginController = function LoginController() {
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    style: {
+      height: '100%'
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 109
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](LogoContainer, {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 116
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](LogoImg, {
+    src: "/static/image/logo.svg",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 121
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](LoginBox, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 123
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IntroText, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 124
+    },
+    __self: this
+  }, CONSTANTS.intro), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](LoginTitle, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 125
+    },
+    __self: this
+  }, CONSTANTS.loginTitle), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_final_form__WEBPACK_IMPORTED_MODULE_3__["Form"], {
+    onSubmit: function onSubmit(v) {
+      return console.log(v);
+    },
+    render: LoginForm,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 126
     },
     __self: this
   })));
@@ -702,707 +240,18 @@ var MediaSection = function MediaSection() {
 
 /***/ }),
 
-/***/ "./features/influencer/detail/component/StatsSection.tsx":
-/*!***************************************************************!*\
-  !*** ./features/influencer/detail/component/StatsSection.tsx ***!
-  \***************************************************************/
-/*! exports provided: Title, Section, NumberTag, StatsSection */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Title", function() { return Title; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Section", function() { return Section; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NumberTag", function() { return NumberTag; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatsSection", function() { return StatsSection; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
-/* harmony import */ var styled_system__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-system */ "styled-system");
-/* harmony import */ var styled_system__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_system__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-chartjs-2 */ "react-chartjs-2");
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/features/influencer/detail/component/StatsSection.tsx";
-
-
-
-
-
-var data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [{
-    label: 'My First dataset',
-    fill: false,
-    lineTension: 0.1,
-    backgroundColor: 'rgba(75,192,192,0.4)',
-    borderColor: 'rgba(75,192,192,1)',
-    borderCapStyle: 'butt',
-    borderDash: [],
-    borderDashOffset: 0.0,
-    borderJoinStyle: 'miter',
-    pointBorderColor: 'rgba(75,192,192,1)',
-    pointBackgroundColor: '#fff',
-    pointBorderWidth: 1,
-    pointHoverRadius: 5,
-    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-    pointHoverBorderColor: 'rgba(220,220,220,1)',
-    pointHoverBorderWidth: 2,
-    pointRadius: 1,
-    pointHitRadius: 10,
-    data: [65, 59, 80, 81, 56, 55, 40]
-  }]
-};
-var Title = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
-  displayName: "StatsSection__Title",
-  componentId: "sc-1mkig5l-0"
-})(["padding-left:20px;font-weight:600;font-size:16px;color:", ";"], function (_ref) {
-  var theme = _ref.theme;
-  return theme.colors.grey100;
-});
-var Section = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
-  displayName: "StatsSection__Section",
-  componentId: "sc-1mkig5l-1"
-})(["padding:20px 0;"]);
-var Card = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
-  displayName: "StatsSection__Card",
-  componentId: "sc-1mkig5l-2"
-})(["background:#ffffff;height:200px;padding:20px 30px;"]);
-var CardTitle = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
-  displayName: "StatsSection__CardTitle",
-  componentId: "sc-1mkig5l-3"
-})(["color:#727f86;font-size:16px;"]);
-var IconContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
-  displayName: "StatsSection__IconContainer",
-  componentId: "sc-1mkig5l-4"
-})(["width:50px;height:50px;border-radius:50%;font-size:20px;", ";"], styled_system__WEBPACK_IMPORTED_MODULE_3__["color"]);
-var NumberTag = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
-  displayName: "StatsSection__NumberTag",
-  componentId: "sc-1mkig5l-5"
-})(["color:#173c51;font-size:30px;font-weight:700;"]);
-var PercentageTag = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
-  displayName: "StatsSection__PercentageTag",
-  componentId: "sc-1mkig5l-6"
-})(["color:#173c51;font-size:20px;font-weight:500;margin-left:15px;"]);
-var StatsSection = function StatsSection(_ref2) {
-  var avgLikePerPost = _ref2.avgLikePerPost,
-      likePercentage = _ref2.likePercentage,
-      replyPercentage = _ref2.replyPercentage,
-      avgRepliesPerPost = _ref2.avgRepliesPerPost,
-      avgViewPerVideo = _ref2.avgViewPerVideo,
-      numOfFollowers = _ref2.numOfFollowers,
-      imageEngagment = _ref2.imageEngagment,
-      videoEngagment = _ref2.videoEngagment,
-      postPerDay = _ref2.postPerDay,
-      postPerWeek = _ref2.postPerWeek,
-      estimatedPostValue = _ref2.estimatedPostValue,
-      engagementRate = _ref2.engagementRate;
-  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Section, {
-    flexDirection: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 102
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 103
-    },
-    __self: this
-  }, "Instagram Stats Overview"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Grid, {
-    gridGap: 10,
-    gridTemplateColumns: "1fr 1fr 1fr",
-    alignContent: "center",
-    mt: "20px",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 104
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
-    flexDirection: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 110
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 111
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 116
-    },
-    __self: this
-  }, "Avg likes per post"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
-    bg: "#FDDFDF",
-    justifyContent: "center",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 117
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
-    type: "heart",
-    theme: "filled",
-    color: "#F12B2C",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 122
-    },
-    __self: this
-  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    mt: "10px",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 125
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 126
-    },
-    __self: this
-  }, "".concat(avgLikePerPost || 59.3, "K")), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](PercentageTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 127
-    },
-    __self: this
-  }, "(".concat(likePercentage || 4.8, "%)")))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
-    flexDirection: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 130
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 131
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 136
-    },
-    __self: this
-  }, "Avg replies per post"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
-    bg: "#FFF6D9",
-    justifyContent: "center",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 137
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
-    type: "wechat",
-    theme: "filled",
-    color: "#F4AE1F",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 142
-    },
-    __self: this
-  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    mt: "10px",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 145
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 146
-    },
-    __self: this
-  }, "".concat(avgRepliesPerPost || 169.8)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](PercentageTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 147
-    },
-    __self: this
-  }, "(".concat(replyPercentage || 0.1, "%)")))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
-    flexDirection: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 150
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 151
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 156
-    },
-    __self: this
-  }, "Avg views per video"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
-    bg: "#F8E1F3",
-    justifyContent: "center",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 157
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
-    type: "video-camera",
-    theme: "filled",
-    color: "#8857FC",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 162
-    },
-    __self: this
-  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    mt: "10px",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 165
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 166
-    },
-    __self: this
-  }, "".concat(avgViewPerVideo || 171.6, "K")))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
-    flexDirection: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 169
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 170
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 175
-    },
-    __self: this
-  }, "Followers/Following"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
-    bg: "#DAEDFE",
-    justifyContent: "center",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 176
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
-    type: "user",
-    color: "blue",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 181
-    },
-    __self: this
-  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    mt: "10px",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 184
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 185
-    },
-    __self: this
-  }, "".concat(numOfFollowers || 2.6, "K")))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
-    flexDirection: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 188
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 189
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 194
-    },
-    __self: this
-  }, "Images engagement"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
-    bg: "#FFF6D9",
-    justifyContent: "center",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 195
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
-    type: "file-image",
-    theme: "filled",
-    color: "#F4AE1F",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 200
-    },
-    __self: this
-  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    mt: "10px",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 203
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 204
-    },
-    __self: this
-  }, "".concat(imageEngagment || 4.9, "%")))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
-    flexDirection: "column",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 207
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 208
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 213
-    },
-    __self: this
-  }, "Videos engagement"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
-    bg: "#f8e1f3",
-    justifyContent: "center",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 214
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
-    type: "video-camera",
-    theme: "filled",
-    color: "#cb38ae",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 219
-    },
-    __self: this
-  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    mt: "10px",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 222
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 223
-    },
-    __self: this
-  }, "".concat(videoEngagment || 171.6, "K"))))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "row",
-    alignItems: "center",
-    p: "20px 0",
-    mt: "50px",
-    bg: "white",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 227
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "column",
-    width: "100%",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 234
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 235
-    },
-    __self: this
-  }, "Posts per Day"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 236
-    },
-    __self: this
-  }, postPerDay || 1.4)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "column",
-    width: "100%",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 238
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 239
-    },
-    __self: this
-  }, "Posts per Week"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 240
-    },
-    __self: this
-  }, postPerWeek || 10)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "column",
-    width: "100%",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 242
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 243
-    },
-    __self: this
-  }, "Estimated Post value"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 244
-    },
-    __self: this
-  }, "$".concat(estimatedPostValue || 10830))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-    flexDirection: "column",
-    width: "100%",
-    alignItems: "center",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 246
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 247
-    },
-    __self: this
-  }, "Avg. Engagement Rate"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 248
-    },
-    __self: this
-  }, "".concat(engagementRate || 4.83, "%")))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Grid, {
-    gridGap: 10,
-    gridTemplateColumns: "1fr 1fr",
-    mt: "60px",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 251
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Box, {
-    style: {
-      background: '#ffffff'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 252
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__["Line"], {
-    data: data,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 253
-    },
-    __self: this
-  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Box, {
-    style: {
-      background: '#ffffff'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 256
-    },
-    __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__["Line"], {
-    data: data,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 257
-    },
-    __self: this
-  }))));
-};
-
-/***/ }),
-
-/***/ "./features/influencer/detail/component/Tab.tsx":
-/*!******************************************************!*\
-  !*** ./features/influencer/detail/component/Tab.tsx ***!
-  \******************************************************/
-/*! exports provided: TAB_KEYS, Tab */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TAB_KEYS", function() { return TAB_KEYS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tab", function() { return Tab; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/features/influencer/detail/component/Tab.tsx";
-
-
-
-
-var TabContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.ul.withConfig({
-  displayName: "Tab__TabContainer",
-  componentId: "qt2xnk-0"
-})(["display:flex;flex-direction:row;align-items:center;position:absolute;bottom:0;left:20px;margin-bottom:0;padding-inline-start:0;"]);
-var TabItem = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.li.withConfig({
-  displayName: "Tab__TabItem",
-  componentId: "qt2xnk-1"
-})(["list-style-type:none;padding:0 10px 5px 10px;border-bottom:1.5px solid ", ";a{color:", ";font-weight:600;}"], function (_ref) {
-  var isActive = _ref.isActive;
-  return isActive ? '#700940' : 'transparent';
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.colors.grey100;
-});
-var TAB_KEYS = {
-  stats: 'stats',
-  media: 'media',
-  analytics: 'analytics'
-};
-var tabs = [{
-  title: 'Stats',
-  name: TAB_KEYS.stats
-}, {
-  title: 'Media',
-  name: TAB_KEYS.media
-}, {
-  title: 'Analytics',
-  name: TAB_KEYS.analytics
-}];
-var Tab = function Tab(_ref3) {
-  var tab = _ref3.tab;
-  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](TabContainer, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 55
-    },
-    __self: this
-  }, tabs.map(function (el, index) {
-    return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](TabItem, {
-      isActive: tab === el.name,
-      key: index,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 57
-      },
-      __self: this
-    }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-      href: {
-        pathname: next_router__WEBPACK_IMPORTED_MODULE_3___default.a.pathname,
-        query: {
-          tab: el.name
-        }
-      },
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 58
-      },
-      __self: this
-    }, el.title));
-  }));
-};
-
-/***/ }),
-
-/***/ "./features/influencer/detail/index.ts":
-/*!*********************************************!*\
-  !*** ./features/influencer/detail/index.ts ***!
-  \*********************************************/
+/***/ "./features/login/index.ts":
+/*!*********************************!*\
+  !*** ./features/login/index.ts ***!
+  \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _InfluencerDetail__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InfluencerDetail */ "./features/influencer/detail/InfluencerDetail.tsx");
+/* harmony import */ var _LoginController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoginController */ "./features/login/LoginController.tsx");
 
-/* harmony default export */ __webpack_exports__["default"] = (_InfluencerDetail__WEBPACK_IMPORTED_MODULE_0__["InfluencerDetail"]);
+/* harmony default export */ __webpack_exports__["default"] = (_LoginController__WEBPACK_IMPORTED_MODULE_0__["LoginController"]);
 
 /***/ }),
 
@@ -2388,7 +1237,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var PATHS = {
   login: '/login',
-  signup: '/signup'
+  signup: '/register',
+  myInfluencer: '/my-influencers',
+  myProfile: '/my-profile',
+  influencers: '/influencers',
+  detail: '/influencers/detail?tab=stats'
 };
 var KEYS = {
   MASTER_DATA: 'MASTER_DATA',
@@ -3308,6 +2161,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./packages/ui/node_modules/antd/lib/drawer/style/index.css":
+/*!******************************************************************!*\
+  !*** ./packages/ui/node_modules/antd/lib/drawer/style/index.css ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./packages/ui/node_modules/antd/lib/empty/style/index.css":
 /*!*****************************************************************!*\
   !*** ./packages/ui/node_modules/antd/lib/empty/style/index.css ***!
@@ -3367,6 +2231,17 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************************!*\
   !*** ./packages/ui/node_modules/antd/lib/pagination/style/index.css ***!
   \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./packages/ui/node_modules/antd/lib/popover/style/index.css":
+/*!*******************************************************************!*\
+  !*** ./packages/ui/node_modules/antd/lib/popover/style/index.css ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -3531,7 +2406,7 @@ __webpack_require__.r(__webpack_exports__);
 var Card = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(antd__WEBPACK_IMPORTED_MODULE_0__["Card"]).withConfig({
   displayName: "Card",
   componentId: "sc-1bx5rm2-0"
-})(["-webkit-box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);-moz-box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);.ant-card-cover{img{max-width:500px;max-height:330px;width:500px;height:330px;}}", ";", ";"], styled_system__WEBPACK_IMPORTED_MODULE_3__["width"], styled_system__WEBPACK_IMPORTED_MODULE_3__["space"]);
+})(["-webkit-box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);-moz-box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);box-shadow:11px 16px 32px -6px rgba(0,0,0,0.19);cursor:pointer;.ant-card-cover{img{max-width:100%;max-height:330px;height:330px;}}", ";", ";"], styled_system__WEBPACK_IMPORTED_MODULE_3__["width"], styled_system__WEBPACK_IMPORTED_MODULE_3__["space"]);
 
 /***/ }),
 
@@ -3553,7 +2428,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../layout */ "./packages/ui/src/layout/index.ts");
 /* harmony import */ var _avatar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../avatar */ "./packages/ui/src/avatar/index.ts");
 /* harmony import */ var _divider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../divider */ "./packages/ui/src/divider/index.ts");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
 var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/packages/ui/src/card/InfluencerCard.tsx";
+
+
 
 
 
@@ -3601,9 +2481,12 @@ var InfluencerCard = function InfluencerCard(_ref4) {
     bordered: false,
     width: width,
     mt: "60px",
+    onClick: function onClick() {
+      return next_router__WEBPACK_IMPORTED_MODULE_6___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_7__["PATHS"].detail);
+    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 54
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_3__["Flex"], {
@@ -3613,7 +2496,7 @@ var InfluencerCard = function InfluencerCard(_ref4) {
     alignItems: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 60
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_avatar__WEBPACK_IMPORTED_MODULE_4__["Avatar"], {
@@ -3621,38 +2504,38 @@ var InfluencerCard = function InfluencerCard(_ref4) {
     src: profileUrl || '/static/image/user.png',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 66
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberOfFollowers, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 67
     },
     __self: this
   }, "".concat(numberOfFollowers, "M")), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 68
     },
     __self: this
   }, "FOLLOWERS"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](FullName, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 69
     },
     __self: this
   }, fullname), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Biography, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 70
     },
     __self: this
   }, biography), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_divider__WEBPACK_IMPORTED_MODULE_5__["Divider"], {
     type: "horizontal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 71
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_3__["Grid"], {
@@ -3661,7 +2544,7 @@ var InfluencerCard = function InfluencerCard(_ref4) {
     justifyContent: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 72
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_3__["Flex"], {
@@ -3670,19 +2553,19 @@ var InfluencerCard = function InfluencerCard(_ref4) {
     alignItems: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 77
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 82
     },
     __self: this
   }, "ENGAGEMENT"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberContainer, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 83
     },
     __self: this
   }, "".concat(engagementRate, "%"))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_3__["Flex"], {
@@ -3691,19 +2574,19 @@ var InfluencerCard = function InfluencerCard(_ref4) {
     alignItems: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 85
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 90
     },
     __self: this
   }, "LIKES PER POST"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberContainer, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 91
     },
     __self: this
   }, "".concat(likesPerPost, "K"))))));
@@ -3893,6 +2776,72 @@ var Divider = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(antd__WEB
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Divider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Divider */ "./packages/ui/src/divider/Divider.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Divider", function() { return _Divider__WEBPACK_IMPORTED_MODULE_0__["Divider"]; });
+
+
+
+/***/ }),
+
+/***/ "./packages/ui/src/drawer/Drawer.tsx":
+/*!*******************************************!*\
+  !*** ./packages/ui/src/drawer/Drawer.tsx ***!
+  \*******************************************/
+/*! exports provided: Drawer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Drawer", function() { return Drawer; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd_lib_drawer_style_index_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd/lib/drawer/style/index.css */ "./packages/ui/node_modules/antd/lib/drawer/style/index.css");
+/* harmony import */ var antd_lib_drawer_style_index_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_drawer_style_index_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_5__);
+
+
+var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/packages/ui/src/drawer/Drawer.tsx";
+
+
+
+
+
+var BaseDrawer = function BaseDrawer(_ref) {
+  var className = _ref.className,
+      props = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["className"]);
+
+  return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](antd__WEBPACK_IMPORTED_MODULE_3__["Drawer"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    className: className
+  }, props, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: this
+  }));
+};
+
+var Drawer = styled_components__WEBPACK_IMPORTED_MODULE_5___default()(BaseDrawer).withConfig({
+  displayName: "Drawer",
+  componentId: "lbqr1u-0"
+})([".ant-drawer-body{padding:0;}"]);
+
+/***/ }),
+
+/***/ "./packages/ui/src/drawer/index.ts":
+/*!*****************************************!*\
+  !*** ./packages/ui/src/drawer/index.ts ***!
+  \*****************************************/
+/*! exports provided: Drawer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Drawer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Drawer */ "./packages/ui/src/drawer/Drawer.tsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Drawer", function() { return _Drawer__WEBPACK_IMPORTED_MODULE_0__["Drawer"]; });
 
 
 
@@ -4095,7 +3044,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************!*\
   !*** ./packages/ui/src/index.ts ***!
   \**********************************/
-/*! exports provided: themes, styles, Button, Input, Layout, Form, Icon, Checkbox, Select, Card, Avatar, Divider, MasterLayout, Slider, Table */
+/*! exports provided: themes, styles, Button, Input, Layout, Form, Icon, Checkbox, Select, Card, Avatar, Divider, MasterLayout, Slider, Table, Popover, Drawer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4130,6 +3079,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Slider", function() { return _slider__WEBPACK_IMPORTED_MODULE_13__; });
 /* harmony import */ var _table__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./table */ "./packages/ui/src/table/index.ts");
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return _table__WEBPACK_IMPORTED_MODULE_14__; });
+/* harmony import */ var _popover__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./popover */ "./packages/ui/src/popover/index.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Popover", function() { return _popover__WEBPACK_IMPORTED_MODULE_15__; });
+/* harmony import */ var _drawer__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./drawer */ "./packages/ui/src/drawer/index.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "Drawer", function() { return _drawer__WEBPACK_IMPORTED_MODULE_16__; });
+
+
 
 
 
@@ -4488,6 +3443,78 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./packages/ui/src/master-layout/AuthorizedUserBtnGr.tsx":
+/*!***************************************************************!*\
+  !*** ./packages/ui/src/master-layout/AuthorizedUserBtnGr.tsx ***!
+  \***************************************************************/
+/*! exports provided: AuthorizedUserBtnGr */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthorizedUserBtnGr", function() { return AuthorizedUserBtnGr; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../layout */ "./packages/ui/src/layout/index.ts");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
+var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/packages/ui/src/master-layout/AuthorizedUserBtnGr.tsx";
+
+
+
+
+
+var CustomLink = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.a.withConfig({
+  displayName: "AuthorizedUserBtnGr__CustomLink",
+  componentId: "h87hgx-0"
+})(["color:#ffffff;font-size:13px;font-weight:600;text-transform:uppercase;margin-left:20px;&:hover,&:focus{color:#ffffff;}"]);
+var MyProfileLink = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(CustomLink).withConfig({
+  displayName: "AuthorizedUserBtnGr__MyProfileLink",
+  componentId: "h87hgx-1"
+})(["text-transform:none;"]);
+var AuthorizedUserBtnGr = function AuthorizedUserBtnGr() {
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_2__["Flex"], {
+    flexDirection: "row",
+    alignItems: "center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    href: _frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].myInfluencer,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CustomLink, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: this
+  }, "My Influencers")), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    href: _frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].myProfile,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](MyProfileLink, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: this
+  }, "Van Nguyen")));
+};
+
+/***/ }),
+
 /***/ "./packages/ui/src/master-layout/GuestButtonGroup.tsx":
 /*!************************************************************!*\
   !*** ./packages/ui/src/master-layout/GuestButtonGroup.tsx ***!
@@ -4504,7 +3531,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../layout */ "./packages/ui/src/layout/index.ts");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
 var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/packages/ui/src/master-layout/GuestButtonGroup.tsx";
+
+
 
 
 
@@ -4523,19 +3555,25 @@ var GuestButtonGroup = function GuestButtonGroup() {
     alignItems: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 37
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](LoginButton, {
+    onClick: function onClick() {
+      return next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_5__["PATHS"].login);
+    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 38
     },
     __self: this
   }, "LOGIN"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RegisterButton, {
+    onClick: function onClick() {
+      return next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_5__["PATHS"].signup);
+    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 39
     },
     __self: this
   }, "Signup"));
@@ -4680,11 +3718,80 @@ var MasterLayout = function MasterLayout(_ref3) {
 
 /***/ }),
 
+/***/ "./packages/ui/src/master-layout/SecondaryLayout.tsx":
+/*!***********************************************************!*\
+  !*** ./packages/ui/src/master-layout/SecondaryLayout.tsx ***!
+  \***********************************************************/
+/*! exports provided: SecondaryLayout */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SecondaryLayout", function() { return SecondaryLayout; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
+/* harmony import */ var _AuthorizedUserBtnGr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AuthorizedUserBtnGr */ "./packages/ui/src/master-layout/AuthorizedUserBtnGr.tsx");
+var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/packages/ui/src/master-layout/SecondaryLayout.tsx";
+
+
+
+
+var Header = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
+  displayName: "SecondaryLayout__Header",
+  componentId: "wdaop-0"
+})(["width:100%;height:50px;background-color:", ";"], function (_ref) {
+  var theme = _ref.theme;
+  return theme.colors.primary;
+});
+var SecondaryLayout = function SecondaryLayout(_ref2) {
+  var children = _ref2.children;
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    style: {
+      minHeight: '100%'
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Header, {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    p: "20px 50px",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+    src: "/static/image/small-logo.png",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_AuthorizedUserBtnGr__WEBPACK_IMPORTED_MODULE_3__["AuthorizedUserBtnGr"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: this
+  })), children);
+};
+
+/***/ }),
+
 /***/ "./packages/ui/src/master-layout/index.ts":
 /*!************************************************!*\
   !*** ./packages/ui/src/master-layout/index.ts ***!
   \************************************************/
-/*! exports provided: SearchButton, MasterLayout */
+/*! exports provided: SearchButton, MasterLayout, SecondaryLayout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4693,6 +3800,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchButton", function() { return _MasterLayout__WEBPACK_IMPORTED_MODULE_0__["SearchButton"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MasterLayout", function() { return _MasterLayout__WEBPACK_IMPORTED_MODULE_0__["MasterLayout"]; });
+
+/* harmony import */ var _SecondaryLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SecondaryLayout */ "./packages/ui/src/master-layout/SecondaryLayout.tsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SecondaryLayout", function() { return _SecondaryLayout__WEBPACK_IMPORTED_MODULE_1__["SecondaryLayout"]; });
+
+
+
+
+/***/ }),
+
+/***/ "./packages/ui/src/popover/Popover.tsx":
+/*!*********************************************!*\
+  !*** ./packages/ui/src/popover/Popover.tsx ***!
+  \*********************************************/
+/*! exports provided: Popover */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Popover", function() { return Popover; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var antd_lib_popover_style_index_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd/lib/popover/style/index.css */ "./packages/ui/node_modules/antd/lib/popover/style/index.css");
+/* harmony import */ var antd_lib_popover_style_index_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_popover_style_index_css__WEBPACK_IMPORTED_MODULE_5__);
+
+
+var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/packages/ui/src/popover/Popover.tsx";
+
+
+
+
+
+var BasePopover = function BasePopover(_ref) {
+  var className = _ref.className,
+      rest = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["className"]);
+
+  return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](antd__WEBPACK_IMPORTED_MODULE_4__["Popover"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rest, {
+    overlayClassName: className,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12
+    },
+    __self: this
+  }));
+};
+
+var Popover = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(BasePopover).withConfig({
+  displayName: "Popover",
+  componentId: "brlwck-0"
+})(["&.ant-popover{.ant-popover-content{.ant-popover-inner .ant-popover-inner-content{min-width:100px;padding:5px;a{color:#000;display:block;border-radius:2px;padding:5px 10px;&:hover{background:", ";}}}}}"], function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.colors.grey15;
+});
+
+/***/ }),
+
+/***/ "./packages/ui/src/popover/index.ts":
+/*!******************************************!*\
+  !*** ./packages/ui/src/popover/index.ts ***!
+  \******************************************/
+/*! exports provided: Popover */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Popover__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Popover */ "./packages/ui/src/popover/Popover.tsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Popover", function() { return _Popover__WEBPACK_IMPORTED_MODULE_0__["Popover"]; });
 
 
 

@@ -9548,7 +9548,7 @@ var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/
 
 
 var InfluencerDetail = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e("styles"), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../../features/influencer/detail */ "./features/influencer/detail/index.ts"));
+  return Promise.all(/*! import() */[__webpack_require__.e("styles"), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ../../features/influencer/detail */ "./features/influencer/detail/index.ts"));
 }, {
   ssr: false,
   loadableGenerated: {
@@ -9575,7 +9575,7 @@ var InfluencerDetailPage = function InfluencerDetailPage(_ref) {
 
 /***/ }),
 
-/***/ 12:
+/***/ 22:
 /*!***********************************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Finfluencers%2Fdetail&absolutePagePath=%2FUsers%2Fvanthihongnguyen%2FDocuments%2Ffpt%2FCAPSTONE%2Fi2m-frontend%2Fpages%2Finfluencers%2Fdetail.tsx ***!
   \***********************************************************************************************************************************************************************************************/
@@ -9598,5 +9598,5 @@ module.exports = dll_01f9a3fa864a7b7414d8;
 
 /***/ })
 
-},[[12,"static/runtime/webpack.js"]]]);
+},[[22,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=detail.js.map

@@ -4,6 +4,8 @@ import { Card } from './Card'
 import { Flex, Grid } from '../layout'
 import { Avatar } from '../avatar'
 import { Divider } from '../divider'
+import Router from 'next/router'
+import { PATHS } from '@frontend/constants'
 
 export interface IInfluencerCardProps {
   profileUrl?: string
@@ -49,7 +51,12 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
   width,
 }) => {
   return (
-    <Card bordered={false} width={width} mt="60px">
+    <Card
+      bordered={false}
+      width={width}
+      mt="60px"
+      onClick={() => Router.push(PATHS.detail)}
+    >
       <Flex
         width="100%"
         flexDirection="column"

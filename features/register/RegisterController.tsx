@@ -2,6 +2,8 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Layout, Form as AntForm, Input, Button, Select } from '@frontend/ui'
 import { Field, Form, FormRenderProps } from 'react-final-form'
+import { PATHS } from '@frontend/constants'
+import Router from 'next/router'
 
 const CONSTANTS = {
   intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
@@ -96,7 +98,11 @@ const RegisterForm: React.FunctionComponent<FormRenderProps> = ({
     />
 
     <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-      <Button.Button width="180px" style={{ height: '43px' }}>
+      <Button.Button
+        width="180px"
+        style={{ height: '43px' }}
+        onClick={() => Router.push(PATHS.login)}
+      >
         {CONSTANTS.login}
       </Button.Button>
       <Button.Button type="primary" width="180px" style={{ height: '43px' }}>

@@ -2,6 +2,8 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Layout, Button, Input, Card, Icon } from '@frontend/ui'
 import { map } from 'lodash'
+import { PATHS } from '@frontend/constants'
+import Router from 'next/router'
 
 const Container = styled.div`
   height: 100%;
@@ -184,7 +186,10 @@ export const HomeController: React.FunctionComponent = () => {
           ))}
         </Layout.Grid>
         <Layout.Flex justifyContent="center" flexDirection="row">
-          <MoreInfluencerBtn mt="40px">
+          <MoreInfluencerBtn
+            mt="40px"
+            onClick={() => Router.push(PATHS.influencers)}
+          >
             More Influencers <Icon.Icon type="arrow-right" />
           </MoreInfluencerBtn>
         </Layout.Flex>

@@ -9,6 +9,8 @@ import {
   Checkbox,
 } from '@frontend/ui'
 import { Field, Form, FormRenderProps } from 'react-final-form'
+import Router from 'next/router'
+import { PATHS } from '@frontend/constants'
 
 const CONSTANTS = {
   intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
@@ -89,7 +91,11 @@ const LoginForm: React.FunctionComponent<FormRenderProps> = ({
       />
     </Layout.Flex>
     <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-      <Button.Button width="180px" style={{ height: '43px' }}>
+      <Button.Button
+        width="180px"
+        style={{ height: '43px' }}
+        onClick={() => Router.push(PATHS.signup)}
+      >
         {CONSTANTS.register}
       </Button.Button>
       <Button.Button type="primary" width="180px" style={{ height: '43px' }}>

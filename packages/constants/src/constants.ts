@@ -1,6 +1,10 @@
 export const PATHS = {
   login: '/login',
-  signup: '/signup',
+  signup: '/register',
+  myInfluencer: '/my-influencers',
+  myProfile: '/my-profile',
+  influencers: '/influencers',
+  detail: '/influencers/detail?tab=stats',
 }
 
 export const KEYS = {

@@ -2,6 +2,8 @@ import * as React from 'react'
 import { Button } from '../button'
 import styled from 'styled-components'
 import { Flex } from '../layout'
+import Router from 'next/router'
+import { PATHS } from '@frontend/constants'
 
 const LoginButton = styled(Button)`
   &&& {
@@ -33,8 +35,10 @@ const RegisterButton = styled(Button)`
 export const GuestButtonGroup: React.FunctionComponent = () => {
   return (
     <Flex flexDirection="row" alignItems="center">
-      <LoginButton>LOGIN</LoginButton>
-      <RegisterButton>Signup</RegisterButton>
+      <LoginButton onClick={() => Router.push(PATHS.login)}>LOGIN</LoginButton>
+      <RegisterButton onClick={() => Router.push(PATHS.signup)}>
+        Signup
+      </RegisterButton>
     </Flex>
   )
 }

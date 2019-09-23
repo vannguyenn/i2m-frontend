@@ -121,7 +121,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -146,7 +146,7 @@ var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/
 
 
 var InfluencerDetail = next_dynamic__WEBPACK_IMPORTED_MODULE_2___default()(function () {
-  return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../../features/influencer/detail */ "./features/influencer/detail/index.ts"));
+  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../../features/influencer/detail */ "./features/influencer/detail/index.ts"));
 }, {
   ssr: false,
   loadableGenerated: {
@@ -173,7 +173,7 @@ var InfluencerDetailPage = function InfluencerDetailPage(_ref) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 9:
 /*!********************************************!*\
   !*** multi ./pages/influencers/detail.tsx ***!
   \********************************************/
