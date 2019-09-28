@@ -3,5 +3,10 @@
   "author": "van nguyen",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/*", "@frontend/ui"]
+  "packages": [
+    "packages/*",
+    "@frontend/ui",
+    "@frontend/services",
+    "@frontend/ioc"
+  ]
 }

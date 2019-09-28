@@ -7,10 +7,14 @@ import {
   Icon,
   Button,
   Checkbox,
+  Divider,
 } from '@frontend/ui'
 import { Field, Form, FormRenderProps } from 'react-final-form'
 import Router from 'next/router'
-import { PATHS } from '@frontend/constants'
+import { PATHS, GOOGLE_AUTH_URL } from '@frontend/constants'
+import { useAppContext } from '@frontend/core/src/context'
+import { AppModel } from '../../models'
+import { LoginInfo } from '../../models/AuthModel'
 
 const CONSTANTS = {
   intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
@@ -65,6 +69,29 @@ const LogoImg = styled.img`
   width: 155px;
   height: 50px;
 `
+const GoogleBtn = styled(Button.Button)`
+  &&& {
+    border-radius: 4px;
+    height: 43px;
+    border-color: ${({ theme }) => theme.colors.grey65};
+    color: ${({ theme }) => theme.colors.grey85};
+    border-width: 2px;
+    font-size: 16px;
+    font-weight: 600;
+
+    img {
+      width: 18px;
+      margin-right: 10px;
+    }
+  }
+`
+const CustomDivider = styled(Divider.Divider)`
+  &.ant-divider-horizontal.ant-divider-with-text {
+    font-size: 14px;
+    color: ${({ theme }) => theme.colors.grey65};
+  }
+`
+
 const LoginForm: React.FunctionComponent<FormRenderProps> = ({
   handleSubmit,
 }) => (
@@ -98,13 +125,31 @@ const LoginForm: React.FunctionComponent<FormRenderProps> = ({
       >
         {CONSTANTS.register}
       </Button.Button>
-      <Button.Button type="primary" width="180px" style={{ height: '43px' }}>
+      <Button.Button
+        type="primary"
+        width="180px"
+        style={{ height: '43px' }}
+        htmlType="submit"
+      >
         {CONSTANTS.login}
       </Button.Button>
     </Layout.Flex>
   </AntForm.Form>
 )
+
 export const LoginController: React.FunctionComponent = () => {
+  const appModel = useAppContext() as AppModel
+
+  const handleLogin = async (v: LoginInfo) => {
+    try {
+      await appModel.authModel.login(v)
+      Router.push('/')
+      return undefined
+    } catch (error) {
+      console.log(error)
+      return error
+    }
+  }
   return (
     <Layout.Flex
       width="100%"
@@ -123,7 +168,12 @@ export const LoginController: React.FunctionComponent = () => {
       <LoginBox>
         <IntroText>{CONSTANTS.intro}</IntroText>
         <LoginTitle>{CONSTANTS.loginTitle}</LoginTitle>
-        <Form onSubmit={v => console.log(v)} render={LoginForm} />
+        <Form onSubmit={handleLogin} render={LoginForm} />
+        <CustomDivider type="horizontal">or</CustomDivider>
+        <GoogleBtn onClick={() => Router.push(GOOGLE_AUTH_URL)}>
+          <img src="/static/icon/google-icon.svg" />
+          Login with Google
+        </GoogleBtn>
       </LoginBox>
     </Layout.Flex>
   )

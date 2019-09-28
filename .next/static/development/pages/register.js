@@ -3864,11 +3864,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dynamic */ "./node_modules/next-server/dist/lib/dynamic.js");
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/pages/register.tsx";
 
 
 var SignUpFeature = next_dynamic__WEBPACK_IMPORTED_MODULE_1___default()(function () {
-  return Promise.all(/*! import() */[__webpack_require__.e("styles"), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../features/register */ "./features/register/index.ts"));
+  return Promise.all(/*! import() */[__webpack_require__.e("styles"), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ../features/register */ "./features/register/index.ts"));
 }, {
   ssr: false,
   loadableGenerated: {
@@ -3880,20 +3879,14 @@ var SignUpFeature = next_dynamic__WEBPACK_IMPORTED_MODULE_1___default()(function
 });
 
 var SignupPage = function SignupPage() {
-  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SignUpFeature, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    },
-    __self: this
-  });
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SignUpFeature, null);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SignupPage);
 
 /***/ }),
 
-/***/ 19:
+/***/ 18:
 /*!***********************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fregister&absolutePagePath=%2FUsers%2Fvanthihongnguyen%2FDocuments%2Ffpt%2FCAPSTONE%2Fi2m-frontend%2Fpages%2Fregister.tsx ***!
   \***********************************************************************************************************************************************************************/
@@ -3916,5 +3909,5 @@ module.exports = dll_01f9a3fa864a7b7414d8;
 
 /***/ })
 
-},[[19,"static/runtime/webpack.js"]]]);
+},[[18,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=register.js.map

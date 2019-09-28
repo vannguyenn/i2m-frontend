@@ -121,7 +121,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -139,11 +139,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dynamic */ "next/dynamic");
 /* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/pages/register.tsx";
 
 
 var SignUpFeature = next_dynamic__WEBPACK_IMPORTED_MODULE_1___default()(function () {
-  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../features/register */ "./features/register/index.ts"));
+  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../features/register */ "./features/register/index.ts"));
 }, {
   ssr: false,
   loadableGenerated: {
@@ -155,20 +154,14 @@ var SignUpFeature = next_dynamic__WEBPACK_IMPORTED_MODULE_1___default()(function
 });
 
 var SignupPage = function SignupPage() {
-  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SignUpFeature, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    },
-    __self: this
-  });
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SignUpFeature, null);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SignupPage);
 
 /***/ }),
 
-/***/ 6:
+/***/ 5:
 /*!**********************************!*\
   !*** multi ./pages/register.tsx ***!
   \**********************************/
@@ -485,6 +478,17 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-final-form");
+
+/***/ }),
+
+/***/ "regenerator-runtime":
+/*!**************************************!*\
+  !*** external "regenerator-runtime" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("regenerator-runtime");
 
 /***/ }),
 

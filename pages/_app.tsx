@@ -2,7 +2,8 @@ import App, { Container } from 'next/app'
 import * as React from 'react'
 import { themes, styles } from '@frontend/ui'
 import { ThemeProvider } from 'styled-components'
-
+import { appModel } from '../models'
+import { context } from '@frontend/core'
 export default class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
@@ -21,7 +22,9 @@ export default class MyApp extends App {
         <ThemeProvider theme={themes.themeBase}>
           <div style={{ height: '100vh' }}>
             <styles.GlobalStyle />
-            <Component {...pageProps} />
+            <context.AppContext.Provider value={appModel}>
+              <Component {...pageProps} />
+            </context.AppContext.Provider>
           </div>
         </ThemeProvider>
       </Container>

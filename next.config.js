@@ -1,11 +1,11 @@
-const path = require("path");
-const withPlugins = require("next-compose-plugins");
-const typescriptPlugin = require("@zeit/next-typescript");
-const lessPlugin = require("@zeit/next-less");
-const cssPlugin = require("@zeit/next-css");
+const path = require('path')
+const withPlugins = require('next-compose-plugins')
+const typescriptPlugin = require('@zeit/next-typescript')
+const lessPlugin = require('@zeit/next-less')
+const cssPlugin = require('@zeit/next-css')
 
-if (typeof require !== "undefined") {
-  require.extensions[".less"] = file => {};
+if (typeof require !== 'undefined') {
+  require.extensions['.less'] = file => {}
 }
 
 module.exports = withPlugins(
@@ -15,11 +15,11 @@ module.exports = withPlugins(
       lessPlugin,
       {
         lessLoaderOptions: {
-          javascriptEnabled: true
-        }
-      }
+          javascriptEnabled: true,
+        },
+      },
     ],
-    typescriptPlugin
+    typescriptPlugin,
   ],
   {
     webpack: (config, options) => {
@@ -27,21 +27,21 @@ module.exports = withPlugins(
         test: /\.+(js|jsx|ts|tsx)$/,
         loader: options.defaultLoaders.babel,
         include: [/packages/],
-        exclude: [/node_modules/]
-      });
+        exclude: [/node_modules/],
+      })
 
       config.module.rules.push({
         test: /\.(svg|ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/,
-        loader: "url-loader",
+        loader: 'url-loader',
         include: [/packages/],
-        exclude: [/node_modules/]
-      });
+        exclude: [/node_modules/],
+      })
 
-      return config;
+      return config
     },
     env: {
       NEXT_APP_API_KEY:
-        "tCykMvc2PgGYkG9jvAq76IvjJUmHPd3QWev35XxfidWkx1gB63UVSp4PLQpydsoweofAyYvVOirG9nyw"
-    }
-  }
-);
+        'tCykMvc2PgGYkG9jvAq76IvjJUmHPd3QWev35XxfidWkx1gB63UVSp4PLQpydsoweofAyYvVOirG9nyw',
+    },
+  },
+)

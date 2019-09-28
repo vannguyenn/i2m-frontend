@@ -4,6 +4,8 @@ import { Layout, Form as AntForm, Input, Button, Select } from '@frontend/ui'
 import { Field, Form, FormRenderProps } from 'react-final-form'
 import { PATHS } from '@frontend/constants'
 import Router from 'next/router'
+import { useAppContext } from '@frontend/core/src/context'
+import { AppModel } from '../../models'
 
 const CONSTANTS = {
   intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
@@ -24,7 +26,7 @@ const FORM_FIELDS = {
     label: 'Password',
   },
   fullname: {
-    name: 'fullname',
+    name: 'name',
     label: 'Fullname',
     placeholder: 'What should you call you ...',
   },
@@ -105,7 +107,12 @@ const RegisterForm: React.FunctionComponent<FormRenderProps> = ({
       >
         {CONSTANTS.login}
       </Button.Button>
-      <Button.Button type="primary" width="180px" style={{ height: '43px' }}>
+      <Button.Button
+        type="primary"
+        width="180px"
+        style={{ height: '43px' }}
+        htmlType="submit"
+      >
         {CONSTANTS.register}
       </Button.Button>
     </Layout.Flex>
@@ -113,6 +120,17 @@ const RegisterForm: React.FunctionComponent<FormRenderProps> = ({
 )
 
 export const RegisterController: React.FunctionComponent = () => {
+  const appModel = useAppContext() as AppModel
+
+  const handleSubmit = async (value: any) => {
+    try {
+      await appModel.authModel.signup(value)
+      Router.push(PATHS.login)
+      return undefined
+    } catch (error) {
+      return error
+    }
+  }
   return (
     <Layout.Flex
       width="100%"
@@ -131,7 +149,7 @@ export const RegisterController: React.FunctionComponent = () => {
       <LoginBox>
         <IntroText>{CONSTANTS.intro}</IntroText>
         <LoginTitle>{CONSTANTS.loginTitle}</LoginTitle>
-        <Form onSubmit={v => console.log(v)} render={RegisterForm} />
+        <Form onSubmit={handleSubmit} render={RegisterForm} />
       </LoginBox>
     </Layout.Flex>
   )

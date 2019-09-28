@@ -5,7 +5,9 @@
   "main": "index.js",
   "workspaces": [
     "packages/*",
-    "@frontend/ui"
+    "@frontend/ui",
+    "@frontend/services",
+    "@frontend/ioc"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

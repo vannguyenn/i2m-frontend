@@ -1,0 +1,22 @@
+{
+  "name": "@frontend/services",
+  "version": "1.0.0",
+  "author": "van nguyen",
+  "description": "",
+  "main": "./src/index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@frontend/ioc": "1.0.0",
+    "axios": "0.18.0",
+    "axios-progress-bar": "1.2.0",
+    "js-cookie": "2.2.0"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "clean": "rm -rf lib && rm tsconfig.tsbuildinfo;",
+    "build": "tsc"
+  },
+  "gitHead": "e463cf3caa97419fb3fa3fec242d1d61e8289d32"
+}

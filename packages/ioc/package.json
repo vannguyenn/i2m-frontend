@@ -1,0 +1,22 @@
+{
+  "name": "@frontend/ioc",
+  "version": "1.0.0",
+  "author": "van nguyen",
+  "description": "",
+  "main": "./src/index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "inversify": "5.0.1",
+    "inversify-binding-decorators": "3.2.0",
+    "inversify-inject-decorators": "3.1.0",
+    "reflect-metadata": "0.1.13"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "clean": "rm -rf lib && rm tsconfig.tsbuildinfo;",
+    "build": "tsc"
+  },
+  "gitHead": "e463cf3caa97419fb3fa3fec242d1d61e8289d32"
+}
