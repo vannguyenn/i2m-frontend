@@ -2,7 +2,7 @@ export const PATHS = {
   login: '/login',
   signup: '/register',
   myInfluencer: '/my-influencers',
-  myProfile: '/my-profile',
+  myProfile: '/my-account',
   influencers: '/influencers',
   detail: '/influencers/detail?tab=stats',
 }

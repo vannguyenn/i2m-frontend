@@ -1,7 +1,8 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Layout } from '@frontend/ui'
-import { AuthorizedUserBtnGr } from './AuthorizedUserBtnGr'
+import Link from 'next/link'
+import { AuthorizedUserBtnGr } from '../../../../components'
 
 const Header = styled(Layout.Flex)`
   width: 100%;
@@ -21,7 +22,13 @@ export const SecondaryLayout: React.FunctionComponent = ({ children }) => {
         justifyContent="space-between"
         p="20px 50px"
       >
-        <img src="/static/image/small-logo.png" />
+        <Link href="/">
+          <img
+            src="/static/image/small-logo.png"
+            style={{ cursor: 'pointer' }}
+          />
+        </Link>
+
         <AuthorizedUserBtnGr />
       </Header>
       {children}

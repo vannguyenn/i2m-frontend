@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Flex } from '../layout'
-import { GuestButtonGroup } from './GuestButtonGroup'
 import { Input } from '../input'
 import { Button } from '../button'
 import { Icon } from '../icon'
@@ -40,7 +39,7 @@ export interface IMasterLayoutProps {
 }
 
 export const MasterLayout: React.FunctionComponent<IMasterLayoutProps> = ({
-  rightAction: RightAction = GuestButtonGroup,
+  rightAction: RightAction,
   children,
 }) => {
   return (
