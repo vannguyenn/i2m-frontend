@@ -209,20 +209,21 @@ var RegisterButton = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(_f
   displayName: "GuestButtonGroup__RegisterButton",
   componentId: "sc-4ce34h-1"
 })(["&&&{border-radius:20px;text-transform:uppercase;background-color:transparent;font-size:12px;width:100px;color:#ffffff;border-color:#fff;margin-left:15px;&:hover,&:focus{color:#ffffff;border-color:#fff;}}"]);
-var GuestButtonGroup = function GuestButtonGroup() {
+var GuestButtonGroup = Object(next_router__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(function (_ref) {
+  var router = _ref.router;
   return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_1__["Layout"].Flex, {
     flexDirection: "row",
     alignItems: "center"
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](LoginButton, {
     onClick: function onClick() {
-      return next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].login);
+      return next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push("".concat(_frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].login, "?redirectUri=").concat(router.pathname));
     }
   }, "LOGIN"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RegisterButton, {
     onClick: function onClick() {
       return next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].signup);
     }
   }, "Signup"));
-};
+});
 
 /***/ }),
 
@@ -257,7 +258,8 @@ var RegisterBtn = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(_fron
   displayName: "HomeAuthenBtnGroup__RegisterBtn",
   componentId: "sc-19288r-1"
 })(["&&&{border-radius:20px;text-transform:uppercase;background-color:transparent;font-size:12px;width:100px;margin-left:10px;}"]);
-var HomeAuthenBtnGroup = function HomeAuthenBtnGroup() {
+var HomeAuthenBtnGroup = Object(next_router__WEBPACK_IMPORTED_MODULE_3__["withRouter"])(function (_ref) {
+  var router = _ref.router;
   return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_1__["Layout"].Flex, {
     flexDirection: "row",
     justifyContent: "flex-end",
@@ -266,10 +268,19 @@ var HomeAuthenBtnGroup = function HomeAuthenBtnGroup() {
     pr: "30px"
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](LoginBtn, {
     onClick: function onClick() {
-      return next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].login);
+      return next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push({
+        pathname: _frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].login,
+        query: {
+          redirectUri: router.asPath
+        }
+      });
     }
-  }, "Login"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RegisterBtn, null, "Signup"));
-};
+  }, "Login"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RegisterBtn, {
+    onClick: function onClick() {
+      return next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].signup);
+    }
+  }, "Signup"));
+});
 
 /***/ }),
 
@@ -459,6 +470,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _frontend_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @frontend/core */ "./packages/core/src/index.ts");
 
 
 
@@ -470,6 +482,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _temp;
+
 
 
 
@@ -535,19 +548,20 @@ function () {
                   _this2.tokenExpires = data.rememberMe ? 30 : 1;
                   _this2.token = accessToken;
                 });
+                _frontend_core__WEBPACK_IMPORTED_MODULE_14__["utils"].redirect(undefined, js_cookie__WEBPACK_IMPORTED_MODULE_12__["get"](_frontend_constants__WEBPACK_IMPORTED_MODULE_11__["KEYS"].REDIRECT_URI));
                 return _context.abrupt("return", _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_2___default.a.resolve());
 
-              case 9:
-                _context.prev = 9;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
                 return _context.abrupt("return", _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_2___default.a.reject('Cannot login. Please check your username and password.'));
 
-              case 12:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 9]]);
+        }, _callee, null, [[0, 10]]);
       }));
 
       function login(_x) {
@@ -2210,12 +2224,12 @@ var PATHS = {
   myInfluencer: '/my-influencers',
   myProfile: '/my-account',
   influencers: '/influencers',
-  detail: '/influencers/detail?tab=stats'
+  detail: '/influencers/detail?tab=stats',
+  influencerDetail: '/influencers/detail'
 };
 var KEYS = {
-  MASTER_DATA: 'MASTER_DATA',
   ACCESS_TOKEN: 'x-access-token',
-  CURRENT_USER_ID: 'currentUserId'
+  REDIRECT_URI: 'redirectUri'
 };
 var SERVICES = {
   BaseService: _babel_runtime_corejs2_core_js_symbol__WEBPACK_IMPORTED_MODULE_0___default()('BaseService')
@@ -5552,10 +5566,9 @@ function () {
 
 var AppProvider = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_15__["observer"])(function (_ref2) {
   var children = _ref2.children,
-      ignoreToken = _ref2.ignoreToken,
-      ignoreSignUp = _ref2.ignoreSignUp,
       isMyAccountPage = _ref2.isMyAccountPage,
-      isMyInfluencerPage = _ref2.isMyInfluencerPage;
+      isMyInfluencerPage = _ref2.isMyInfluencerPage,
+      isInfluencerDetail = _ref2.isInfluencerDetail;
   react__WEBPACK_IMPORTED_MODULE_9__["useEffect"](function () {
     var token = _models__WEBPACK_IMPORTED_MODULE_12__["appModel"].authModel.token;
 
@@ -5563,12 +5576,8 @@ var AppProvider = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_15__["observer
       currentUser();
     }
 
-    if (!token && (isMyAccountPage || isMyInfluencerPage)) {
+    if (!token && (isMyAccountPage || isMyInfluencerPage || isInfluencerDetail)) {
       _frontend_core__WEBPACK_IMPORTED_MODULE_13__["utils"].redirect(undefined, _frontend_constants__WEBPACK_IMPORTED_MODULE_14__["PATHS"].login);
-    }
-
-    if (token && (ignoreToken || ignoreSignUp)) {
-      _frontend_core__WEBPACK_IMPORTED_MODULE_13__["utils"].redirect(undefined, '/');
     }
   }, [_models__WEBPACK_IMPORTED_MODULE_12__["appModel"].authModel.token]);
   return react__WEBPACK_IMPORTED_MODULE_9__["createElement"]("div", {
@@ -5618,7 +5627,7 @@ function () {
   var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_7__["default"])(
   /*#__PURE__*/
   _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_6___default.a.mark(function _callee2(appContext) {
-    var token, isMyAccountPage, isMyInfluencerPage, ignoreToken, ignoreSignUp, pageProps;
+    var token, isMyAccountPage, isMyInfluencerPage, isInfluencerDetail, redirectUrl, pageProps;
     return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_6___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -5626,40 +5635,36 @@ function () {
             token = _frontend_core__WEBPACK_IMPORTED_MODULE_13__["utils"].getToken(appContext.ctx);
             isMyAccountPage = appContext.ctx.pathname.startsWith(_frontend_constants__WEBPACK_IMPORTED_MODULE_14__["PATHS"].myProfile);
             isMyInfluencerPage = appContext.ctx.pathname.startsWith(_frontend_constants__WEBPACK_IMPORTED_MODULE_14__["PATHS"].myInfluencer);
-            ignoreToken = appContext.ctx.pathname.startsWith(_frontend_constants__WEBPACK_IMPORTED_MODULE_14__["PATHS"].login);
-            ignoreSignUp = appContext.ctx.pathname.startsWith(_frontend_constants__WEBPACK_IMPORTED_MODULE_14__["PATHS"].signup);
+            isInfluencerDetail = appContext.ctx.pathname.startsWith(_frontend_constants__WEBPACK_IMPORTED_MODULE_14__["PATHS"].influencerDetail); // const isLoginPage = appContext.ctx.pathname.startsWith(PATHS.login)
+            // const ignoreSignUp = appContext.ctx.pathname.startsWith(PATHS.signup)
 
-            if (!token && (isMyAccountPage || isMyInfluencerPage)) {
-              _frontend_core__WEBPACK_IMPORTED_MODULE_13__["utils"].redirect(appContext.ctx, _frontend_constants__WEBPACK_IMPORTED_MODULE_14__["PATHS"].login);
-            }
-
-            if (token && (ignoreToken || ignoreSignUp)) {
-              _frontend_core__WEBPACK_IMPORTED_MODULE_13__["utils"].redirect(appContext.ctx, '/');
+            if (!token && (isMyAccountPage || isMyInfluencerPage || isInfluencerDetail)) {
+              redirectUrl = appContext.ctx.pathname !== '/' ? "".concat(_frontend_constants__WEBPACK_IMPORTED_MODULE_14__["PATHS"].login, "?redirectUri=").concat(appContext.ctx.asPath) : _frontend_constants__WEBPACK_IMPORTED_MODULE_14__["PATHS"].login;
+              _frontend_core__WEBPACK_IMPORTED_MODULE_13__["utils"].redirect(appContext.ctx, redirectUrl);
             }
 
             pageProps = {};
 
             if (!appContext.Component.getInitialProps) {
-              _context2.next = 12;
+              _context2.next = 10;
               break;
             }
 
-            _context2.next = 11;
+            _context2.next = 9;
             return appContext.Component.getInitialProps(appContext.ctx);
 
-          case 11:
+          case 9:
             pageProps = _context2.sent;
 
-          case 12:
+          case 10:
             return _context2.abrupt("return", {
               pageProps: pageProps,
-              ignoreToken: ignoreToken,
-              ignoreSignUp: ignoreSignUp,
               isMyInfluencerPage: isMyInfluencerPage,
-              isMyAccountPage: isMyAccountPage
+              isMyAccountPage: isMyAccountPage,
+              isInfluencerDetail: isInfluencerDetail
             });
 
-          case 13:
+          case 11:
           case "end":
             return _context2.stop();
         }

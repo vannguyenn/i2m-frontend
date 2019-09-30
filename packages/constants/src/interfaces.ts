@@ -25,8 +25,7 @@ export interface FormControlProps {
   labelAlign?: 'left' | 'right'
   [key: string]: any
 }
-export interface I2MResponse<T> {
-  data: T
+export interface I2MResponse {
   success: boolean
   message: string
 }

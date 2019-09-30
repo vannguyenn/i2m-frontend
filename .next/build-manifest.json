@@ -3,10 +3,6 @@
     "static/development/dll/dll_4b0746e12e4485c42d64.js"
   ],
   "pages": {
-    "/": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
@@ -17,11 +13,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/influencers/detail": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/my-account": [
+    "/login": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

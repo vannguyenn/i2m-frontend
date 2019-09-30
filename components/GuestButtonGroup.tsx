@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Button, Layout } from '@frontend/ui'
 import styled from 'styled-components'
-import Router from 'next/router'
+import Router, { withRouter, WithRouterProps } from 'next/router'
 import { PATHS } from '@frontend/constants'
 
 const LoginButton = styled(Button.Button)`
@@ -31,13 +31,21 @@ const RegisterButton = styled(Button.Button)`
     }
   }
 `
-export const GuestButtonGroup: React.FunctionComponent = () => {
+export const GuestButtonGroup: React.FunctionComponent<
+  WithRouterProps
+> = withRouter(({ router }) => {
   return (
     <Layout.Flex flexDirection="row" alignItems="center">
-      <LoginButton onClick={() => Router.push(PATHS.login)}>LOGIN</LoginButton>
+      <LoginButton
+        onClick={() =>
+          Router.push(`${PATHS.login}?redirectUri=${router.pathname}`)
+        }
+      >
+        LOGIN
+      </LoginButton>
       <RegisterButton onClick={() => Router.push(PATHS.signup)}>
         Signup
       </RegisterButton>
     </Layout.Flex>
   )
-}
+})

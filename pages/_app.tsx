@@ -10,13 +10,7 @@ import { observer } from 'mobx-react-lite'
 const currentUser = async () => await appModel.profileModel.getCurrentUser()
 
 const AppProvider: React.FunctionComponent<I2MAppProps> = observer(
-  ({
-    children,
-    ignoreToken,
-    ignoreSignUp,
-    isMyAccountPage,
-    isMyInfluencerPage,
-  }) => {
+  ({ children, isMyAccountPage, isMyInfluencerPage, isInfluencerDetail }) => {
     React.useEffect(() => {
       const token = appModel.authModel.token
 
@@ -24,12 +18,11 @@ const AppProvider: React.FunctionComponent<I2MAppProps> = observer(
         currentUser()
       }
 
-      if (!token && (isMyAccountPage || isMyInfluencerPage)) {
+      if (
+        !token &&
+        (isMyAccountPage || isMyInfluencerPage || isInfluencerDetail)
+      ) {
         utils.redirect(undefined, PATHS.login)
-      }
-
-      if (token && (ignoreToken || ignoreSignUp)) {
-        utils.redirect(undefined, '/')
       }
     }, [appModel.authModel.token])
 
@@ -62,10 +55,9 @@ class MyApp extends App<I2MAppProps> {
 }
 
 interface I2MAppProps {
-  ignoreToken: boolean
-  ignoreSignUp: boolean
   isMyAccountPage: boolean
   isMyInfluencerPage: boolean
+  isInfluencerDetail: boolean
 }
 
 MyApp.getInitialProps = async (appContext: NextAppContext) => {
@@ -74,16 +66,19 @@ MyApp.getInitialProps = async (appContext: NextAppContext) => {
   const isMyInfluencerPage = appContext.ctx.pathname.startsWith(
     PATHS.myInfluencer
   )
+  const isInfluencerDetail = appContext.ctx.pathname.startsWith(
+    PATHS.influencerDetail
+  )
+  // const isLoginPage = appContext.ctx.pathname.startsWith(PATHS.login)
+  // const ignoreSignUp = appContext.ctx.pathname.startsWith(PATHS.signup)
 
-  const ignoreToken = appContext.ctx.pathname.startsWith(PATHS.login)
-  const ignoreSignUp = appContext.ctx.pathname.startsWith(PATHS.signup)
+  if (!token && (isMyAccountPage || isMyInfluencerPage || isInfluencerDetail)) {
+    const redirectUrl =
+      appContext.ctx.pathname !== '/'
+        ? `${PATHS.login}?redirectUri=${appContext.ctx.asPath}`
+        : PATHS.login
 
-  if (!token && (isMyAccountPage || isMyInfluencerPage)) {
-    utils.redirect(appContext.ctx, PATHS.login)
-  }
-
-  if (token && (ignoreToken || ignoreSignUp)) {
-    utils.redirect(appContext.ctx, '/')
+    utils.redirect(appContext.ctx, redirectUrl)
   }
 
   let pageProps = {}
@@ -93,10 +88,9 @@ MyApp.getInitialProps = async (appContext: NextAppContext) => {
 
   return {
     pageProps,
-    ignoreToken,
-    ignoreSignUp,
     isMyInfluencerPage,
     isMyAccountPage,
+    isInfluencerDetail,
   }
 }
 

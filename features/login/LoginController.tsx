@@ -143,10 +143,8 @@ export const LoginController: React.FunctionComponent = () => {
   const handleLogin = async (v: LoginInfo) => {
     try {
       await appModel.authModel.login(v)
-      Router.push('/')
       return undefined
     } catch (error) {
-      console.log(error)
       return error
     }
   }

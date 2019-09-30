@@ -3,6 +3,7 @@ import { authService } from '@frontend/services'
 import { KEYS, I2MResponse, PATHS } from '@frontend/constants'
 import * as cookies from 'js-cookie'
 import Router from 'next/router'
+import { utils } from '@frontend/core'
 
 export interface LoginInfo {
   email: string
@@ -53,7 +54,7 @@ export class AuthModel {
         this.tokenExpires = data.rememberMe ? 30 : 1
         this.token = accessToken
       })
-
+      utils.redirect(undefined, cookies.get(KEYS.REDIRECT_URI))
       return Promise.resolve()
     } catch (error) {
       return Promise.reject(

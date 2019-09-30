@@ -14,7 +14,6 @@ import { observer } from 'mobx-react-lite'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
 import { AuthorizedUserBtnGr, GuestButtonGroup } from '../../components'
-import { get } from 'lodash'
 
 const Content = styled(Layout.Flex)`
   min-height: calc(100vh - 180px);
