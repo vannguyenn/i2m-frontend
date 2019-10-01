@@ -13,7 +13,7 @@
       "publicPath": "static/chunks/1.js"
     }
   ],
-  "../features/login": [
+  "../features/influencer-management": [
     {
       "id": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
       "name": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
