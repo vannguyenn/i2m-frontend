@@ -1,7 +1,9 @@
 import { action, observable, reaction, runInAction } from 'mobx'
 import { authService } from '@frontend/services'
-import { KEYS, ICloudResponse } from '@frontend/constants'
+import { KEYS, I2MResponse, PATHS } from '@frontend/constants'
 import * as cookies from 'js-cookie'
+import Router from 'next/router'
+import { utils } from '@frontend/core'
 
 export interface LoginInfo {
   email: string
@@ -52,7 +54,7 @@ export class AuthModel {
         this.tokenExpires = data.rememberMe ? 30 : 1
         this.token = accessToken
       })
-
+      utils.redirect(undefined, cookies.get(KEYS.REDIRECT_URI))
       return Promise.resolve()
     } catch (error) {
       return Promise.reject(
@@ -64,8 +66,7 @@ export class AuthModel {
   @action
   async signup(data: SignUpInfo) {
     try {
-      console.log('van ', data)
-      await authService.signup<ICloudResponse>(data)
+      await authService.signup<I2MResponse>(data)
 
       return Promise.resolve()
     } catch (error) {
@@ -76,5 +77,11 @@ export class AuthModel {
   @action
   logout() {
     this.token = null
+    Router.push(PATHS.login)
+  }
+
+  @action
+  setToken(token: string) {
+    this.token = token
   }
 }

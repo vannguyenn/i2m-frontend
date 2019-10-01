@@ -9,6 +9,16 @@ import {
   Drawer,
 } from '@frontend/ui'
 import styled from 'styled-components'
+import { observer } from 'mobx-react-lite'
+import { useAppContext } from '@frontend/core/src/context'
+import { AppModel } from '../../models'
+import { useViewModel } from '@frontend/core/src/hooks'
+import {
+  MyInfluencerViewModel,
+  IInfluencerProps,
+} from './MyInfluencerViewModel'
+import { useEffectOnce } from 'react-use'
+import { map, get } from 'lodash'
 
 const LeftPanel = styled(Layout.Flex)`
   min-height: 100%;
@@ -176,255 +186,162 @@ const ActionButton: React.FunctionComponent = () => {
     </>
   )
 }
-export const ListInfluencerController: React.FunctionComponent = () => (
-  <MasterLayout.SecondaryLayout>
-    <Content flexDirection="row" alignItems="flex-start">
-      <LeftPanel flexDirection="column" justifyContent="flex-start">
-        <Layout.Flex
-          flexDirection="row"
-          alignItems="center"
-          justifyContent="space-between"
-          p="0 20px"
-          mb="25px"
-        >
-          <Title>List of leads</Title>
-          <Button.Button
-            type="primary"
-            width="100px"
-            style={{ height: '35px', borderRadius: '2px' }}
-          >
-            New
-          </Button.Button>
-        </Layout.Flex>
-        <InfluencerRow isActive>Beauty Leads</InfluencerRow>
-        <InfluencerRow isActive={false}>Travel Leads</InfluencerRow>
-      </LeftPanel>
-      <RightPanel flexDirection="column" justifyContent="flex-start">
-        <Layout.Flex
-          flexDirection="row"
-          justifyContent="space-between"
-          alignItems="center"
-          width="100%"
-          p="20px 50px 20px 30px"
-        >
-          <RightPanelTitle>Beauty Leads</RightPanelTitle>
-          <Popover.Popover
-            content={PopoverContent}
-            trigger="click"
-            placement="bottom"
-          >
-            <MoreOptionBtn icon="more" />
-          </Popover.Popover>
-        </Layout.Flex>
-        <Layout.Flex
-          flexDirection="column"
-          justifyContent="flex-start"
-          p="0 20px"
-          mt="10px"
-        >
-          <InfluencerCard
-            flexDirection="row"
-            alignItems="flex-start"
-            p="20px 30px"
-          >
-            <Avatar.Avatar size={100} src={'/static/image/user.png'} />
+export const ListInfluencerController: React.FunctionComponent = observer(
+  () => {
+    const appModel = useAppContext<AppModel>()
+    const myInfluencerViewModel = useViewModel(MyInfluencerViewModel, appModel)
+
+    useEffectOnce(() => {
+      myInfluencerViewModel.fetchMyList()
+    })
+
+    const listOfLeads = myInfluencerViewModel.myList
+
+    return (
+      <MasterLayout.SecondaryLayout>
+        <Content flexDirection="row" alignItems="flex-start">
+          <LeftPanel flexDirection="column" justifyContent="flex-start">
+            <Layout.Flex
+              flexDirection="row"
+              alignItems="center"
+              justifyContent="space-between"
+              p="0 20px"
+              mb="25px"
+            >
+              <Title>List of leads</Title>
+              <Button.Button
+                type="primary"
+                width="100px"
+                style={{ height: '35px', borderRadius: '2px' }}
+              >
+                New
+              </Button.Button>
+            </Layout.Flex>
+            {map(listOfLeads, (list, index) => (
+              <InfluencerRow
+                isActive={list.id === myInfluencerViewModel.listId}
+                key={index}
+                onClick={() => myInfluencerViewModel.setCurrentListId(list.id)}
+              >
+                {list.name}
+              </InfluencerRow>
+            ))}
+          </LeftPanel>
+          <RightPanel flexDirection="column" justifyContent="flex-start">
+            <Layout.Flex
+              flexDirection="row"
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
+              p="20px 50px 20px 30px"
+            >
+              <RightPanelTitle>
+                {get(myInfluencerViewModel.listDetail, 'name')}
+              </RightPanelTitle>
+              <Popover.Popover
+                content={PopoverContent}
+                trigger="click"
+                placement="bottom"
+              >
+                <MoreOptionBtn icon="more" />
+              </Popover.Popover>
+            </Layout.Flex>
             <Layout.Flex
               flexDirection="column"
               justifyContent="flex-start"
-              ml="25px"
-              width="calc(100% - 200px)"
+              p="0 20px"
+              mt="10px"
             >
-              <Layout.Grid gridTemplateColumns="2fr 9fr" alignContent="center">
-                <Layout.Flex
-                  flexDirection="column"
-                  justifyContent="center"
-                  pl="10px"
-                >
-                  <Fullname>John Doe</Fullname>
-                  <Username>@johndoe</Username>
-                </Layout.Flex>
-                <Layout.Grid
-                  gridTemplateColumns="1fr 1fr 1fr"
-                  alignContent="center"
-                  ml="80px"
-                  mt="20px"
-                >
-                  <Layout.Flex
-                    flexDirection="column"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                  >
-                    <StatsLabel>Followers</StatsLabel>
-                    <StatsValue>1.2M</StatsValue>
-                  </Layout.Flex>
-                  <Layout.Flex
-                    flexDirection="column"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                  >
-                    <StatsLabel>Engagement</StatsLabel>
-                    <StatsValue>4.83%</StatsValue>
-                  </Layout.Flex>
-                  <Layout.Flex
-                    flexDirection="column"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                  >
-                    <StatsLabel>Estimated Post Value</StatsLabel>
-                    <StatsValue>1.2M</StatsValue>
-                  </Layout.Flex>
-                </Layout.Grid>
-              </Layout.Grid>
-              <Layout.Flex
-                flexDirection="row"
-                alignItems="center"
-                pl="10px"
-                mt="10px"
-              >
-                Email:
-                <div style={{ fontWeight: 600, marginLeft: '10px' }}>
-                  johndoe@gmail.com
-                </div>
-              </Layout.Flex>
+              {myInfluencerViewModel.listDetail &&
+                map(
+                  get(myInfluencerViewModel.listDetail, 'influencers'),
+                  (influencer: IInfluencerProps, index) => (
+                    <InfluencerCard
+                      flexDirection="row"
+                      alignItems="flex-start"
+                      p="20px 30px"
+                      key={index}
+                    >
+                      <Avatar.Avatar
+                        size={100}
+                        src={get(influencer, 'imageUrl')}
+                      />
+                      <Layout.Flex
+                        flexDirection="column"
+                        justifyContent="flex-start"
+                        ml="25px"
+                        width="calc(100% - 200px)"
+                      >
+                        <Layout.Grid
+                          gridTemplateColumns="2fr 9fr"
+                          alignContent="center"
+                        >
+                          <Layout.Flex
+                            flexDirection="column"
+                            justifyContent="center"
+                            pl="10px"
+                          >
+                            <Fullname>{influencer.name}</Fullname>
+                            <Username>{`@${influencer.username}`}</Username>
+                          </Layout.Flex>
+                          <Layout.Grid
+                            gridTemplateColumns="1fr 1fr 1fr"
+                            alignContent="center"
+                            ml="80px"
+                            mt="20px"
+                          >
+                            <Layout.Flex
+                              flexDirection="column"
+                              justifyContent="flex-start"
+                              alignItems="center"
+                            >
+                              <StatsLabel>Followers</StatsLabel>
+                              <StatsValue>{`${
+                                influencer.followers
+                              }M`}</StatsValue>
+                            </Layout.Flex>
+                            <Layout.Flex
+                              flexDirection="column"
+                              justifyContent="flex-start"
+                              alignItems="center"
+                            >
+                              <StatsLabel>Engagement</StatsLabel>
+                              <StatsValue>{`${
+                                influencer.engagementRate
+                              }%`}</StatsValue>
+                            </Layout.Flex>
+                            <Layout.Flex
+                              flexDirection="column"
+                              justifyContent="flex-start"
+                              alignItems="center"
+                            >
+                              <StatsLabel>Estimated Post Value</StatsLabel>
+                              <StatsValue>{`${
+                                influencer.estimatedPostValue
+                              }M`}</StatsValue>
+                            </Layout.Flex>
+                          </Layout.Grid>
+                        </Layout.Grid>
+                        <Layout.Flex
+                          flexDirection="row"
+                          alignItems="center"
+                          pl="10px"
+                          mt="10px"
+                        >
+                          Email:
+                          <div style={{ fontWeight: 600, marginLeft: '10px' }}>
+                            {influencer.email}
+                          </div>
+                        </Layout.Flex>
+                      </Layout.Flex>
+                      <ActionButton />
+                    </InfluencerCard>
+                  )
+                )}
             </Layout.Flex>
-            <ActionButton />
-          </InfluencerCard>
-          <InfluencerCard
-            flexDirection="row"
-            alignItems="flex-start"
-            p="20px 30px"
-          >
-            <Avatar.Avatar size={100} src={'/static/image/user.png'} />
-            <Layout.Flex
-              flexDirection="column"
-              justifyContent="flex-start"
-              ml="25px"
-              width="calc(100% - 200px)"
-            >
-              <Layout.Grid gridTemplateColumns="2fr 9fr" alignContent="center">
-                <Layout.Flex
-                  flexDirection="column"
-                  justifyContent="center"
-                  pl="10px"
-                >
-                  <Fullname>John Doe</Fullname>
-                  <Username>@johndoe</Username>
-                </Layout.Flex>
-                <Layout.Grid
-                  gridTemplateColumns="1fr 1fr 1fr"
-                  alignContent="center"
-                  ml="80px"
-                  mt="20px"
-                >
-                  <Layout.Flex
-                    flexDirection="column"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                  >
-                    <StatsLabel>Followers</StatsLabel>
-                    <StatsValue>1.2M</StatsValue>
-                  </Layout.Flex>
-                  <Layout.Flex
-                    flexDirection="column"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                  >
-                    <StatsLabel>Engagement</StatsLabel>
-                    <StatsValue>4.83%</StatsValue>
-                  </Layout.Flex>
-                  <Layout.Flex
-                    flexDirection="column"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                  >
-                    <StatsLabel>Estimated Post Value</StatsLabel>
-                    <StatsValue>1.2M</StatsValue>
-                  </Layout.Flex>
-                </Layout.Grid>
-              </Layout.Grid>
-              <Layout.Flex
-                flexDirection="row"
-                alignItems="center"
-                pl="10px"
-                mt="10px"
-              >
-                Email:
-                <div style={{ fontWeight: 600, marginLeft: '10px' }}>
-                  johndoe@gmail.com
-                </div>
-              </Layout.Flex>
-            </Layout.Flex>
-            <ActionButton />
-          </InfluencerCard>
-          <InfluencerCard
-            flexDirection="row"
-            alignItems="flex-start"
-            p="20px 30px"
-          >
-            <Avatar.Avatar size={100} src={'/static/image/user.png'} />
-            <Layout.Flex
-              flexDirection="column"
-              justifyContent="flex-start"
-              ml="25px"
-              width="calc(100% - 200px)"
-            >
-              <Layout.Grid gridTemplateColumns="2fr 9fr" alignContent="center">
-                <Layout.Flex
-                  flexDirection="column"
-                  justifyContent="center"
-                  pl="10px"
-                >
-                  <Fullname>John Doe</Fullname>
-                  <Username>@johndoe</Username>
-                </Layout.Flex>
-                <Layout.Grid
-                  gridTemplateColumns="1fr 1fr 1fr"
-                  alignContent="center"
-                  ml="80px"
-                  mt="20px"
-                >
-                  <Layout.Flex
-                    flexDirection="column"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                  >
-                    <StatsLabel>Followers</StatsLabel>
-                    <StatsValue>1.2M</StatsValue>
-                  </Layout.Flex>
-                  <Layout.Flex
-                    flexDirection="column"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                  >
-                    <StatsLabel>Engagement</StatsLabel>
-                    <StatsValue>4.83%</StatsValue>
-                  </Layout.Flex>
-                  <Layout.Flex
-                    flexDirection="column"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                  >
-                    <StatsLabel>Estimated Post Value</StatsLabel>
-                    <StatsValue>1.2M</StatsValue>
-                  </Layout.Flex>
-                </Layout.Grid>
-              </Layout.Grid>
-              <Layout.Flex
-                flexDirection="row"
-                alignItems="center"
-                pl="10px"
-                mt="10px"
-              >
-                Email:
-                <div style={{ fontWeight: 600, marginLeft: '10px' }}>
-                  johndoe@gmail.com
-                </div>
-              </Layout.Flex>
-            </Layout.Flex>
-            <ActionButton />
-          </InfluencerCard>
-        </Layout.Flex>
-      </RightPanel>
-    </Content>
-  </MasterLayout.SecondaryLayout>
+          </RightPanel>
+        </Content>
+      </MasterLayout.SecondaryLayout>
+    )
+  }
 )

@@ -2,15 +2,15 @@ export const PATHS = {
   login: '/login',
   signup: '/register',
   myInfluencer: '/my-influencers',
-  myProfile: '/my-profile',
+  myProfile: '/my-account',
   influencers: '/influencers',
   detail: '/influencers/detail?tab=stats',
+  influencerDetail: '/influencers/detail',
 }
 
 export const KEYS = {
-  MASTER_DATA: 'MASTER_DATA',
   ACCESS_TOKEN: 'x-access-token',
-  CURRENT_USER_ID: 'currentUserId',
+  REDIRECT_URI: 'redirectUri',
 }
 
 export const SERVICES = {

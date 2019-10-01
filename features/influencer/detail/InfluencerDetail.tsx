@@ -5,6 +5,9 @@ import { Tab, TAB_KEYS } from './component/Tab'
 import { StatsSection } from './component/StatsSection'
 import { MediaSection } from './component/MediaSection'
 import { AnalyticSection } from './component/AnalyticSection'
+import { AppModel } from '../../../models'
+import { useAppContext } from '@frontend/core/src/context'
+import { AuthorizedUserBtnGr, GuestButtonGroup } from '../../../components'
 
 const Content = styled(Layout.Flex)`
   min-height: calc(100vh - 180px);
@@ -78,9 +81,14 @@ export const InfluencerDetail: React.FunctionComponent<
   email,
   tab,
 }) => {
+  const appModel = useAppContext() as AppModel
+  const token = appModel.authModel.token
+
   const TabContent = tabContents[tab]
   return (
-    <MasterLayout.MasterLayout>
+    <MasterLayout.MasterLayout
+      rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
+    >
       <Content flexDirection="column">
         <Layout.Flex
           flexDirection="column"

@@ -4,6 +4,10 @@ import { Layout, Button, Input, Card, Icon } from '@frontend/ui'
 import { map } from 'lodash'
 import { PATHS } from '@frontend/constants'
 import Router from 'next/router'
+import { HomeAuthenBtnGroup, HomeAuthorizedBtnGr } from '../../components'
+import { useAppContext } from '@frontend/core/src/context'
+import { AppModel } from '../../models'
+import { observer } from 'mobx-react-lite'
 
 const Container = styled.div`
   height: 100%;
@@ -14,25 +18,6 @@ const Slogan = styled.div`
   width: 100%;
   text-align: center;
   margin-top: 200px;
-`
-const LoginBtn = styled(Button.Button)`
-  &&& {
-    background-color: transparent;
-    border: none;
-    color: #1e2d52;
-    border-radius: 20px;
-  }
-`
-
-const RegisterBtn = styled(Button.Button)`
-  &&& {
-    border-radius: 20px;
-    text-transform: uppercase;
-    background-color: transparent;
-    font-size: 12px;
-    width: 100px;
-    margin-left: 10px;
-  }
 `
 
 const SearchContainer = styled.div`
@@ -141,7 +126,9 @@ const influencers = [
     likesPerPost: 59.3,
   },
 ]
-export const HomeController: React.FunctionComponent = () => {
+export const HomeController: React.FunctionComponent = observer(() => {
+  const appModel = useAppContext() as AppModel
+  const token = appModel.authModel.token
   return (
     <Container>
       <Layout.Flex
@@ -156,16 +143,8 @@ export const HomeController: React.FunctionComponent = () => {
           position: 'relative',
         }}
       >
-        <Layout.Flex
-          flexDirection="row"
-          justifyContent="flex-end"
-          alignItems="center"
-          mt="20px"
-          pr="30px"
-        >
-          <LoginBtn>Login</LoginBtn>
-          <RegisterBtn>Signup</RegisterBtn>
-        </Layout.Flex>
+        {token ? <HomeAuthorizedBtnGr /> : <HomeAuthenBtnGroup />}
+
         <Slogan>Find the best Instagram influencers for your business.</Slogan>
         <SearchContainer>
           <SearchInputContainer>
@@ -196,4 +175,4 @@ export const HomeController: React.FunctionComponent = () => {
       </Content>
     </Container>
   )
-}
+})

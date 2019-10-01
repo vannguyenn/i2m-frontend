@@ -10,6 +10,10 @@ import {
 } from '@frontend/ui'
 import styled from 'styled-components'
 import { Field, Form, FormRenderProps } from 'react-final-form'
+import { observer } from 'mobx-react-lite'
+import { useAppContext } from '@frontend/core/src/context'
+import { AppModel } from '../../models'
+import { AuthorizedUserBtnGr, GuestButtonGroup } from '../../components'
 
 const Content = styled(Layout.Flex)`
   min-height: calc(100vh - 180px);
@@ -29,6 +33,7 @@ const Title = styled.div`
   font-weight: 600;
   font-size: 18px;
 `
+
 const FORM_FIELDS = {
   email: {
     name: 'email',
@@ -41,7 +46,7 @@ const FORM_FIELDS = {
     label: 'Password',
   },
   fullname: {
-    name: 'fullname',
+    name: 'name',
     label: 'Fullname',
     placeholder: 'What should we call you ...',
   },
@@ -93,9 +98,16 @@ const MyAccountForm: React.FunctionComponent<FormRenderProps> = ({
   </AntForm.Form>
 )
 
-export const MyAccountController: React.FunctionComponent = () => {
+export const MyAccountController: React.FunctionComponent = observer(() => {
+  const appModel = useAppContext() as AppModel
+  const token = appModel.authModel.token
+  const currentUser = appModel.profileModel.currentUser
+  const profileImage = currentUser && currentUser.imageUrl
+
   return (
-    <MasterLayout.MasterLayout>
+    <MasterLayout.MasterLayout
+      rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
+    >
       <Content flexDirection="column" justifyContent="flex-start">
         <Title>Account Setting</Title>
         <FormContainer
@@ -104,12 +116,20 @@ export const MyAccountController: React.FunctionComponent = () => {
           gridGap={2}
         >
           <Layout.Flex justifyContent="center">
-            <Avatar.Avatar src="/static/image/user.png" size={150} />
+            {profileImage ? (
+              <Avatar.Avatar src={currentUser.imageUrl} size={150} />
+            ) : (
+              <Avatar.Avatar src="/static/image/user.png" size={150} />
+            )}
           </Layout.Flex>
 
-          <Form onSubmit={v => console.log(v)} render={MyAccountForm} />
+          <Form
+            initialValues={currentUser}
+            onSubmit={v => console.log(v)}
+            render={MyAccountForm}
+          />
         </FormContainer>
       </Content>
     </MasterLayout.MasterLayout>
   )
-}
+})

@@ -10,6 +10,10 @@ import {
 } from '@frontend/ui'
 import styled from 'styled-components'
 import { map } from 'lodash'
+import { AuthorizedUserBtnGr, GuestButtonGroup } from '../../../components'
+import { observer } from 'mobx-react-lite'
+import { useAppContext } from '@frontend/core/src/context'
+import { AppModel } from '../../../models'
 
 const LeftPanel = styled(Layout.Flex)`
   min-height: calc(100vh - 180px);
@@ -120,9 +124,14 @@ const influencers = [
     likesPerPost: 59.3,
   },
 ]
-export const InfluencerList: React.FunctionComponent = () => {
+export const InfluencerList: React.FunctionComponent = observer(() => {
+  const appModel = useAppContext() as AppModel
+  const token = appModel.authModel.token
+
   return (
-    <MasterLayout.MasterLayout>
+    <MasterLayout.MasterLayout
+      rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
+    >
       <Layout.Flex
         flexDirection="row"
         justifyContent="flex-start"
@@ -219,4 +228,4 @@ export const InfluencerList: React.FunctionComponent = () => {
       </Layout.Flex>
     </MasterLayout.MasterLayout>
   )
-}
+})
