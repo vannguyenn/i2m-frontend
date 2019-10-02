@@ -8,6 +8,7 @@ const CustomAntForm = styled(AntForm)`
   width: 100%;
   &.ant-form-vertical .ant-form-item {
     padding-bottom: 0;
+    margin-bottom: 0;
   }
 `
 const CustomFormItem = styled(AntForm.Item)`

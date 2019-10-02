@@ -70,6 +70,7 @@ export class MyInfluencerViewModel {
   @observable listId: string
   @observable listDetail: IListDetailProps
   @observable myList: IListProps[]
+  @observable sendEmailModalVisible: boolean
 
   appModel: AppModel = null
 
@@ -92,6 +93,7 @@ export class MyInfluencerViewModel {
   @action
   async fetchMyList() {
     // call api here
+    
     this.myList = mockListData
     this.listId = '1'
   }
@@ -105,5 +107,10 @@ export class MyInfluencerViewModel {
   @action
   setCurrentListId(id: string) {
     this.listId = id
+  }
+
+  @action
+  changeEmailModalVisible(visible: boolean) {
+    this.sendEmailModalVisible = visible
   }
 }

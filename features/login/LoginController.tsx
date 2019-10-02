@@ -15,6 +15,7 @@ import { PATHS, GOOGLE_AUTH_URL } from '@frontend/constants'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
 import { LoginInfo } from '../../models/AuthModel'
+import { validate } from '@frontend/core'
 
 const CONSTANTS = {
   intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
@@ -102,6 +103,7 @@ const LoginForm: React.FunctionComponent<FormRenderProps> = ({
       placeholder={FORM_FIELDS.email.placeholder}
       component={Input.InputField}
       prefix={<Icon.Icon type="mail" color="dark30" />}
+      validate={validate.field.required}
     />
     <Field
       name={FORM_FIELDS.password.name}
@@ -148,6 +150,7 @@ export const LoginController: React.FunctionComponent = () => {
       return error
     }
   }
+
   return (
     <Layout.Flex
       width="100%"
