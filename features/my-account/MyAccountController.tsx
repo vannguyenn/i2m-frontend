@@ -46,7 +46,7 @@ const FORM_FIELDS = {
     label: 'Password',
   },
   fullname: {
-    name: 'fullName',
+    name: 'name',
     label: 'Fullname',
     placeholder: 'What should we call you ...',
   },
@@ -103,6 +103,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
   const token = appModel.authModel.token
   const currentUser = appModel.profileModel.currentUser
   const profileImage = currentUser && currentUser.imageUrl
+
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}

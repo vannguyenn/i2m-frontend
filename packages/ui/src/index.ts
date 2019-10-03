@@ -15,8 +15,6 @@ import * as Slider from './slider'
 import * as Table from './table'
 import * as Popover from './popover'
 import * as Drawer from './drawer'
-import * as Modal from './modal'
-import * as TextEditor from './text-editor'
 
 export {
   themes,
@@ -36,6 +34,4 @@ export {
   Table,
   Popover,
   Drawer,
-  Modal,
-  TextEditor,
 }

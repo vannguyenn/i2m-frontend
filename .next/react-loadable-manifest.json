@@ -1,8 +1,8 @@
 {
-  "../features/influencer-management": [
+  "../../features/influencer/detail": [
     {
-      "id": "./node_modules/react-quill/dist/quill.snow.css",
-      "name": "./node_modules/react-quill/dist/quill.snow.css",
+      "id": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
+      "name": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
@@ -13,10 +13,10 @@
       "publicPath": "static/chunks/1.js"
     }
   ],
-  "../features/my-account": [
+  "../features/influencer-management": [
     {
-      "id": "./node_modules/react-quill/dist/quill.snow.css",
-      "name": "./node_modules/react-quill/dist/quill.snow.css",
+      "id": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
+      "name": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },

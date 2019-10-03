@@ -20,7 +20,6 @@ export class ProfileModel {
   @action
   async getCurrentUser() {
     const { data } = await profileService.getCurrentUser<IUser>()
-
     runInAction(() => {
       this.currentUser = data
     })

@@ -7,10 +7,6 @@ import {
   Avatar,
   Icon,
   Drawer,
-  Modal,
-  Form as AntForm,
-  Input,
-  TextEditor,
 } from '@frontend/ui'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
@@ -23,32 +19,6 @@ import {
 } from './MyInfluencerViewModel'
 import { useEffectOnce } from 'react-use'
 import { map, get } from 'lodash'
-import { Form as FinalForm, Field } from 'react-final-form'
-
-const MODALPROPS = {
-  title: 'Send Mail',
-  footer: {
-    okText: 'Send',
-  },
-  fields: {
-    sendTo: {
-      name: 'sendTo',
-      placeholder: 'Enter influencer\'s email',
-      label: 'Send To',
-    },
-    subject: {
-      name: 'subject',
-      placeholder: 'Enter subject',
-      label: 'Subject',
-    },
-    content: {
-      name: 'content',
-      placeholder: 'Mail Content',
-      label: 'Content',
-    },
-  },
-  sendMailForm: 'sendMailForm',
-}
 
 const LeftPanel = styled(Layout.Flex)`
   min-height: 100%;
@@ -162,13 +132,7 @@ const EmailSubject = styled.div`
 const TimeStamp = styled.div`
   color: ${({ theme }) => theme.colors.grey65};
 `
-interface ActionButtonProps {
-  setModalVisible: (visible: boolean) => void
-}
-
-const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
-  setModalVisible,
-}) => {
+const ActionButton: React.FunctionComponent = () => {
   const [drawerVisible, setDrawerVisible] = React.useState(false)
 
   return (
@@ -184,7 +148,7 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
         <IconButton onClick={() => setDrawerVisible(true)}>
           <Icon.Icon type="clock-circle" theme="filled" />
         </IconButton>
-        <IconButton onClick={() => setModalVisible(true)}>
+        <IconButton>
           <Icon.Icon type="mail" theme="filled" />
         </IconButton>
       </Layout.Flex>
@@ -232,14 +196,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
     })
 
     const listOfLeads = myInfluencerViewModel.myList
-    const { sendEmailModalVisible } = myInfluencerViewModel
 
-    const setModalVisible = (visible: boolean) =>
-      myInfluencerViewModel.changeEmailModalVisible(visible)
-
-    const handleSendMail = (v: any) => {
-      console.log(v)
-    }
     return (
       <MasterLayout.SecondaryLayout>
         <Content flexDirection="row" alignItems="flex-start">
@@ -377,47 +334,13 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                           </div>
                         </Layout.Flex>
                       </Layout.Flex>
-                      <ActionButton setModalVisible={setModalVisible} />
+                      <ActionButton />
                     </InfluencerCard>
                   )
                 )}
             </Layout.Flex>
           </RightPanel>
         </Content>
-        <Modal.MediumModal
-          visible={sendEmailModalVisible}
-          title={MODALPROPS.title}
-          okText={MODALPROPS.footer.okText}
-          onCancel={() => setModalVisible(false)}
-        >
-          <FinalForm
-            onSubmit={handleSendMail}
-            render={({ handleSubmit }) => (
-              <AntForm.Form
-                onSubmit={handleSubmit}
-                id="sendMailForm"
-                layout="vertical"
-              >
-                <Layout.Grid mb="15px">
-                  <Field
-                    name={MODALPROPS.fields.sendTo.name}
-                    component={Input.InputField}
-                    placeholder={MODALPROPS.fields.sendTo.placeholder}
-                    label={MODALPROPS.fields.sendTo.label}
-                    required
-                  />
-                </Layout.Grid>
-                <Field
-                  name={MODALPROPS.fields.content.name}
-                  component={TextEditor.TextEditorField}
-                  placeholder={MODALPROPS.fields.content.placeholder}
-                  label={MODALPROPS.fields.content.label}
-                  height="230px"
-                />
-              </AntForm.Form>
-            )}
-          />
-        </Modal.MediumModal>
       </MasterLayout.SecondaryLayout>
     )
   }
