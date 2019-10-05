@@ -1,4 +1,4 @@
-import { action, observable, reaction, runInAction } from 'mobx'
+import { action, computed, observable, reaction, runInAction } from 'mobx'
 import { authService } from '@frontend/services'
 import { KEYS, I2MResponse, PATHS } from '@frontend/constants'
 import * as cookies from 'js-cookie'
@@ -12,7 +12,7 @@ export interface LoginInfo {
 }
 
 export interface SignUpInfo {
-  category?: string[]
+  category?: ICategory[]
   password: string
   name: string
   email: string
@@ -22,12 +22,17 @@ export interface LoginData {
   accessToken: string
   tokenType: string
 }
+export interface ICategory {
+  id: string
+  name: string
+}
 
 export class AuthModel {
   @observable tokenExpires: number = 1
   @observable token: string = cookies.get(KEYS.ACCESS_TOKEN)
   @observable sucess: boolean
   @observable message: string
+  @observable category: ICategory[]
 
   constructor() {
     reaction(
@@ -44,9 +49,9 @@ export class AuthModel {
 
   @action
   async login(data: LoginInfo) {
+
     try {
       const response = await authService.login<LoginData>(data)
-
       const {
         data: { accessToken },
       } = response
@@ -63,8 +68,10 @@ export class AuthModel {
     }
   }
 
+
   @action
   async signup(data: SignUpInfo) {
+
     try {
       await authService.signup<I2MResponse>(data)
 
@@ -83,5 +90,14 @@ export class AuthModel {
   @action
   setToken(token: string) {
     this.token = token
+  }
+
+  @action
+  async getCategory() {
+    const { data } = await authService.getCategory<ICategory[]>()
+    runInAction(() => {
+      this.category = data
+    })
+    return data
   }
 }

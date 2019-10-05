@@ -2,10 +2,14 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Layout, Form as AntForm, Input, Button, Select } from '@frontend/ui'
 import { Field, Form, FormRenderProps } from 'react-final-form'
-import { PATHS } from '@frontend/constants'
+import { PATHS, ISelectOption } from '@frontend/constants'
 import Router from 'next/router'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
+import { field } from '@frontend/core/src/validate'
+import { observer } from 'mobx-react-lite'
+import { map } from 'lodash'
+import { useEffectOnce } from 'react-use'
 
 const CONSTANTS = {
   intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
@@ -66,61 +70,73 @@ const LogoContainer = styled(Layout.Flex)`
   top: 30px;
   left: 35px;
 `
-const RegisterForm: React.FunctionComponent<FormRenderProps> = ({
+export interface IRegisterForm extends FormRenderProps {
+  categories: ISelectOption[]
+}
+
+const RegisterForm: React.FunctionComponent<IRegisterForm> = ({
   handleSubmit,
+  categories
 }) => (
-  <AntForm.Form onSubmit={handleSubmit} layout="vertical">
-    <Field
-      name={FORM_FIELDS.email.name}
-      label={FORM_FIELDS.email.label}
-      placeholder={FORM_FIELDS.email.placeholder}
-      component={Input.InputField}
-    />
-    <Field
-      name={FORM_FIELDS.fullname.name}
-      label={FORM_FIELDS.fullname.label}
-      placeholder={FORM_FIELDS.fullname.placeholder}
-      component={Input.InputField}
-    />
-    <Field
-      name={FORM_FIELDS.password.name}
-      label={FORM_FIELDS.password.label}
-      placeholder={FORM_FIELDS.password.placeholder}
-      component={Input.InputPasswordField}
-    />
-    <Field
-      name={FORM_FIELDS.category.name}
-      label={FORM_FIELDS.category.label}
-      placeholder={FORM_FIELDS.category.placeholder}
-      component={Select.MultipleSelectField}
-      options={[
-        { value: '1', label: 'Van xinh dep' },
-        { value: '2', label: 'Beauty' },
-      ]}
-    />
+    <AntForm.Form onSubmit={handleSubmit} layout="vertical">
+      <Field
+        name={FORM_FIELDS.email.name}
+        label={FORM_FIELDS.email.label}
+        placeholder={FORM_FIELDS.email.placeholder}
+        component={Input.InputField}
+        validate={field.email}
+      />
 
-    <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-      <Button.Button
-        width="180px"
-        style={{ height: '43px' }}
-        onClick={() => Router.push(PATHS.login)}
-      >
-        {CONSTANTS.login}
-      </Button.Button>
-      <Button.Button
-        type="primary"
-        width="180px"
-        style={{ height: '43px' }}
-        htmlType="submit"
-      >
-        {CONSTANTS.register}
-      </Button.Button>
-    </Layout.Flex>
-  </AntForm.Form>
-)
+      <Field
+        name={FORM_FIELDS.fullname.name}
+        label={FORM_FIELDS.fullname.label}
+        placeholder={FORM_FIELDS.fullname.placeholder}
+        component={Input.InputField}
+        validate={field.required && field.maxLength(30)}
+      />
+      <Field
+        name={FORM_FIELDS.password.name}
+        label={FORM_FIELDS.password.label}
+        placeholder={FORM_FIELDS.password.placeholder}
+        component={Input.InputPasswordField}
+        validate={field.required && field.minLength(8) }
+      />
+      <Field
+        name={FORM_FIELDS.category.name}
+        label={FORM_FIELDS.category.label}
+        placeholder={FORM_FIELDS.category.placeholder}
+        component={Select.MultipleSelectField}
+        options={categories}
+      />
 
-export const RegisterController: React.FunctionComponent = () => {
+      <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
+        <Button.Button
+          width="180px"
+          style={{ height: '43px' }}
+          onClick={() => Router.push(PATHS.login)}
+        >
+          {CONSTANTS.login}
+        </Button.Button>
+        <Button.Button
+          type="primary"
+          width="180px"
+          style={{ height: '43px' }}
+          htmlType="submit"
+        >
+          {CONSTANTS.register}
+        </Button.Button>
+      </Layout.Flex>
+    </AntForm.Form>
+  )
+
+export const RegisterController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
+
+  useEffectOnce(() => {
+    appModel.authModel.getCategory()
+  })
+  const category = appModel.authModel.category
+  const normalizeCate = map(category, (cate) => ({ value: cate.id, label: cate.name }))
 
   const handleSubmit = async (value: any) => {
     try {
@@ -128,6 +144,7 @@ export const RegisterController: React.FunctionComponent = () => {
       Router.push(PATHS.login)
       return undefined
     } catch (error) {
+      console.log(error)
       return error
     }
   }
@@ -149,8 +166,10 @@ export const RegisterController: React.FunctionComponent = () => {
       <LoginBox>
         <IntroText>{CONSTANTS.intro}</IntroText>
         <LoginTitle>{CONSTANTS.loginTitle}</LoginTitle>
-        <Form onSubmit={handleSubmit} render={RegisterForm} />
+        <Form
+          onSubmit={handleSubmit}
+          render={(props) => <RegisterForm {...props} categories={normalizeCate} />} />
       </LoginBox>
     </Layout.Flex>
   )
-}
+})

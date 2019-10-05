@@ -28,6 +28,7 @@ export class NotificationStore {
   }
 
   error(message: IMessage) {
+    console.log(message +"  fds");
     return this.open({ type: 'error', ...message })
   }
 

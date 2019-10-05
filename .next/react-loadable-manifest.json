@@ -1,5 +1,5 @@
 {
-  "../../features/influencer/detail": [
+  "../features/change-password": [
     {
       "id": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
       "name": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
@@ -9,11 +9,11 @@
     {
       "id": "./components/AuthorizedUserBtnGr.tsx",
       "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/1.js",
-      "publicPath": "static/chunks/1.js"
+      "file": "static/chunks/5.js",
+      "publicPath": "static/chunks/5.js"
     }
   ],
-  "../features/influencer-management": [
+  "../features/my-account": [
     {
       "id": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
       "name": "./packages/ui/node_modules/antd/lib/avatar/style/index.css",
@@ -23,8 +23,8 @@
     {
       "id": "./components/AuthorizedUserBtnGr.tsx",
       "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/2.js",
-      "publicPath": "static/chunks/2.js"
+      "file": "static/chunks/4.js",
+      "publicPath": "static/chunks/4.js"
     }
   ],
   "./noop": [

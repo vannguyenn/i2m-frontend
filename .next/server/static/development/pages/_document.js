@@ -2258,6 +2258,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\pages\\_document.tsx";
 
 
 
@@ -2275,9 +2276,44 @@ function (_Document) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(MyDocument, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_8__["createElement"]("html", null, react__WEBPACK_IMPORTED_MODULE_8__["createElement"](next_document__WEBPACK_IMPORTED_MODULE_9__["Head"], null, react__WEBPACK_IMPORTED_MODULE_8__["createElement"]("style", null, "body { margin: 0 } /* custom! */")), react__WEBPACK_IMPORTED_MODULE_8__["createElement"]("body", {
-        className: "custom_class"
-      }, react__WEBPACK_IMPORTED_MODULE_8__["createElement"](next_document__WEBPACK_IMPORTED_MODULE_9__["Main"], null), react__WEBPACK_IMPORTED_MODULE_8__["createElement"](next_document__WEBPACK_IMPORTED_MODULE_9__["NextScript"], null)));
+      return react__WEBPACK_IMPORTED_MODULE_8__["createElement"]("html", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 12
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8__["createElement"](next_document__WEBPACK_IMPORTED_MODULE_9__["Head"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8__["createElement"]("style", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14
+        },
+        __self: this
+      }, "body { margin: 0 } /* custom! */")), react__WEBPACK_IMPORTED_MODULE_8__["createElement"]("body", {
+        className: "custom_class",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_8__["createElement"](next_document__WEBPACK_IMPORTED_MODULE_9__["Main"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_8__["createElement"](next_document__WEBPACK_IMPORTED_MODULE_9__["NextScript"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
+        },
+        __self: this
+      })));
     }
   }], [{
     key: "getInitialProps",

@@ -15,6 +15,7 @@ import { PATHS, GOOGLE_AUTH_URL } from '@frontend/constants'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
 import { LoginInfo } from '../../models/AuthModel'
+import { field } from '@frontend/core/src/validate'
 
 const CONSTANTS = {
   intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
@@ -95,56 +96,60 @@ const CustomDivider = styled(Divider.Divider)`
 const LoginForm: React.FunctionComponent<FormRenderProps> = ({
   handleSubmit,
 }) => (
-  <AntForm.Form onSubmit={handleSubmit} layout="vertical">
-    <Field
-      name={FORM_FIELDS.email.name}
-      label={FORM_FIELDS.email.label}
-      placeholder={FORM_FIELDS.email.placeholder}
-      component={Input.InputField}
-      prefix={<Icon.Icon type="mail" color="dark30" />}
-    />
-    <Field
-      name={FORM_FIELDS.password.name}
-      label={FORM_FIELDS.password.label}
-      placeholder={FORM_FIELDS.password.placeholder}
-      component={Input.InputPasswordField}
-      prefix={<Icon.Icon type="key" rotate={225} color="dark30" />}
-    />
-    <Layout.Flex flexDirection="row" justifyContent="space-between" mt="20px">
+    <AntForm.Form onSubmit={handleSubmit} layout="vertical">
       <Field
-        name={FORM_FIELDS.rememberMe.name}
-        label={FORM_FIELDS.rememberMe.label}
-        render={Checkbox.CheckboxField}
+        name={FORM_FIELDS.email.name}
+        label={FORM_FIELDS.email.label}
+        placeholder={FORM_FIELDS.email.placeholder}
+        component={Input.InputField}
+        validate={field.email}
+        prefix={<Icon.Icon type="mail" color="dark30" />}
       />
-    </Layout.Flex>
-    <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-      <Button.Button
-        width="180px"
-        style={{ height: '43px' }}
-        onClick={() => Router.push(PATHS.signup)}
-      >
-        {CONSTANTS.register}
-      </Button.Button>
-      <Button.Button
-        type="primary"
-        width="180px"
-        style={{ height: '43px' }}
-        htmlType="submit"
-      >
-        {CONSTANTS.login}
-      </Button.Button>
-    </Layout.Flex>
-  </AntForm.Form>
-)
+      <Field
+        name={FORM_FIELDS.password.name}
+        label={FORM_FIELDS.password.label}
+        placeholder={FORM_FIELDS.password.placeholder}
+        component={Input.InputPasswordField}
+        validate={field.required}
+        prefix={<Icon.Icon type="key" rotate={225} color="dark30" />}
+      />
+      <Layout.Flex flexDirection="row" justifyContent="space-between" mt="20px">
+        <Field
+          name={FORM_FIELDS.rememberMe.name}
+          label={FORM_FIELDS.rememberMe.label}
+          render={Checkbox.CheckboxField}
+        />
+      </Layout.Flex>
+      
+      <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
+        <Button.Button
+          width="180px"
+          style={{ height: '43px' }}
+          onClick={() => Router.push(PATHS.signup)}
+        >
+          {CONSTANTS.register}
+        </Button.Button>
+        <Button.Button
+          type="primary"
+          width="180px"
+          style={{ height: '43px' }}
+          htmlType="submit"
+        >
+          {CONSTANTS.login}
+        </Button.Button>
+      </Layout.Flex>
+    </AntForm.Form>
+  )
 
 export const LoginController: React.FunctionComponent = () => {
   const appModel = useAppContext() as AppModel
-
+ 
   const handleLogin = async (v: LoginInfo) => {
     try {
       await appModel.authModel.login(v)
       return undefined
     } catch (error) {
+      console.log(error)
       return error
     }
   }

@@ -24,6 +24,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_7__);
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\components\\AuthorizedUserBtnGr.tsx";
 
 
 
@@ -61,26 +62,62 @@ var AuthorizedUserBtnGr = function AuthorizedUserBtnGr() {
   var PopoverContent = react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(lodash__WEBPACK_IMPORTED_MODULE_6__["map"])(content, function (el, index) {
     return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("a", {
       onClick: el.onClick,
-      key: index
+      key: index,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 53
+      },
+      __self: this
     }, el.title);
   }));
   return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    href: _frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].myInfluencer
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CustomLink, null, "My Influencers")), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Popover"].Popover, {
+    href: _frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].myInfluencer,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 62
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CustomLink, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63
+    },
+    __self: this
+  }, "My Influencers")), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Popover"].Popover, {
     content: PopoverContent,
     trigger: "click",
-    placement: "bottomLeft"
+    placement: "bottomLeft",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65
+    },
+    __self: this
   }, currentUserAvatar ? react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Avatar"].Avatar, {
     src: currentUserAvatar,
     style: {
       cursor: 'pointer',
       marginLeft: '15px'
-    }
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71
+    },
+    __self: this
   }) : react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CustomAvatar, {
-    icon: "user"
+    icon: "user",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76
+    },
+    __self: this
   })));
 };
 
@@ -104,6 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\components\\GuestButtonGroup.tsx";
 
 
 
@@ -121,15 +159,30 @@ var GuestButtonGroup = Object(next_router__WEBPACK_IMPORTED_MODULE_3__["withRout
   var router = _ref.router;
   return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_1__["Layout"].Flex, {
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](LoginButton, {
     onClick: function onClick() {
       return next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push("".concat(_frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].login, "?redirectUri=").concat(router.pathname));
-    }
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39
+    },
+    __self: this
   }, "LOGIN"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RegisterButton, {
     onClick: function onClick() {
       return next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].signup);
-    }
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46
+    },
+    __self: this
   }, "Signup"));
 });
 
@@ -153,6 +206,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\components\\HomeAuthenBtnGroup.tsx";
 
 
 
@@ -173,7 +227,12 @@ var HomeAuthenBtnGroup = Object(next_router__WEBPACK_IMPORTED_MODULE_3__["withRo
     justifyContent: "flex-end",
     alignItems: "center",
     mt: "20px",
-    pr: "30px"
+    pr: "30px",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](LoginBtn, {
     onClick: function onClick() {
       return next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push({
@@ -182,11 +241,21 @@ var HomeAuthenBtnGroup = Object(next_router__WEBPACK_IMPORTED_MODULE_3__["withRo
           redirectUri: router.asPath
         }
       });
-    }
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38
+    },
+    __self: this
   }, "Login"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RegisterBtn, {
     onClick: function onClick() {
       return next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_4__["PATHS"].signup);
-    }
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: this
   }, "Signup"));
 });
 
@@ -238,7 +307,7 @@ var HomeAuthorizedBtnGr = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_7__["o
   var appModel = Object(_frontend_core_src_context__WEBPACK_IMPORTED_MODULE_5__["useAppContext"])();
   var currentUserAvatar = react__WEBPACK_IMPORTED_MODULE_0__["useMemo"](function () {
     if (appModel.profileModel.currentUser) {
-      return appModel.profileModel.currentUser.imageUrl;
+      return appModel.profileModel.currentUser.imgUrl;
     }
   }, [appModel.profileModel.currentUser]);
   var content = [{
@@ -2365,6 +2434,7 @@ function () {
   }, {
     key: "error",
     value: function error(message) {
+      console.log(message + "  fds");
       return this.open(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({
         type: 'error'
       }, message));
@@ -3346,6 +3416,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\card\\InfluencerCard.tsx";
 
 
 
@@ -3397,30 +3468,113 @@ var InfluencerCard = function InfluencerCard(_ref4) {
     mt: "60px",
     onClick: function onClick() {
       return next_router__WEBPACK_IMPORTED_MODULE_6___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_7__["PATHS"].detail);
-    }
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_3__["Flex"], {
     width: "100%",
     flexDirection: "column",
     justifyContent: "flex-start",
-    alignItems: "center"
+    alignItems: "center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_avatar__WEBPACK_IMPORTED_MODULE_4__["Avatar"], {
     size: 150,
-    src: profileUrl || '/static/image/user.png'
-  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberOfFollowers, null, "".concat(numberOfFollowers, "M")), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, null, "FOLLOWERS"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](FullName, null, fullname), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Biography, null, biography), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_divider__WEBPACK_IMPORTED_MODULE_5__["Divider"], {
-    type: "horizontal"
+    src: profileUrl || '/static/image/user.png',
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberOfFollowers, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67
+    },
+    __self: this
+  }, "".concat(numberOfFollowers, "M")), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68
+    },
+    __self: this
+  }, "FOLLOWERS"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](FullName, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69
+    },
+    __self: this
+  }, fullname), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Biography, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70
+    },
+    __self: this
+  }, biography), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_divider__WEBPACK_IMPORTED_MODULE_5__["Divider"], {
+    type: "horizontal",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71
+    },
+    __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_3__["Grid"], {
     gridGap: "70px",
     gridTemplateColumns: "1fr 1fr",
-    justifyContent: "center"
+    justifyContent: "center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_3__["Flex"], {
     flexDirection: "column",
     justifyContent: "flex-start",
-    alignItems: "center"
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, null, "ENGAGEMENT"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberContainer, null, "".concat(engagementRate, "%"))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_3__["Flex"], {
+    alignItems: "center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 82
+    },
+    __self: this
+  }, "ENGAGEMENT"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 83
+    },
+    __self: this
+  }, "".concat(engagementRate, "%"))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_3__["Flex"], {
     flexDirection: "column",
     justifyContent: "flex-start",
-    alignItems: "center"
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, null, "LIKES PER POST"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberContainer, null, "".concat(likesPerPost, "K"))))));
+    alignItems: "center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 85
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 90
+    },
+    __self: this
+  }, "LIKES PER POST"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 91
+    },
+    __self: this
+  }, "".concat(likesPerPost, "K"))))));
 };
 
 /***/ }),
@@ -3504,6 +3658,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../form */ "./packages/ui/src/form/index.ts");
 
 
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\checkbox\\CheckboxField.tsx";
 
 
 
@@ -3527,13 +3682,24 @@ var CheckboxField = function CheckboxField(_ref) {
     label: isFieldStyle && label,
     touched: touched,
     error: error,
-    required: required
+    required: required,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_Checkbox__WEBPACK_IMPORTED_MODULE_3__["Checkbox"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     onChange: function onChange(e) {
       return input.onChange(e);
     },
     checked: !!input.value
-  }, rest), !isFieldStyle && label));
+  }, rest, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: this
+  }), !isFieldStyle && label));
 };
 
 /***/ }),
@@ -3622,6 +3788,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_5__);
 
 
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\drawer\\Drawer.tsx";
 
 
 
@@ -3633,7 +3800,13 @@ var BaseDrawer = function BaseDrawer(_ref) {
 
   return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](antd__WEBPACK_IMPORTED_MODULE_3__["Drawer"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: className
-  }, props));
+  }, props, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: this
+  }));
 };
 
 var Drawer = styled_components__WEBPACK_IMPORTED_MODULE_5___default()(BaseDrawer).withConfig({
@@ -3670,23 +3843,26 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Form", function() { return Form; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormItem", function() { return FormItem; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd */ "antd");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var antd_lib_form_style_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd/lib/form/style/index.css */ "./packages/ui/node_modules/antd/lib/form/style/index.css");
-/* harmony import */ var antd_lib_form_style_index_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form_style_index_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd_lib_form_style_index_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd/lib/form/style/index.css */ "./packages/ui/node_modules/antd/lib/form/style/index.css");
+/* harmony import */ var antd_lib_form_style_index_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_form_style_index_css__WEBPACK_IMPORTED_MODULE_4__);
+
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\form\\Form.tsx";
 
 
 
 
-var CustomAntForm = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(antd__WEBPACK_IMPORTED_MODULE_1__["Form"]).withConfig({
+var CustomAntForm = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(antd__WEBPACK_IMPORTED_MODULE_2__["Form"]).withConfig({
   displayName: "Form__CustomAntForm",
   componentId: "cgeiko-0"
 })(["width:100%;&.ant-form-vertical .ant-form-item{padding-bottom:0;}"]);
-var CustomFormItem = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(antd__WEBPACK_IMPORTED_MODULE_1__["Form"].Item).withConfig({
+var CustomFormItem = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(antd__WEBPACK_IMPORTED_MODULE_2__["Form"].Item).withConfig({
   displayName: "Form__CustomFormItem",
   componentId: "cgeiko-1"
 })(["&{.ant-form-item-label > label{color:", ";}.ant-form-item-control-wrapper .ant-form-item-control .ant-form-item-children{input:hover,input:focus{border-color:", ";}input::placeholder{color:", ";}.ant-input-affix-wrapper:hover input{border-color:", ";}}}"], function (_ref) {
@@ -3703,10 +3879,22 @@ var CustomFormItem = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(an
   return theme.colors.primary100;
 });
 var Form = function Form(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CustomAntForm, props);
+  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](CustomAntForm, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38
+    },
+    __self: this
+  }));
 };
 var FormItem = function FormItem(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CustomFormItem, props);
+  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](CustomFormItem, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: this
+  }));
 };
 
 /***/ }),
@@ -3731,6 +3919,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _frontend_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @frontend/core */ "./packages/core/src/index.ts");
 
 
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\form\\FormControl.tsx";
 
 
 
@@ -3758,7 +3947,13 @@ var FormControl = function FormControl(_ref) {
   return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_Form__WEBPACK_IMPORTED_MODULE_3__["FormItem"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     label: label,
     colon: false
-  }, formItemProps, errors, rest), children);
+  }, formItemProps, errors, rest, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: this
+  }), children);
 };
 
 /***/ }),
@@ -3939,6 +4134,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../form */ "./packages/ui/src/form/index.ts");
 
 
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\input\\InputField.tsx";
 
 
 
@@ -3969,10 +4165,21 @@ var InputField = function InputField(_ref) {
     touched: touched,
     error: error || submitError,
     required: required,
-    layoutProps: layoutProps
+    layoutProps: layoutProps,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_Input__WEBPACK_IMPORTED_MODULE_3__["Input"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     maxLength: 80
-  }, input, rest, contextValue)));
+  }, input, rest, contextValue, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37
+    },
+    __self: this
+  })));
 };
 
 /***/ }),
@@ -4053,6 +4260,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../form */ "./packages/ui/src/form/index.ts");
 
 
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\input\\InputPasswordField.tsx";
 
 
 
@@ -4074,7 +4282,19 @@ var InputPasswordField = function InputPasswordField(_ref) {
     touched: touched,
     error: error,
     required: required
-  }, layoutProps), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_InputPassword__WEBPACK_IMPORTED_MODULE_3__["InputPassword"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, input, rest)));
+  }, layoutProps, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_InputPassword__WEBPACK_IMPORTED_MODULE_3__["InputPassword"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, input, rest, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: this
+  })));
 };
 
 /***/ }),
@@ -4227,6 +4447,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../input */ "./packages/ui/src/input/index.ts");
 /* harmony import */ var _button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../button */ "./packages/ui/src/button/index.ts");
 /* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../icon */ "./packages/ui/src/icon/index.ts");
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\master-layout\\MasterLayout.tsx";
 
 
 
@@ -4263,26 +4484,79 @@ var MasterLayout = function MasterLayout(_ref3) {
     justifyContent: "flex-start",
     style: {
       minHeight: '100%'
-    }
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Header, {
     flexDirection: "column",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_2__["Flex"], {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    p: "20px 50px"
+    p: "20px 50px",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
-    src: "/static/image/small-logo.png"
-  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RightAction, null)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_2__["Flex"], {
+    src: "/static/image/small-logo.png",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RightAction, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_2__["Flex"], {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    mt: "20px"
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SearchInputContainer, null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SearchInput, {
-    placeholder: "Search for influencers"
-  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SearchButton, null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_icon__WEBPACK_IMPORTED_MODULE_5__["Icon"], {
-    type: "search"
+    mt: "20px",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SearchInputContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SearchInput, {
+    placeholder: "Search for influencers",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SearchButton, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_icon__WEBPACK_IMPORTED_MODULE_5__["Icon"], {
+    type: "search",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71
+    },
+    __self: this
   })))), children);
 };
 
@@ -4306,6 +4580,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../components */ "./components/index.ts");
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\master-layout\\SecondaryLayout.tsx";
 
 
 
@@ -4325,20 +4600,46 @@ var SecondaryLayout = function SecondaryLayout(_ref2) {
     justifyContent: "flex-start",
     style: {
       minHeight: '100%'
-    }
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Header, {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    p: "20px 50px"
+    p: "20px 50px",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-    href: "/"
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
     src: "/static/image/small-logo.png",
     style: {
       cursor: 'pointer'
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_components__WEBPACK_IMPORTED_MODULE_4__["AuthorizedUserBtnGr"], null)), children);
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: this
+  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_components__WEBPACK_IMPORTED_MODULE_4__["AuthorizedUserBtnGr"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    },
+    __self: this
+  })), children);
 };
 
 /***/ }),
@@ -4387,6 +4688,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd_lib_popover_style_index_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_popover_style_index_css__WEBPACK_IMPORTED_MODULE_5__);
 
 
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\popover\\Popover.tsx";
 
 
 
@@ -4397,7 +4699,12 @@ var BasePopover = function BasePopover(_ref) {
       rest = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["className"]);
 
   return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](antd__WEBPACK_IMPORTED_MODULE_4__["Popover"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rest, {
-    overlayClassName: className
+    overlayClassName: className,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12
+    },
+    __self: this
   }));
 };
 
@@ -4447,6 +4754,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Select */ "./packages/ui/src/select/Select.tsx");
 
 
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\select\\MultipleSelectField.tsx";
 
 
 
@@ -4475,18 +4783,34 @@ var MultipleSelectField = function MultipleSelectField(_ref) {
     touched: touched,
     error: error,
     required: required,
-    layoutProps: layoutProps
+    layoutProps: layoutProps,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_Select__WEBPACK_IMPORTED_MODULE_5__["Select"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     mode: "multiple",
     onBlur: onBlurSelect,
     value: value,
     onChange: input.onChange
-  }, rest, selectProps), options.map(function (_ref2) {
+  }, rest, selectProps, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: this
+  }), options.map(function (_ref2) {
     var value = _ref2.value,
         label = _ref2.label;
     return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_Select__WEBPACK_IMPORTED_MODULE_5__["Option"], {
       key: value,
-      value: value
+      value: value,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 50
+      },
+      __self: this
     }, label);
   })));
 };
@@ -4516,6 +4840,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd_lib_empty_style_index_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd/lib/empty/style/index.css */ "./packages/ui/node_modules/antd/lib/empty/style/index.css");
 /* harmony import */ var antd_lib_empty_style_index_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(antd_lib_empty_style_index_css__WEBPACK_IMPORTED_MODULE_5__);
 
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\select\\Select.tsx";
 
 
 
@@ -4542,7 +4867,12 @@ var multipleSelectStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__[
 var SelectRender = function SelectRender(props) {
   return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](antd__WEBPACK_IMPORTED_MODULE_2__["Select"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
     dropdownClassName: props.className,
-    showArrow: true
+    showArrow: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 90
+    },
+    __self: this
   }));
 };
 
@@ -4586,6 +4916,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../form */ "./packages/ui/src/form/index.ts");
 
 
+var _jsxFileName = "E:\\I2M\\i2m-frontend\\packages\\ui\\src\\select\\SelectField.tsx";
 
 
 
@@ -4619,17 +4950,33 @@ var SelectField = function SelectField(_ref) {
     touched: touched,
     error: error,
     required: required,
-    layoutProps: layoutProps
+    layoutProps: layoutProps,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: this
   }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_Select__WEBPACK_IMPORTED_MODULE_4__["Select"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     onChange: input.onChange,
     value: value,
     onBlur: onBlurSelect
-  }, rest, selectProps), options.map(function (_ref3) {
+  }, rest, selectProps, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47
+    },
+    __self: this
+  }), options.map(function (_ref3) {
     var value = _ref3.value,
         label = _ref3.label;
     return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_Select__WEBPACK_IMPORTED_MODULE_4__["Option"], {
       key: value,
-      value: value
+      value: value,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 55
+      },
+      __self: this
     }, label);
   })));
 };
