@@ -1,15 +1,9 @@
 import { AppModel } from './../../models/AppModel'
 import { action, reaction, observable, runInAction } from 'mobx'
+import { profileService } from '@frontend/services'
+import { head, get, filter, find } from 'lodash'
+import { MODE, IInfluencerProps } from '@frontend/constants'
 
-export interface IInfluencerProps {
-  name: string
-  imageUrl: string
-  username: string
-  followers: number
-  engagementRate: number
-  email?: string
-  estimatedPostValue: number
-}
 export interface IListDetailProps {
   id: string
   name: string
@@ -21,49 +15,8 @@ export interface IListProps {
   id: string
 }
 
-const mockListData: IListProps[] = [
-  {
-    name: 'Beauty Leads',
-    id: '1',
-  },
-  {
-    name: 'Travel Leads',
-    id: '2',
-  },
-]
-
-const mockListDetailData: IListDetailProps = {
-  name: 'Beauty Leads',
-  id: '1',
-  influencers: [
-    {
-      name: 'John Doe',
-      email: 'johndoe@gmail.com',
-      username: 'johndoe',
-      imageUrl: '/static/image/user.png',
-      followers: 1.2,
-      engagementRate: 4.83,
-      estimatedPostValue: 1.2,
-    },
-    {
-      name: 'John Doe',
-      email: 'johndoe@gmail.com',
-      username: 'johndoe',
-      imageUrl: '/static/image/user.png',
-      followers: 1.2,
-      engagementRate: 4.83,
-      estimatedPostValue: 1.2,
-    },
-    {
-      name: 'John Doe',
-      email: 'johndoe@gmail.com',
-      username: 'johndoe',
-      imageUrl: '/static/image/user.png',
-      followers: 1.2,
-      engagementRate: 4.83,
-      estimatedPostValue: 1.2,
-    },
-  ],
+interface INewListRequest {
+  name: string
 }
 
 export class MyInfluencerViewModel {
@@ -71,6 +24,12 @@ export class MyInfluencerViewModel {
   @observable listDetail: IListDetailProps
   @observable myList: IListProps[]
   @observable sendEmailModalVisible: boolean
+  @observable createListModalVisible: boolean
+  @observable isLoading: boolean
+  @observable isInitializing: boolean
+  @observable mode: MODE
+  @observable deleteModalVisible: boolean
+  @observable isLoadingDetail: boolean
 
   appModel: AppModel = null
 
@@ -80,8 +39,7 @@ export class MyInfluencerViewModel {
       () => this.listId,
       listId => {
         if (listId) {
-          console.log(listId)
-          this.fetchListDetail() // should be this.fetchListDetail(listId) when having api
+          this.fetchListDetail(listId) // should be this.fetchListDetail(listId) when having api
         } else {
           this.listDetail = null
         }
@@ -93,15 +51,31 @@ export class MyInfluencerViewModel {
   @action
   async fetchMyList() {
     // call api here
-    
-    this.myList = mockListData
-    this.listId = '1'
+    try {
+      this.isInitializing = true
+      const { data } = await profileService.getMyInfluencerLists<IListProps[]>()
+      this.isInitializing = false
+      runInAction(() => {
+        this.myList = data
+        if (!this.listId) {
+          this.listId = get(head(this.myList), 'id')
+        }
+      })
+    } catch (error) {
+      this.isInitializing = false
+      return error
+    }
   }
 
   @action
-  async fetchListDetail() {
+  async fetchListDetail(id: string) {
     // call api here
-    this.listDetail = mockListDetailData
+    this.isLoadingDetail = true
+    const { data } = await profileService.getMyListDetail(id)
+    this.isLoadingDetail = false
+    runInAction(() => {
+      this.listDetail = data
+    })
   }
 
   @action
@@ -112,5 +86,76 @@ export class MyInfluencerViewModel {
   @action
   changeEmailModalVisible(visible: boolean) {
     this.sendEmailModalVisible = visible
+  }
+  @action
+  changeNewListModalVisible(visible: boolean) {
+    this.createListModalVisible = visible
+  }
+
+  @action
+  async createNewList(requestData: INewListRequest) {
+    try {
+      this.isLoading = true
+      const { data } = await profileService.createNewList<IListProps>(
+        requestData
+      )
+      this.isLoading = false
+      this.fetchMyList()
+      runInAction(() => {
+        this.listId = data.id
+        this.createListModalVisible = false
+      })
+    } catch (error) {
+      this.isLoading = false
+      return error
+    }
+  }
+
+  @action
+  async renameInfluencerList(requestData: INewListRequest) {
+    try {
+      this.isLoading = true
+      const { data } = await profileService.renameMyInfluencerList<
+        IListDetailProps
+      >(this.listId, requestData)
+      this.isLoading = false
+      this.createListModalVisible = false
+
+      this.fetchMyList()
+      this.fetchListDetail(data.id)
+    } catch (error) {
+      this.isLoading = false
+      return error
+    }
+  }
+
+  @action
+  changeMode(mode: MODE) {
+    this.mode = mode
+  }
+
+  @action
+  async deleteMyInfluencer() {
+    try {
+      this.isLoading = true
+      await profileService.deleteMyList(this.listId)
+      this.isLoading = false
+      this.deleteModalVisible = false
+      runInAction(() => {
+        this.myList = filter(
+          this.myList,
+          list => get(list, 'id') !== this.listId
+        )
+        this.listId = get(head(this.myList), 'id')
+      })
+    } catch (error) {
+      this.isLoading = false
+      return error
+    }
+  }
+
+  @action
+  changeDeleteModalVisible(visible: boolean) {
+    this.deleteModalVisible = visible
   }
 }

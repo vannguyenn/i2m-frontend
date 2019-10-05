@@ -5,15 +5,10 @@ import { Flex, Grid } from '../layout'
 import { Avatar } from '../avatar'
 import { Divider } from '../divider'
 import Router from 'next/router'
-import { PATHS } from '@frontend/constants'
+import { PATHS, IInfluencerProps } from '@frontend/constants'
+import numeral from 'numeral'
 
-export interface IInfluencerCardProps {
-  profileUrl?: string
-  numberOfFollowers: number
-  fullname: string
-  biography?: string
-  engagementRate: number
-  likesPerPost: number
+export interface IInfluencerCardProps extends IInfluencerProps {
   width?: string
 }
 
@@ -21,10 +16,12 @@ const NumberOfFollowers = styled.div`
   font-weight: 700;
   margin-top: 15px;
   font-size: 20px;
+  text-transform: uppercase;
   color: ${({ theme }) => theme.colors.grey100};
 `
 const FullName = styled(NumberOfFollowers)`
   margin-top: 10px;
+  text-transform: unset;
 `
 
 const Biography = styled.div`
@@ -42,12 +39,14 @@ const NumberContainer = styled(NumberOfFollowers)`
 `
 
 export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
-  profileUrl,
-  numberOfFollowers,
-  fullname,
+  userName,
+  id,
+  fullName,
+  profilePicUrl,
+  followeings,
   biography,
-  engagementRate,
-  likesPerPost,
+  followers,
+  engagement,
   width,
 }) => {
   return (
@@ -55,7 +54,9 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
       bordered={false}
       width={width}
       mt="60px"
-      onClick={() => Router.push(PATHS.detail)}
+      onClick={() =>
+        Router.push(`${PATHS.influencerDetail}?id=${id}&tab=stats`)
+      }
     >
       <Flex
         width="100%"
@@ -63,10 +64,12 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
         justifyContent="flex-start"
         alignItems="center"
       >
-        <Avatar size={150} src={profileUrl || '/static/image/user.png'} />
-        <NumberOfFollowers>{`${numberOfFollowers}M`}</NumberOfFollowers>
+        <Avatar size={150} src={profilePicUrl || '/static/image/user.png'} />
+        <NumberOfFollowers>
+          {(followers && numeral(followers).format('(0.0a)')) || 0}
+        </NumberOfFollowers>
         <Title>FOLLOWERS</Title>
-        <FullName>{fullname}</FullName>
+        <FullName>{fullName}</FullName>
         <Biography>{biography}</Biography>
         <Divider type="horizontal" />
         <Grid
@@ -80,7 +83,7 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
             alignItems="center"
           >
             <Title>ENGAGEMENT</Title>
-            <NumberContainer>{`${engagementRate}%`}</NumberContainer>
+            <NumberContainer>{`${engagement}%`}</NumberContainer>
           </Flex>
           <Flex
             flexDirection="column"
@@ -88,7 +91,7 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
             alignItems="center"
           >
             <Title>LIKES PER POST</Title>
-            <NumberContainer>{`${likesPerPost}K`}</NumberContainer>
+            <NumberContainer>{0}</NumberContainer>
           </Flex>
         </Grid>
       </Flex>

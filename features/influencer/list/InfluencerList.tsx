@@ -7,6 +7,7 @@ import {
   Select,
   Button,
   Card,
+  Spin,
 } from '@frontend/ui'
 import styled from 'styled-components'
 import { map } from 'lodash'
@@ -14,16 +15,19 @@ import { AuthorizedUserBtnGr, GuestButtonGroup } from '../../../components'
 import { observer } from 'mobx-react-lite'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../../models'
+import { useViewModel } from '@frontend/core/src/hooks'
+import { useEffectOnce } from 'react-use'
+import { InfluencerListViewModel } from './InfluencerListViewModel'
 
 const LeftPanel = styled(Layout.Flex)`
-  min-height: calc(100vh - 180px);
+  min-height: calc(100vh - 150px);
   border-right: 1px solid ${({ theme }) => theme.colors.grey25};
   padding: 20px;
 `
 const RightPanel = styled(Layout.Flex)`
   width: calc(100% - 260px);
-  min-height: calc(100vh - 180px);
-  max-height: calc(100vh - 180px);
+  min-height: calc(100vh - 150px);
+  max-height: calc(100vh - 150px);
   overflow: auto;
   padding: 20px 30px 50px 0;
 `
@@ -74,158 +78,144 @@ const SortSelect = styled(Select.Select)`
     }
   }
 `
-const influencers = [
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-]
+
 export const InfluencerList: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
   const token = appModel.authModel.token
+  const influencerListViewModel = useViewModel(
+    InfluencerListViewModel,
+    appModel
+  )
+  const {
+    isFetchingInfluencers,
+    totalInfluencers,
+    influencerList,
+    isLast,
+    currentPage,
+    isLoadingMore,
+  } = influencerListViewModel
+  useEffectOnce(() => {
+    influencerListViewModel.fetchInfluencers(0)
+  })
+
+  const handleScroll = e => {
+    const bottom =
+      e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight
+    if (bottom && !isLast) {
+      influencerListViewModel.fetchInfluencers(currentPage + 1)
+    }
+  }
 
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
     >
-      <Layout.Flex
-        flexDirection="row"
-        justifyContent="flex-start"
-        alignItems="flex-start"
-      >
-        <LeftPanel
-          flexDirection="column"
+      <Spin.Spin spinning={isFetchingInfluencers}>
+        <Layout.Flex
+          flexDirection="row"
           justifyContent="flex-start"
-          width="260px"
+          alignItems="flex-start"
         >
-          <InputLabel>Engagement</InputLabel>
-          <Layout.Flex
-            flexDirection="row"
-            alignItems="center"
-            justifyContent="space-between"
-            width="100%"
-            mb="15px"
+          <LeftPanel
+            flexDirection="column"
+            justifyContent="flex-start"
+            width="260px"
           >
-            <Input.InputNumber
-              min={0}
-              max={10}
-              step={0.1}
-              defaultValue={0.0}
-              formatter={value => `${value}%`}
-              parser={value => value.replace('%', '')}
-            />
-            <Input.InputNumber
-              min={0}
-              max={10}
-              step={0.1}
-              defaultValue={5.0}
-              formatter={value => `${value}%`}
-              parser={value => value.replace('%', '')}
-            />
-          </Layout.Flex>
-          <InputLabel>Followers</InputLabel>
-          <Layout.Flex
-            flexDirection="row"
-            alignItems="center"
-            justifyContent="space-between"
-            width="100%"
-          >
-            <Input.InputNumber min={1000} placeholder="Min" />
-            <Input.InputNumber min={1000} placeholder="Max" />
-          </Layout.Flex>
-          <Divider.Divider type="horizontal" />
-          <InputLabel style={{ marginTop: '-10px' }}>Category</InputLabel>
-          <Select.Select mode="multiple" placeholder="Interested category">
-            <Select.Option value="1">Beauty</Select.Option>
-            <Select.Option value="2">Travel</Select.Option>
-          </Select.Select>
-          <Divider.Divider type="horizontal" />
-          <Layout.Flex
-            flexDirection="row"
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <SearchBtn>Search</SearchBtn>
-            <ResetBtn>Reset Filters</ResetBtn>
-          </Layout.Flex>
-        </LeftPanel>
-        <RightPanel flexDirection="column" justifyContent="flex-start">
-          <Layout.Flex
-            flexDirection="row"
-            justifyContent="space-between"
-            width="100%"
-            pl="30px"
-          >
-            <ResultText>
-              Showing <Result>1,586</Result> results
-            </ResultText>
+            <InputLabel>Engagement</InputLabel>
             <Layout.Flex
+              flexDirection="row"
               alignItems="center"
-              width="200px"
+              justifyContent="space-between"
+              width="100%"
+              mb="15px"
+            >
+              <Input.InputNumber
+                min={0}
+                max={10}
+                step={0.1}
+                defaultValue={0.0}
+                formatter={value => `${value}%`}
+                parser={value => value.replace('%', '')}
+              />
+              <Input.InputNumber
+                min={0}
+                max={10}
+                step={0.1}
+                defaultValue={5.0}
+                formatter={value => `${value}%`}
+                parser={value => value.replace('%', '')}
+              />
+            </Layout.Flex>
+            <InputLabel>Followers</InputLabel>
+            <Layout.Flex
+              flexDirection="row"
+              alignItems="center"
+              justifyContent="space-between"
+              width="100%"
+            >
+              <Input.InputNumber min={1000} placeholder="Min" />
+              <Input.InputNumber min={1000} placeholder="Max" />
+            </Layout.Flex>
+            <Divider.Divider type="horizontal" />
+            <InputLabel style={{ marginTop: '-10px' }}>Category</InputLabel>
+            <Select.Select mode="multiple" placeholder="Interested category">
+              <Select.Option value="1">Beauty</Select.Option>
+              <Select.Option value="2">Travel</Select.Option>
+            </Select.Select>
+            <Divider.Divider type="horizontal" />
+            <Layout.Flex
+              flexDirection="row"
+              alignItems="center"
               justifyContent="space-between"
             >
-              Sort by
-              <SortSelect defaultValue="1">
-                <Select.Option value="1">Followers</Select.Option>
-                <Select.Option value="2">Engagement</Select.Option>
-              </SortSelect>
+              <SearchBtn>Search</SearchBtn>
+              <ResetBtn>Reset Filters</ResetBtn>
             </Layout.Flex>
-          </Layout.Flex>
-          <Layout.Grid
-            gridGap={2}
-            gridTemplateColumns="1fr 1fr 1fr"
-            justifyItems="center"
+          </LeftPanel>
+          <RightPanel
+            flexDirection="column"
+            justifyContent="flex-start"
+            onScroll={handleScroll}
           >
-            {map(influencers, (influencer, key) => (
-              <Card.InfluencerCard {...influencer} width="350px" key={key} />
-            ))}
-          </Layout.Grid>
-        </RightPanel>
-      </Layout.Flex>
+            <Layout.Flex
+              flexDirection="row"
+              justifyContent="space-between"
+              width="100%"
+              pl="30px"
+            >
+              <ResultText>
+                Showing <Result>{totalInfluencers || 0}</Result> results
+              </ResultText>
+              <Layout.Flex
+                alignItems="center"
+                width="200px"
+                justifyContent="space-between"
+              >
+                Sort by
+                <SortSelect defaultValue="1">
+                  <Select.Option value="1">Followers</Select.Option>
+                  <Select.Option value="2">Engagement</Select.Option>
+                </SortSelect>
+              </Layout.Flex>
+            </Layout.Flex>
+
+            <Layout.Grid
+              gridGap={2}
+              gridTemplateColumns="1fr 1fr 1fr"
+              justifyItems="center"
+            >
+              {map(influencerList, (influencer, key) => (
+                <Card.InfluencerCard {...influencer} width="350px" key={key} />
+              ))}
+            </Layout.Grid>
+            {!isFetchingInfluencers && (
+              <Spin.Spin spinning={isLoadingMore}>
+                <Layout.Box width="100%" mt="60px" />
+              </Spin.Spin>
+            )}
+          </RightPanel>
+        </Layout.Flex>
+      </Spin.Spin>
     </MasterLayout.MasterLayout>
   )
 })

@@ -5,7 +5,7 @@ import { ModalProps } from 'antd/lib/modal'
 import 'antd/lib/modal/style/index.css'
 import { Footer } from './Footer'
 
-const modalStyle = css`
+const mediumModalStyle = css`
   min-width: 416px;
   .ant-modal-header {
     padding: 12px 12px 12px 40px;
@@ -35,7 +35,32 @@ const modalStyle = css`
     color: #000;
   }
 `
+const smallModalStyle = css`
+  min-width: 320px;
+  max-width: 640px;
 
+  &.ant-modal {
+    top: calc(50vh - 200px);
+  }
+  .ant-modal-header {
+    padding: 24px 24px 0 24px;
+    border-bottom: none;
+    .ant-modal-title {
+      word-break: break-word;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+  .ant-modal-body {
+    padding: 12px 24px 0 24px;
+    color: #000;
+  }
+  .ant-modal-footer {
+    border-top: none;
+    padding: 16px 24px 24px 24px;
+  }
+`
 const AntMediumModal: React.FunctionComponent<ModalProps> = ({
   onCancel,
   onOk,
@@ -71,5 +96,41 @@ const AntMediumModal: React.FunctionComponent<ModalProps> = ({
 )
 
 export const MediumModal = styled(AntMediumModal)<ModalProps>`
-  ${modalStyle};
+  ${mediumModalStyle};
+`
+const AntSmallModal: React.FunctionComponent<ModalProps> = ({
+  onCancel,
+  onOk,
+  okText,
+  cancelText,
+  children,
+  footer,
+  okButtonProps,
+  cancelButtonProps,
+  ...props
+}) => (
+  <AntModal
+    onCancel={onCancel}
+    footer={
+      footer || (
+        <Footer
+          handleCancel={onCancel}
+          handleOk={onOk}
+          okText={okText}
+          cancelText={cancelText}
+          okButtonProps={okButtonProps}
+          cancelButtonProps={cancelButtonProps}
+        />
+      )
+    }
+    closable={false}
+    maskClosable={false}
+    {...props}
+  >
+    {children}
+  </AntModal>
+)
+
+export const SmallModal = styled(AntSmallModal)<ModalProps>`
+  ${smallModalStyle};
 `

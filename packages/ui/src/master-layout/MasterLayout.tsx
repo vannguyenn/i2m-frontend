@@ -6,7 +6,7 @@ import { Button } from '../button'
 import { Icon } from '../icon'
 
 const Header = styled(Flex)`
-  height: 180px;
+  height: 150px;
   background-color: ${({ theme }) => theme.colors.primary100};
 `
 const SearchInputContainer = styled.div`
@@ -58,12 +58,7 @@ export const MasterLayout: React.FunctionComponent<IMasterLayoutProps> = ({
           <img src="/static/image/small-logo.png" />
           <RightAction />
         </Flex>
-        <Flex
-          flexDirection="row"
-          justifyContent="center"
-          alignItems="center"
-          mt="20px"
-        >
+        <Flex flexDirection="row" justifyContent="center" alignItems="center">
           <SearchInputContainer>
             <SearchInput placeholder="Search for influencers" />
           </SearchInputContainer>

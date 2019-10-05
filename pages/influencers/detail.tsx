@@ -9,8 +9,15 @@ const InfluencerDetail = dynamic(
   }
 )
 
+interface IRouterQuery {
+  id: number
+  tab: string
+}
+
 const InfluencerDetailPage: React.FunctionComponent<
-  WithRouterProps<{ tab: string }>
-> = ({ router }) => <InfluencerDetail tab={router.query.tab} />
+  WithRouterProps<IRouterQuery>
+> = ({ router }) => (
+  <InfluencerDetail id={router.query.id} tab={router.query.tab} />
+)
 
 export default withRouter(InfluencerDetailPage)

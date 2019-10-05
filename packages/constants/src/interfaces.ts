@@ -34,3 +34,17 @@ export interface ISelectOption {
   value: any
   label: string | React.ReactNode
 }
+
+export interface IInfluencerProps {
+  id: string
+  fullName: string
+  biography: string
+  followers: string
+  userName: string
+  mediaCount: number
+  profilePicUrl: string
+  email?: string
+  engagement: number
+  category: string[]
+  followeings: string
+}

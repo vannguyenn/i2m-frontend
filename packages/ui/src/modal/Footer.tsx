@@ -18,7 +18,7 @@ const OkButton = styled(Button)`
   }
 `
 
-const CancelButton = styled(Button)`
+export const CancelButton = styled(Button)`
   &&& {
     height: 35px;
     border-radius: 2px;

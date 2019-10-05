@@ -9,6 +9,7 @@ export interface IUser {
   imageUrl: string
   emailVerified?: boolean
 }
+
 export class ProfileModel {
   @observable currentUser: IUser
   appModel: AppModel

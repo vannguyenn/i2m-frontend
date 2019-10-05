@@ -20,7 +20,7 @@ export const SelectField: React.FunctionComponent<
     IFormLayout
 > = ({
   input,
-  meta: { touched, error },
+  meta: { touched, error, submitError },
   label,
   options = [],
   required,
@@ -40,7 +40,7 @@ export const SelectField: React.FunctionComponent<
     <FormControl
       label={label}
       touched={touched}
-      error={error}
+      error={error || submitError}
       required={required}
       layoutProps={layoutProps}
     >

@@ -6,7 +6,8 @@ import 'antd/lib/form/style/index.css'
 
 const CustomAntForm = styled(AntForm)`
   width: 100%;
-  &.ant-form-vertical .ant-form-item {
+  &.ant-form-vertical .ant-form-item,
+  &.ant-form-horizontal .ant-form-item {
     padding-bottom: 0;
     margin-bottom: 0;
   }

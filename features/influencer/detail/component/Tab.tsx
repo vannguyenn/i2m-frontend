@@ -56,7 +56,10 @@ export const Tab: React.FunctionComponent<ITabProps> = ({ tab }) => {
       {tabs.map((el, index) => (
         <TabItem isActive={tab === el.name} key={index}>
           <NextLink
-            href={{ pathname: Router.pathname, query: { tab: el.name } }}
+            href={{
+              pathname: Router.pathname,
+              query: { ...Router.query, tab: el.name },
+            }}
           >
             {el.title}
           </NextLink>

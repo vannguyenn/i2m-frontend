@@ -17,6 +17,10 @@ import * as Popover from './popover'
 import * as Drawer from './drawer'
 import * as Modal from './modal'
 import * as TextEditor from './text-editor'
+import * as Spin from './spin'
+import * as Empty from './empty'
+
+export * from './notification'
 
 export {
   themes,
@@ -38,4 +42,6 @@ export {
   Drawer,
   Modal,
   TextEditor,
+  Spin,
+  Empty,
 }

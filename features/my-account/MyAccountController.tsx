@@ -16,8 +16,8 @@ import { AppModel } from '../../models'
 import { AuthorizedUserBtnGr, GuestButtonGroup } from '../../components'
 
 const Content = styled(Layout.Flex)`
-  min-height: calc(100vh - 180px);
-  max-height: calc(100vh - 180px);
+  min-height: calc(100vh - 150px);
+  max-height: calc(100vh - 150px);
   overflow: auto;
   background: #f3f4f6;
   padding: 20px 100px;

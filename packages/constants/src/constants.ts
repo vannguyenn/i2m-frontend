@@ -33,3 +33,13 @@ export const OAUTH2_REDIRECT_URI = 'http://localhost:3000'
 export const API_BASE_URL = 'http://localhost:8080'
 export const GOOGLE_AUTH_URL =
   API_BASE_URL + '/oauth2/authorize/google?redirect_uri=' + OAUTH2_REDIRECT_URI
+
+export const MESSAGES = {
+  SAVE_SUCESS: 'Save successfully.',
+  existing_influencer: 'Influencer is already saved to this list',
+}
+
+export enum MODE {
+  CREATE = 'create',
+  EDIT = 'edit',
+}

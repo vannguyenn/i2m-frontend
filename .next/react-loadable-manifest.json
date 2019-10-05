@@ -1,5 +1,5 @@
 {
-  "../features/influencer-management": [
+  "../../features/influencer/detail": [
     {
       "id": "./node_modules/react-quill/dist/quill.snow.css",
       "name": "./node_modules/react-quill/dist/quill.snow.css",
@@ -13,7 +13,7 @@
       "publicPath": "static/chunks/1.js"
     }
   ],
-  "../features/my-account": [
+  "../features/influencer-management": [
     {
       "id": "./node_modules/react-quill/dist/quill.snow.css",
       "name": "./node_modules/react-quill/dist/quill.snow.css",
