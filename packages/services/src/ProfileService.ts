@@ -30,4 +30,13 @@ export class ProfileService extends BaseService {
   public saveInfluencerToList<T>(listId: string, influencerId: string) {
     return this.post(`/my-influencer/${listId}`, { influencerId })
   }
+
+  public updateCurrentUser<T = any>(userid: string, data: any) {
+    console.log(data)
+    return this.put<T>(`/${userid}/update`, data)
+  }
+
+  public updatePassword<T = any>(userid: string, data: any) {
+    return this.put<T>(`/${userid}/update-password`, data)
+  }
 }

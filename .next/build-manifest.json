@@ -13,11 +13,15 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/influencers/detail": [
+    "/my-influencers": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/my-influencers": [
+    "/next/dist/pages/_error": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/register": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

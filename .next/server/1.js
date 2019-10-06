@@ -238,7 +238,7 @@ var HomeAuthorizedBtnGr = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_7__["o
   var appModel = Object(_frontend_core_src_context__WEBPACK_IMPORTED_MODULE_5__["useAppContext"])();
   var currentUserAvatar = react__WEBPACK_IMPORTED_MODULE_0__["useMemo"](function () {
     if (appModel.profileModel.currentUser) {
-      return appModel.profileModel.currentUser.imageUrl;
+      return appModel.profileModel.currentUser.imgUrl;
     }
   }, [appModel.profileModel.currentUser]);
   var content = [{
@@ -4044,6 +4044,11 @@ function (_BaseService) {
     value: function signup(data) {
       return this.post('/signup', data);
     }
+  }, {
+    key: "getCategory",
+    value: function getCategory() {
+      return this.get('/category');
+    }
   }]);
 
   return AuthService;
@@ -4268,6 +4273,17 @@ function (_BaseService) {
       return this.post("/my-influencer/".concat(listId), {
         influencerId: influencerId
       });
+    }
+  }, {
+    key: "updateCurrentUser",
+    value: function updateCurrentUser(userid, data) {
+      console.log(data);
+      return this.put("/".concat(userid, "/update"), data);
+    }
+  }, {
+    key: "updatePassword",
+    value: function updatePassword(userid, data) {
+      return this.put("/".concat(userid, "/update-password"), data);
     }
   }]);
 
@@ -6443,7 +6459,7 @@ var SelectField = function SelectField(_ref) {
 /*!*****************************************!*\
   !*** ./packages/ui/src/select/index.ts ***!
   \*****************************************/
-/*! exports provided: MultipleSelectField, Select, Option, SelectField */
+/*! exports provided: SelectField, MultipleSelectField, Select, Option */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

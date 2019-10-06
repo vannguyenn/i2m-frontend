@@ -23,11 +23,17 @@ export interface LoginData {
   tokenType: string
 }
 
+export interface ICategory {
+  id: string
+  name: string
+}
+
 export class AuthModel {
   @observable tokenExpires: number = 1
   @observable token: string = cookies.get(KEYS.ACCESS_TOKEN)
   @observable sucess: boolean
   @observable message: string
+  @observable category: ICategory[]
 
   constructor() {
     reaction(
@@ -67,7 +73,6 @@ export class AuthModel {
   async signup(data: SignUpInfo) {
     try {
       await authService.signup<I2MResponse>(data)
-
       return Promise.resolve()
     } catch (error) {
       return Promise.reject(error)
@@ -83,5 +88,14 @@ export class AuthModel {
   @action
   setToken(token: string) {
     this.token = token
+  }
+
+  @action
+  async getCategory() {
+    const { data } = await authService.getCategory<ICategory[]>()
+    runInAction(() => {
+      this.category = data
+    })
+    return data
   }
 }

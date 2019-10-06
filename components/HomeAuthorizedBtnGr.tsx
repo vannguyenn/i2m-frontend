@@ -29,7 +29,7 @@ export const HomeAuthorizedBtnGr: React.FunctionComponent = observer(() => {
 
   const currentUserAvatar = React.useMemo(() => {
     if (appModel.profileModel.currentUser) {
-      return appModel.profileModel.currentUser.imageUrl
+      return appModel.profileModel.currentUser.imgUrl
     }
   }, [appModel.profileModel.currentUser])
 

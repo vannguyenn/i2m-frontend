@@ -7,6 +7,7 @@ import {
   Select,
   Button,
   Avatar,
+  notification
 } from '@frontend/ui'
 import styled from 'styled-components'
 import { Field, Form, FormRenderProps } from 'react-final-form'
@@ -14,6 +15,11 @@ import { observer } from 'mobx-react-lite'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
 import { AuthorizedUserBtnGr, GuestButtonGroup } from '../../components'
+import { ISelectOption,PATHS,MESSAGES } from '@frontend/constants'
+import { useEffectOnce } from 'react-use'
+import { map } from 'lodash'
+import Router from 'next/router'
+import Link from 'next/link'
 
 const Content = styled(Layout.Flex)`
   min-height: calc(100vh - 150px);
@@ -57,8 +63,14 @@ const FORM_FIELDS = {
   },
 }
 
-const MyAccountForm: React.FunctionComponent<FormRenderProps> = ({
+export interface ICategory extends FormRenderProps {
+  Lcategories: ISelectOption[]
+}
+
+const MyAccountForm: React.FunctionComponent<ICategory> = ({
   handleSubmit,
+  initialValues,
+  Lcategories
 }) => (
   <AntForm.Form onSubmit={handleSubmit} layout="vertical">
     <Field
@@ -66,6 +78,7 @@ const MyAccountForm: React.FunctionComponent<FormRenderProps> = ({
       label={FORM_FIELDS.email.label}
       placeholder={FORM_FIELDS.email.placeholder}
       component={Input.InputField}
+      disabled={true}
     />
     <Field
       name={FORM_FIELDS.fullname.name}
@@ -73,27 +86,30 @@ const MyAccountForm: React.FunctionComponent<FormRenderProps> = ({
       placeholder={FORM_FIELDS.fullname.placeholder}
       component={Input.InputField}
     />
-    <Field
+    {/* <Field
       name={FORM_FIELDS.password.name}
       label={FORM_FIELDS.password.label}
       placeholder={FORM_FIELDS.password.placeholder}
       component={Input.InputPasswordField}
-    />
+    /> */}
     <Field
       name={FORM_FIELDS.category.name}
       label={FORM_FIELDS.category.label}
       placeholder={FORM_FIELDS.category.placeholder}
       component={Select.MultipleSelectField}
-      options={[
-        { value: '1', label: 'Van xinh dep' },
-        { value: '2', label: 'Beauty' },
-      ]}
+      defaultValue={initialValues.categories}
+      options={Lcategories}
     />
 
     <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-      <Button.Button type="primary" width="180px" style={{ height: '43px' }}>
+      <Button.Button type="primary" htmlType="submit" width="180px" style={{ height: '43px' }}>
         Update
       </Button.Button>
+      {initialValues.password && <Link href="/change-password">
+          <Button.Button type="ghost" width="180px" style={{ height: '43px' }}>
+            Change Password
+          </Button.Button>
+        </Link>}
     </Layout.Flex>
   </AntForm.Form>
 )
@@ -102,7 +118,32 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
   const token = appModel.authModel.token
   const currentUser = appModel.profileModel.currentUser
-  const profileImage = currentUser && currentUser.imageUrl
+  const profileImage = currentUser && currentUser.imgUrl
+
+  useEffectOnce(() => {
+    appModel.authModel.getCategory()
+  })
+
+  const category = appModel.authModel.category
+  const normalizeCate = map(category, (cate) => ({ value: cate.id, label: cate.name }))
+  
+  const handleSubmit = async (value: any) => {
+    console.log(value)
+    try {
+      await appModel.profileModel.updateCurrentUser(value)
+      notification.success({
+        message: MESSAGES.SAVE_SUCESS,
+        duration: 4,
+        placement: 'topRight',
+      })
+      //Router.push(PATHS.myProfile)
+      return undefined
+    } catch (error) {
+      console.log(error)
+      return error
+    }
+  }
+
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
@@ -116,7 +157,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
         >
           <Layout.Flex justifyContent="center">
             {profileImage ? (
-              <Avatar.Avatar src={currentUser.imageUrl} size={150} />
+              <Avatar.Avatar src={currentUser.imgUrl} size={150} />
             ) : (
               <Avatar.Avatar src="/static/image/user.png" size={150} />
             )}
@@ -124,8 +165,8 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
 
           <Form
             initialValues={currentUser}
-            onSubmit={v => console.log(v)}
-            render={MyAccountForm}
+            onSubmit={handleSubmit}
+            render={(proprs) => <MyAccountForm {...proprs} Lcategories={normalizeCate} />}
           />
         </FormContainer>
       </Content>
