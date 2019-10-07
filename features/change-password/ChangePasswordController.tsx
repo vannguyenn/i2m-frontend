@@ -103,14 +103,14 @@ const ChangePasswordForm: React.FunctionComponent<FormRenderProps> = ({
       <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
         <Button.Button
           width="180px"
-          type="primary"
+          type="default"
           style={{ height: '43px' }}
           onClick={() => Router.push(PATHS.myProfile)}
         >
           {CONSTANTS.comeback}
         </Button.Button>
         <Button.Button
-          type="default"
+          type="primary"
           width="180px"
           style={{ height: '43px' }}
           htmlType="submit"

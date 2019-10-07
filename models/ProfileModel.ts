@@ -19,10 +19,10 @@ export interface IUserUpdate {
   fullName: string
   categories: ICategory[]
 }
-export interface IPasswordUpdate{
-  id:string
-  oldPassword:string
-  password:string
+export interface IPasswordUpdate {
+  id: string
+  oldPassword: string
+  password: string
 }
 
 export class ProfileModel {
@@ -55,10 +55,10 @@ export class ProfileModel {
   }
 
   @action
-  async updatePassword(data:IPasswordUpdate){
+  async updatePassword(data: IPasswordUpdate) {
     try {
-      const id  = this.currentUser.id
-      await profileService.updatePassword<IPasswordUpdate>(id,data)
+      const id = this.currentUser.id
+      await profileService.updatePassword<IPasswordUpdate>(id, data)
       return Promise.resolve()
     } catch (error) {
       return Promise.reject(error)

@@ -4011,7 +4011,6 @@ function (_BaseService) {
   }, {
     key: "updateCurrentUser",
     value: function updateCurrentUser(userid, data) {
-      console.log(data);
       return this.put("/".concat(userid, "/update"), data);
     }
   }, {

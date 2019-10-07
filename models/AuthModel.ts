@@ -4,7 +4,7 @@ import { KEYS, I2MResponse, PATHS } from '@frontend/constants'
 import * as cookies from 'js-cookie'
 import Router from 'next/router'
 import { utils } from '@frontend/core'
-
+import { AppModel } from './AppModel'
 export interface LoginInfo {
   email: string
   password: string
@@ -34,7 +34,7 @@ export class AuthModel {
   @observable sucess: boolean
   @observable message: string
   @observable category: ICategory[]
-
+ 
   constructor() {
     reaction(
       () => ({ token: this.token, expires: this.tokenExpires }),

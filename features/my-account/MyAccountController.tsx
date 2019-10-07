@@ -15,7 +15,7 @@ import { observer } from 'mobx-react-lite'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
 import { AuthorizedUserBtnGr, GuestButtonGroup } from '../../components'
-import { ISelectOption,PATHS,MESSAGES } from '@frontend/constants'
+import { ISelectOption, PATHS, MESSAGES } from '@frontend/constants'
 import { useEffectOnce } from 'react-use'
 import { map } from 'lodash'
 import Router from 'next/router'
@@ -72,78 +72,87 @@ const MyAccountForm: React.FunctionComponent<ICategory> = ({
   initialValues,
   Lcategories
 }) => (
-  <AntForm.Form onSubmit={handleSubmit} layout="vertical">
-    <Field
-      name={FORM_FIELDS.email.name}
-      label={FORM_FIELDS.email.label}
-      placeholder={FORM_FIELDS.email.placeholder}
-      component={Input.InputField}
-      disabled={true}
-    />
-    <Field
-      name={FORM_FIELDS.fullname.name}
-      label={FORM_FIELDS.fullname.label}
-      placeholder={FORM_FIELDS.fullname.placeholder}
-      component={Input.InputField}
-    />
-    {/* <Field
+    <AntForm.Form onSubmit={handleSubmit} layout="vertical">
+      <Field
+        name={FORM_FIELDS.email.name}
+        label={FORM_FIELDS.email.label}
+        placeholder={FORM_FIELDS.email.placeholder}
+        component={Input.InputField}
+        disabled={true}
+      />
+      <Field
+        name={FORM_FIELDS.fullname.name}
+        label={FORM_FIELDS.fullname.label}
+        placeholder={FORM_FIELDS.fullname.placeholder}
+        component={Input.InputField}
+      />
+      {/* <Field
       name={FORM_FIELDS.password.name}
       label={FORM_FIELDS.password.label}
       placeholder={FORM_FIELDS.password.placeholder}
       component={Input.InputPasswordField}
     /> */}
-    <Field
-      name={FORM_FIELDS.category.name}
-      label={FORM_FIELDS.category.label}
-      placeholder={FORM_FIELDS.category.placeholder}
-      component={Select.MultipleSelectField}
-      defaultValue={initialValues.categories}
-      options={Lcategories}
-    />
+      <Field
+        name={FORM_FIELDS.category.name}
+        label={FORM_FIELDS.category.label}
+        placeholder={FORM_FIELDS.category.placeholder}
+        component={Select.MultipleSelectField}
+        defaultValue={initialValues.categories}
+        options={Lcategories}
+      />
 
-    <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-      <Button.Button type="primary" htmlType="submit" width="180px" style={{ height: '43px' }}>
-        Update
+      <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
+        <Button.Button type="ghost" htmlType="submit" width="180px" style={{ height: '43px' }}>
+          Update
       </Button.Button>
-      {initialValues.password && <Link href="/change-password">
-          <Button.Button type="ghost" width="180px" style={{ height: '43px' }}>
+        {initialValues.password && <Link href="/change-password">
+          <Button.Button type="primary" width="180px" style={{ height: '43px' }}>
             Change Password
           </Button.Button>
         </Link>}
-    </Layout.Flex>
-  </AntForm.Form>
-)
+      </Layout.Flex>
+    </AntForm.Form>
+  )
 
 export const MyAccountController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
+  
+  useEffectOnce(() => {
+    appModel.profileModel.getCurrentUser()
+    appModel.authModel.getCategory()
+  })
   const token = appModel.authModel.token
   const currentUser = appModel.profileModel.currentUser
   const profileImage = currentUser && currentUser.imgUrl
-
-  useEffectOnce(() => {
-    appModel.authModel.getCategory()
-  })
-
+  
   const category = appModel.authModel.category
   const normalizeCate = map(category, (cate) => ({ value: cate.id, label: cate.name }))
-  
+
   const handleSubmit = async (value: any) => {
-    console.log(value)
     try {
       await appModel.profileModel.updateCurrentUser(value)
+      Router.push(PATHS.myProfile)
       notification.success({
         message: MESSAGES.SAVE_SUCESS,
         duration: 4,
         placement: 'topRight',
       })
-      //Router.push(PATHS.myProfile)
       return undefined
     } catch (error) {
       console.log(error)
       return error
     }
   }
+  // const handleChangeImage = (e: any) => {
+  //   e.preventDefault();
+  //   let file = e.target.files[0]
+  //   let reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onloadend = () => {
+  //     console.log(reader.result)
 
+  //   };
+  // }
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
@@ -159,8 +168,10 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
             {profileImage ? (
               <Avatar.Avatar src={currentUser.imgUrl} size={150} />
             ) : (
-              <Avatar.Avatar src="/static/image/user.png" size={150} />
-            )}
+                <Avatar.Avatar src="/static/image/user.png" size={150} />
+              )}
+            {/* <input type="file" onChange={handleChangeImage}
+              required /> */}
           </Layout.Flex>
 
           <Form

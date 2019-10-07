@@ -32,7 +32,6 @@ export class ProfileService extends BaseService {
   }
 
   public updateCurrentUser<T = any>(userid: string, data: any) {
-    console.log(data)
     return this.put<T>(`/${userid}/update`, data)
   }
 

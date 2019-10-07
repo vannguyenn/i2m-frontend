@@ -9,6 +9,7 @@ import { AppModel } from '../../models'
 import { field } from '@frontend/core/src/validate'
 import { map } from 'lodash'
 import { useEffectOnce } from 'react-use'
+import { observer } from 'mobx-react-lite'
 
 const CONSTANTS = {
   intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
@@ -98,15 +99,15 @@ const RegisterForm: React.FunctionComponent<IRegisterForm> = ({
         component={Input.InputPasswordField}
         validate={field.minLength(8)}
       />
-   
-        <Field
-          name={FORM_FIELDS.category.name}
-          label={FORM_FIELDS.category.label}
-          placeholder={FORM_FIELDS.category.placeholder}
-          component={Select.MultipleSelectField}
-          options={categories}
-        />
- 
+
+      <Field
+        name={FORM_FIELDS.category.name}
+        label={FORM_FIELDS.category.label}
+        placeholder={FORM_FIELDS.category.placeholder}
+        component={Select.MultipleSelectField}
+        options={categories}
+      />
+
       <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
         <Button.Button
           width="180px"
@@ -127,12 +128,12 @@ const RegisterForm: React.FunctionComponent<IRegisterForm> = ({
     </AntForm.Form>
   )
 
-export const RegisterController: React.FunctionComponent = () => {
+export const RegisterController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
-
   useEffectOnce(() => {
     appModel.authModel.getCategory()
   })
+
   const category = appModel.authModel.category
   const normalizeCate = map(category, (cate) => ({ value: cate.id, label: cate.name }))
 
@@ -180,4 +181,4 @@ export const RegisterController: React.FunctionComponent = () => {
       </LoginBox>
     </Layout.Flex>
   )
-}
+})
