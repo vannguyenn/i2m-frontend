@@ -69,7 +69,7 @@ export interface ICategory extends FormRenderProps {
 
 const MyAccountForm: React.FunctionComponent<ICategory> = ({
   handleSubmit,
-  initialValues,
+  initialValues = {},
   Lcategories
 }) => (
     <AntForm.Form onSubmit={handleSubmit} layout="vertical">

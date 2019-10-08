@@ -1,5 +1,5 @@
 {
-  "../features/home": [
+  "../features/change-password": [
     {
       "id": "./node_modules/react-quill/dist/quill.snow.css",
       "name": "./node_modules/react-quill/dist/quill.snow.css",
@@ -9,11 +9,11 @@
     {
       "id": "./components/AuthorizedUserBtnGr.tsx",
       "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/1.js",
-      "publicPath": "static/chunks/1.js"
+      "file": "static/chunks/5.js",
+      "publicPath": "static/chunks/5.js"
     }
   ],
-  "../features/login": [
+  "../features/my-account": [
     {
       "id": "./node_modules/react-quill/dist/quill.snow.css",
       "name": "./node_modules/react-quill/dist/quill.snow.css",
@@ -25,20 +25,6 @@
       "name": "./components/AuthorizedUserBtnGr.tsx",
       "file": "static/chunks/2.js",
       "publicPath": "static/chunks/2.js"
-    }
-  ],
-  "../features/register": [
-    {
-      "id": "./node_modules/react-quill/dist/quill.snow.css",
-      "name": "./node_modules/react-quill/dist/quill.snow.css",
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    },
-    {
-      "id": "./components/AuthorizedUserBtnGr.tsx",
-      "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/4.js",
-      "publicPath": "static/chunks/4.js"
     }
   ],
   "./noop": [
