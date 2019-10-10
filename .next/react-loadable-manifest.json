@@ -1,5 +1,5 @@
 {
-  "../features/change-password": [
+  "../features/influencer-management": [
     {
       "id": "./node_modules/react-quill/dist/quill.snow.css",
       "name": "./node_modules/react-quill/dist/quill.snow.css",
@@ -9,11 +9,11 @@
     {
       "id": "./components/AuthorizedUserBtnGr.tsx",
       "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/5.js",
-      "publicPath": "static/chunks/5.js"
+      "file": "static/chunks/3.js",
+      "publicPath": "static/chunks/3.js"
     }
   ],
-  "../features/my-account": [
+  "../features/login": [
     {
       "id": "./node_modules/react-quill/dist/quill.snow.css",
       "name": "./node_modules/react-quill/dist/quill.snow.css",

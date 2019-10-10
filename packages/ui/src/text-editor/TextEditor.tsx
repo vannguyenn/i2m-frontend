@@ -4,21 +4,36 @@ import styled from 'styled-components'
 import { height as systemHeight, HeightProps } from 'styled-system'
 import { ComponentProps } from 'react-quill'
 
-export interface ITextEditorProps extends HeightProps, ComponentProps {}
+export interface ITextEditorProps extends HeightProps, ComponentProps { }
 
 const defaultModules = {
-  toolbar: [
-    ['bold', 'italic', 'underline'],
-    [{ list: 'bullet' }, { list: 'ordered' }, { align: 'right' }],
-    ['link'],
-  ],
+  toolbar: {
+    container: [
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{
+        'color': ['#FF0000', '#001F3F', '#0074D9', '#7FDBFF',
+          '#39CCCC', '#3D9970', '#2ECC40', '#01FF70',
+          '#FFDC00', '#FF851B', '#FF4136', '#85144B',
+          '#F012BE', '#B10DC9', '#111111', '#AAAAAA'
+        ]
+      }],
+      ['bold', 'italic', 'underline'],
+      [{ list: 'bullet' }, { list: 'ordered' }, { align: 'right' }],
+      ['link'], ['clean'],
+    ],
+    handlers: {
+      link: (e:any) => {
+       
+      }
+    }
+  },
 }
 
 const QuillEditor = styled.div<HeightProps>`
   .ql-toolbar.ql-snow {
     display: flex;
     align-items: center;
-    border: 1px solid ${({ theme }) => theme.colors.dark25};
+    // border: 1px solid ${({ theme }) => theme.colors.dark25};
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     color: ${({ theme }) => theme.colors.dark85};
@@ -57,7 +72,7 @@ const QuillEditor = styled.div<HeightProps>`
     }
   }
   .ql-container.ql-snow {
-    border: 1px solid ${({ theme }) => theme.colors.dark25};
+    // border: 1px solid ${({ theme }) => theme.colors.dark25};
     border-top: 0;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;

@@ -2520,7 +2520,9 @@ var API_BASE_URL = 'http://localhost:8080';
 var GOOGLE_AUTH_URL = API_BASE_URL + '/oauth2/authorize/google?redirect_uri=' + OAUTH2_REDIRECT_URI;
 var MESSAGES = {
   SAVE_SUCESS: 'Save successfully.',
-  existing_influencer: 'Influencer is already saved to this list'
+  existing_influencer: 'Influencer is already saved to this list',
+  SEND_MAIL_SUCCESS: 'Send email successfully.',
+  SEND_MAIL_ERROR: 'Sorry! email delivery failure'
 };
 var MODE;
 
@@ -3868,6 +3870,68 @@ function () {
 
 /***/ }),
 
+/***/ "./packages/services/src/ConfessionService.ts":
+/*!****************************************************!*\
+  !*** ./packages/services/src/ConfessionService.ts ***!
+  \****************************************************/
+/*! exports provided: ConfessionService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfessionService", function() { return ConfessionService; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _BaseService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BaseService */ "./packages/services/src/BaseService.ts");
+
+
+
+
+
+
+var ConfessionService =
+/*#__PURE__*/
+function (_BaseService) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(ConfessionService, _BaseService);
+
+  function ConfessionService() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, ConfessionService);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(ConfessionService)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.name = "confession";
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(ConfessionService, [{
+    key: "sendEmail",
+    value: function sendEmail(data) {
+      var x = {
+        influencerId: data.influencerId,
+        subject: data.subject,
+        body: data.body,
+        attachFile: data.attachFile ? data.attachFile : null
+      };
+      console.log(x);
+      return this.post('/send', x);
+    }
+  }]);
+
+  return ConfessionService;
+}(_BaseService__WEBPACK_IMPORTED_MODULE_5__["BaseService"]);
+
+/***/ }),
+
 /***/ "./packages/services/src/InfluencerService.ts":
 /*!****************************************************!*\
   !*** ./packages/services/src/InfluencerService.ts ***!
@@ -4089,7 +4153,7 @@ function () {
 /*!****************************************!*\
   !*** ./packages/services/src/index.ts ***!
   \****************************************/
-/*! exports provided: AuthService, RestClient, ProfileService, InfluencerService, restClient, authService, profileService, influencerService */
+/*! exports provided: AuthService, RestClient, ProfileService, InfluencerService, ConfessionService, restClient, authService, profileService, influencerService, confessionService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4098,10 +4162,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authService", function() { return authService; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "profileService", function() { return profileService; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "influencerService", function() { return influencerService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "confessionService", function() { return confessionService; });
 /* harmony import */ var _InfluencerService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InfluencerService */ "./packages/services/src/InfluencerService.ts");
 /* harmony import */ var _ProfileService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileService */ "./packages/services/src/ProfileService.ts");
 /* harmony import */ var _RestClient__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RestClient */ "./packages/services/src/RestClient.ts");
 /* harmony import */ var _AuthService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AuthService */ "./packages/services/src/AuthService.ts");
+/* harmony import */ var _ConfessionService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ConfessionService */ "./packages/services/src/ConfessionService.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return _AuthService__WEBPACK_IMPORTED_MODULE_3__["AuthService"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RestClient", function() { return _RestClient__WEBPACK_IMPORTED_MODULE_2__["RestClient"]; });
@@ -4109,6 +4175,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProfileService", function() { return _ProfileService__WEBPACK_IMPORTED_MODULE_1__["ProfileService"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InfluencerService", function() { return _InfluencerService__WEBPACK_IMPORTED_MODULE_0__["InfluencerService"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ConfessionService", function() { return _ConfessionService__WEBPACK_IMPORTED_MODULE_4__["ConfessionService"]; });
+
+
 
 
 
@@ -4122,6 +4192,7 @@ var restClient = new _RestClient__WEBPACK_IMPORTED_MODULE_2__["RestClient"]();
 var authService = new _AuthService__WEBPACK_IMPORTED_MODULE_3__["AuthService"](restClient);
 var profileService = new _ProfileService__WEBPACK_IMPORTED_MODULE_1__["ProfileService"](restClient);
 var influencerService = new _InfluencerService__WEBPACK_IMPORTED_MODULE_0__["InfluencerService"](restClient);
+var confessionService = new _ConfessionService__WEBPACK_IMPORTED_MODULE_4__["ConfessionService"](restClient);
 
 /***/ }),
 
@@ -5676,7 +5747,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mediumModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["css"])(["min-width:416px;.ant-modal-header{padding:12px 12px 12px 40px;height:48px;display:flex;align-items:center;background-color:", ";.ant-modal-title{word-break:break-word;color:#fff;}}.ant-modal-close-x{width:48px;height:48px;line-height:48px;color:#fff;font-size:14px;}.ant-modal-footer{padding:12px 12px 12px 40px;}.ant-modal-body{padding:12px 40px;color:#000;}"], function (_ref) {
+var mediumModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["css"])(["min-width:616px;.ant-modal-header{padding:12px 12px 12px 40px;height:48px;display:flex;align-items:center;background-color:", ";.ant-modal-title{word-break:break-word;color:#fff;}}.ant-modal-close-x{width:48px;height:48px;line-height:48px;color:#fff;font-size:14px;}.ant-modal-footer{padding:12px 12px 12px 40px;}.ant-modal-body{padding:12px 40px;color:#000;}"], function (_ref) {
   var theme = _ref.theme;
   return theme.colors.primary;
 });
@@ -6524,57 +6595,60 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var defaultModules = {
-  toolbar: [['bold', 'italic', 'underline'], [{
-    list: 'bullet'
-  }, {
-    list: 'ordered'
-  }, {
-    align: 'right'
-  }], ['link']]
+  toolbar: {
+    container: [[{
+      'header': [1, 2, 3, 4, 5, 6, false]
+    }], [{
+      'color': ['#FF0000', '#001F3F', '#0074D9', '#7FDBFF', '#39CCCC', '#3D9970', '#2ECC40', '#01FF70', '#FFDC00', '#FF851B', '#FF4136', '#85144B', '#F012BE', '#B10DC9', '#111111', '#AAAAAA']
+    }], ['bold', 'italic', 'underline'], [{
+      list: 'bullet'
+    }, {
+      list: 'ordered'
+    }, {
+      align: 'right'
+    }], ['link'], ['clean']],
+    handlers: {
+      link: function link(e) {}
+    }
+  }
 };
 var QuillEditor = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
   displayName: "TextEditor__QuillEditor",
   componentId: "sc-15utxlb-0"
-})([".ql-toolbar.ql-snow{display:flex;align-items:center;border:1px solid ", ";border-top-left-radius:3px;border-top-right-radius:3px;color:", ";padding:0;padding-left:5px;height:33px;.ql-formats{display:flex;align-items:center;padding-right:5px;margin-right:5px;height:16px;&:not(:last-child){border-right:2px solid ", ";}.ql-active{color:", ";background:", ";.ql-stroke{stroke:", ";}}.ql-link{transform:rotate(90deg);}}button:hover{color:", ";background:", ";.ql-stroke{stroke:", ";}}}.ql-container.ql-snow{border:1px solid ", ";border-top:0;border-bottom-left-radius:3px;border-bottom-right-radius:3px;font-size:14px;.ql-editor.ql-blank::before{font-size:14px;color:", ";font-style:normal;}.ql-editor ol,.ql-editor ul{padding-inline-start:0;}a{color:", ";}", ";}"], function (_ref) {
+})([".ql-toolbar.ql-snow{display:flex;align-items:center;border-top-left-radius:3px;border-top-right-radius:3px;color:", ";padding:0;padding-left:5px;height:33px;.ql-formats{display:flex;align-items:center;padding-right:5px;margin-right:5px;height:16px;&:not(:last-child){border-right:2px solid ", ";}.ql-active{color:", ";background:", ";.ql-stroke{stroke:", ";}}.ql-link{transform:rotate(90deg);}}button:hover{color:", ";background:", ";.ql-stroke{stroke:", ";}}}.ql-container.ql-snow{border-top:0;border-bottom-left-radius:3px;border-bottom-right-radius:3px;font-size:14px;.ql-editor.ql-blank::before{font-size:14px;color:", ";font-style:normal;}.ql-editor ol,.ql-editor ul{padding-inline-start:0;}a{color:", ";}", ";}"], function (_ref) {
   var theme = _ref.theme;
-  return theme.colors.dark25;
+  return theme.colors.dark85;
 }, function (_ref2) {
   var theme = _ref2.theme;
-  return theme.colors.dark85;
+  return theme.colors.medium5;
 }, function (_ref3) {
   var theme = _ref3.theme;
-  return theme.colors.medium5;
+  return theme.colors.medium;
 }, function (_ref4) {
   var theme = _ref4.theme;
-  return theme.colors.medium;
+  return theme.colors.primary5;
 }, function (_ref5) {
   var theme = _ref5.theme;
-  return theme.colors.primary5;
+  return theme.colors.medium;
 }, function (_ref6) {
   var theme = _ref6.theme;
-  return theme.colors.medium;
+  return theme.colors.dark85;
 }, function (_ref7) {
   var theme = _ref7.theme;
-  return theme.colors.dark85;
+  return theme.colors.dark5;
 }, function (_ref8) {
   var theme = _ref8.theme;
-  return theme.colors.dark5;
+  return theme.colors.dark85;
 }, function (_ref9) {
   var theme = _ref9.theme;
-  return theme.colors.dark85;
+  return theme.colors.dark25;
 }, function (_ref10) {
   var theme = _ref10.theme;
-  return theme.colors.dark25;
-}, function (_ref11) {
-  var theme = _ref11.theme;
-  return theme.colors.dark25;
-}, function (_ref12) {
-  var theme = _ref12.theme;
   return theme.colors.medium;
 }, styled_system__WEBPACK_IMPORTED_MODULE_4__["height"]);
-var TextEditor = function TextEditor(_ref13) {
-  var height = _ref13.height,
-      props = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref13, ["height"]);
+var TextEditor = function TextEditor(_ref11) {
+  var height = _ref11.height,
+      props = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref11, ["height"]);
 
   if (true) {
     return null;

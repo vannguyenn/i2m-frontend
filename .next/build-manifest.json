@@ -13,11 +13,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/change-password": [
+    "/login": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/my-account": [
+    "/my-influencers": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

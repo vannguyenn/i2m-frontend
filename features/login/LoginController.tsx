@@ -8,6 +8,7 @@ import {
   Button,
   Checkbox,
   Divider,
+  notification
 } from '@frontend/ui'
 import { Field, Form, FormRenderProps } from 'react-final-form'
 import Router from 'next/router'
@@ -103,7 +104,7 @@ const LoginForm: React.FunctionComponent<FormRenderProps> = ({
       placeholder={FORM_FIELDS.email.placeholder}
       component={Input.InputField}
       prefix={<Icon.Icon type="mail" color="dark30" />}
-      validate={validate.field.required}
+      validate={validate.field.email}
     />
     <Field
       name={FORM_FIELDS.password.name}
@@ -147,6 +148,11 @@ export const LoginController: React.FunctionComponent = () => {
       await appModel.authModel.login(v)
       return undefined
     } catch (error) {
+      notification.error({
+        message: error,
+        duration: 4,
+        placement: 'topRight',
+      })
       return error
     }
   }

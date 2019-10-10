@@ -1,7 +1,7 @@
 import { AppModel } from './../../models/AppModel'
 import { action, reaction, observable, runInAction } from 'mobx'
-import { profileService } from '@frontend/services'
-import { head, get, filter, find } from 'lodash'
+import { profileService,confessionService } from '@frontend/services'
+import { head, get, filter } from 'lodash'
 import { MODE, IInfluencerProps } from '@frontend/constants'
 
 export interface IListDetailProps {
@@ -19,6 +19,14 @@ interface INewListRequest {
   name: string
 }
 
+export interface ISendMail{
+  sentTo: string
+  influencerId:number
+  subject: string
+  body: string
+  attachFile?: any
+}
+
 export class MyInfluencerViewModel {
   @observable listId: string
   @observable listDetail: IListDetailProps
@@ -30,6 +38,8 @@ export class MyInfluencerViewModel {
   @observable mode: MODE
   @observable deleteModalVisible: boolean
   @observable isLoadingDetail: boolean
+  
+  @observable currentEmail:string
 
   appModel: AppModel = null
 
@@ -84,9 +94,12 @@ export class MyInfluencerViewModel {
   }
 
   @action
-  changeEmailModalVisible(visible: boolean) {
+  changeEmailModalVisible(visible: boolean,id:string) {
     this.sendEmailModalVisible = visible
+    const v= this.listDetail.influencers.filter(item=>item.id == id);
+    this.currentEmail = v.map(i=>i.email).toString()
   }
+
   @action
   changeNewListModalVisible(visible: boolean) {
     this.createListModalVisible = visible
@@ -157,5 +170,19 @@ export class MyInfluencerViewModel {
   @action
   changeDeleteModalVisible(visible: boolean) {
     this.deleteModalVisible = visible
+  }
+
+  @action
+  async sendMail(data:ISendMail){
+    try {
+      let id = this.listDetail.influencers
+                   .filter(i =>i.email === data.sentTo)
+                   .map(m=>m.id).toString();
+      data.influencerId = Number(id);
+      console.log(data)
+      await confessionService.sendEmail(data)
+    } catch (error) {
+      return error
+    }
   }
 }
