@@ -102,7 +102,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
   const token = appModel.authModel.token
   const currentUser = appModel.profileModel.currentUser
-  const profileImage = currentUser && currentUser.imageUrl
+  const profileImage = currentUser && currentUser.imgUrl
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
@@ -116,7 +116,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
         >
           <Layout.Flex justifyContent="center">
             {profileImage ? (
-              <Avatar.Avatar src={currentUser.imageUrl} size={150} />
+              <Avatar.Avatar src={currentUser.imgUrl} size={150} />
             ) : (
               <Avatar.Avatar src="/static/image/user.png" size={150} />
             )}

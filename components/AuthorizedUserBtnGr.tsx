@@ -32,7 +32,7 @@ export const AuthorizedUserBtnGr: React.FunctionComponent = () => {
 
   const currentUserAvatar = React.useMemo(() => {
     if (appModel.profileModel.currentUser) {
-      return appModel.profileModel.currentUser.imageUrl
+      return appModel.profileModel.currentUser.imgUrl
     }
   }, [appModel.profileModel.currentUser])
 

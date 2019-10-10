@@ -6,7 +6,7 @@ export interface IUser {
   id: string
   name: string
   email: string
-  imageUrl: string
+  imgUrl: string
   emailVerified?: boolean
 }
 

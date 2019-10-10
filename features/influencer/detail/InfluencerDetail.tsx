@@ -71,7 +71,9 @@ const Fullname = styled.div`
   letter-spacing: 0.5px;
 `
 const Username = styled.div`
-  color: ${({ theme }) => theme.colors.dark100};
+  a {
+    color: ${({ theme }) => theme.colors.dark100};
+  }
   font-size: 16px;
 `
 const NumberUnit = styled(Username)`
@@ -183,9 +185,11 @@ export const InfluencerDetail: React.FunctionComponent<
                     '/static/image/user.png'
                   }
                 />
-                <BlueTick>
-                  <img src="/static/image/blue-tick.svg" />
-                </BlueTick>
+                {get(influencerDetail, 'verified') && (
+                  <BlueTick>
+                    <img src="/static/image/blue-tick.svg" />
+                  </BlueTick>
+                )}
               </AvatarContainer>
 
               <Layout.Flex
@@ -195,7 +199,17 @@ export const InfluencerDetail: React.FunctionComponent<
                 alignItems="flex-start"
               >
                 <Fullname>{get(influencerDetail, 'fullName')}</Fullname>
-                <Username>{`@${get(influencerDetail, 'userName')}`}</Username>
+                <Username>
+                  <a
+                    href={`https://www.instagram.com/${get(
+                      influencerDetail,
+                      'username'
+                    )}`}
+                    target="_blank"
+                  >
+                    {`@${get(influencerDetail, 'username')}`}
+                  </a>
+                </Username>
                 <Layout.Flex flexDirection="row" alignItems="center" mt="5px">
                   <NumberText>{get(influencerDetail, 'mediaCount')}</NumberText>
                   <NumberUnit>Posts</NumberUnit>

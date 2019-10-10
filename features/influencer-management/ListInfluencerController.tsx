@@ -181,10 +181,12 @@ const TimeStamp = styled.div`
 `
 interface ActionButtonProps {
   setModalVisible: (visible: boolean) => void
+  onClickDeleteBtn: () => void
 }
 
 const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
   setModalVisible,
+  onClickDeleteBtn,
 }) => {
   const [drawerVisible, setDrawerVisible] = React.useState(false)
 
@@ -195,7 +197,7 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
         alignItems="center"
         style={{ position: 'absolute', top: '5px', right: '10px' }}
       >
-        <IconButton>
+        <IconButton onClick={onClickDeleteBtn}>
           <Icon.Icon type="delete" theme="filled" />
         </IconButton>
         <IconButton onClick={() => setDrawerVisible(true)}>
@@ -287,8 +289,8 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       listDetail,
       deleteModalVisible,
       isLoadingDetail,
+      removeInfluencerModalVisible,
     } = myInfluencerViewModel
-
     const setModalVisible = (visible: boolean) =>
       myInfluencerViewModel.changeEmailModalVisible(visible)
 
@@ -299,8 +301,18 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       myInfluencerViewModel.changeDeleteModalVisible(visible)
     }
 
+    const setRemoveInfluencerModalVisible = (visible: boolean) => {
+      myInfluencerViewModel.changeRemoveInfluencerModalVisible(visible)
+    }
+
     const onDelete = async () => {
       await myInfluencerViewModel.deleteMyInfluencer()
+    }
+
+    const removeInfluencer = async () => {
+      await myInfluencerViewModel.removeAnInfluencerFromList(
+        currentInfluencer.id
+      )
     }
     const handleSendMail = (v: any) => {
       console.log(v)
@@ -349,6 +361,11 @@ export const ListInfluencerController: React.FunctionComponent = observer(
         <a onClick={onClickDelete}>Delete</a>
       </>
     )
+    const [currentInfluencer, setCurrentInfluencer] = React.useState()
+    const onClickDeleteInfluencerBtn = (influencer: IInfluencerProps) => {
+      setRemoveInfluencerModalVisible(true)
+      setCurrentInfluencer(influencer)
+    }
 
     return (
       <MasterLayout.SecondaryLayout>
@@ -454,7 +471,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                   >
                                     <Fullname>{influencer.fullName}</Fullname>
                                     <Username>{`@${
-                                      influencer.userName
+                                      influencer.username
                                     }`}</Username>
                                   </Layout.Flex>
                                   <Layout.Grid
@@ -516,7 +533,12 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                   </Layout.Flex>
                                 )}
                               </Layout.Flex>
-                              <ActionButton setModalVisible={setModalVisible} />
+                              <ActionButton
+                                setModalVisible={setModalVisible}
+                                onClickDeleteBtn={() =>
+                                  onClickDeleteInfluencerBtn(influencer)
+                                }
+                              />
                             </InfluencerCard>
                           )
                         )
@@ -533,6 +555,24 @@ export const ListInfluencerController: React.FunctionComponent = observer(
               </Spin.Spin>
             </RightPanel>
           </Content>
+          {removeInfluencerModalVisible && (
+            <Modal.SmallModal
+              visible={removeInfluencerModalVisible}
+              title={`Delete ${currentInfluencer.fullName} from ${
+                listDetail.name
+              } ?`}
+              onCancel={() => setRemoveInfluencerModalVisible(false)}
+              width="400px"
+              footer={
+                <DeleteFooter
+                  okText={MODALPROPS.footer.deleteText}
+                  setDeleteModalVisible={setRemoveInfluencerModalVisible}
+                  onDelete={removeInfluencer}
+                  loading={isLoading}
+                />
+              }
+            />
+          )}
           {sendEmailModalVisible && (
             <Modal.MediumModal
               visible={sendEmailModalVisible}

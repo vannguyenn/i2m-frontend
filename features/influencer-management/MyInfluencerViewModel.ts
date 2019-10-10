@@ -1,8 +1,9 @@
 import { AppModel } from './../../models/AppModel'
 import { action, reaction, observable, runInAction } from 'mobx'
-import { profileService } from '@frontend/services'
+import { profileService, groupService } from '@frontend/services'
 import { head, get, filter, find } from 'lodash'
-import { MODE, IInfluencerProps } from '@frontend/constants'
+import { MODE, IInfluencerProps, MESSAGES } from '@frontend/constants'
+import { notification } from '@frontend/ui'
 
 export interface IListDetailProps {
   id: string
@@ -29,7 +30,8 @@ export class MyInfluencerViewModel {
   @observable isInitializing: boolean
   @observable mode: MODE
   @observable deleteModalVisible: boolean
-  @observable isLoadingDetail: boolean
+  @observable isLoadingDetail: boolean = false
+  @observable removeInfluencerModalVisible: boolean
 
   appModel: AppModel = null
 
@@ -71,7 +73,7 @@ export class MyInfluencerViewModel {
   async fetchListDetail(id: string) {
     // call api here
     this.isLoadingDetail = true
-    const { data } = await profileService.getMyListDetail(id)
+    const { data } = await groupService.getMyListDetail(id)
     this.isLoadingDetail = false
     runInAction(() => {
       this.listDetail = data
@@ -96,9 +98,7 @@ export class MyInfluencerViewModel {
   async createNewList(requestData: INewListRequest) {
     try {
       this.isLoading = true
-      const { data } = await profileService.createNewList<IListProps>(
-        requestData
-      )
+      const { data } = await groupService.createNewList<IListProps>(requestData)
       this.isLoading = false
       this.fetchMyList()
       runInAction(() => {
@@ -115,9 +115,10 @@ export class MyInfluencerViewModel {
   async renameInfluencerList(requestData: INewListRequest) {
     try {
       this.isLoading = true
-      const { data } = await profileService.renameMyInfluencerList<
-        IListDetailProps
-      >(this.listId, requestData)
+      const { data } = await groupService.updateGroup<IListDetailProps>(
+        this.listId,
+        requestData
+      )
       this.isLoading = false
       this.createListModalVisible = false
 
@@ -138,7 +139,7 @@ export class MyInfluencerViewModel {
   async deleteMyInfluencer() {
     try {
       this.isLoading = true
-      await profileService.deleteMyList(this.listId)
+      await groupService.deleteMyList(this.listId)
       this.isLoading = false
       this.deleteModalVisible = false
       runInAction(() => {
@@ -147,6 +148,11 @@ export class MyInfluencerViewModel {
           list => get(list, 'id') !== this.listId
         )
         this.listId = get(head(this.myList), 'id')
+      })
+      notification.success({
+        message: MESSAGES.SAVE_SUCESS,
+        duration: 3,
+        placement: 'bottomLeft',
       })
     } catch (error) {
       this.isLoading = false
@@ -157,5 +163,32 @@ export class MyInfluencerViewModel {
   @action
   changeDeleteModalVisible(visible: boolean) {
     this.deleteModalVisible = visible
+  }
+
+  @action
+  changeRemoveInfluencerModalVisible(visible: boolean) {
+    this.removeInfluencerModalVisible = visible
+  }
+
+  @action
+  async removeAnInfluencerFromList(influencerId: string) {
+    try {
+      this.isLoading = true
+      const { data } = await groupService.removeAnInfluencerFromList<
+        IListDetailProps
+      >(this.listId, influencerId)
+      runInAction(() => {
+        this.isLoading = false
+        this.removeInfluencerModalVisible = false
+        this.listDetail = data
+      })
+      notification.success({
+        message: MESSAGES.SAVE_SUCESS,
+        duration: 3,
+        placement: 'bottomLeft',
+      })
+    } catch (error) {
+      this.isLoading = false
+    }
   }
 }

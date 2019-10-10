@@ -46,7 +46,7 @@ export class InfluencerDetailViewModel {
 
   @action
   async saveInfluencerToList(listId: string, name: string) {
-    const response = await profileService.saveInfluencerToList(listId, name)
+    const response = await influencerService.saveInfluencerToList(listId, name)
     runInAction(() => {
       this.saveToListModalVisible = false
     })

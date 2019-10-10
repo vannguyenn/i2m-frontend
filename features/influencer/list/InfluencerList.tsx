@@ -15,9 +15,7 @@ import { AuthorizedUserBtnGr, GuestButtonGroup } from '../../../components'
 import { observer } from 'mobx-react-lite'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../../models'
-import { useViewModel } from '@frontend/core/src/hooks'
 import { useEffectOnce } from 'react-use'
-import { InfluencerListViewModel } from './InfluencerListViewModel'
 
 const LeftPanel = styled(Layout.Flex)`
   min-height: calc(100vh - 150px);
@@ -82,10 +80,7 @@ const SortSelect = styled(Select.Select)`
 export const InfluencerList: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
   const token = appModel.authModel.token
-  const influencerListViewModel = useViewModel(
-    InfluencerListViewModel,
-    appModel
-  )
+
   const {
     isFetchingInfluencers,
     totalInfluencers,
@@ -93,19 +88,23 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
     isLast,
     currentPage,
     isLoadingMore,
-  } = influencerListViewModel
+  } = appModel
+
   useEffectOnce(() => {
-    influencerListViewModel.fetchInfluencers(0)
+    appModel.searchInfluencers(0)
   })
 
   const handleScroll = e => {
     const bottom =
       e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight
     if (bottom && !isLast) {
-      influencerListViewModel.fetchInfluencers(currentPage + 1)
+      appModel.searchInfluencers(currentPage + 1)
     }
   }
 
+  const onSortChange = (value: string) => {
+    appModel.changeSortBy(value)
+  }
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
@@ -192,9 +191,9 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
                 justifyContent="space-between"
               >
                 Sort by
-                <SortSelect defaultValue="1">
-                  <Select.Option value="1">Followers</Select.Option>
-                  <Select.Option value="2">Engagement</Select.Option>
+                <SortSelect defaultValue="followers" onChange={onSortChange}>
+                  <Select.Option value="followers">Followers</Select.Option>
+                  <Select.Option value="engagement">Engagement</Select.Option>
                 </SortSelect>
               </Layout.Flex>
             </Layout.Flex>
@@ -208,7 +207,7 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
                 <Card.InfluencerCard {...influencer} width="350px" key={key} />
               ))}
             </Layout.Grid>
-            {!isFetchingInfluencers && (
+            {!isFetchingInfluencers && influencerList.length !== 0 && (
               <Spin.Spin spinning={isLoadingMore}>
                 <Layout.Box width="100%" mt="60px" />
               </Spin.Spin>

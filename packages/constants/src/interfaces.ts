@@ -40,11 +40,12 @@ export interface IInfluencerProps {
   fullName: string
   biography: string
   followers: string
-  userName: string
+  username: string
   mediaCount: number
   profilePicUrl: string
   email?: string
   engagement: number
   category: string[]
   followeings: string
+  verified: boolean
 }

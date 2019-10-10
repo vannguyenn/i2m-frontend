@@ -1,39 +1,13 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Flex } from '../layout'
-import { Input } from '../input'
-import { Button } from '../button'
-import { Icon } from '../icon'
+import { SearchContainer } from '../../../../components/SearchContainer'
 
 const Header = styled(Flex)`
   height: 150px;
   background-color: ${({ theme }) => theme.colors.primary100};
 `
-const SearchInputContainer = styled.div`
-  width: 40%;
-  height: 40px;
-  background: #fff;
-  border-radius: 5px;
-  margin-right: 20px;
-`
 
-const SearchInput = styled(Input)`
-  &&& {
-    height: 100%;
-    border: none;
-    padding-left: 20px;
-    &:hover,
-    &:focus {
-      border-color: ${({ theme }) => theme.colors.primary};
-    }
-  }
-`
-export const SearchButton = styled(Button)`
-  &&& {
-    border: none;
-    height: 40px;
-  }
-`
 export interface IMasterLayoutProps {
   rightAction?: React.FunctionComponent
 }
@@ -58,14 +32,7 @@ export const MasterLayout: React.FunctionComponent<IMasterLayoutProps> = ({
           <img src="/static/image/small-logo.png" />
           <RightAction />
         </Flex>
-        <Flex flexDirection="row" justifyContent="center" alignItems="center">
-          <SearchInputContainer>
-            <SearchInput placeholder="Search for influencers" />
-          </SearchInputContainer>
-          <SearchButton>
-            <Icon type="search" />
-          </SearchButton>
-        </Flex>
+        <SearchContainer />
       </Header>
       {children}
     </Flex>
