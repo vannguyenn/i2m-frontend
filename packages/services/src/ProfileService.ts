@@ -38,4 +38,8 @@ export class ProfileService extends BaseService {
   public updatePassword<T = any>(userid: string, data: any) {
     return this.put<T>(`/${userid}/update-password`, data)
   }
+
+  public uploadAvatar(file: any) {
+    return this.put('/avatar',file)
+  }
 }
