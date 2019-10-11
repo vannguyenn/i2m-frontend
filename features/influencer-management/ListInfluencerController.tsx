@@ -29,6 +29,8 @@ import { MESSAGES, MODE, IInfluencerProps } from '@frontend/constants'
 import numeral from 'numeral'
 import { field } from '@frontend/core/src/validate'
 
+import { Upload, Icon as AntIcon, Button as AntButton } from 'antd';
+
 const MODALPROPS = {
   title: 'Send Mail',
   footer: {
@@ -314,23 +316,6 @@ export const ListInfluencerController: React.FunctionComponent = observer(
     const onDelete = async () => {
       await myInfluencerViewModel.deleteMyInfluencer()
     }
-    const handleSendMail = async (v: any) => {
-      try {
-        await myInfluencerViewModel.sendMail(v)
-        notification.success({
-          message: MESSAGES.SEND_MAIL_SUCCESS,
-          duration: 3,
-          placement: 'topRight',
-        })
-      } catch (error) {
-        notification.error({
-          message: MESSAGES.SEND_MAIL_ERROR,
-          duration: 4,
-          placement: 'topRight',
-        })
-        return error
-      }
-    }
 
     const handleNewList = async (v: any) => {
       try {
@@ -375,6 +360,55 @@ export const ListInfluencerController: React.FunctionComponent = observer(
         <a onClick={onClickDelete}>Delete</a>
       </>
     )
+
+
+    const [loading, setLoading] = React.useState(false)
+    const [attactFile, setAttachFile] = React.useState(' ')
+    const [fileList, setfileList] = React.useState([])
+    const handleChange = info => {
+      setfileList([])
+      if (info.file.status === 'uploading') {
+        setLoading(true)
+        setfileList([])
+        return;
+      }
+      if (info.file.status === 'done') {
+        setAttachFile(info.file.originFileObj)
+        setLoading(false)
+        setfileList([info.file.originFileObj])
+        notification.success({
+          message: `${info.file.name} file uploaded successfully`,
+          duration: 3,
+          placement: 'topRight',
+        })
+      } else if (info.file.status === 'error') {
+        setLoading(false)
+        setfileList([])
+        notification.error({
+          message: `${info.file.name} file upload failed.`,
+          duration: 3,
+          placement: 'topRight',
+        })
+      }
+    };
+
+    const handleSendMail = async (v: any) => {
+      try {
+        await myInfluencerViewModel.sendMail(v, attactFile)
+        notification.success({
+          message: MESSAGES.SEND_MAIL_SUCCESS,
+          duration: 3,
+          placement: 'topRight',
+        })
+      } catch (error) {
+        notification.error({
+          message: MESSAGES.SEND_MAIL_ERROR,
+          duration: 4,
+          placement: 'topRight',
+        })
+        return error
+      }
+    }
 
     return (
       <MasterLayout.SecondaryLayout>
@@ -562,6 +596,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
               </Spin.Spin>
             </RightPanel>
           </Content>
+
           {/* Send Mail */}
           {sendEmailModalVisible && (
             <Modal.MediumModal
@@ -589,9 +624,9 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                         component={Input.InputField}
                         defaultValue={currentEmail}
                         placeholder={MODALPROPS.fields.sendTo.placeholder}
-                       // label={MODALPROPS.fields.sendTo.label}
-                       // required
-                       disabled={true}
+                        // label={MODALPROPS.fields.sendTo.label}
+                        // required
+                        disabled={true}
                         style={{
                           borderTop: 'none',
                           borderLeft: 'none',
@@ -626,6 +661,21 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                       height="230px"
                       validate={field.required}
                     />
+
+                    <Upload
+                      name="file"
+                      multiple={false}
+                      accept="image/*,.doc,.docx,.xlsx,.pdf,pptx,txt"
+                      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                      className="uploader"
+                      showUploadList={true}
+                      onChange={handleChange}
+                    >
+                      <AntButton type="dashed" disabled={fileList.length >= 1 ? true : false}>
+                        <AntIcon type={loading ? 'loading' : 'upload'} />Click to Upload
+                      </AntButton>
+                    </Upload>
+
                   </AntForm.Form>
                 )}
               />

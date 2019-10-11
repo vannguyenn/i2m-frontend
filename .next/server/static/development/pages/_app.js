@@ -3945,21 +3945,14 @@ function (_BaseService) {
     }
 
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(ConfessionService)).call.apply(_getPrototypeOf2, [this].concat(args)));
-    _this.name = "confession";
+    _this.name = "users";
     return _this;
   }
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(ConfessionService, [{
     key: "sendEmail",
     value: function sendEmail(data) {
-      var x = {
-        influencerId: data.influencerId,
-        subject: data.subject,
-        body: data.body,
-        attachFile: data.attachFile ? data.attachFile : null
-      };
-      console.log(x);
-      return this.post('/send', x);
+      return this.post('', data);
     }
   }]);
 
@@ -4194,7 +4187,7 @@ function () {
 /*!****************************************!*\
   !*** ./packages/services/src/index.ts ***!
   \****************************************/
-/*! exports provided: AuthService, RestClient, InfluencerService, ConfessionService, restClient, authService, profileService, influencerService, confessionService, ProfileService */
+/*! exports provided: AuthService, RestClient, ProfileService, InfluencerService, restClient, authService, profileService, influencerService, confessionService, ConfessionService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -20,11 +20,11 @@ interface INewListRequest {
 }
 
 export interface ISendMail{
-  sentTo: string
-  influencerId:number
+  attachFile?: any
   subject: string
   body: string
-  attachFile?: any
+  influencerId:string
+  sentTo: string
 }
 
 export class MyInfluencerViewModel {
@@ -173,14 +173,19 @@ export class MyInfluencerViewModel {
   }
 
   @action
-  async sendMail(data:ISendMail){
+  async sendMail(data:ISendMail,attachFile:any){
     try {
       let id = this.listDetail.influencers
                    .filter(i =>i.email === data.sentTo)
                    .map(m=>m.id).toString();
-      data.influencerId = Number(id);
-      console.log(data)
-      await confessionService.sendEmail(data)
+      data.influencerId = id
+  
+      let val = new FormData();
+      val.append('attachFile',attachFile)
+      val.append('subject',data.subject)
+      val.append('body',data.body)
+      val.append('influencerId',data.influencerId)
+      await confessionService.sendEmail(val)
     } catch (error) {
       return error
     }

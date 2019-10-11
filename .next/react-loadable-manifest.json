@@ -1,18 +1,4 @@
 {
-  "../features/home": [
-    {
-      "id": "./node_modules/react-quill/dist/quill.snow.css",
-      "name": "./node_modules/react-quill/dist/quill.snow.css",
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    },
-    {
-      "id": "./components/AuthorizedUserBtnGr.tsx",
-      "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/1.js",
-      "publicPath": "static/chunks/1.js"
-    }
-  ],
   "../features/influencer-management": [
     {
       "id": "./node_modules/react-quill/dist/quill.snow.css",
@@ -23,8 +9,8 @@
     {
       "id": "./components/AuthorizedUserBtnGr.tsx",
       "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/3.js",
-      "publicPath": "static/chunks/3.js"
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
     }
   ],
   "../features/my-account": [
@@ -37,8 +23,8 @@
     {
       "id": "./components/AuthorizedUserBtnGr.tsx",
       "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/2.js",
-      "publicPath": "static/chunks/2.js"
+      "file": "static/chunks/3.js",
+      "publicPath": "static/chunks/3.js"
     }
   ],
   "./noop": [

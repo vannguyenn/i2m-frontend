@@ -173,8 +173,6 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
   const uploadAvatar = async () => {
     try {
       setLoading(true)
-      console.log(avatarUrl)
-
       const data = new FormData();
       data.append('file', avatarUrl);
       await appModel.profileModel.updateAvatar(data)
@@ -186,7 +184,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
 
       setLoading(false)
     } catch (error) {
-
+      console.log(error)
       setLoading(false)
       setImageUrl("/static/image/user.png")
 
