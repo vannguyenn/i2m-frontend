@@ -305,6 +305,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _frontend_core_src_context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @frontend/core/src/context */ "./packages/core/src/context/index.ts");
 /* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! mobx-react-lite */ "mobx-react-lite");
 /* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(mobx_react_lite__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
+
+
 
 
 
@@ -337,7 +342,7 @@ var SearchContainer = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_7__["obser
   };
 
   var searchInfluencer = function searchInfluencer() {
-    appModel.searchInfluencers(0);
+    next_router__WEBPACK_IMPORTED_MODULE_8___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_9__["PATHS"].influencers); // appModel.searchInfluencers(0)
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_1__["Flex"], {
@@ -2698,13 +2703,14 @@ var Footer = function Footer(_ref) {
 /*!*****************************************!*\
   !*** ./packages/ui/src/modal/Modal.tsx ***!
   \*****************************************/
-/*! exports provided: MediumModal, SmallModal */
+/*! exports provided: MediumModal, SmallModal, InfoModal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MediumModal", function() { return MediumModal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SmallModal", function() { return SmallModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoModal", function() { return InfoModal; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
@@ -2728,6 +2734,7 @@ var mediumModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["cs
   return theme.colors.primary;
 });
 var smallModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["css"])(["min-width:320px;max-width:640px;&.ant-modal{top:calc(50vh - 200px);}.ant-modal-header{padding:24px 24px 0 24px;border-bottom:none;.ant-modal-title{word-break:break-word;font-weight:500;font-size:16px;line-height:20px;}}.ant-modal-body{padding:12px 24px 0 24px;color:#000;}.ant-modal-footer{border-top:none;padding:16px 24px 24px 24px;}"]);
+var infoModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["css"])(["min-width:416px;&.ant-modal{top:calc(50vh - 200px);}.ant-modal-header{padding:24px 24px 0 24px;border-bottom:none;.ant-modal-title{word-break:break-word;font-weight:500;font-size:16px;line-height:20px;}}.ant-modal-body{padding:24px;color:#000;}.ant-modal-footer{border-top:none;padding:16px 24px 24px 24px;}"]);
 
 var AntMediumModal = function AntMediumModal(_ref2) {
   var onCancel = _ref2.onCancel,
@@ -2792,13 +2799,37 @@ var SmallModal = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(AntSma
   componentId: "sc-1eaysnk-1"
 })(["", ";"], smallModalStyle);
 
+var AntInfoModal = function AntInfoModal(_ref4) {
+  var onCancel = _ref4.onCancel,
+      onOk = _ref4.onOk,
+      okText = _ref4.okText,
+      cancelText = _ref4.cancelText,
+      children = _ref4.children,
+      footer = _ref4.footer,
+      okButtonProps = _ref4.okButtonProps,
+      cancelButtonProps = _ref4.cancelButtonProps,
+      props = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref4, ["onCancel", "onOk", "okText", "cancelText", "children", "footer", "okButtonProps", "cancelButtonProps"]);
+
+  return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](antd__WEBPACK_IMPORTED_MODULE_4__["Modal"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    onCancel: onCancel,
+    footer: null,
+    closable: false,
+    title: null
+  }, props), children);
+};
+
+var InfoModal = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(AntInfoModal).withConfig({
+  displayName: "Modal__InfoModal",
+  componentId: "sc-1eaysnk-2"
+})(["", ";"], infoModalStyle);
+
 /***/ }),
 
 /***/ "./packages/ui/src/modal/index.ts":
 /*!****************************************!*\
   !*** ./packages/ui/src/modal/index.ts ***!
   \****************************************/
-/*! exports provided: MediumModal, SmallModal, CancelButton, Footer */
+/*! exports provided: MediumModal, SmallModal, InfoModal, CancelButton, Footer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2807,6 +2838,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MediumModal", function() { return _Modal__WEBPACK_IMPORTED_MODULE_0__["MediumModal"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SmallModal", function() { return _Modal__WEBPACK_IMPORTED_MODULE_0__["SmallModal"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InfoModal", function() { return _Modal__WEBPACK_IMPORTED_MODULE_0__["InfoModal"]; });
 
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Footer */ "./packages/ui/src/modal/Footer.tsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CancelButton", function() { return _Footer__WEBPACK_IMPORTED_MODULE_1__["CancelButton"]; });

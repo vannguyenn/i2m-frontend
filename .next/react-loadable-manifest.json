@@ -1,5 +1,33 @@
 {
-  "../../features/influencer/detail": [
+  "../features/change-password": [
+    {
+      "id": 10,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": "./components/AuthorizedUserBtnGr.tsx",
+      "name": "./components/AuthorizedUserBtnGr.tsx",
+      "file": "static/chunks/6.js",
+      "publicPath": "static/chunks/6.js"
+    }
+  ],
+  "../features/home": [
+    {
+      "id": 10,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": "./components/AuthorizedUserBtnGr.tsx",
+      "name": "./components/AuthorizedUserBtnGr.tsx",
+      "file": "static/chunks/1.js",
+      "publicPath": "static/chunks/1.js"
+    }
+  ],
+  "../features/influencer-management": [
     {
       "id": 10,
       "name": null,
@@ -13,7 +41,7 @@
       "publicPath": "static/chunks/3.js"
     }
   ],
-  "../../features/influencer/list": [
+  "../features/login": [
     {
       "id": 10,
       "name": null,
@@ -25,6 +53,34 @@
       "name": "./components/AuthorizedUserBtnGr.tsx",
       "file": "static/chunks/2.js",
       "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "../features/my-account": [
+    {
+      "id": 10,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": "./components/AuthorizedUserBtnGr.tsx",
+      "name": "./components/AuthorizedUserBtnGr.tsx",
+      "file": "static/chunks/4.js",
+      "publicPath": "static/chunks/4.js"
+    }
+  ],
+  "../features/register": [
+    {
+      "id": 10,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": "./components/AuthorizedUserBtnGr.tsx",
+      "name": "./components/AuthorizedUserBtnGr.tsx",
+      "file": "static/chunks/5.js",
+      "publicPath": "static/chunks/5.js"
     }
   ],
   "./noop": [

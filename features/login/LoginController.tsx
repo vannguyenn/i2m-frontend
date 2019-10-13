@@ -8,6 +8,7 @@ import {
   Button,
   Checkbox,
   Divider,
+  notification
 } from '@frontend/ui'
 import { Field, Form, FormRenderProps } from 'react-final-form'
 import Router from 'next/router'
@@ -147,6 +148,11 @@ export const LoginController: React.FunctionComponent = () => {
       await appModel.authModel.login(v)
       return undefined
     } catch (error) {
+      notification.error({
+        message: error,
+        duration: 4,
+        placement: 'topRight',
+      })
       return error
     }
   }
