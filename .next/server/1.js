@@ -2849,7 +2849,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mediumModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["css"])(["min-width:416px;.ant-modal-header{padding:12px 12px 12px 40px;height:48px;display:flex;align-items:center;background-color:", ";.ant-modal-title{word-break:break-word;color:#fff;}}.ant-modal-close-x{width:48px;height:48px;line-height:48px;color:#fff;font-size:14px;}.ant-modal-footer{padding:12px 12px 12px 40px;}.ant-modal-body{padding:12px 40px;color:#000;}"], function (_ref) {
+var mediumModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["css"])(["min-width:616px;.ant-modal-header{padding:12px 12px 12px 40px;height:48px;display:flex;align-items:center;background-color:", ";.ant-modal-title{word-break:break-word;color:#fff;}}.ant-modal-close-x{width:48px;height:48px;line-height:48px;color:#fff;font-size:14px;}.ant-modal-footer{padding:12px 12px 12px 40px;}.ant-modal-body{padding:12px 40px;color:#000;}"], function (_ref) {
   var theme = _ref.theme;
   return theme.colors.primary;
 });

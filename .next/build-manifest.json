@@ -17,31 +17,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/change-password": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/login": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/my-account": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/my-influencers": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/next/dist/pages/_error": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/register": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

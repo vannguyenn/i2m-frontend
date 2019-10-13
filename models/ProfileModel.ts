@@ -65,4 +65,14 @@ export class ProfileModel {
       return Promise.reject(error)
     }
   }
+
+  @action
+  async updateAvatar(file:any){
+    try {
+      await profileService.uploadAvatar(file)
+      return Promise.resolve()
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
 }

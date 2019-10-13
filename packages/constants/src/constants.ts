@@ -37,6 +37,8 @@ export const GOOGLE_AUTH_URL =
 export const MESSAGES = {
   SAVE_SUCESS: 'Save successfully.',
   existing_influencer: 'Influencer is already saved to this list',
+  SEND_MAIL_SUCCESS:'Send email successfully.',
+  SEND_MAIL_ERROR:'Sorry! email delivery failure'
 }
 
 export enum MODE {

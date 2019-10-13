@@ -21,6 +21,7 @@ import { map } from 'lodash'
 import Router from 'next/router'
 import Link from 'next/link'
 import { field } from '@frontend/core/src/validate'
+import { Upload, Icon, message } from 'antd';
 
 const Content = styled(Layout.Flex)`
   min-height: calc(100vh - 150px);
@@ -146,6 +147,55 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
     }
   }
 
+  const [imageUrl, setImageUrl] = React.useState("/static/image/user.png");
+  const [avatarUrl, setAvatarUrl] = React.useState('');
+  const [loading, setLoading] = React.useState(false)
+  function getBase64(img, callback) {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result));
+    reader.readAsDataURL(img);
+  }
+  const handleChange = info => {
+    if (info.file.status === 'uploading') {
+      setLoading(true)
+      return;
+    }
+    if (info.file.status === 'done') {
+      getBase64(info.file.originFileObj, imageUrl => {
+        setImageUrl(imageUrl)
+        setAvatarUrl(info.file.originFileObj)
+        setLoading(false)
+      });
+    }
+  };
+
+  const uploadAvatar = async () => {
+    try {
+      setLoading(true)
+      const data = new FormData();
+      data.append('file', avatarUrl);
+      await appModel.profileModel.updateAvatar(data)
+      notification.success({
+        message: MESSAGES.SAVE_SUCESS,
+        duration: 4,
+        placement: 'topRight',
+      })
+
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+      setLoading(false)
+      setImageUrl("/static/image/user.png")
+
+      notification.error({
+        message: "Upload avata failed.",
+        duration: 4,
+        placement: 'topRight',
+      })
+      return error
+    }
+  }
+
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
@@ -157,12 +207,33 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
           alignContent="center"
           gridGap={2}
         >
-          <Layout.Flex justifyContent="center">
-            {profileImage ? (
-              <Avatar.Avatar src={currentUser.imgUrl} size={150} />
-            ) : (
-                <Avatar.Avatar src="/static/image/user.png" size={150} />
-              )}
+          <Layout.Flex justifyContent="center" flex='1' flexDirection='column'>
+            <Upload
+              name="avatar"
+              accept="image/*"
+              multiple={false}
+              listType="picture-card"
+              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              className="avatar-uploader"
+              showUploadList={false}
+              onChange={handleChange}
+            >
+              <Icon type={loading ? 'loading' : 'plus'}
+                style={{
+                  zIndex: 6, position: 'absolute', marginLeft: '65px'
+                }} />
+
+              {profileImage ? (
+                <Avatar.Avatar src={currentUser.imgUrl} size={150} />
+              ) : (
+                  <Avatar.Avatar src={imageUrl} size={150} />
+                )}
+
+
+            </Upload>
+            {/* "/static/image/user.png" */}
+            <Button.Button onClick={uploadAvatar} type="ghost"
+              style={{ width: "100px", marginTop: '10px', marginLeft: '25px' }}>Upload</Button.Button>
           </Layout.Flex>
 
            <Form
