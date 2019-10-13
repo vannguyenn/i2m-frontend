@@ -5,7 +5,7 @@ import { AuthModel } from './AuthModel'
 import { observable, action, runInAction, reaction } from 'mobx'
 import { IInfluencerProps } from '@frontend/constants'
 import { influencerService } from '@frontend/services'
-import { map } from 'lodash'
+import { map, ceil } from 'lodash'
 
 export interface IListResponse {
   content: IInfluencerProps[]
@@ -28,6 +28,10 @@ export class AppModel {
   @observable currentPage: number
   @observable isLast: boolean
   @observable sortBy: string = 'followers'
+  @observable minFollowers: number = 1000
+  @observable maxFollowers: number
+  @observable minEngagement: number = 0.0
+  @observable maxEngagement: number = 5.0
 
   constructor() {
     this.notification = new NotificationStore(notification)
@@ -36,9 +40,15 @@ export class AppModel {
     this.profileModel = new ProfileModel(this)
     reaction(
       () => this.sortBy,
-      sortBy => {
-        this.influencerList = []
-        this.searchInfluencers(0, sortBy)
+      () => {
+        this.searchInfluencers(0)
+      },
+      { fireImmediately: true }
+    )
+    reaction(
+      () => this.globalSearch,
+      () => {
+        this.searchInfluencers(0)
       },
       { fireImmediately: true }
     )
@@ -50,7 +60,7 @@ export class AppModel {
   }
 
   @action
-  async searchInfluencers(page?: number, sortBy?: string) {
+  async searchInfluencers(page?: number) {
     try {
       page === 0
         ? (this.isFetchingInfluencers = true)
@@ -59,15 +69,15 @@ export class AppModel {
       const { data } = await influencerService.fetchInfluencers<IListResponse>(
         page,
         9,
-        sortBy,
-        this.globalSearch
+        this.sortBy,
+        this.globalSearch,
+        this.minFollowers,
+        this.maxFollowers,
+        this.minEngagement,
+        this.maxEngagement
       )
 
       runInAction(() => {
-        data.content = map(data.content, (el: IInfluencerProps) => ({
-          ...el,
-          engagement: Math.floor(Math.random() * 9),
-        }))
         if (page === 0) {
           this.influencerList = []
         }
@@ -89,6 +99,24 @@ export class AppModel {
   @action
   changeSortBy(sortBy: string) {
     this.sortBy = sortBy
+  }
+
+  @action
+  changeMinFollowers(minFollowers: number) {
+    this.minFollowers = minFollowers
+  }
+  @action
+  changeMaxFollowers(maxFollowers: number) {
+    this.maxFollowers = maxFollowers
+  }
+
+  @action
+  changeMinEngagement(minEngagement: number) {
+    this.minEngagement = minEngagement
+  }
+  @action
+  changeMaxEngagement(maxEngagement: number) {
+    this.maxEngagement = maxEngagement
   }
 }
 

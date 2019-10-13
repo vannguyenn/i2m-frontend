@@ -35,6 +35,16 @@ export interface ISelectOption {
   label: string | React.ReactNode
 }
 
+export interface IPostProps {
+  id: string
+  code: string
+  commentCount: number
+  likeCount: number
+  thumbnailUrl: string
+  content: string
+  video: boolean
+  viewCount: number
+}
 export interface IInfluencerProps {
   id: string
   fullName: string
@@ -46,6 +56,7 @@ export interface IInfluencerProps {
   email?: string
   engagement: number
   category: string[]
-  followeings: string
+  followings: string
   verified: boolean
+  posts?: IPostProps[]
 }

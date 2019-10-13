@@ -1,22 +1,8 @@
 {
   "../../features/influencer/detail": [
     {
-      "id": "./node_modules/react-quill/dist/quill.snow.css",
-      "name": "./node_modules/react-quill/dist/quill.snow.css",
-      "file": "static/chunks/styles.js",
-      "publicPath": "static/chunks/styles.js"
-    },
-    {
-      "id": "./components/AuthorizedUserBtnGr.tsx",
-      "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/1.js",
-      "publicPath": "static/chunks/1.js"
-    }
-  ],
-  "../../features/influencer/list": [
-    {
-      "id": "./node_modules/react-quill/dist/quill.snow.css",
-      "name": "./node_modules/react-quill/dist/quill.snow.css",
+      "id": 10,
+      "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
@@ -27,18 +13,18 @@
       "publicPath": "static/chunks/3.js"
     }
   ],
-  "../features/influencer-management": [
+  "../../features/influencer/list": [
     {
-      "id": "./node_modules/react-quill/dist/quill.snow.css",
-      "name": "./node_modules/react-quill/dist/quill.snow.css",
+      "id": 10,
+      "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
     {
       "id": "./components/AuthorizedUserBtnGr.tsx",
       "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/6.js",
-      "publicPath": "static/chunks/6.js"
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
     }
   ],
   "./noop": [

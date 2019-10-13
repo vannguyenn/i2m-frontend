@@ -28,6 +28,7 @@ import { get, map } from 'lodash'
 import { Form as FinalForm, Field } from 'react-final-form'
 import { validate } from '@frontend/core'
 import { MESSAGES } from '@frontend/constants'
+import { InfluencerDetailContext } from '../static/context'
 
 const MODAL_PROPS = {
   title: 'Save to My List',
@@ -98,6 +99,7 @@ const BlueTick = styled.div`
     height: 20px;
   }
 `
+
 export interface IInfluencerDetailProps {
   id: number
   tab: string
@@ -129,6 +131,8 @@ export const InfluencerDetail: React.FunctionComponent<
     isLoading,
     saveToListModalVisible,
     myList,
+    mostLikedPost,
+    mostCommentedPost,
   } = influencerDetailViewModel
 
   const changeSaveToListModalVisible = (visible: boolean) =>
@@ -165,117 +169,137 @@ export const InfluencerDetail: React.FunctionComponent<
     }
   }
   const TabContent = tabContents[tab]
-  return (
-    <MasterLayout.MasterLayout
-      rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
-    >
-      <Spin.Spin spinning={isFetching}>
-        <Content flexDirection="column">
-          <Layout.Flex
-            flexDirection="column"
-            style={{ position: 'relative' }}
-            bg="white"
-          >
-            <GeneralInfo flexDirection="row" alignItems="flex-start">
-              <AvatarContainer>
-                <Avatar.Avatar
-                  size={150}
-                  src={
-                    get(influencerDetail, 'profilePicUrl') ||
-                    '/static/image/user.png'
-                  }
-                />
-                {get(influencerDetail, 'verified') && (
-                  <BlueTick>
-                    <img src="/static/image/blue-tick.svg" />
-                  </BlueTick>
-                )}
-              </AvatarContainer>
 
-              <Layout.Flex
-                flexDirection="column"
-                ml="50px"
-                justifyContent="flex-start"
-                alignItems="flex-start"
-              >
-                <Fullname>{get(influencerDetail, 'fullName')}</Fullname>
-                <Username>
-                  <a
-                    href={`https://www.instagram.com/${get(
-                      influencerDetail,
-                      'username'
-                    )}`}
-                    target="_blank"
-                  >
-                    {`@${get(influencerDetail, 'username')}`}
-                  </a>
-                </Username>
-                <Layout.Flex flexDirection="row" alignItems="center" mt="5px">
-                  <NumberText>{get(influencerDetail, 'mediaCount')}</NumberText>
-                  <NumberUnit>Posts</NumberUnit>
-                  <NumberText>
-                    {numeral(get(influencerDetail, 'followers')).format(
-                      '(0.0a)'
-                    )}
-                  </NumberText>
-                  <NumberUnit>Followers</NumberUnit>
-                  <NumberText>
-                    {numeral(get(influencerDetail, 'followeings')).format(
-                      '(0.0a)'
-                    )}
-                  </NumberText>
-                  <NumberUnit>Following</NumberUnit>
-                </Layout.Flex>
-                <Layout.Flex flexDirection="row" alignItems="center" mt="5px">
-                  Email:
-                  <div style={{ fontWeight: 600, marginLeft: '10px' }}>
-                    {get(influencerDetail, 'email') || 'johndoe@gmail.com'}
+  const useMediaSection = () => ({
+    posts: get(influencerDetail, 'posts'),
+    mostLikedPost,
+    mostCommentedPost,
+  })
+
+  const useAnalyticSection = () => ({
+    posts: get(influencerDetail, 'posts'),
+  })
+
+  const providerValue = {
+    useMediaSection,
+    useAnalyticSection,
+  }
+
+  return (
+    <InfluencerDetailContext.Provider value={providerValue}>
+      <MasterLayout.MasterLayout
+        rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
+      >
+        <Spin.Spin spinning={isFetching}>
+          <Content flexDirection="column">
+            <Layout.Flex
+              flexDirection="column"
+              style={{ position: 'relative' }}
+              bg="white"
+            >
+              <GeneralInfo flexDirection="row" alignItems="flex-start">
+                <AvatarContainer>
+                  <Avatar.Avatar
+                    size={150}
+                    src={
+                      get(influencerDetail, 'profilePicUrl') ||
+                      '/static/image/user.png'
+                    }
+                  />
+                  {get(influencerDetail, 'verified') && (
+                    <BlueTick>
+                      <img src="/static/image/blue-tick.svg" />
+                    </BlueTick>
+                  )}
+                </AvatarContainer>
+
+                <Layout.Flex
+                  flexDirection="column"
+                  ml="50px"
+                  justifyContent="flex-start"
+                  alignItems="flex-start"
+                >
+                  <Fullname>{get(influencerDetail, 'fullName')}</Fullname>
+                  <Username>
+                    <a
+                      href={`https://www.instagram.com/${get(
+                        influencerDetail,
+                        'username'
+                      )}`}
+                      target="_blank"
+                    >
+                      {`@${get(influencerDetail, 'username')}`}
+                    </a>
+                  </Username>
+                  <Layout.Flex flexDirection="row" alignItems="center" mt="5px">
+                    <NumberText>
+                      {get(influencerDetail, 'mediaCount')}
+                    </NumberText>
+                    <NumberUnit>Posts</NumberUnit>
+                    <NumberText>
+                      {numeral(get(influencerDetail, 'followers')).format(
+                        '(0.0a)'
+                      )}
+                    </NumberText>
+                    <NumberUnit>Followers</NumberUnit>
+                    <NumberText>
+                      {numeral(get(influencerDetail, 'followings')).format(
+                        '(0.0a)'
+                      )}
+                    </NumberText>
+                    <NumberUnit>Following</NumberUnit>
+                  </Layout.Flex>
+                  <Layout.Flex flexDirection="row" alignItems="center" mt="5px">
+                    Email:
+                    <div style={{ fontWeight: 600, marginLeft: '10px' }}>
+                      {get(influencerDetail, 'email') || 'johndoe@gmail.com'}
+                    </div>
+                  </Layout.Flex>
+                  <div style={{ color: '#3c3c3c', marginTop: '5px' }}>
+                    {get(influencerDetail, 'biography')}
                   </div>
                 </Layout.Flex>
-                <div style={{ color: '#3c3c3c', marginTop: '5px' }}>
-                  {get(influencerDetail, 'biography')}
-                </div>
-              </Layout.Flex>
-              <SaveToListBtn onClick={onClickSaveToListBtn}>
-                <Icon.Icon type="heart" />
-                Save to My List
-              </SaveToListBtn>
-              <Modal.SmallModal
-                title={MODAL_PROPS.title}
-                okText={MODAL_PROPS.footer.okText}
-                okButtonProps={{
-                  loading: isLoading,
-                  form: MODAL_PROPS.saveToListForm.form,
-                }}
-                visible={saveToListModalVisible}
-                onCancel={() => changeSaveToListModalVisible(false)}
-              >
-                <FinalForm
-                  onSubmit={handleSaveToList}
-                  render={({ handleSubmit }) => (
-                    <AntForm.Form
-                      onSubmit={handleSubmit}
-                      id={MODAL_PROPS.saveToListForm.form}
-                    >
-                      <Field
-                        name={MODAL_PROPS.saveToListForm.list.name}
-                        component={Select.SelectField}
-                        placeholder={
-                          MODAL_PROPS.saveToListForm.list.placeholder
-                        }
-                        options={normalizedList}
-                        validate={validate.field.required}
-                      />
-                    </AntForm.Form>
-                  )}
-                />
-              </Modal.SmallModal>
-            </GeneralInfo>
-            <Tab tab={tab} />
-          </Layout.Flex>
-          <TabContent />
-        </Content>
-      </Spin.Spin>
-    </MasterLayout.MasterLayout>
+                <SaveToListBtn onClick={onClickSaveToListBtn}>
+                  <Icon.Icon type="heart" />
+                  Save to My List
+                </SaveToListBtn>
+                <Modal.SmallModal
+                  title={MODAL_PROPS.title}
+                  okText={MODAL_PROPS.footer.okText}
+                  okButtonProps={{
+                    loading: isLoading,
+                    form: MODAL_PROPS.saveToListForm.form,
+                  }}
+                  visible={saveToListModalVisible}
+                  onCancel={() => changeSaveToListModalVisible(false)}
+                >
+                  <FinalForm
+                    onSubmit={handleSaveToList}
+                    render={({ handleSubmit }) => (
+                      <AntForm.Form
+                        onSubmit={handleSubmit}
+                        id={MODAL_PROPS.saveToListForm.form}
+                      >
+                        <Field
+                          name={MODAL_PROPS.saveToListForm.list.name}
+                          component={Select.SelectField}
+                          placeholder={
+                            MODAL_PROPS.saveToListForm.list.placeholder
+                          }
+                          options={normalizedList}
+                          validate={validate.field.required}
+                        />
+                      </AntForm.Form>
+                    )}
+                  />
+                </Modal.SmallModal>
+              </GeneralInfo>
+              <Tab tab={tab} />
+            </Layout.Flex>
+            <TabContent />
+          </Content>
+        </Spin.Spin>
+      </MasterLayout.MasterLayout>
+    </InfluencerDetailContext.Provider>
   )
 })

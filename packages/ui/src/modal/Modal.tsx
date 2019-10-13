@@ -61,6 +61,31 @@ const smallModalStyle = css`
     padding: 16px 24px 24px 24px;
   }
 `
+const infoModalStyle = css`
+  min-width: 416px;
+  &.ant-modal {
+    top: calc(50vh - 200px);
+  }
+  .ant-modal-header {
+    padding: 24px 24px 0 24px;
+    border-bottom: none;
+    .ant-modal-title {
+      word-break: break-word;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+  .ant-modal-body {
+    padding: 24px;
+    color: #000;
+  }
+  .ant-modal-footer {
+    border-top: none;
+    padding: 16px 24px 24px 24px;
+  }
+`
+
 const AntMediumModal: React.FunctionComponent<ModalProps> = ({
   onCancel,
   onOk,
@@ -133,4 +158,30 @@ const AntSmallModal: React.FunctionComponent<ModalProps> = ({
 
 export const SmallModal = styled(AntSmallModal)<ModalProps>`
   ${smallModalStyle};
+`
+
+const AntInfoModal: React.FunctionComponent<ModalProps> = ({
+  onCancel,
+  onOk,
+  okText,
+  cancelText,
+  children,
+  footer,
+  okButtonProps,
+  cancelButtonProps,
+  ...props
+}) => (
+  <AntModal
+    onCancel={onCancel}
+    footer={null}
+    closable={false}
+    title={null}
+    {...props}
+  >
+    {children}
+  </AntModal>
+)
+
+export const InfoModal = styled(AntInfoModal)`
+  ${infoModalStyle};
 `

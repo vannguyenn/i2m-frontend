@@ -2,7 +2,8 @@ import { IListProps } from './../../influencer-management/MyInfluencerViewModel'
 import { AppModel } from './../../../models/AppModel'
 import { influencerService, profileService } from '@frontend/services'
 import { observable, reaction, action, runInAction } from 'mobx'
-import { IInfluencerProps } from '@frontend/constants'
+import { IInfluencerProps, IPostProps } from '@frontend/constants'
+import { maxBy } from 'lodash'
 
 export class InfluencerDetailViewModel {
   @observable influencerDetail: IInfluencerProps
@@ -10,6 +11,8 @@ export class InfluencerDetailViewModel {
   @observable myList: IListProps[]
   @observable saveToListModalVisible: boolean
   @observable isLoading: boolean
+  @observable mostLikedPost: IPostProps
+  @observable mostCommentedPost: IPostProps
 
   appModel: AppModel = null
 
@@ -26,6 +29,14 @@ export class InfluencerDetailViewModel {
     runInAction(() => {
       this.isFetching = false
       this.influencerDetail = data
+      this.mostLikedPost = maxBy(
+        this.influencerDetail.posts,
+        (p: IPostProps) => p.likeCount
+      )
+      this.mostCommentedPost = maxBy(
+        this.influencerDetail.posts,
+        (p: IPostProps) => p.commentCount
+      )
     })
   }
 

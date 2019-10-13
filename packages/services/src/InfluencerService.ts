@@ -7,9 +7,24 @@ export class InfluencerService extends BaseService {
     page?: number,
     size?: number,
     sortBy?: string,
-    search?: string
+    search?: string,
+    minFollowers?: number,
+    maxFollowers?: number,
+    minEngagement?: number,
+    maxEngagement?: number
   ) {
-    return this.get<T>('', { params: { page, sortBy, size, search } })
+    return this.get<T>('', {
+      params: {
+        page,
+        sortBy,
+        size,
+        search,
+        minFollowers,
+        maxFollowers,
+        minEngagement,
+        maxEngagement,
+      },
+    })
   }
 
   public fetchInfluencerDetail<T>(id: number) {
@@ -18,5 +33,9 @@ export class InfluencerService extends BaseService {
 
   public saveInfluencerToList<T>(packId: string, influencerId: string) {
     return this.put<T>(`/${influencerId}`, { packId })
+  }
+
+  public getMaxFollowerCount<T>() {
+    return this.get('/max-followers')
   }
 }

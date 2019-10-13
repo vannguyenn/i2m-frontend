@@ -8,6 +8,8 @@ import {
   Button,
   Card,
   Spin,
+  Form as AntForm,
+  Slider,
 } from '@frontend/ui'
 import styled from 'styled-components'
 import { map } from 'lodash'
@@ -16,6 +18,7 @@ import { observer } from 'mobx-react-lite'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../../models'
 import { useEffectOnce } from 'react-use'
+import { Field, Form, FormRenderProps } from 'react-final-form'
 
 const LeftPanel = styled(Layout.Flex)`
   min-height: calc(100vh - 150px);
@@ -105,6 +108,13 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
   const onSortChange = (value: string) => {
     appModel.changeSortBy(value)
   }
+  const handleSubmitSearch = (value: any) => {
+    appModel.changeMinFollowers(value.followers[0])
+    appModel.changeMaxFollowers(value.followers[1])
+    appModel.changeMinEngagement(value.minEngagement)
+    appModel.changeMaxEngagement(value.maxEngagement)
+    appModel.searchInfluencers(0)
+  }
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
@@ -120,56 +130,81 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
             justifyContent="flex-start"
             width="260px"
           >
-            <InputLabel>Engagement</InputLabel>
-            <Layout.Flex
-              flexDirection="row"
-              alignItems="center"
-              justifyContent="space-between"
-              width="100%"
-              mb="15px"
-            >
-              <Input.InputNumber
-                min={0}
-                max={10}
-                step={0.1}
-                defaultValue={0.0}
-                formatter={value => `${value}%`}
-                parser={value => value.replace('%', '')}
-              />
-              <Input.InputNumber
-                min={0}
-                max={10}
-                step={0.1}
-                defaultValue={5.0}
-                formatter={value => `${value}%`}
-                parser={value => value.replace('%', '')}
-              />
-            </Layout.Flex>
-            <InputLabel>Followers</InputLabel>
-            <Layout.Flex
-              flexDirection="row"
-              alignItems="center"
-              justifyContent="space-between"
-              width="100%"
-            >
-              <Input.InputNumber min={1000} placeholder="Min" />
-              <Input.InputNumber min={1000} placeholder="Max" />
-            </Layout.Flex>
-            <Divider.Divider type="horizontal" />
-            <InputLabel style={{ marginTop: '-10px' }}>Category</InputLabel>
-            <Select.Select mode="multiple" placeholder="Interested category">
-              <Select.Option value="1">Beauty</Select.Option>
-              <Select.Option value="2">Travel</Select.Option>
-            </Select.Select>
-            <Divider.Divider type="horizontal" />
-            <Layout.Flex
-              flexDirection="row"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <SearchBtn>Search</SearchBtn>
-              <ResetBtn>Reset Filters</ResetBtn>
-            </Layout.Flex>
+            <Form
+              onSubmit={handleSubmitSearch}
+              initialValues={{
+                followers: [appModel.minFollowers, appModel.maxFollowers],
+                minEngagement: appModel.minEngagement,
+                maxEngagement: appModel.maxEngagement,
+              }}
+              render={({ handleSubmit }) => (
+                <AntForm.Form onSubmit={handleSubmit}>
+                  <InputLabel>Engagement</InputLabel>
+                  <Layout.Flex
+                    flexDirection="row"
+                    alignItems="center"
+                    justifyContent="space-between"
+                    width="100%"
+                    mb="15px"
+                  >
+                    <Field
+                      name="minEngagement"
+                      component={Input.InputNumberField}
+                      min={0}
+                      max={10}
+                      step={0.1}
+                      formatter={value => `${value}%`}
+                      parser={value => value.replace('%', '')}
+                    />
+                    <Field
+                      min={0}
+                      max={10}
+                      step={0.1}
+                      formatter={value => `${value}%`}
+                      parser={value => value.replace('%', '')}
+                      name="maxEngagement"
+                      component={Input.InputNumberField}
+                    />
+                  </Layout.Flex>
+                  <InputLabel>Followers</InputLabel>
+                  <Layout.Flex
+                    flexDirection="row"
+                    alignItems="center"
+                    justifyContent="space-between"
+                    width="100%"
+                  >
+                    <Field
+                      name="followers"
+                      component={Slider.SliderField}
+                      range
+                      min={1000}
+                      max={100000000}
+                      step={100}
+                    />
+                  </Layout.Flex>
+                  <Divider.Divider type="horizontal" />
+                  <InputLabel style={{ marginTop: '-10px' }}>
+                    Category
+                  </InputLabel>
+                  <Select.Select
+                    mode="multiple"
+                    placeholder="Interested category"
+                  >
+                    <Select.Option value="1">Beauty</Select.Option>
+                    <Select.Option value="2">Travel</Select.Option>
+                  </Select.Select>
+                  <Divider.Divider type="horizontal" />
+                  <Layout.Flex
+                    flexDirection="row"
+                    alignItems="center"
+                    justifyContent="space-between"
+                  >
+                    <SearchBtn htmlType="submit">Search</SearchBtn>
+                    <ResetBtn>Reset Filters</ResetBtn>
+                  </Layout.Flex>
+                </AntForm.Form>
+              )}
+            />
           </LeftPanel>
           <RightPanel
             flexDirection="column"

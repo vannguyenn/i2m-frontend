@@ -397,6 +397,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _frontend_core_src_context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @frontend/core/src/context */ "./packages/core/src/context/index.ts");
 /* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! mobx-react-lite */ "mobx-react-lite");
 /* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(mobx_react_lite__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
+
+
 
 
 
@@ -429,7 +434,7 @@ var SearchContainer = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_7__["obser
   };
 
   var searchInfluencer = function searchInfluencer() {
-    appModel.searchInfluencers(0);
+    next_router__WEBPACK_IMPORTED_MODULE_8___default.a.push(_frontend_constants__WEBPACK_IMPORTED_MODULE_9__["PATHS"].influencers); // appModel.searchInfluencers(0)
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_1__["Flex"], {
@@ -494,23 +499,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerDefineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerDefineProperty.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor */ "./node_modules/@babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerWarningHelper */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerWarningHelper.js");
-/* harmony import */ var _ProfileModel__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ProfileModel */ "./models/ProfileModel.ts");
-/* harmony import */ var _frontend_core_src_stores__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @frontend/core/src/stores */ "./packages/core/src/stores/index.ts");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! antd */ "antd");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _AuthModel__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./AuthModel */ "./models/AuthModel.ts");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! mobx */ "mobx");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(mobx__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _frontend_services__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @frontend/services */ "./packages/services/src/index.ts");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerDefineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerDefineProperty.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor */ "./node_modules/@babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerWarningHelper */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerWarningHelper.js");
+/* harmony import */ var _ProfileModel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ProfileModel */ "./models/ProfileModel.ts");
+/* harmony import */ var _frontend_core_src_stores__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @frontend/core/src/stores */ "./packages/core/src/stores/index.ts");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _AuthModel__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./AuthModel */ "./models/AuthModel.ts");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! mobx */ "mobx");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(mobx__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _frontend_services__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @frontend/services */ "./packages/services/src/index.ts");
 
 
 
@@ -521,9 +523,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _temp;
-
+var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _temp;
 
 
 
@@ -537,43 +537,56 @@ function () {
   function AppModel() {
     var _this = this;
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_6__["default"])(this, AppModel);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_5__["default"])(this, AppModel);
 
     this.notification = null;
     this.authModel = null;
     this.profileModel = null;
 
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_5__["default"])(this, "globalSearch", _descriptor, this);
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "globalSearch", _descriptor, this);
 
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_5__["default"])(this, "influencerList", _descriptor2, this);
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "influencerList", _descriptor2, this);
 
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_5__["default"])(this, "isFetchingInfluencers", _descriptor3, this);
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "isFetchingInfluencers", _descriptor3, this);
 
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_5__["default"])(this, "isLoadingMore", _descriptor4, this);
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "isLoadingMore", _descriptor4, this);
 
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_5__["default"])(this, "totalInfluencers", _descriptor5, this);
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "totalInfluencers", _descriptor5, this);
 
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_5__["default"])(this, "currentPage", _descriptor6, this);
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "currentPage", _descriptor6, this);
 
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_5__["default"])(this, "isLast", _descriptor7, this);
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "isLast", _descriptor7, this);
 
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_5__["default"])(this, "sortBy", _descriptor8, this);
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "sortBy", _descriptor8, this);
 
-    this.notification = new _frontend_core_src_stores__WEBPACK_IMPORTED_MODULE_11__["NotificationStore"](antd__WEBPACK_IMPORTED_MODULE_12__["notification"]);
-    this.authModel = new _AuthModel__WEBPACK_IMPORTED_MODULE_13__["AuthModel"]();
-    this.profileModel = new _ProfileModel__WEBPACK_IMPORTED_MODULE_10__["ProfileModel"](this);
-    Object(mobx__WEBPACK_IMPORTED_MODULE_14__["reaction"])(function () {
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "minFollowers", _descriptor9, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "maxFollowers", _descriptor10, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "minEngagement", _descriptor11, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "maxEngagement", _descriptor12, this);
+
+    this.notification = new _frontend_core_src_stores__WEBPACK_IMPORTED_MODULE_10__["NotificationStore"](antd__WEBPACK_IMPORTED_MODULE_11__["notification"]);
+    this.authModel = new _AuthModel__WEBPACK_IMPORTED_MODULE_12__["AuthModel"]();
+    this.profileModel = new _ProfileModel__WEBPACK_IMPORTED_MODULE_9__["ProfileModel"](this);
+    Object(mobx__WEBPACK_IMPORTED_MODULE_13__["reaction"])(function () {
       return _this.sortBy;
-    }, function (sortBy) {
-      _this.influencerList = [];
-
-      _this.searchInfluencers(0, sortBy);
+    }, function () {
+      _this.searchInfluencers(0);
+    }, {
+      fireImmediately: true
+    });
+    Object(mobx__WEBPACK_IMPORTED_MODULE_13__["reaction"])(function () {
+      return _this.globalSearch;
+    }, function () {
+      _this.searchInfluencers(0);
     }, {
       fireImmediately: true
     });
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__["default"])(AppModel, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__["default"])(AppModel, [{
     key: "changeGlobalSearch",
     value: function changeGlobalSearch(search) {
       this.globalSearch = search;
@@ -581,9 +594,9 @@ function () {
   }, {
     key: "searchInfluencers",
     value: function () {
-      var _searchInfluencers = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_4__["default"])(
+      var _searchInfluencers = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee(page, sortBy) {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee(page) {
         var _this2 = this;
 
         var _ref, data;
@@ -595,18 +608,12 @@ function () {
                 _context.prev = 0;
                 page === 0 ? this.isFetchingInfluencers = true : this.isLoadingMore = true;
                 _context.next = 4;
-                return _frontend_services__WEBPACK_IMPORTED_MODULE_15__["influencerService"].fetchInfluencers(page, 9, sortBy, this.globalSearch);
+                return _frontend_services__WEBPACK_IMPORTED_MODULE_14__["influencerService"].fetchInfluencers(page, 9, this.sortBy, this.globalSearch, this.minFollowers, this.maxFollowers, this.minEngagement, this.maxEngagement);
 
               case 4:
                 _ref = _context.sent;
                 data = _ref.data;
-                Object(mobx__WEBPACK_IMPORTED_MODULE_14__["runInAction"])(function () {
-                  data.content = Object(lodash__WEBPACK_IMPORTED_MODULE_16__["map"])(data.content, function (el) {
-                    return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_3__["default"])({}, el, {
-                      engagement: Math.floor(Math.random() * 9)
-                    });
-                  });
-
+                Object(mobx__WEBPACK_IMPORTED_MODULE_13__["runInAction"])(function () {
                   if (page === 0) {
                     _this2.influencerList = [];
                   }
@@ -638,7 +645,7 @@ function () {
         }, _callee, this, [[0, 9]]);
       }));
 
-      function searchInfluencers(_x, _x2) {
+      function searchInfluencers(_x) {
         return _searchInfluencers.apply(this, arguments);
       }
 
@@ -649,54 +656,100 @@ function () {
     value: function changeSortBy(sortBy) {
       this.sortBy = sortBy;
     }
+  }, {
+    key: "changeMinFollowers",
+    value: function changeMinFollowers(minFollowers) {
+      this.minFollowers = minFollowers;
+    }
+  }, {
+    key: "changeMaxFollowers",
+    value: function changeMaxFollowers(maxFollowers) {
+      this.maxFollowers = maxFollowers;
+    }
+  }, {
+    key: "changeMinEngagement",
+    value: function changeMinEngagement(minEngagement) {
+      this.minEngagement = minEngagement;
+    }
+  }, {
+    key: "changeMaxEngagement",
+    value: function changeMaxEngagement(maxEngagement) {
+      this.maxEngagement = maxEngagement;
+    }
   }]);
 
   return AppModel;
-}(), _temp), (_descriptor = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__["default"])(_class.prototype, "globalSearch", [mobx__WEBPACK_IMPORTED_MODULE_14__["observable"]], {
+}(), _temp), (_descriptor = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "globalSearch", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor2 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__["default"])(_class.prototype, "influencerList", [mobx__WEBPACK_IMPORTED_MODULE_14__["observable"]], {
+}), _descriptor2 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "influencerList", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return [];
   }
-}), _descriptor3 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__["default"])(_class.prototype, "isFetchingInfluencers", [mobx__WEBPACK_IMPORTED_MODULE_14__["observable"]], {
+}), _descriptor3 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "isFetchingInfluencers", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor4 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__["default"])(_class.prototype, "isLoadingMore", [mobx__WEBPACK_IMPORTED_MODULE_14__["observable"]], {
+}), _descriptor4 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "isLoadingMore", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor5 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__["default"])(_class.prototype, "totalInfluencers", [mobx__WEBPACK_IMPORTED_MODULE_14__["observable"]], {
+}), _descriptor5 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "totalInfluencers", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor6 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__["default"])(_class.prototype, "currentPage", [mobx__WEBPACK_IMPORTED_MODULE_14__["observable"]], {
+}), _descriptor6 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "currentPage", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor7 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__["default"])(_class.prototype, "isLast", [mobx__WEBPACK_IMPORTED_MODULE_14__["observable"]], {
+}), _descriptor7 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "isLast", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor8 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__["default"])(_class.prototype, "sortBy", [mobx__WEBPACK_IMPORTED_MODULE_14__["observable"]], {
+}), _descriptor8 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "sortBy", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return 'followers';
   }
-}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__["default"])(_class.prototype, "changeGlobalSearch", [mobx__WEBPACK_IMPORTED_MODULE_14__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeGlobalSearch"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__["default"])(_class.prototype, "searchInfluencers", [mobx__WEBPACK_IMPORTED_MODULE_14__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "searchInfluencers"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_8__["default"])(_class.prototype, "changeSortBy", [mobx__WEBPACK_IMPORTED_MODULE_14__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeSortBy"), _class.prototype)), _class);
+}), _descriptor9 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "minFollowers", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: function initializer() {
+    return 1000;
+  }
+}), _descriptor10 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "maxFollowers", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor11 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "minEngagement", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: function initializer() {
+    return 0.0;
+  }
+}), _descriptor12 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "maxEngagement", [mobx__WEBPACK_IMPORTED_MODULE_13__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: function initializer() {
+    return 5.0;
+  }
+}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "changeGlobalSearch", [mobx__WEBPACK_IMPORTED_MODULE_13__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeGlobalSearch"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "searchInfluencers", [mobx__WEBPACK_IMPORTED_MODULE_13__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "searchInfluencers"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "changeSortBy", [mobx__WEBPACK_IMPORTED_MODULE_13__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeSortBy"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "changeMinFollowers", [mobx__WEBPACK_IMPORTED_MODULE_13__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeMinFollowers"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "changeMaxFollowers", [mobx__WEBPACK_IMPORTED_MODULE_13__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeMaxFollowers"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "changeMinEngagement", [mobx__WEBPACK_IMPORTED_MODULE_13__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeMinEngagement"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "changeMaxEngagement", [mobx__WEBPACK_IMPORTED_MODULE_13__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeMaxEngagement"), _class.prototype)), _class);
 var appModel = new AppModel();
 
 /***/ }),
@@ -4227,13 +4280,17 @@ function (_BaseService) {
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(InfluencerService, [{
     key: "fetchInfluencers",
-    value: function fetchInfluencers(page, size, sortBy, search) {
+    value: function fetchInfluencers(page, size, sortBy, search, minFollowers, maxFollowers, minEngagement, maxEngagement) {
       return this.get('', {
         params: {
           page: page,
           sortBy: sortBy,
           size: size,
-          search: search
+          search: search,
+          minFollowers: minFollowers,
+          maxFollowers: maxFollowers,
+          minEngagement: minEngagement,
+          maxEngagement: maxEngagement
         }
       });
     }
@@ -4248,6 +4305,11 @@ function (_BaseService) {
       return this.put("/".concat(influencerId), {
         packId: packId
       });
+    }
+  }, {
+    key: "getMaxFollowerCount",
+    value: function getMaxFollowerCount() {
+      return this.get('/max-followers');
     }
   }]);
 
@@ -4632,6 +4694,17 @@ var groupService = new _GroupService__WEBPACK_IMPORTED_MODULE_0__["GroupService"
 
 /***/ }),
 
+/***/ "./packages/ui/node_modules/antd/lib/tooltip/style/index.css":
+/*!*******************************************************************!*\
+  !*** ./packages/ui/node_modules/antd/lib/tooltip/style/index.css ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./packages/ui/src/avatar/Avatar.ts":
 /*!******************************************!*\
   !*** ./packages/ui/src/avatar/Avatar.ts ***!
@@ -4834,11 +4907,9 @@ var NumberContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(N
   componentId: "sc-1q8wdty-4"
 })(["font-size:14px;margin-top:0;"]);
 var InfluencerCard = function InfluencerCard(_ref4) {
-  var userName = _ref4.userName,
-      id = _ref4.id,
+  var id = _ref4.id,
       fullName = _ref4.fullName,
       profilePicUrl = _ref4.profilePicUrl,
-      followeings = _ref4.followeings,
       biography = _ref4.biography,
       followers = _ref4.followers,
       engagement = _ref4.engagement,
@@ -4868,7 +4939,7 @@ var InfluencerCard = function InfluencerCard(_ref4) {
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center"
-  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, null, "ENGAGEMENT"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberContainer, null, "".concat(engagement, "%"))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_3__["Flex"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, null, "ENGAGEMENT"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberContainer, null, "".concat(engagement && numeral__WEBPACK_IMPORTED_MODULE_8___default()(engagement).format('0.0') || 0, "%"))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_3__["Flex"], {
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center"
@@ -5526,6 +5597,50 @@ var InputNumber = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(antd_
 
 /***/ }),
 
+/***/ "./packages/ui/src/input/InputNumberField.tsx":
+/*!****************************************************!*\
+  !*** ./packages/ui/src/input/InputNumberField.tsx ***!
+  \****************************************************/
+/*! exports provided: InputNumberField */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputNumberField", function() { return InputNumberField; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../form */ "./packages/ui/src/form/index.ts");
+/* harmony import */ var _InputNumber__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./InputNumber */ "./packages/ui/src/input/InputNumber.tsx");
+
+
+
+
+
+var InputNumberField = function InputNumberField(_ref) {
+  var input = _ref.input,
+      _ref$meta = _ref.meta;
+  _ref$meta = _ref$meta === void 0 ? {} : _ref$meta;
+
+  var error = _ref$meta.error,
+      touched = _ref$meta.touched,
+      _ref$label = _ref.label,
+      label = _ref$label === void 0 ? '' : _ref$label,
+      required = _ref.required,
+      layoutProps = _ref.layoutProps,
+      rest = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["input", "meta", "label", "required", "layoutProps"]);
+
+  return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_form__WEBPACK_IMPORTED_MODULE_3__["FormControl"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    label: label,
+    touched: touched,
+    error: error,
+    required: required
+  }, layoutProps), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_InputNumber__WEBPACK_IMPORTED_MODULE_4__["InputNumber"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, input, rest)));
+};
+
+/***/ }),
+
 /***/ "./packages/ui/src/input/InputPassword.tsx":
 /*!*************************************************!*\
   !*** ./packages/ui/src/input/InputPassword.tsx ***!
@@ -5597,7 +5712,7 @@ var InputPasswordField = function InputPasswordField(_ref) {
 /*!****************************************!*\
   !*** ./packages/ui/src/input/index.ts ***!
   \****************************************/
-/*! exports provided: InputField, InputPasswordField, Input, InputNumber */
+/*! exports provided: InputField, InputPasswordField, Input, InputNumber, InputNumberField */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5613,6 +5728,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Input */ "./packages/ui/src/input/Input.tsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Input", function() { return _Input__WEBPACK_IMPORTED_MODULE_3__["Input"]; });
+
+/* harmony import */ var _InputNumberField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./InputNumberField */ "./packages/ui/src/input/InputNumberField.tsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InputNumberField", function() { return _InputNumberField__WEBPACK_IMPORTED_MODULE_4__["InputNumberField"]; });
+
 
 
 
@@ -5919,13 +6038,14 @@ var Footer = function Footer(_ref) {
 /*!*****************************************!*\
   !*** ./packages/ui/src/modal/Modal.tsx ***!
   \*****************************************/
-/*! exports provided: MediumModal, SmallModal */
+/*! exports provided: MediumModal, SmallModal, InfoModal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MediumModal", function() { return MediumModal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SmallModal", function() { return SmallModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoModal", function() { return InfoModal; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
@@ -5949,6 +6069,7 @@ var mediumModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["cs
   return theme.colors.primary;
 });
 var smallModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["css"])(["min-width:320px;max-width:640px;&.ant-modal{top:calc(50vh - 200px);}.ant-modal-header{padding:24px 24px 0 24px;border-bottom:none;.ant-modal-title{word-break:break-word;font-weight:500;font-size:16px;line-height:20px;}}.ant-modal-body{padding:12px 24px 0 24px;color:#000;}.ant-modal-footer{border-top:none;padding:16px 24px 24px 24px;}"]);
+var infoModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["css"])(["min-width:416px;&.ant-modal{top:calc(50vh - 200px);}.ant-modal-header{padding:24px 24px 0 24px;border-bottom:none;.ant-modal-title{word-break:break-word;font-weight:500;font-size:16px;line-height:20px;}}.ant-modal-body{padding:24px;color:#000;}.ant-modal-footer{border-top:none;padding:16px 24px 24px 24px;}"]);
 
 var AntMediumModal = function AntMediumModal(_ref2) {
   var onCancel = _ref2.onCancel,
@@ -6013,13 +6134,37 @@ var SmallModal = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(AntSma
   componentId: "sc-1eaysnk-1"
 })(["", ";"], smallModalStyle);
 
+var AntInfoModal = function AntInfoModal(_ref4) {
+  var onCancel = _ref4.onCancel,
+      onOk = _ref4.onOk,
+      okText = _ref4.okText,
+      cancelText = _ref4.cancelText,
+      children = _ref4.children,
+      footer = _ref4.footer,
+      okButtonProps = _ref4.okButtonProps,
+      cancelButtonProps = _ref4.cancelButtonProps,
+      props = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref4, ["onCancel", "onOk", "okText", "cancelText", "children", "footer", "okButtonProps", "cancelButtonProps"]);
+
+  return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](antd__WEBPACK_IMPORTED_MODULE_4__["Modal"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    onCancel: onCancel,
+    footer: null,
+    closable: false,
+    title: null
+  }, props), children);
+};
+
+var InfoModal = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(AntInfoModal).withConfig({
+  displayName: "Modal__InfoModal",
+  componentId: "sc-1eaysnk-2"
+})(["", ";"], infoModalStyle);
+
 /***/ }),
 
 /***/ "./packages/ui/src/modal/index.ts":
 /*!****************************************!*\
   !*** ./packages/ui/src/modal/index.ts ***!
   \****************************************/
-/*! exports provided: MediumModal, SmallModal, CancelButton, Footer */
+/*! exports provided: MediumModal, SmallModal, InfoModal, CancelButton, Footer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6028,6 +6173,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MediumModal", function() { return _Modal__WEBPACK_IMPORTED_MODULE_0__["MediumModal"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SmallModal", function() { return _Modal__WEBPACK_IMPORTED_MODULE_0__["SmallModal"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InfoModal", function() { return _Modal__WEBPACK_IMPORTED_MODULE_0__["InfoModal"]; });
 
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Footer */ "./packages/ui/src/modal/Footer.tsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CancelButton", function() { return _Footer__WEBPACK_IMPORTED_MODULE_1__["CancelButton"]; });
@@ -6496,15 +6643,84 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var antd_lib_slider_style_index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd/lib/slider/style/index.css */ "./packages/ui/node_modules/antd/lib/slider/style/index.css");
 /* harmony import */ var antd_lib_slider_style_index_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_slider_style_index_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_tooltip_style_index_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd/lib/tooltip/style/index.css */ "./packages/ui/node_modules/antd/lib/tooltip/style/index.css");
+/* harmony import */ var antd_lib_tooltip_style_index_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_tooltip_style_index_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
-var Slider = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(antd__WEBPACK_IMPORTED_MODULE_0__["Slider"]).withConfig({
+
+var Slider = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(antd__WEBPACK_IMPORTED_MODULE_0__["Slider"]).withConfig({
   displayName: "Slider",
   componentId: "sc-109sz25-0"
-})([""]);
+})(["min-width:220px;.ant-slider-handle{border-color:", ";&:focus{box-shadow:0 0 0 5px rgba(255,98,101,0.2);}}.ant-slider-track{background-color:", ";}&:hover{.ant-slider-track{background-color:", ";}.ant-slider-handle:not(.ant-tooltip-open){border-color:", ";}}"], function (_ref) {
+  var theme = _ref.theme;
+  return theme.colors.primary;
+}, function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.colors.primary;
+}, function (_ref3) {
+  var theme = _ref3.theme;
+  return theme.colors.primary;
+}, function (_ref4) {
+  var theme = _ref4.theme;
+  return theme.colors.primary;
+});
+
+/***/ }),
+
+/***/ "./packages/ui/src/slider/SliderField.tsx":
+/*!************************************************!*\
+  !*** ./packages/ui/src/slider/SliderField.tsx ***!
+  \************************************************/
+/*! exports provided: SliderField */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SliderField", function() { return SliderField; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Slider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Slider */ "./packages/ui/src/slider/Slider.tsx");
+/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../form */ "./packages/ui/src/form/index.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+var SliderField = function SliderField(_ref) {
+  var input = _ref.input,
+      _ref$meta = _ref.meta;
+  _ref$meta = _ref$meta === void 0 ? {} : _ref$meta;
+
+  var error = _ref$meta.error,
+      touched = _ref$meta.touched,
+      submitError = _ref$meta.submitError,
+      _ref$label = _ref.label,
+      label = _ref$label === void 0 ? '' : _ref$label,
+      required = _ref.required,
+      layoutProps = _ref.layoutProps,
+      rest = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["input", "meta", "label", "required", "layoutProps"]);
+
+  var value = react__WEBPACK_IMPORTED_MODULE_2__["useMemo"](function () {
+    return Object(lodash__WEBPACK_IMPORTED_MODULE_5__["isArray"])(input.value) ? input.value : [];
+  }, [input.value]);
+  return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_form__WEBPACK_IMPORTED_MODULE_4__["FormControl"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    label: label,
+    touched: touched,
+    error: error || submitError,
+    required: required
+  }, layoutProps), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_Slider__WEBPACK_IMPORTED_MODULE_3__["Slider"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    value: value,
+    onChange: input.onChange
+  }, input, rest)));
+};
 
 /***/ }),
 
@@ -6512,13 +6728,17 @@ var Slider = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(antd__WEBP
 /*!*****************************************!*\
   !*** ./packages/ui/src/slider/index.ts ***!
   \*****************************************/
-/*! exports provided: Slider */
+/*! exports provided: Slider, SliderField */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Slider */ "./packages/ui/src/slider/Slider.tsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Slider", function() { return _Slider__WEBPACK_IMPORTED_MODULE_0__["Slider"]; });
+
+/* harmony import */ var _SliderField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SliderField */ "./packages/ui/src/slider/SliderField.tsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SliderField", function() { return _SliderField__WEBPACK_IMPORTED_MODULE_1__["SliderField"]; });
+
 
 
 

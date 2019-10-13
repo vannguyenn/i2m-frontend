@@ -39,11 +39,9 @@ const NumberContainer = styled(NumberOfFollowers)`
 `
 
 export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
-  userName,
   id,
   fullName,
   profilePicUrl,
-  followeings,
   biography,
   followers,
   engagement,
@@ -83,7 +81,9 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
             alignItems="center"
           >
             <Title>ENGAGEMENT</Title>
-            <NumberContainer>{`${engagement}%`}</NumberContainer>
+            <NumberContainer>{`${(engagement &&
+              numeral(engagement).format('0.0')) ||
+              0}%`}</NumberContainer>
           </Flex>
           <Flex
             flexDirection="column"

@@ -2,6 +2,12 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Section, Title, NumberTag } from './StatsSection'
 import { Layout, Card, Icon } from '@frontend/ui'
+import { observer } from 'mobx-react-lite'
+import { useInfluencerDetailContext } from '../../static/context'
+import { map, get } from 'lodash'
+import { IPostProps } from '@frontend/constants'
+import numeral from 'numeral'
+import { DetailPost } from './DetailPost'
 
 const Description = styled.div`
   padding-left: 20px;
@@ -13,9 +19,25 @@ const CardTitle = styled.div`
 const LatestPost = styled.img`
   max-width: 400px;
   max-height: 300px;
+  cursor: pointer;
 `
 
-export const MediaSection: React.FunctionComponent = () => {
+export const MediaSection: React.FunctionComponent = observer(() => {
+  const {
+    posts,
+    mostLikedPost,
+    mostCommentedPost,
+  } = useInfluencerDetailContext().useMediaSection()
+  const [modalVisible, changeModalVisible] = React.useState(false)
+  const [currentSelectedPost, changeCurrentSelectedPost] = React.useState(
+    undefined
+  )
+
+  const onCardClick = (currentPost: IPostProps) => {
+    changeCurrentSelectedPost(currentPost)
+    changeModalVisible(true)
+  }
+
   return (
     <Section flexDirection="column">
       <Title>Best Posts</Title>
@@ -28,8 +50,16 @@ export const MediaSection: React.FunctionComponent = () => {
         mb="40px"
       >
         <Card.Card
+          onClick={() => onCardClick(mostLikedPost)}
           bordered={false}
-          cover={<img alt="example" src="/static/image/cover1.jpg" />}
+          cover={
+            <img
+              alt="example"
+              src={
+                get(mostLikedPost, 'thumbnailUrl') || '/static/image/cover1.jpg'
+              }
+            />
+          }
         >
           <Layout.Flex flexDirection="column" alignItems="center" width="100%">
             <CardTitle>Most Liked Post</CardTitle>
@@ -40,13 +70,24 @@ export const MediaSection: React.FunctionComponent = () => {
                 color="#F12B2C"
                 fontSize="18px"
               />
-              <NumberTag style={{ marginLeft: '10px' }}>25.9K</NumberTag>
+              <NumberTag style={{ marginLeft: '10px' }}>
+                {numeral(get(mostLikedPost, 'likeCount')).format('(0.0a)')}
+              </NumberTag>
             </Layout.Flex>
           </Layout.Flex>
         </Card.Card>
         <Card.Card
+          onClick={() => onCardClick(mostCommentedPost)}
           bordered={false}
-          cover={<img alt="example" src="/static/image/cover2.jpg" />}
+          cover={
+            <img
+              alt="example"
+              src={
+                get(mostCommentedPost, 'thumbnailUrl') ||
+                '/static/image/cover2.jpg'
+              }
+            />
+          }
         >
           <Layout.Flex flexDirection="column" alignItems="center" width="100%">
             <CardTitle>Most Commented Post</CardTitle>
@@ -57,7 +98,11 @@ export const MediaSection: React.FunctionComponent = () => {
                 color="#F4AE1F"
                 fontSize="18px"
               />
-              <NumberTag style={{ marginLeft: '10px' }}>33.0K</NumberTag>
+              <NumberTag style={{ marginLeft: '10px' }}>
+                {numeral(get(mostCommentedPost, 'commentCount')).format(
+                  '(0.0a)'
+                )}
+              </NumberTag>
             </Layout.Flex>
           </Layout.Flex>
         </Card.Card>
@@ -81,13 +126,19 @@ export const MediaSection: React.FunctionComponent = () => {
         alignContent="center"
         mt="40px"
       >
-        <LatestPost src="/static/image/cover4.jpg" />
-        <LatestPost src="/static/image/cover5.jpg" />
-        <LatestPost src="/static/image/cover6.jpg" />
-        <LatestPost src="/static/image/cover7.jpg" />
-        <LatestPost src="/static/image/cover8.jpg" />
-        <LatestPost src="/static/image/cover9.jpg" />
+        {map(posts, (post: IPostProps, index) => (
+          <LatestPost
+            onClick={() => onCardClick(post)}
+            src={post.thumbnailUrl || '/static/image/cover2.jpg'}
+            key={index}
+          />
+        ))}
       </Layout.Grid>
+      <DetailPost
+        detail={currentSelectedPost}
+        visible={modalVisible}
+        onCancel={() => changeModalVisible(false)}
+      />
     </Section>
   )
-}
+})

@@ -62,6 +62,7 @@ export const NumberTag = styled.div`
   color: #173c51;
   font-size: 30px;
   font-weight: 700;
+  text-transform: uppercase;
 `
 const PercentageTag = styled.div`
   color: #173c51;

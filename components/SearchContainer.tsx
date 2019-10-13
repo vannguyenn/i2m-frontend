@@ -8,6 +8,8 @@ import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../models'
 import { useViewModel } from '@frontend/core/src/hooks'
 import { observer } from 'mobx-react-lite'
+import Router from 'next/router'
+import { PATHS } from '@frontend/constants'
 
 const SearchInputContainer = styled.div`
   width: 40%;
@@ -43,7 +45,8 @@ export const SearchContainer: React.FunctionComponent = observer(() => {
   }
 
   const searchInfluencer = () => {
-    appModel.searchInfluencers(0)
+    Router.push(PATHS.influencers)
+    // appModel.searchInfluencers(0)
   }
 
   return (
