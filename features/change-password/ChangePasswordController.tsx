@@ -130,7 +130,7 @@ export const ChangePasswordController: React.FunctionComponent = () => {
       notification.success({
         message: MESSAGES.SAVE_SUCESS,
         duration: 3,
-        placement: 'topRight',
+        placement: 'bottomLeft',
       })
       await appModel.authModel.logout()
       return undefined
@@ -138,7 +138,7 @@ export const ChangePasswordController: React.FunctionComponent = () => {
       notification.error({
         message: error.response.data,
         duration: 3,
-        placement: 'topRight',
+        placement: 'bottomLeft',
       })
      // console.log(error.response.data)
       return error

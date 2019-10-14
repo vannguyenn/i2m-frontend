@@ -182,6 +182,10 @@ const EmailSubject = styled.div`
 const TimeStamp = styled.div`
   color: ${({ theme }) => theme.colors.grey65};
 `
+
+const SentTo = styled.input`
+`
+
 interface ActionButtonProps {
   setModalVisible: (visible: boolean, influencerId: string) => void
   onClickDeleteBtn: () => void
@@ -378,7 +382,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
     }
 
     const [loading, setLoading] = React.useState(false)
-    const [attactFile, setAttachFile] = React.useState(' ')
+    const [attactFile, setAttachFile] = React.useState('')
     const [fileList, setfileList] = React.useState([])
     const handleChange = info => {
       setfileList([])
@@ -394,7 +398,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
         notification.success({
           message: `${info.file.name} file uploaded successfully`,
           duration: 3,
-          placement: 'topRight',
+          placement: 'bottomLeft',
         })
       } else if (info.file.status === 'error') {
         setLoading(false)
@@ -402,7 +406,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
         notification.error({
           message: `${info.file.name} file upload failed.`,
           duration: 3,
-          placement: 'topRight',
+          placement: 'bottomLeft',
         })
       }
     };
@@ -413,13 +417,13 @@ export const ListInfluencerController: React.FunctionComponent = observer(
         notification.success({
           message: MESSAGES.SEND_MAIL_SUCCESS,
           duration: 3,
-          placement: 'topRight',
+          placement: 'bottomLeft',
         })
       } catch (error) {
         notification.error({
           message: MESSAGES.SEND_MAIL_ERROR,
           duration: 4,
-          placement: 'topRight',
+          placement: 'bottomLeft',
         })
         return error
       }

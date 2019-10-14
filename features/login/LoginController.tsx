@@ -151,7 +151,7 @@ export const LoginController: React.FunctionComponent = () => {
       notification.error({
         message: error,
         duration: 4,
-        placement: 'topRight',
+        placement: 'bottomLeft',
       })
       return error
     }

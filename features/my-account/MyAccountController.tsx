@@ -21,7 +21,7 @@ import { map } from 'lodash'
 import Router from 'next/router'
 import Link from 'next/link'
 import { field } from '@frontend/core/src/validate'
-import { Upload, Icon, message } from 'antd';
+import { Upload, Icon } from 'antd';
 
 const Content = styled(Layout.Flex)`
   min-height: calc(100vh - 150px);
@@ -59,7 +59,7 @@ const FORM_FIELDS = {
     placeholder: 'What should we call you ...',
   },
   category: {
-    name: 'category',
+    name: 'categories',
     label: 'Category',
     placeholder: 'Please choose your interested category',
   },
@@ -100,7 +100,6 @@ const MyAccountForm: React.FunctionComponent<ICategory> = ({
         label={FORM_FIELDS.category.label}
         placeholder={FORM_FIELDS.category.placeholder}
         component={Select.MultipleSelectField}
-        defaultValue={initialValues.categories}
         options={Lcategories}
       />
 
@@ -138,11 +137,14 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
       notification.success({
         message: MESSAGES.SAVE_SUCESS,
         duration: 4,
-        placement: 'topRight',
+        placement: 'bottomLeft',
       })
-      return undefined
     } catch (error) {
-      console.log(error)
+      notification.error({
+        message: "Update user failed.",
+        duration: 4,
+        placement: 'bottomLeft',
+      })
       return error
     }
   }
@@ -178,7 +180,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
       notification.success({
         message: MESSAGES.SAVE_SUCESS,
         duration: 4,
-        placement: 'topRight',
+        placement: 'bottomLeft',
       })
 
       setLoading(false)
@@ -190,7 +192,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
       notification.error({
         message: "Upload avata failed.",
         duration: 4,
-        placement: 'topRight',
+        placement: 'bottomLeft',
       })
       return error
     }

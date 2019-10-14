@@ -4681,7 +4681,7 @@ function () {
 /*!****************************************!*\
   !*** ./packages/services/src/index.ts ***!
   \****************************************/
-/*! exports provided: AuthService, RestClient, ProfileService, InfluencerService, GroupService, ConfessionService, restClient, authService, profileService, influencerService, groupService, confessionService */
+/*! exports provided: AuthService, RestClient, InfluencerService, GroupService, ConfessionService, restClient, authService, profileService, influencerService, groupService, confessionService, ProfileService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7258,57 +7258,55 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var defaultModules = {
-  toolbar: [['bold', 'italic', 'underline'], [{
+  toolbar: [[{
+    'header': [1, 2, 3, 4, 5, 6, false]
+  }], [{
+    'color': ['#FF0000', '#001F3F', '#0074D9', '#7FDBFF', '#39CCCC', '#3D9970', '#2ECC40', '#01FF70', '#FFDC00', '#FF851B', '#FF4136', '#85144B', '#F012BE', '#B10DC9', '#111111', '#AAAAAA']
+  }], ['bold', 'italic', 'underline'], [{
     list: 'bullet'
   }, {
     list: 'ordered'
   }, {
     align: 'right'
-  }], ['link']]
+  }], ['link'], ['clean']]
 };
 var QuillEditor = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
   displayName: "TextEditor__QuillEditor",
   componentId: "sc-15utxlb-0"
-})([".ql-toolbar.ql-snow{display:flex;align-items:center;border:1px solid ", ";border-top-left-radius:3px;border-top-right-radius:3px;color:", ";padding:0;padding-left:5px;height:33px;.ql-formats{display:flex;align-items:center;padding-right:5px;margin-right:5px;height:16px;&:not(:last-child){border-right:2px solid ", ";}.ql-active{color:", ";background:", ";.ql-stroke{stroke:", ";}}.ql-link{transform:rotate(90deg);}}button:hover{color:", ";background:", ";.ql-stroke{stroke:", ";}}}.ql-container.ql-snow{border:1px solid ", ";border-top:0;border-bottom-left-radius:3px;border-bottom-right-radius:3px;font-size:14px;.ql-editor.ql-blank::before{font-size:14px;color:", ";font-style:normal;}.ql-editor ol,.ql-editor ul{padding-inline-start:0;}a{color:", ";}", ";}"], function (_ref) {
+})([".ql-toolbar.ql-snow{display:flex;align-items:center;border-top-left-radius:3px;border-top-right-radius:3px;color:", ";padding:0;padding-left:5px;height:33px;.ql-formats{display:flex;align-items:center;padding-right:5px;margin-right:5px;height:16px;&:not(:last-child){border-right:2px solid ", ";}.ql-active{color:", ";background:", ";.ql-stroke{stroke:", ";}}.ql-link{transform:rotate(90deg);}}button:hover{color:", ";background:", ";.ql-stroke{stroke:", ";}}}.ql-container.ql-snow{border-top:0;border-bottom-left-radius:3px;border-bottom-right-radius:3px;font-size:14px;.ql-editor.ql-blank::before{font-size:14px;color:", ";font-style:normal;}.ql-editor ol,.ql-editor ul{padding-inline-start:0;}a{color:", ";}", ";}"], function (_ref) {
   var theme = _ref.theme;
-  return theme.colors.dark25;
+  return theme.colors.dark85;
 }, function (_ref2) {
   var theme = _ref2.theme;
-  return theme.colors.dark85;
+  return theme.colors.medium5;
 }, function (_ref3) {
   var theme = _ref3.theme;
-  return theme.colors.medium5;
+  return theme.colors.medium;
 }, function (_ref4) {
   var theme = _ref4.theme;
-  return theme.colors.medium;
+  return theme.colors.primary5;
 }, function (_ref5) {
   var theme = _ref5.theme;
-  return theme.colors.primary5;
+  return theme.colors.medium;
 }, function (_ref6) {
   var theme = _ref6.theme;
-  return theme.colors.medium;
+  return theme.colors.dark85;
 }, function (_ref7) {
   var theme = _ref7.theme;
-  return theme.colors.dark85;
+  return theme.colors.dark5;
 }, function (_ref8) {
   var theme = _ref8.theme;
-  return theme.colors.dark5;
+  return theme.colors.dark85;
 }, function (_ref9) {
   var theme = _ref9.theme;
-  return theme.colors.dark85;
+  return theme.colors.dark25;
 }, function (_ref10) {
   var theme = _ref10.theme;
-  return theme.colors.dark25;
-}, function (_ref11) {
-  var theme = _ref11.theme;
-  return theme.colors.dark25;
-}, function (_ref12) {
-  var theme = _ref12.theme;
   return theme.colors.medium;
 }, styled_system__WEBPACK_IMPORTED_MODULE_4__["height"]);
-var TextEditor = function TextEditor(_ref13) {
-  var height = _ref13.height,
-      props = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref13, ["height"]);
+var TextEditor = function TextEditor(_ref11) {
+  var height = _ref11.height,
+      props = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref11, ["height"]);
 
   if (true) {
     return null;
