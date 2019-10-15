@@ -4681,7 +4681,7 @@ function () {
 /*!****************************************!*\
   !*** ./packages/services/src/index.ts ***!
   \****************************************/
-/*! exports provided: AuthService, RestClient, InfluencerService, GroupService, ConfessionService, restClient, authService, profileService, influencerService, groupService, confessionService, ProfileService */
+/*! exports provided: AuthService, RestClient, ProfileService, InfluencerService, GroupService, ConfessionService, restClient, authService, profileService, influencerService, groupService, confessionService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

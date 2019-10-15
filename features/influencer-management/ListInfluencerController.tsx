@@ -183,8 +183,23 @@ const TimeStamp = styled.div`
   color: ${({ theme }) => theme.colors.grey65};
 `
 
-const SentTo = styled.input`
-`
+const SentToStyle = {
+  borderTop: 'none',
+  borderLeft: 'none',
+  borderRight: 'none',
+  borderRadius: '0px',
+  fontWeight: 'bold',
+  fontSize: '14px',
+  borderBottomWidth: 0.5
+}
+
+const SubjectStyle={
+  borderTop: 'none',
+  borderLeft: 'none',
+  borderRight: 'none',
+  borderRadius: '0px',
+  borderBottomWidth: 0.5
+}
 
 interface ActionButtonProps {
   setModalVisible: (visible: boolean, influencerId: string) => void
@@ -668,15 +683,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                         // label={MODALPROPS.fields.sendTo.label}
                         // required
                         disabled={true}
-                        style={{
-                          borderTop: 'none',
-                          borderLeft: 'none',
-                          borderRight: 'none',
-                          borderRadius: '0px',
-                          fontWeight: 'bold',
-                          fontSize: '14px',
-                          borderBottomWidth: 0.5
-                        }}
+                        style={SentToStyle}
                       />
                       <Field
                         name={MODALPROPS.fields.subject.name}
@@ -685,13 +692,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                         label={MODALPROPS.fields.subject.label}
                         validate={field.required}
                         required
-                        style={{
-                          borderTop: 'none',
-                          borderLeft: 'none',
-                          borderRight: 'none',
-                          borderRadius: '0px',
-                          borderBottomWidth: 0.5
-                        }}
+                        style={SubjectStyle}
                       />
                     </Layout.Grid>
                     <Field

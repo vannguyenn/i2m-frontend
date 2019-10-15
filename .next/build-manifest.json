@@ -3,6 +3,10 @@
     "static/development/dll/dll_4b0746e12e4485c42d64.js"
   ],
   "pages": {
+    "/": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
@@ -13,15 +17,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/change-password": [
+    "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/my-influencers": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/next/dist/pages/_error": [
+    "/my-account": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
