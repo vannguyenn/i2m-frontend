@@ -795,7 +795,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _temp;
+var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _temp;
 
 
 
@@ -818,6 +818,8 @@ function () {
     Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "sucess", _descriptor3, this);
 
     Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "message", _descriptor4, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "category", _descriptor5, this);
 
     Object(mobx__WEBPACK_IMPORTED_MODULE_9__["reaction"])(function () {
       return {
@@ -931,6 +933,45 @@ function () {
     value: function setToken(token) {
       this.token = token;
     }
+  }, {
+    key: "getCategory",
+    value: function () {
+      var _getCategory = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee3() {
+        var _this3 = this;
+
+        var _ref2, data;
+
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["authService"].getCategory();
+
+              case 2:
+                _ref2 = _context3.sent;
+                data = _ref2.data;
+                Object(mobx__WEBPACK_IMPORTED_MODULE_9__["runInAction"])(function () {
+                  _this3.category = data;
+                });
+                return _context3.abrupt("return", data);
+
+              case 6:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      function getCategory() {
+        return _getCategory.apply(this, arguments);
+      }
+
+      return getCategory;
+    }()
   }]);
 
   return AuthModel;
@@ -958,7 +999,12 @@ function () {
   enumerable: true,
   writable: true,
   initializer: null
-}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "login", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "login"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "signup", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "signup"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "logout", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "logout"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "setToken", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "setToken"), _class.prototype)), _class);
+}), _descriptor5 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "category", [mobx__WEBPACK_IMPORTED_MODULE_9__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "login", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "login"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "signup", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "signup"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "logout", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "logout"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "setToken", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "setToken"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "getCategory", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "getCategory"), _class.prototype)), _class);
 
 /***/ }),
 
@@ -974,17 +1020,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileModel", function() { return ProfileModel; });
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptor */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js");
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerDefineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerDefineProperty.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor */ "./node_modules/@babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerWarningHelper */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerWarningHelper.js");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! mobx */ "mobx");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(mobx__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _frontend_services__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @frontend/services */ "./packages/services/src/index.ts");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerDefineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerDefineProperty.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor */ "./node_modules/@babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerWarningHelper */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerWarningHelper.js");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! mobx */ "mobx");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(mobx__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _frontend_services__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @frontend/services */ "./packages/services/src/index.ts");
+
 
 
 
@@ -1002,40 +1051,43 @@ var ProfileModel = (_class = (_temp =
 /*#__PURE__*/
 function () {
   function ProfileModel(appModel) {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__["default"])(this, ProfileModel);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_5__["default"])(this, ProfileModel);
 
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "currentUser", _descriptor, this);
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "currentUser", _descriptor, this);
 
     this.appModel = void 0;
     this.appModel = appModel;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(ProfileModel, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__["default"])(ProfileModel, [{
     key: "getCurrentUser",
     value: function () {
-      var _getCurrentUser = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__["default"])(
+      var _getCurrentUser = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee() {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee() {
         var _this = this;
 
         var _ref, data;
 
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee$(_context) {
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _frontend_services__WEBPACK_IMPORTED_MODULE_9__["profileService"].getCurrentUser();
+                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["profileService"].getCurrentUser();
 
               case 2:
                 _ref = _context.sent;
                 data = _ref.data;
-                Object(mobx__WEBPACK_IMPORTED_MODULE_8__["runInAction"])(function () {
+                data.categories = data.categories.map(function (item) {
+                  return item.id;
+                });
+                Object(mobx__WEBPACK_IMPORTED_MODULE_9__["runInAction"])(function () {
                   _this.currentUser = data;
                 });
                 return _context.abrupt("return", data);
 
-              case 6:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -1049,15 +1101,125 @@ function () {
 
       return getCurrentUser;
     }()
+  }, {
+    key: "updateCurrentUser",
+    value: function () {
+      var _updateCurrentUser = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee2(data) {
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["profileService"].updateCurrentUser(data.id, data);
+
+              case 3:
+                return _context2.abrupt("return", _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a.resolve());
+
+              case 6:
+                _context2.prev = 6;
+                _context2.t0 = _context2["catch"](0);
+                return _context2.abrupt("return", _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a.reject(_context2.t0));
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 6]]);
+      }));
+
+      function updateCurrentUser(_x) {
+        return _updateCurrentUser.apply(this, arguments);
+      }
+
+      return updateCurrentUser;
+    }()
+  }, {
+    key: "updatePassword",
+    value: function () {
+      var _updatePassword = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee3(data) {
+        var id;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                id = this.currentUser.id;
+                _context3.next = 4;
+                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["profileService"].updatePassword(id, data);
+
+              case 4:
+                return _context3.abrupt("return", _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a.resolve());
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                return _context3.abrupt("return", _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a.reject(_context3.t0));
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[0, 7]]);
+      }));
+
+      function updatePassword(_x2) {
+        return _updatePassword.apply(this, arguments);
+      }
+
+      return updatePassword;
+    }()
+  }, {
+    key: "updateAvatar",
+    value: function () {
+      var _updateAvatar = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.mark(function _callee4(file) {
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_2___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["profileService"].uploadAvatar(file);
+
+              case 3:
+                return _context4.abrupt("return", _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a.resolve());
+
+              case 6:
+                _context4.prev = 6;
+                _context4.t0 = _context4["catch"](0);
+                return _context4.abrupt("return", _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a.reject(_context4.t0));
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 6]]);
+      }));
+
+      function updateAvatar(_x3) {
+        return _updateAvatar.apply(this, arguments);
+      }
+
+      return updateAvatar;
+    }()
   }]);
 
   return ProfileModel;
-}(), _temp), (_descriptor = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "currentUser", [mobx__WEBPACK_IMPORTED_MODULE_8__["observable"]], {
+}(), _temp), (_descriptor = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "currentUser", [mobx__WEBPACK_IMPORTED_MODULE_9__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "getCurrentUser", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "getCurrentUser"), _class.prototype)), _class);
+}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "getCurrentUser", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "getCurrentUser"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "updateCurrentUser", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "updateCurrentUser"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "updatePassword", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "updatePassword"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "updateAvatar", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "updateAvatar"), _class.prototype)), _class);
 
 /***/ }),
 
@@ -2815,7 +2977,9 @@ var API_BASE_URL = 'http://localhost:8080';
 var GOOGLE_AUTH_URL = API_BASE_URL + '/oauth2/authorize/google?redirect_uri=' + OAUTH2_REDIRECT_URI;
 var MESSAGES = {
   SAVE_SUCESS: 'Save successfully.',
-  existing_influencer: 'Influencer is already saved to this list'
+  existing_influencer: 'Influencer is already saved to this list',
+  SEND_MAIL_SUCCESS: 'Send email successfully.',
+  SEND_MAIL_ERROR: 'Sorry! email delivery failure'
 };
 var MODE;
 
@@ -4073,6 +4237,11 @@ function (_BaseService) {
     value: function signup(data) {
       return this.post('/signup', data);
     }
+  }, {
+    key: "getCategory",
+    value: function getCategory() {
+      return this.get('/category');
+    }
   }]);
 
   return AuthService;
@@ -4155,6 +4324,61 @@ function () {
 
   return BaseService;
 }(), _temp)) || _class);
+
+/***/ }),
+
+/***/ "./packages/services/src/ConfessionService.ts":
+/*!****************************************************!*\
+  !*** ./packages/services/src/ConfessionService.ts ***!
+  \****************************************************/
+/*! exports provided: ConfessionService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfessionService", function() { return ConfessionService; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _BaseService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BaseService */ "./packages/services/src/BaseService.ts");
+
+
+
+
+
+
+var ConfessionService =
+/*#__PURE__*/
+function (_BaseService) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(ConfessionService, _BaseService);
+
+  function ConfessionService() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, ConfessionService);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(ConfessionService)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.name = "confession";
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(ConfessionService, [{
+    key: "sendEmail",
+    value: function sendEmail(data) {
+      return this.post('', data);
+    }
+  }]);
+
+  return ConfessionService;
+}(_BaseService__WEBPACK_IMPORTED_MODULE_5__["BaseService"]);
 
 /***/ }),
 
@@ -4364,12 +4588,27 @@ function (_BaseService) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(ProfileService, [{
     key: "getCurrentUser",
     value: function getCurrentUser() {
-      return this.get('/self');
+      return this.get('/me');
     }
   }, {
     key: "getMyInfluencerLists",
     value: function getMyInfluencerLists() {
       return this.get('/self/packs');
+    }
+  }, {
+    key: "updateCurrentUser",
+    value: function updateCurrentUser(userid, data) {
+      return this.put("/".concat(userid, "/update"), data);
+    }
+  }, {
+    key: "updatePassword",
+    value: function updatePassword(userid, data) {
+      return this.put("/".concat(userid, "/update-password"), data);
+    }
+  }, {
+    key: "uploadAvatar",
+    value: function uploadAvatar(file) {
+      return this.put('/avatar', file);
     }
   }]);
 
@@ -4442,7 +4681,7 @@ function () {
 /*!****************************************!*\
   !*** ./packages/services/src/index.ts ***!
   \****************************************/
-/*! exports provided: AuthService, RestClient, ProfileService, InfluencerService, GroupService, restClient, authService, profileService, influencerService, groupService */
+/*! exports provided: AuthService, RestClient, ProfileService, InfluencerService, GroupService, ConfessionService, restClient, authService, profileService, influencerService, groupService, confessionService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4452,11 +4691,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "profileService", function() { return profileService; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "influencerService", function() { return influencerService; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "groupService", function() { return groupService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "confessionService", function() { return confessionService; });
 /* harmony import */ var _GroupService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GroupService */ "./packages/services/src/GroupService.ts");
 /* harmony import */ var _InfluencerService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InfluencerService */ "./packages/services/src/InfluencerService.ts");
 /* harmony import */ var _ProfileService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileService */ "./packages/services/src/ProfileService.ts");
 /* harmony import */ var _RestClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RestClient */ "./packages/services/src/RestClient.ts");
 /* harmony import */ var _AuthService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AuthService */ "./packages/services/src/AuthService.ts");
+/* harmony import */ var _ConfessionService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ConfessionService */ "./packages/services/src/ConfessionService.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return _AuthService__WEBPACK_IMPORTED_MODULE_4__["AuthService"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RestClient", function() { return _RestClient__WEBPACK_IMPORTED_MODULE_3__["RestClient"]; });
@@ -4466,6 +4707,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InfluencerService", function() { return _InfluencerService__WEBPACK_IMPORTED_MODULE_1__["InfluencerService"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupService", function() { return _GroupService__WEBPACK_IMPORTED_MODULE_0__["GroupService"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ConfessionService", function() { return _ConfessionService__WEBPACK_IMPORTED_MODULE_5__["ConfessionService"]; });
+
+
 
 
 
@@ -4482,6 +4727,7 @@ var authService = new _AuthService__WEBPACK_IMPORTED_MODULE_4__["AuthService"](r
 var profileService = new _ProfileService__WEBPACK_IMPORTED_MODULE_2__["ProfileService"](restClient);
 var influencerService = new _InfluencerService__WEBPACK_IMPORTED_MODULE_1__["InfluencerService"](restClient);
 var groupService = new _GroupService__WEBPACK_IMPORTED_MODULE_0__["GroupService"](restClient);
+var confessionService = new _ConfessionService__WEBPACK_IMPORTED_MODULE_5__["ConfessionService"](restClient);
 
 /***/ }),
 
@@ -6064,7 +6310,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mediumModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["css"])(["min-width:416px;.ant-modal-header{padding:12px 12px 12px 40px;height:48px;display:flex;align-items:center;background-color:", ";.ant-modal-title{word-break:break-word;color:#fff;}}.ant-modal-close-x{width:48px;height:48px;line-height:48px;color:#fff;font-size:14px;}.ant-modal-footer{padding:12px 12px 12px 40px;}.ant-modal-body{padding:12px 40px;color:#000;}"], function (_ref) {
+var mediumModalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_3__["css"])(["min-width:616px;.ant-modal-header{padding:12px 12px 12px 40px;height:48px;display:flex;align-items:center;background-color:", ";.ant-modal-title{word-break:break-word;color:#fff;}}.ant-modal-close-x{width:48px;height:48px;line-height:48px;color:#fff;font-size:14px;}.ant-modal-footer{padding:12px 12px 12px 40px;}.ant-modal-body{padding:12px 40px;color:#000;}"], function (_ref) {
   var theme = _ref.theme;
   return theme.colors.primary;
 });
@@ -7012,57 +7258,55 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var defaultModules = {
-  toolbar: [['bold', 'italic', 'underline'], [{
+  toolbar: [[{
+    'header': [1, 2, 3, 4, 5, 6, false]
+  }], [{
+    'color': ['#FF0000', '#001F3F', '#0074D9', '#7FDBFF', '#39CCCC', '#3D9970', '#2ECC40', '#01FF70', '#FFDC00', '#FF851B', '#FF4136', '#85144B', '#F012BE', '#B10DC9', '#111111', '#AAAAAA']
+  }], ['bold', 'italic', 'underline'], [{
     list: 'bullet'
   }, {
     list: 'ordered'
   }, {
     align: 'right'
-  }], ['link']]
+  }], ['link'], ['clean']]
 };
 var QuillEditor = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
   displayName: "TextEditor__QuillEditor",
   componentId: "sc-15utxlb-0"
-})([".ql-toolbar.ql-snow{display:flex;align-items:center;border:1px solid ", ";border-top-left-radius:3px;border-top-right-radius:3px;color:", ";padding:0;padding-left:5px;height:33px;.ql-formats{display:flex;align-items:center;padding-right:5px;margin-right:5px;height:16px;&:not(:last-child){border-right:2px solid ", ";}.ql-active{color:", ";background:", ";.ql-stroke{stroke:", ";}}.ql-link{transform:rotate(90deg);}}button:hover{color:", ";background:", ";.ql-stroke{stroke:", ";}}}.ql-container.ql-snow{border:1px solid ", ";border-top:0;border-bottom-left-radius:3px;border-bottom-right-radius:3px;font-size:14px;.ql-editor.ql-blank::before{font-size:14px;color:", ";font-style:normal;}.ql-editor ol,.ql-editor ul{padding-inline-start:0;}a{color:", ";}", ";}"], function (_ref) {
+})([".ql-toolbar.ql-snow{display:flex;align-items:center;border-top-left-radius:3px;border-top-right-radius:3px;color:", ";padding:0;padding-left:5px;height:33px;.ql-formats{display:flex;align-items:center;padding-right:5px;margin-right:5px;height:16px;&:not(:last-child){border-right:2px solid ", ";}.ql-active{color:", ";background:", ";.ql-stroke{stroke:", ";}}.ql-link{transform:rotate(90deg);}}button:hover{color:", ";background:", ";.ql-stroke{stroke:", ";}}}.ql-container.ql-snow{border-top:0;border-bottom-left-radius:3px;border-bottom-right-radius:3px;font-size:14px;.ql-editor.ql-blank::before{font-size:14px;color:", ";font-style:normal;}.ql-editor ol,.ql-editor ul{padding-inline-start:0;}a{color:", ";}", ";}"], function (_ref) {
   var theme = _ref.theme;
-  return theme.colors.dark25;
+  return theme.colors.dark85;
 }, function (_ref2) {
   var theme = _ref2.theme;
-  return theme.colors.dark85;
+  return theme.colors.medium5;
 }, function (_ref3) {
   var theme = _ref3.theme;
-  return theme.colors.medium5;
+  return theme.colors.medium;
 }, function (_ref4) {
   var theme = _ref4.theme;
-  return theme.colors.medium;
+  return theme.colors.primary5;
 }, function (_ref5) {
   var theme = _ref5.theme;
-  return theme.colors.primary5;
+  return theme.colors.medium;
 }, function (_ref6) {
   var theme = _ref6.theme;
-  return theme.colors.medium;
+  return theme.colors.dark85;
 }, function (_ref7) {
   var theme = _ref7.theme;
-  return theme.colors.dark85;
+  return theme.colors.dark5;
 }, function (_ref8) {
   var theme = _ref8.theme;
-  return theme.colors.dark5;
+  return theme.colors.dark85;
 }, function (_ref9) {
   var theme = _ref9.theme;
-  return theme.colors.dark85;
+  return theme.colors.dark25;
 }, function (_ref10) {
   var theme = _ref10.theme;
-  return theme.colors.dark25;
-}, function (_ref11) {
-  var theme = _ref11.theme;
-  return theme.colors.dark25;
-}, function (_ref12) {
-  var theme = _ref12.theme;
   return theme.colors.medium;
 }, styled_system__WEBPACK_IMPORTED_MODULE_4__["height"]);
-var TextEditor = function TextEditor(_ref13) {
-  var height = _ref13.height,
-      props = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref13, ["height"]);
+var TextEditor = function TextEditor(_ref11) {
+  var height = _ref11.height,
+      props = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref11, ["height"]);
 
   if (true) {
     return null;

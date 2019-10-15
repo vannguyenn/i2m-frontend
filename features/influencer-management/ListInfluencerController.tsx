@@ -27,6 +27,9 @@ import { Form as FinalForm, Field } from 'react-final-form'
 import { validate } from '@frontend/core'
 import { MESSAGES, MODE, IInfluencerProps } from '@frontend/constants'
 import numeral from 'numeral'
+import { field } from '@frontend/core/src/validate'
+
+import { Upload, Icon as AntIcon, Button as AntButton } from 'antd';
 
 const MODALPROPS = {
   title: 'Send Mail',
@@ -179,14 +182,37 @@ const EmailSubject = styled.div`
 const TimeStamp = styled.div`
   color: ${({ theme }) => theme.colors.grey65};
 `
+
+const SentToStyle = {
+  borderTop: 'none',
+  borderLeft: 'none',
+  borderRight: 'none',
+  borderRadius: '0px',
+  fontWeight: 'bold',
+  fontSize: '14px',
+  borderBottomWidth: 0.5
+}
+
+const SubjectStyle={
+  borderTop: 'none',
+  borderLeft: 'none',
+  borderRight: 'none',
+  borderRadius: '0px',
+  borderBottomWidth: 0.5
+}
+
 interface ActionButtonProps {
-  setModalVisible: (visible: boolean) => void
+  setModalVisible: (visible: boolean, influencerId: string) => void
   onClickDeleteBtn: () => void
+  influencerId: string
+  influencerEmail: string
 }
 
 const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
   setModalVisible,
   onClickDeleteBtn,
+  influencerId,
+  influencerEmail
 }) => {
   const [drawerVisible, setDrawerVisible] = React.useState(false)
 
@@ -200,12 +226,16 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
         <IconButton onClick={onClickDeleteBtn}>
           <Icon.Icon type="delete" theme="filled" />
         </IconButton>
-        <IconButton onClick={() => setDrawerVisible(true)}>
-          <Icon.Icon type="clock-circle" theme="filled" />
-        </IconButton>
-        <IconButton onClick={() => setModalVisible(true)}>
-          <Icon.Icon type="mail" theme="filled" />
-        </IconButton>
+        {influencerEmail &&
+          <IconButton onClick={() => setDrawerVisible(true)}>
+            <Icon.Icon type="clock-circle" theme="filled" />
+          </IconButton>
+        }
+        {influencerEmail &&
+          <IconButton onClick={() => setModalVisible(true, influencerId)}>
+            <Icon.Icon type="mail" theme="filled" />
+          </IconButton>
+        }
       </Layout.Flex>
       <Drawer.Drawer
         title="Sent Emails"
@@ -290,9 +320,11 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       deleteModalVisible,
       isLoadingDetail,
       removeInfluencerModalVisible,
+      currentEmail
     } = myInfluencerViewModel
-    const setModalVisible = (visible: boolean) =>
-      myInfluencerViewModel.changeEmailModalVisible(visible)
+    const setModalVisible = (visible: boolean, id: string) => {
+      myInfluencerViewModel.changeEmailModalVisible(visible, id)
+    }
 
     const setCreateModalVisible = (visible: boolean) =>
       myInfluencerViewModel.changeNewListModalVisible(visible)
@@ -313,9 +345,6 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       await myInfluencerViewModel.removeAnInfluencerFromList(
         currentInfluencer.id
       )
-    }
-    const handleSendMail = (v: any) => {
-      console.log(v)
     }
 
     const handleNewList = async (v: any) => {
@@ -365,6 +394,54 @@ export const ListInfluencerController: React.FunctionComponent = observer(
     const onClickDeleteInfluencerBtn = (influencer: IInfluencerProps) => {
       setRemoveInfluencerModalVisible(true)
       setCurrentInfluencer(influencer)
+    }
+
+    const [loading, setLoading] = React.useState(false)
+    const [attactFile, setAttachFile] = React.useState('')
+    const [fileList, setfileList] = React.useState([])
+    const handleChange = info => {
+      setfileList([])
+      if (info.file.status === 'uploading') {
+        setLoading(true)
+        setfileList([])
+        return;
+      }
+      if (info.file.status === 'done') {
+        setAttachFile(info.file.originFileObj)
+        setLoading(false)
+        setfileList([info.file.originFileObj])
+        notification.success({
+          message: `${info.file.name} file uploaded successfully`,
+          duration: 3,
+          placement: 'bottomLeft',
+        })
+      } else if (info.file.status === 'error') {
+        setLoading(false)
+        setfileList([])
+        notification.error({
+          message: `${info.file.name} file upload failed.`,
+          duration: 3,
+          placement: 'bottomLeft',
+        })
+      }
+    };
+
+    const handleSendMail = async (v: any) => {
+      try {
+        await myInfluencerViewModel.sendMail(v, attactFile)
+        notification.success({
+          message: MESSAGES.SEND_MAIL_SUCCESS,
+          duration: 3,
+          placement: 'bottomLeft',
+        })
+      } catch (error) {
+        notification.error({
+          message: MESSAGES.SEND_MAIL_ERROR,
+          duration: 4,
+          placement: 'bottomLeft',
+        })
+        return error
+      }
     }
 
     return (
@@ -535,6 +612,8 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                               </Layout.Flex>
                               <ActionButton
                                 setModalVisible={setModalVisible}
+                                  influencerId={influencer.id}
+                                  influencerEmail={influencer.email}
                                 onClickDeleteBtn={() =>
                                   onClickDeleteInfluencerBtn(influencer)
                                 }
@@ -573,12 +652,19 @@ export const ListInfluencerController: React.FunctionComponent = observer(
               }
             />
           )}
+          
+          {/* Send Mail */}
           {sendEmailModalVisible && (
             <Modal.MediumModal
+              style={{ border: '2px solid #FF6265', borderRadius: '5px', top: '50px', paddingBottom: '0px' }}
               visible={sendEmailModalVisible}
               title={MODALPROPS.title}
               okText={MODALPROPS.footer.okText}
-              onCancel={() => setModalVisible(false)}
+              onCancel={() => setModalVisible(false, null)}
+              okButtonProps={{
+                form: MODALPROPS.sendMailForm,
+                loading: isLoading,
+              }}
             >
               <FinalForm
                 onSubmit={handleSendMail}
@@ -592,23 +678,52 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                       <Field
                         name={MODALPROPS.fields.sendTo.name}
                         component={Input.InputField}
+                        defaultValue={currentEmail}
                         placeholder={MODALPROPS.fields.sendTo.placeholder}
-                        label={MODALPROPS.fields.sendTo.label}
+                        // label={MODALPROPS.fields.sendTo.label}
+                        // required
+                        disabled={true}
+                        style={SentToStyle}
+                      />
+                      <Field
+                        name={MODALPROPS.fields.subject.name}
+                        component={Input.InputField}
+                        placeholder={MODALPROPS.fields.subject.placeholder}
+                        label={MODALPROPS.fields.subject.label}
+                        validate={field.required}
                         required
+                        style={SubjectStyle}
                       />
                     </Layout.Grid>
                     <Field
                       name={MODALPROPS.fields.content.name}
                       component={TextEditor.TextEditorField}
                       placeholder={MODALPROPS.fields.content.placeholder}
-                      label={MODALPROPS.fields.content.label}
+                      //  label={MODALPROPS.fields.content.label}
                       height="230px"
+                      validate={field.required}
                     />
+
+                    <Upload
+                      name="file"
+                      multiple={false}
+                      accept="image/*,.doc,.docx,.xlsx,.pdf,pptx,txt"
+                      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                      className="uploader"
+                      showUploadList={true}
+                      onChange={handleChange}
+                    >
+                      <AntButton type="dashed" disabled={fileList.length >= 1 ? true : false}>
+                        <AntIcon type={loading ? 'loading' : 'upload'} />Click to Upload
+                      </AntButton>
+                    </Upload>
+
                   </AntForm.Form>
                 )}
               />
             </Modal.MediumModal>
           )}
+
           {createListModalVisible &&
             (mode === MODE.CREATE ? (
               <Modal.SmallModal

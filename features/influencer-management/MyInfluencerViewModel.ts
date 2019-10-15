@@ -1,6 +1,6 @@
 import { AppModel } from './../../models/AppModel'
 import { action, reaction, observable, runInAction } from 'mobx'
-import { profileService, groupService } from '@frontend/services'
+import { profileService, groupService,confessionService } from '@frontend/services'
 import { head, get, filter, find } from 'lodash'
 import { MODE, IInfluencerProps, MESSAGES } from '@frontend/constants'
 import { notification } from '@frontend/ui'
@@ -20,6 +20,14 @@ interface INewListRequest {
   name: string
 }
 
+export interface ISendMail{
+  attachFile?: any
+  subject: string
+  body: string
+  influencerId:string
+  sentTo: string
+}
+
 export class MyInfluencerViewModel {
   @observable listId: string
   @observable listDetail: IListDetailProps
@@ -32,7 +40,7 @@ export class MyInfluencerViewModel {
   @observable deleteModalVisible: boolean
   @observable isLoadingDetail: boolean = false
   @observable removeInfluencerModalVisible: boolean
-
+  @observable currentEmail:string
   appModel: AppModel = null
 
   constructor(appModel: AppModel) {
@@ -86,9 +94,12 @@ export class MyInfluencerViewModel {
   }
 
   @action
-  changeEmailModalVisible(visible: boolean) {
+  changeEmailModalVisible(visible: boolean,id:string) {
     this.sendEmailModalVisible = visible
+    const v= this.listDetail.influencers.filter(item=>item.id == id);
+    this.currentEmail = v.map(i=>i.email).toString()
   }
+
   @action
   changeNewListModalVisible(visible: boolean) {
     this.createListModalVisible = visible
@@ -189,6 +200,25 @@ export class MyInfluencerViewModel {
       })
     } catch (error) {
       this.isLoading = false
+    }
+  }
+
+  @action
+  async sendMail(data:ISendMail,attachFile:any){
+    try {
+      let id = this.listDetail.influencers
+                   .filter(i =>i.email === data.sentTo)
+                   .map(m=>m.id).toString();
+      data.influencerId = id
+  
+      let val = new FormData();
+      val.append('attachFile',attachFile)
+      val.append('subject',data.subject)
+      val.append('body',data.body)
+      val.append('influencerId',data.influencerId)
+      await confessionService.sendEmail(val)
+    } catch (error) {
+      return error
     }
   }
 }
