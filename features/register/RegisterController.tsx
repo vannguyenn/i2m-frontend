@@ -6,6 +6,7 @@ import { PATHS } from '@frontend/constants'
 import Router from 'next/router'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
+import { Grid } from '@frontend/ui/src/layout'
 
 const CONSTANTS = {
   intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
@@ -70,52 +71,54 @@ const RegisterForm: React.FunctionComponent<FormRenderProps> = ({
   handleSubmit,
 }) => (
   <AntForm.Form onSubmit={handleSubmit} layout="vertical">
-    <Field
-      name={FORM_FIELDS.email.name}
-      label={FORM_FIELDS.email.label}
-      placeholder={FORM_FIELDS.email.placeholder}
-      component={Input.InputField}
-    />
-    <Field
-      name={FORM_FIELDS.fullname.name}
-      label={FORM_FIELDS.fullname.label}
-      placeholder={FORM_FIELDS.fullname.placeholder}
-      component={Input.InputField}
-    />
-    <Field
-      name={FORM_FIELDS.password.name}
-      label={FORM_FIELDS.password.label}
-      placeholder={FORM_FIELDS.password.placeholder}
-      component={Input.InputPasswordField}
-    />
-    <Field
-      name={FORM_FIELDS.category.name}
-      label={FORM_FIELDS.category.label}
-      placeholder={FORM_FIELDS.category.placeholder}
-      component={Select.MultipleSelectField}
-      options={[
-        { value: '1', label: 'Van xinh dep' },
-        { value: '2', label: 'Beauty' },
-      ]}
-    />
+    <Grid gridGap="15px">
+      <Field
+        name={FORM_FIELDS.email.name}
+        label={FORM_FIELDS.email.label}
+        placeholder={FORM_FIELDS.email.placeholder}
+        component={Input.InputField}
+      />
+      <Field
+        name={FORM_FIELDS.fullname.name}
+        label={FORM_FIELDS.fullname.label}
+        placeholder={FORM_FIELDS.fullname.placeholder}
+        component={Input.InputField}
+      />
+      <Field
+        name={FORM_FIELDS.password.name}
+        label={FORM_FIELDS.password.label}
+        placeholder={FORM_FIELDS.password.placeholder}
+        component={Input.InputPasswordField}
+      />
+      <Field
+        name={FORM_FIELDS.category.name}
+        label={FORM_FIELDS.category.label}
+        placeholder={FORM_FIELDS.category.placeholder}
+        component={Select.MultipleSelectField}
+        options={[
+          { value: '1', label: 'Van xinh dep' },
+          { value: '2', label: 'Beauty' },
+        ]}
+      />
 
-    <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-      <Button.Button
-        width="180px"
-        style={{ height: '43px' }}
-        onClick={() => Router.push(PATHS.login)}
-      >
-        {CONSTANTS.login}
-      </Button.Button>
-      <Button.Button
-        type="primary"
-        width="180px"
-        style={{ height: '43px' }}
-        htmlType="submit"
-      >
-        {CONSTANTS.register}
-      </Button.Button>
-    </Layout.Flex>
+      <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
+        <Button.Button
+          width="180px"
+          style={{ height: '43px' }}
+          onClick={() => Router.push(PATHS.login)}
+        >
+          {CONSTANTS.login}
+        </Button.Button>
+        <Button.Button
+          type="primary"
+          width="180px"
+          style={{ height: '43px' }}
+          htmlType="submit"
+        >
+          {CONSTANTS.register}
+        </Button.Button>
+      </Layout.Flex>
+    </Grid>
   </AntForm.Form>
 )
 
