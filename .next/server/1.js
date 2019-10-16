@@ -612,13 +612,10 @@ var ActionButton = function ActionButton(_ref12) {
   var setModalVisible = _ref12.setModalVisible,
       onClickDeleteBtn = _ref12.onClickDeleteBtn,
       influencerId = _ref12.influencerId,
-      influencerEmail = _ref12.influencerEmail;
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_4__["useState"](false),
-      _React$useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState, 2),
-      drawerVisible = _React$useState2[0],
-      setDrawerVisible = _React$useState2[1];
-
+      influencerEmail = _ref12.influencerEmail,
+      setDrawerVisible = _ref12.setDrawerVisible,
+      historySendMailVisible = _ref12.historySendMailVisible;
+  // const [drawerVisible, setDrawerVisible] = React.useState(false)
   return react__WEBPACK_IMPORTED_MODULE_4__["createElement"](react__WEBPACK_IMPORTED_MODULE_4__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Layout"].Flex, {
     flexDirection: "row",
     alignItems: "center",
@@ -634,7 +631,7 @@ var ActionButton = function ActionButton(_ref12) {
     theme: "filled"
   })), influencerEmail && react__WEBPACK_IMPORTED_MODULE_4__["createElement"](IconButton, {
     onClick: function onClick() {
-      return setDrawerVisible(true);
+      return setDrawerVisible(true, influencerId);
     }
   }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Icon"].Icon, {
     type: "clock-circle",
@@ -648,9 +645,9 @@ var ActionButton = function ActionButton(_ref12) {
     theme: "filled"
   }))), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Drawer"].Drawer, {
     title: "Sent Emails",
-    visible: drawerVisible,
+    visible: historySendMailVisible,
     onClose: function onClose() {
-      return setDrawerVisible(false);
+      return setDrawerVisible(false, null);
     },
     placement: "right",
     width: 500,
@@ -693,10 +690,10 @@ var ListInfluencerController = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_7
   var appModel = Object(_frontend_core_src_context__WEBPACK_IMPORTED_MODULE_8__["useAppContext"])();
   var myInfluencerViewModel = Object(_frontend_core_src_hooks__WEBPACK_IMPORTED_MODULE_9__["useViewModel"])(_MyInfluencerViewModel__WEBPACK_IMPORTED_MODULE_10__["MyInfluencerViewModel"], appModel);
 
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_4__["useState"](false),
-      _React$useState4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState3, 2),
-      popoverVisible = _React$useState4[0],
-      setPopoverVisible = _React$useState4[1];
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_4__["useState"](false),
+      _React$useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState, 2),
+      popoverVisible = _React$useState2[0],
+      setPopoverVisible = _React$useState2[1];
 
   react_use_lib_useEffectOnce__WEBPACK_IMPORTED_MODULE_2___default()(function () {
     myInfluencerViewModel.fetchMyList();
@@ -712,7 +709,8 @@ var ListInfluencerController = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_7
       deleteModalVisible = myInfluencerViewModel.deleteModalVisible,
       isLoadingDetail = myInfluencerViewModel.isLoadingDetail,
       removeInfluencerModalVisible = myInfluencerViewModel.removeInfluencerModalVisible,
-      influencerSelected = myInfluencerViewModel.influencerSelected;
+      influencerSelected = myInfluencerViewModel.influencerSelected,
+      historySendMailVisible = myInfluencerViewModel.historySendMailVisible;
 
   var setModalVisible = function setModalVisible(visible, id) {
     myInfluencerViewModel.changeEmailModalVisible(visible, id);
@@ -881,30 +879,30 @@ var ListInfluencerController = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_7
     onClick: onClickDelete
   }, "Delete"));
 
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_4__["useState"](),
-      _React$useState6 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState5, 2),
-      currentInfluencer = _React$useState6[0],
-      setCurrentInfluencer = _React$useState6[1];
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_4__["useState"](),
+      _React$useState4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState3, 2),
+      currentInfluencer = _React$useState4[0],
+      setCurrentInfluencer = _React$useState4[1];
 
   var onClickDeleteInfluencerBtn = function onClickDeleteInfluencerBtn(influencer) {
     setRemoveInfluencerModalVisible(true);
     setCurrentInfluencer(influencer);
   };
 
-  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_4__["useState"](false),
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_4__["useState"](false),
+      _React$useState6 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState5, 2),
+      loading = _React$useState6[0],
+      setLoading = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_4__["useState"](''),
       _React$useState8 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState7, 2),
-      loading = _React$useState8[0],
-      setLoading = _React$useState8[1];
+      attactFile = _React$useState8[0],
+      setAttachFile = _React$useState8[1];
 
-  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_4__["useState"](''),
+  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_4__["useState"](false),
       _React$useState10 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState9, 2),
-      attactFile = _React$useState10[0],
-      setAttachFile = _React$useState10[1];
-
-  var _React$useState11 = react__WEBPACK_IMPORTED_MODULE_4__["useState"](false),
-      _React$useState12 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_3__["default"])(_React$useState11, 2),
-      loadingSend = _React$useState12[0],
-      setLoadingSend = _React$useState12[1];
+      loadingSend = _React$useState10[0],
+      setLoadingSend = _React$useState10[1];
 
   var handleChange = function handleChange(info) {
     setAttachFile('');
@@ -984,6 +982,10 @@ var ListInfluencerController = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_7
       return _ref18.apply(this, arguments);
     };
   }();
+
+  var setDrawerVisible = function setDrawerVisible(visible, id) {
+    myInfluencerViewModel.changeVisibleHistorySendMail(visible, id);
+  };
 
   return react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["MasterLayout"].SecondaryLayout, null, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Spin"].Spin, {
     spinning: isInitializing
@@ -1100,6 +1102,8 @@ var ListInfluencerController = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_7
       setModalVisible: setModalVisible,
       influencerId: influencer.id,
       influencerEmail: influencer.email,
+      setDrawerVisible: setDrawerVisible,
+      historySendMailVisible: historySendMailVisible,
       onClickDeleteBtn: function onClickDeleteBtn() {
         return onClickDeleteInfluencerBtn(influencer);
       }
@@ -1290,7 +1294,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _temp;
+var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _temp;
 
 
 
@@ -1328,6 +1332,8 @@ function () {
     Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "removeInfluencerModalVisible", _descriptor11, this);
 
     Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "influencerSelected", _descriptor12, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "historySendMailVisible", _descriptor13, this);
 
     this.appModel = null;
     this.appModel = appModel;
@@ -1689,16 +1695,15 @@ function () {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
-                console.log(data.body);
                 val = new FormData();
                 val.append('attachFile', attachFile);
                 val.append('subject', data.subject);
                 val.append('body', data.body);
                 val.append('influencerId', this.influencerSelected.id);
-                _context7.next = 8;
+                _context7.next = 7;
                 return _frontend_services__WEBPACK_IMPORTED_MODULE_9__["confessionService"].sendEmail(val);
 
-              case 8:
+              case 7:
               case "end":
                 return _context7.stop();
             }
@@ -1712,6 +1717,12 @@ function () {
 
       return sendMail;
     }()
+  }, {
+    key: "changeVisibleHistorySendMail",
+    value: function changeVisibleHistorySendMail(visible, influencersId) {
+      console.log(influencersId);
+      this.historySendMailVisible = visible;
+    }
   }]);
 
   return MyInfluencerViewModel;
@@ -1777,7 +1788,12 @@ function () {
   enumerable: true,
   writable: true,
   initializer: null
-}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "fetchMyList", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "fetchMyList"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "fetchListDetail", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "fetchListDetail"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "setCurrentListId", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "setCurrentListId"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "changeEmailModalVisible", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeEmailModalVisible"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "changeNewListModalVisible", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeNewListModalVisible"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "createNewList", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "createNewList"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "renameInfluencerList", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "renameInfluencerList"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "changeMode", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeMode"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "deleteMyInfluencer", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "deleteMyInfluencer"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "changeDeleteModalVisible", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeDeleteModalVisible"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "changeRemoveInfluencerModalVisible", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeRemoveInfluencerModalVisible"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "removeAnInfluencerFromList", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "removeAnInfluencerFromList"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "sendMail", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "sendMail"), _class.prototype)), _class);
+}), _descriptor13 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "historySendMailVisible", [mobx__WEBPACK_IMPORTED_MODULE_8__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "fetchMyList", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "fetchMyList"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "fetchListDetail", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "fetchListDetail"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "setCurrentListId", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "setCurrentListId"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "changeEmailModalVisible", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeEmailModalVisible"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "changeNewListModalVisible", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeNewListModalVisible"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "createNewList", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "createNewList"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "renameInfluencerList", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "renameInfluencerList"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "changeMode", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeMode"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "deleteMyInfluencer", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "deleteMyInfluencer"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "changeDeleteModalVisible", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeDeleteModalVisible"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "changeRemoveInfluencerModalVisible", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeRemoveInfluencerModalVisible"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "removeAnInfluencerFromList", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "removeAnInfluencerFromList"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "sendMail", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "sendMail"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "changeVisibleHistorySendMail", [mobx__WEBPACK_IMPORTED_MODULE_8__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeVisibleHistorySendMail"), _class.prototype)), _class);
 
 /***/ }),
 

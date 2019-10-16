@@ -23,7 +23,7 @@ interface INewListRequest {
 export interface ISendMail{
   attachFile?: any
   subject: string
-  body: String
+  body: string
   influencerId:string
   sentTo: string
 }
@@ -41,6 +41,9 @@ export class MyInfluencerViewModel {
   @observable isLoadingDetail: boolean = false
   @observable removeInfluencerModalVisible: boolean
   @observable influencerSelected:IInfluencerProps
+
+  @observable historySendMailVisible: boolean
+
   appModel: AppModel = null
 
   constructor(appModel: AppModel) {
@@ -204,13 +207,17 @@ export class MyInfluencerViewModel {
 
   @action
   async sendMail(data:ISendMail,attachFile:any){
-    
- console.log(data.body)
       let val = new FormData();
       val.append('attachFile',attachFile)
       val.append('subject',data.subject)
       val.append('body',data.body)
       val.append('influencerId',this.influencerSelected.id)
       await confessionService.sendEmail(val)
+  }
+
+  @action
+  changeVisibleHistorySendMail(visible:boolean,influencersId: string){
+    console.log(influencersId)
+    this.historySendMailVisible = visible
   }
 }

@@ -206,15 +206,18 @@ interface ActionButtonProps {
   onClickDeleteBtn: () => void
   influencerId: string
   influencerEmail: string
+  setDrawerVisible: (visible: boolean, influencerId: string) => void
+  historySendMailVisible:boolean
 }
 
 const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
   setModalVisible,
   onClickDeleteBtn,
   influencerId,
-  influencerEmail
+  influencerEmail,
+  setDrawerVisible,historySendMailVisible
 }) => {
-  const [drawerVisible, setDrawerVisible] = React.useState(false)
+  // const [drawerVisible, setDrawerVisible] = React.useState(false)
 
   return (
     <>
@@ -227,7 +230,7 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
           <Icon.Icon type="delete" theme="filled" />
         </IconButton>
         {influencerEmail &&
-          <IconButton onClick={() => setDrawerVisible(true)}>
+          <IconButton onClick={() => setDrawerVisible(true, influencerId)}>
             <Icon.Icon type="clock-circle" theme="filled" />
           </IconButton>
         }
@@ -239,8 +242,8 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
       </Layout.Flex>
       <Drawer.Drawer
         title="Sent Emails"
-        visible={drawerVisible}
-        onClose={() => setDrawerVisible(false)}
+        visible={historySendMailVisible}
+        onClose={() => setDrawerVisible(false, null)}
         placement="right"
         width={500}
         closable={false}
@@ -320,7 +323,8 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       deleteModalVisible,
       isLoadingDetail,
       removeInfluencerModalVisible,
-      influencerSelected
+      influencerSelected,
+      historySendMailVisible
     } = myInfluencerViewModel
     const setModalVisible = (visible: boolean, id: string) => {
       myInfluencerViewModel.changeEmailModalVisible(visible, id)
@@ -429,7 +433,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
         setLoadingSend(true)
         await myInfluencerViewModel.sendMail(v, attactFile)
         setLoadingSend(false)
-        setModalVisible(false,null)
+        setModalVisible(false, null)
         notification.success({
           message: MESSAGES.SEND_MAIL_SUCCESS,
           duration: 3,
@@ -437,7 +441,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
         })
         setAttachFile('')
       } catch (error) {
-        setModalVisible(false,null)
+        setModalVisible(false, null)
         setAttachFile('')
         notification.error({
           message: MESSAGES.SEND_MAIL_ERROR,
@@ -446,6 +450,11 @@ export const ListInfluencerController: React.FunctionComponent = observer(
         })
         return error
       }
+    }
+
+
+    const setDrawerVisible = (visible: boolean, id: string) => {
+      myInfluencerViewModel.changeVisibleHistorySendMail(visible, id)
     }
 
     return (
@@ -618,6 +627,8 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                   setModalVisible={setModalVisible}
                                   influencerId={influencer.id}
                                   influencerEmail={influencer.email}
+                                  setDrawerVisible={setDrawerVisible}
+                                  historySendMailVisible={historySendMailVisible}
                                   onClickDeleteBtn={() =>
                                     onClickDeleteInfluencerBtn(influencer)
                                   }

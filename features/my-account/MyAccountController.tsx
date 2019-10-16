@@ -75,60 +75,60 @@ const MyAccountForm: React.FunctionComponent<ICategory> = ({
   initialValues = {},
   Lcategories,
 }) => (
-  <AntForm.Form onSubmit={handleSubmit} layout="vertical">
-    <Grid gridGap="15px">
-      <Field
-        name={FORM_FIELDS.email.name}
-        label={FORM_FIELDS.email.label}
-        placeholder={FORM_FIELDS.email.placeholder}
-        component={Input.InputField}
-        disabled={true}
-      />
-      <Field
-        name={FORM_FIELDS.fullname.name}
-        label={FORM_FIELDS.fullname.label}
-        placeholder={FORM_FIELDS.fullname.placeholder}
-        component={Input.InputField}
-        validate={field.required}
-      />
-      {/* <Field
+    <AntForm.Form onSubmit={handleSubmit} layout="vertical">
+      <Grid gridGap="15px">
+        <Field
+          name={FORM_FIELDS.email.name}
+          label={FORM_FIELDS.email.label}
+          placeholder={FORM_FIELDS.email.placeholder}
+          component={Input.InputField}
+          disabled={true}
+        />
+        <Field
+          name={FORM_FIELDS.fullname.name}
+          label={FORM_FIELDS.fullname.label}
+          placeholder={FORM_FIELDS.fullname.placeholder}
+          component={Input.InputField}
+          validate={field.required}
+        />
+        {/* <Field
       name={FORM_FIELDS.password.name}
       label={FORM_FIELDS.password.label}
       placeholder={FORM_FIELDS.password.placeholder}
       component={Input.InputPasswordField}
     /> */}
-      <Field
-        name={FORM_FIELDS.category.name}
-        label={FORM_FIELDS.category.label}
-        placeholder={FORM_FIELDS.category.placeholder}
-        component={Select.MultipleSelectField}
-        options={Lcategories}
-      />
+        <Field
+          name={FORM_FIELDS.category.name}
+          label={FORM_FIELDS.category.label}
+          placeholder={FORM_FIELDS.category.placeholder}
+          component={Select.MultipleSelectField}
+          options={Lcategories}
+        />
 
-      <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-        <Button.Button
-          type="ghost"
-          htmlType="submit"
-          width="180px"
-          style={{ height: '43px' }}
-        >
-          Update
+        <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
+          <Button.Button
+            type="ghost"
+            htmlType="submit"
+            width="180px"
+            style={{ height: '43px' }}
+          >
+            Update
         </Button.Button>
-        {initialValues.password && (
-          <Link href="/change-password">
-            <Button.Button
-              type="primary"
-              width="180px"
-              style={{ height: '43px' }}
-            >
-              Change Password
+          {initialValues.password && (
+            <Link href="/change-password">
+              <Button.Button
+                type="primary"
+                width="180px"
+                style={{ height: '43px' }}
+              >
+                Change Password
             </Button.Button>
-          </Link>
-        )}
-      </Layout.Flex>
-    </Grid>
-  </AntForm.Form>
-)
+            </Link>
+          )}
+        </Layout.Flex>
+      </Grid>
+    </AntForm.Form>
+  )
 
 export const MyAccountController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
@@ -169,6 +169,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
   const [imageUrl, setImageUrl] = React.useState('/static/image/user.png')
   const [avatarUrl, setAvatarUrl] = React.useState('')
   const [loading, setLoading] = React.useState(false)
+  const [loadingBtn, setLoadingBtn] = React.useState(false)
   function getBase64(img, callback) {
     const reader = new FileReader()
     reader.addEventListener('load', () => callback(reader.result))
@@ -190,22 +191,18 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
 
   const uploadAvatar = async () => {
     try {
-      setLoading(true)
+      setLoadingBtn(true)
       const data = new FormData()
       data.append('file', avatarUrl)
       await appModel.profileModel.updateAvatar(data)
+      setLoadingBtn(false)
       notification.success({
         message: MESSAGES.SAVE_SUCESS,
         duration: 4,
         placement: 'bottomLeft',
       })
-
-      setLoading(false)
     } catch (error) {
-      console.log(error)
-      setLoading(false)
       setImageUrl('/static/image/user.png')
-
       notification.error({
         message: 'Upload avata failed.',
         duration: 4,
@@ -238,7 +235,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
               onChange={handleChange}
             >
               <Icon
-                type={loading ? 'loading' : 'plus'}
+                type={loading ? 'loading' : 'null'}
                 style={{
                   zIndex: 6,
                   position: 'absolute',
@@ -249,11 +246,12 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
               {profileImage ? (
                 <Avatar.Avatar src={currentUser.imgUrl} size={150} />
               ) : (
-                <Avatar.Avatar src={imageUrl} size={150} />
-              )}
+                  <Avatar.Avatar src={imageUrl} size={150} />
+                )}
             </Upload>
             {/* "/static/image/user.png" */}
             <Button.Button
+              loading={loadingBtn}
               onClick={uploadAvatar}
               type="ghost"
               style={{ width: '100px', marginTop: '10px', marginLeft: '25px' }}
