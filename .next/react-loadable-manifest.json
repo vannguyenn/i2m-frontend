@@ -1,5 +1,5 @@
 {
-  "../../features/influencer/detail": [
+  "../features/home": [
     {
       "id": 10,
       "name": null,
@@ -13,7 +13,7 @@
       "publicPath": "static/chunks/3.js"
     }
   ],
-  "../../features/influencer/list": [
+  "../features/my-account": [
     {
       "id": 10,
       "name": null,

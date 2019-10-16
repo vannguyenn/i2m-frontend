@@ -1,11 +1,15 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Layout, Form as AntForm, Input, Button, Select } from '@frontend/ui'
+import { Layout, Form as AntForm, Input, Button, Select,notification } from '@frontend/ui'
 import { Field, Form, FormRenderProps } from 'react-final-form'
-import { PATHS } from '@frontend/constants'
+import { PATHS,ISelectOption,MESSAGES  } from '@frontend/constants'
 import Router from 'next/router'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
+import { useEffectOnce } from 'react-use'
+import { observer } from 'mobx-react-lite'
+import { field } from '@frontend/core/src/validate'
+import { map } from 'lodash'
 import { Grid } from '@frontend/ui/src/layout'
 
 const CONSTANTS = {
@@ -67,8 +71,14 @@ const LogoContainer = styled(Layout.Flex)`
   top: 30px;
   left: 35px;
 `
-const RegisterForm: React.FunctionComponent<FormRenderProps> = ({
+
+export interface IRegisterForm extends FormRenderProps {
+  categories: ISelectOption[]
+}
+
+const RegisterForm: React.FunctionComponent<IRegisterForm> =observer(({
   handleSubmit,
+  categories
 }) => (
   <AntForm.Form onSubmit={handleSubmit} layout="vertical">
     <Grid gridGap="15px">
@@ -120,17 +130,34 @@ const RegisterForm: React.FunctionComponent<FormRenderProps> = ({
       </Layout.Flex>
     </Grid>
   </AntForm.Form>
-)
+))
 
-export const RegisterController: React.FunctionComponent = () => {
+export const RegisterController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
+  useEffectOnce(() => {
+    appModel.authModel.getCategory()
+  })
+
+  const category = appModel.authModel.category
+  const normalizeCate = map(category, (cate) => ({ value: cate.id, label: cate.name }))
 
   const handleSubmit = async (value: any) => {
     try {
       await appModel.authModel.signup(value)
+      notification.success({
+        message: MESSAGES.SAVE_SUCESS,
+        duration: 3,
+        placement: 'topRight',
+      })
       Router.push(PATHS.login)
       return undefined
     } catch (error) {
+      notification.error({
+        message: error.response.data,
+        duration: 4,
+        placement: 'topRight',
+      })
+      console.log(error.response.data)
       return error
     }
   }
@@ -152,8 +179,10 @@ export const RegisterController: React.FunctionComponent = () => {
       <LoginBox>
         <IntroText>{CONSTANTS.intro}</IntroText>
         <LoginTitle>{CONSTANTS.loginTitle}</LoginTitle>
-        <Form onSubmit={handleSubmit} render={RegisterForm} />
+        <Form
+          onSubmit={handleSubmit}
+          render={(props) => <RegisterForm {...props} categories={normalizeCate} />} />
       </LoginBox>
     </Layout.Flex>
   )
-}
+})
