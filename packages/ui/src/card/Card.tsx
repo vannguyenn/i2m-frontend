@@ -17,6 +17,13 @@ export const Card = styled(AntCard)<ICardProps>`
       height: 330px;
     }
   }
+
+  .ant-card-actions {
+    background: transparent;
+    & > li > span:hover {
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  }
   ${width};
   ${space};
 `

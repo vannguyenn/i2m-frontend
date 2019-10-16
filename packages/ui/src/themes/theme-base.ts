@@ -14,7 +14,7 @@ const colors = {
 
   primary100: '#FF6265',
   primary85: '#48b465',
-  primary65: '#4aa261',
+  primary65: '#fff1e9',
   primary45: '#a3ebb6',
   primary15: '#eafaee',
   primary5: '#f5fdf7',

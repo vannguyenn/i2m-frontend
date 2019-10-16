@@ -43,7 +43,7 @@ const FORM_FIELDS = {
     placeholder: 'What should you call you ...',
   },
   category: {
-    name: 'categories',
+    name: 'category',
     label: 'Category',
     placeholder: 'Please choose your interested category',
   },

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Table } from '@frontend/ui'
 import { observer } from 'mobx-react-lite'
 import { useInfluencerDetailContext } from '../../static/context'
-import { map, get } from 'lodash'
+import { map } from 'lodash'
 import { IPostProps } from '@frontend/constants'
 import numeral from 'numeral'
 
@@ -46,6 +46,9 @@ const columns = [
     title: 'Engagement Rate',
     dataIndex: 'engagement',
     key: 'engagement',
+    render: engagement => (
+      <PostData>{numeral(engagement).format('0.00%')}</PostData>
+    ),
   },
   {
     title: 'Total Reach',

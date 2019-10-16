@@ -71,7 +71,19 @@ export const DetailPost: React.FunctionComponent<IDetailPostProps> = ({
                 </NumberTag>
                 <Label>Likes</Label>
               </Square>
-              <Square>aaa</Square>
+              <Square>
+                <IconContainer
+                  bg="#FFF6D9"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Icon type="dashboard" theme="filled" color="#F4AE1F" />
+                </IconContainer>
+                <NumberTag>
+                  {numeral(get(detail, 'engagement')).format('0.00%')}
+                </NumberTag>
+                <Label>Engagement</Label>
+              </Square>
             </Flex>
             <Flex flexDirection="column">
               <Square>

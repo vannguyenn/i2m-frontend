@@ -3,7 +3,7 @@ import { AppModel } from './../../../models/AppModel'
 import { influencerService, profileService } from '@frontend/services'
 import { observable, reaction, action, runInAction } from 'mobx'
 import { IInfluencerProps, IPostProps } from '@frontend/constants'
-import { maxBy } from 'lodash'
+import { maxBy, map } from 'lodash'
 
 export class InfluencerDetailViewModel {
   @observable influencerDetail: IInfluencerProps
@@ -13,6 +13,7 @@ export class InfluencerDetailViewModel {
   @observable isLoading: boolean
   @observable mostLikedPost: IPostProps
   @observable mostCommentedPost: IPostProps
+  @observable mostEngagementPost: IPostProps
 
   appModel: AppModel = null
 
@@ -29,6 +30,14 @@ export class InfluencerDetailViewModel {
     runInAction(() => {
       this.isFetching = false
       this.influencerDetail = data
+      this.influencerDetail.posts = map(
+        this.influencerDetail.posts,
+        (p: IPostProps) => ({
+          ...p,
+          engagement: (p.commentCount + p.likeCount) / data.followers,
+        })
+      )
+
       this.mostLikedPost = maxBy(
         this.influencerDetail.posts,
         (p: IPostProps) => p.likeCount
@@ -36,6 +45,10 @@ export class InfluencerDetailViewModel {
       this.mostCommentedPost = maxBy(
         this.influencerDetail.posts,
         (p: IPostProps) => p.commentCount
+      )
+      this.mostEngagementPost = maxBy(
+        this.influencerDetail.posts,
+        (p: IPostProps) => p.engagement
       )
     })
   }

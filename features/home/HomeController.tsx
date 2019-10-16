@@ -129,6 +129,16 @@ const influencers = [
 export const HomeController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
   const token = appModel.authModel.token
+
+  const onChange = (e: any) => {
+    const value = e.target.value
+    appModel.changeGlobalSearch(value)
+  }
+
+  const searchInfluencer = () => {
+    Router.push(PATHS.influencers)
+    // appModel.searchInfluencers(0)
+  }
   return (
     <Container>
       <Layout.Flex
@@ -148,9 +158,16 @@ export const HomeController: React.FunctionComponent = observer(() => {
         <Slogan>Find the best Instagram influencers for your business.</Slogan>
         <SearchContainer>
           <SearchInputContainer>
-            <SearchInput placeholder="Search for influencers" />
+            <SearchInput
+              placeholder="Search for influencers"
+              onChange={onChange}
+              onPressEnter={searchInfluencer}
+              value={appModel.globalSearch}
+            />
           </SearchInputContainer>
-          <SearchButton type="primary">Search</SearchButton>
+          <SearchButton type="primary" onClick={searchInfluencer}>
+            Search
+          </SearchButton>
         </SearchContainer>
       </Layout.Flex>
       <Content>

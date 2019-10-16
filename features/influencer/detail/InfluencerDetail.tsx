@@ -133,6 +133,7 @@ export const InfluencerDetail: React.FunctionComponent<
     myList,
     mostLikedPost,
     mostCommentedPost,
+    mostEngagementPost,
   } = influencerDetailViewModel
 
   const changeSaveToListModalVisible = (visible: boolean) =>
@@ -174,6 +175,7 @@ export const InfluencerDetail: React.FunctionComponent<
     posts: get(influencerDetail, 'posts'),
     mostLikedPost,
     mostCommentedPost,
+    mostEngagementPost,
   })
 
   const useAnalyticSection = () => ({

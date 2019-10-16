@@ -29,7 +29,7 @@ import { MESSAGES, MODE, IInfluencerProps } from '@frontend/constants'
 import numeral from 'numeral'
 import { field } from '@frontend/core/src/validate'
 
-import { Upload, Icon as AntIcon, Button as AntButton } from 'antd';
+import { Upload, Icon as AntIcon, Button as AntButton } from 'antd'
 
 const MODALPROPS = {
   title: 'Send Mail',
@@ -190,15 +190,15 @@ const SentToStyle = {
   borderRadius: '0px',
   fontWeight: 'bold',
   fontSize: '14px',
-  borderBottomWidth: 0.5
+  borderBottomWidth: 0.5,
 }
 
-const SubjectStyle={
+const SubjectStyle = {
   borderTop: 'none',
   borderLeft: 'none',
   borderRight: 'none',
   borderRadius: '0px',
-  borderBottomWidth: 0.5
+  borderBottomWidth: 0.5,
 }
 
 interface ActionButtonProps {
@@ -212,7 +212,7 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
   setModalVisible,
   onClickDeleteBtn,
   influencerId,
-  influencerEmail
+  influencerEmail,
 }) => {
   const [drawerVisible, setDrawerVisible] = React.useState(false)
 
@@ -226,16 +226,16 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
         <IconButton onClick={onClickDeleteBtn}>
           <Icon.Icon type="delete" theme="filled" />
         </IconButton>
-        {influencerEmail &&
+        {influencerEmail && (
           <IconButton onClick={() => setDrawerVisible(true)}>
             <Icon.Icon type="clock-circle" theme="filled" />
           </IconButton>
-        }
-        {influencerEmail &&
+        )}
+        {influencerEmail && (
           <IconButton onClick={() => setModalVisible(true, influencerId)}>
             <Icon.Icon type="mail" theme="filled" />
           </IconButton>
-        }
+        )}
       </Layout.Flex>
       <Drawer.Drawer
         title="Sent Emails"
@@ -320,7 +320,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       deleteModalVisible,
       isLoadingDetail,
       removeInfluencerModalVisible,
-      currentEmail
+      currentEmail,
     } = myInfluencerViewModel
     const setModalVisible = (visible: boolean, id: string) => {
       myInfluencerViewModel.changeEmailModalVisible(visible, id)
@@ -404,7 +404,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       if (info.file.status === 'uploading') {
         setLoading(true)
         setfileList([])
-        return;
+        return
       }
       if (info.file.status === 'done') {
         setAttachFile(info.file.originFileObj)
@@ -424,7 +424,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
           placement: 'bottomLeft',
         })
       }
-    };
+    }
 
     const handleSendMail = async (v: any) => {
       try {
@@ -612,8 +612,8 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                               </Layout.Flex>
                               <ActionButton
                                 setModalVisible={setModalVisible}
-                                  influencerId={influencer.id}
-                                  influencerEmail={influencer.email}
+                                influencerId={influencer.id}
+                                influencerEmail={influencer.email}
                                 onClickDeleteBtn={() =>
                                   onClickDeleteInfluencerBtn(influencer)
                                 }
@@ -652,11 +652,11 @@ export const ListInfluencerController: React.FunctionComponent = observer(
               }
             />
           )}
-          
+
           {/* Send Mail */}
           {sendEmailModalVisible && (
             <Modal.MediumModal
-              style={{ border: '2px solid #FF6265', borderRadius: '5px', top: '50px', paddingBottom: '0px' }}
+              width="616px"
               visible={sendEmailModalVisible}
               title={MODALPROPS.title}
               okText={MODALPROPS.footer.okText}
@@ -674,16 +674,15 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                     id="sendMailForm"
                     layout="vertical"
                   >
-                    <Layout.Grid mb="15px">
+                    <Layout.Grid mb="15px" gridGap="15px">
                       <Field
                         name={MODALPROPS.fields.sendTo.name}
                         component={Input.InputField}
                         defaultValue={currentEmail}
                         placeholder={MODALPROPS.fields.sendTo.placeholder}
-                        // label={MODALPROPS.fields.sendTo.label}
+                        label={MODALPROPS.fields.sendTo.label}
                         // required
                         disabled={true}
-                        style={SentToStyle}
                       />
                       <Field
                         name={MODALPROPS.fields.subject.name}
@@ -692,7 +691,6 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                         label={MODALPROPS.fields.subject.label}
                         validate={field.required}
                         required
-                        style={SubjectStyle}
                       />
                     </Layout.Grid>
                     <Field
@@ -703,21 +701,25 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                       height="230px"
                       validate={field.required}
                     />
-
-                    <Upload
-                      name="file"
-                      multiple={false}
-                      accept="image/*,.doc,.docx,.xlsx,.pdf,pptx,txt"
-                      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                      className="uploader"
-                      showUploadList={true}
-                      onChange={handleChange}
-                    >
-                      <AntButton type="dashed" disabled={fileList.length >= 1 ? true : false}>
-                        <AntIcon type={loading ? 'loading' : 'upload'} />Click to Upload
-                      </AntButton>
-                    </Upload>
-
+                    <Layout.Grid mt="15px">
+                      <Upload
+                        name="file"
+                        multiple={false}
+                        accept="image/*,.doc,.docx,.xlsx,.pdf,pptx,txt"
+                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                        className="uploader"
+                        showUploadList={true}
+                        onChange={handleChange}
+                      >
+                        <AntButton
+                          type="dashed"
+                          disabled={fileList.length >= 1 ? true : false}
+                        >
+                          <AntIcon type={loading ? 'loading' : 'upload'} />
+                          Click to Upload
+                        </AntButton>
+                      </Upload>
+                    </Layout.Grid>
                   </AntForm.Form>
                 )}
               />

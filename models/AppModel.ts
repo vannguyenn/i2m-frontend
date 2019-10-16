@@ -1,11 +1,11 @@
-import { ProfileModel } from './ProfileModel'
+import { categoryService } from './../packages/services/src/index'
+import { ProfileModel, ICategory } from './ProfileModel'
 import { NotificationStore } from '@frontend/core/src/stores'
 import { notification } from 'antd'
 import { AuthModel } from './AuthModel'
 import { observable, action, runInAction, reaction } from 'mobx'
 import { IInfluencerProps } from '@frontend/constants'
 import { influencerService } from '@frontend/services'
-import { map, ceil } from 'lodash'
 
 export interface IListResponse {
   content: IInfluencerProps[]
@@ -32,6 +32,7 @@ export class AppModel {
   @observable maxFollowers: number
   @observable minEngagement: number = 0.0
   @observable maxEngagement: number = 5.0
+  @observable categories: ICategory[]
 
   constructor() {
     this.notification = new NotificationStore(notification)
@@ -117,6 +118,14 @@ export class AppModel {
   @action
   changeMaxEngagement(maxEngagement: number) {
     this.maxEngagement = maxEngagement
+  }
+
+  @action
+  async getCategories() {
+    const { data } = await categoryService.getCategories<ICategory[]>()
+    runInAction(() => {
+      this.categories = data
+    })
   }
 }
 

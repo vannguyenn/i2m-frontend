@@ -9,6 +9,7 @@ export interface IMediaSection {
   posts: IPostProps[]
   mostLikedPost: IPostProps
   mostCommentedPost: IPostProps
+  mostEngagementPost: IPostProps
 }
 
 export interface IAnalyticSection {

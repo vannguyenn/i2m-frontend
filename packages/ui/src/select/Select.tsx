@@ -12,7 +12,7 @@ const dropdownCss = css`
 
     .ant-select-dropdown-menu {
       /* 9.5 item * 28px height per item */
-      max-height: 266px;
+      /* max-height: 266px; */
 
       > .ant-select-dropdown-menu-item {
         &:first-child {
@@ -103,10 +103,15 @@ export const Select = styled(SelectRender)<SelectProps>`
         top: 0;
       }
     }
-    .ant-select-selection--single,
-    .ant-select-selection--multiple {
+    .ant-select-selection--single {
       height: 40px;
 
+      .ant-select-selection__rendered {
+        line-height: 36px;
+      }
+    }
+    .ant-select-selection--multiple {
+      height: auto;
       .ant-select-selection__rendered {
         line-height: 36px;
       }

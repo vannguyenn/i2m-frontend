@@ -19,6 +19,7 @@ import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../../models'
 import { useEffectOnce } from 'react-use'
 import { Field, Form, FormRenderProps } from 'react-final-form'
+import { MultipleSelectField } from '@frontend/ui/src/select'
 
 const LeftPanel = styled(Layout.Flex)`
   min-height: calc(100vh - 150px);
@@ -95,8 +96,13 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
 
   useEffectOnce(() => {
     appModel.searchInfluencers(0)
+    appModel.getCategories()
   })
 
+  const normalizeCategory = map(appModel.categories, cate => ({
+    label: cate.name,
+    value: cate.id,
+  }))
   const handleScroll = e => {
     const bottom =
       e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight
@@ -186,13 +192,13 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
                   <InputLabel style={{ marginTop: '-10px' }}>
                     Category
                   </InputLabel>
-                  <Select.Select
-                    mode="multiple"
+                  <Field
+                    name="categories"
+                    render={MultipleSelectField}
+                    options={normalizeCategory}
                     placeholder="Interested category"
-                  >
-                    <Select.Option value="1">Beauty</Select.Option>
-                    <Select.Option value="2">Travel</Select.Option>
-                  </Select.Select>
+                  />
+
                   <Divider.Divider type="horizontal" />
                   <Layout.Flex
                     flexDirection="row"

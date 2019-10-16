@@ -27,6 +27,7 @@ export const MediaSection: React.FunctionComponent = observer(() => {
     posts,
     mostLikedPost,
     mostCommentedPost,
+    mostEngagementPost,
   } = useInfluencerDetailContext().useMediaSection()
   const [modalVisible, changeModalVisible] = React.useState(false)
   const [currentSelectedPost, changeCurrentSelectedPost] = React.useState(
@@ -107,14 +108,25 @@ export const MediaSection: React.FunctionComponent = observer(() => {
           </Layout.Flex>
         </Card.Card>
         <Card.Card
+          onClick={() => onCardClick(mostEngagementPost)}
           bordered={false}
-          cover={<img alt="example" src="/static/image/cover3.jpg" />}
+          cover={
+            <img
+              alt="example"
+              src={
+                get(mostEngagementPost, 'thumbnailUrl') ||
+                '/static/image/cover3.jpg'
+              }
+            />
+          }
         >
           <Layout.Flex flexDirection="column" alignItems="center" width="100%">
             <CardTitle>Most Engaging Post</CardTitle>
             <Layout.Flex flexDirection="row" alignItems="center">
               <Icon.Icon type="dashboard" color="#34c635" fontSize="18px" />
-              <NumberTag style={{ marginLeft: '10px' }}>5.3%</NumberTag>
+              <NumberTag style={{ marginLeft: '10px' }}>
+                {numeral(get(mostEngagementPost, 'engagement')).format('0.00%')}
+              </NumberTag>
             </Layout.Flex>
           </Layout.Flex>
         </Card.Card>

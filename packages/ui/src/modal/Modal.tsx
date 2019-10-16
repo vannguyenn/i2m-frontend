@@ -6,7 +6,7 @@ import 'antd/lib/modal/style/index.css'
 import { Footer } from './Footer'
 
 const mediumModalStyle = css`
-  min-width: 616px;
+  /* min-width: 616px; */
   .ant-modal-header {
     padding: 12px 12px 12px 40px;
     height: 48px;

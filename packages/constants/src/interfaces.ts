@@ -44,12 +44,13 @@ export interface IPostProps {
   content: string
   video: boolean
   viewCount: number
+  engagement: number
 }
 export interface IInfluencerProps {
   id: string
   fullName: string
   biography: string
-  followers: string
+  followers: number
   username: string
   mediaCount: number
   profilePicUrl: string
