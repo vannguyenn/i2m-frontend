@@ -1,5 +1,5 @@
 {
-  "../../features/influencer/detail": [
+  "../features/home": [
     {
       "id": 10,
       "name": null,
@@ -9,11 +9,11 @@
     {
       "id": "./components/AuthorizedUserBtnGr.tsx",
       "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/3.js",
-      "publicPath": "static/chunks/3.js"
+      "file": "static/chunks/1.js",
+      "publicPath": "static/chunks/1.js"
     }
   ],
-  "../features/my-account": [
+  "../features/influencer-management": [
     {
       "id": 10,
       "name": null,
@@ -23,8 +23,8 @@
     {
       "id": "./components/AuthorizedUserBtnGr.tsx",
       "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/4.js",
-      "publicPath": "static/chunks/4.js"
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
     }
   ],
   "./noop": [

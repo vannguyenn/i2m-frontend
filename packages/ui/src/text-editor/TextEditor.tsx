@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { height as systemHeight, HeightProps } from 'styled-system'
 import { ComponentProps } from 'react-quill'
 
-export interface ITextEditorProps extends HeightProps, ComponentProps {}
+export interface ITextEditorProps extends HeightProps, ComponentProps { }
 
 const defaultModules = {
   toolbar: [
