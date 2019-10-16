@@ -776,9 +776,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor */ "./node_modules/@babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerWarningHelper */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerWarningHelper.js");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! mobx */ "mobx");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(mobx__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _frontend_services__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @frontend/services */ "./packages/services/src/index.ts");
+/* harmony import */ var _packages_services_src_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../packages/services/src/index */ "./packages/services/src/index.ts");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! mobx */ "mobx");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(mobx__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! js-cookie */ "js-cookie");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_12__);
@@ -803,6 +803,7 @@ var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5,
 
 
 
+
 var AuthModel = (_class = (_temp =
 /*#__PURE__*/
 function () {
@@ -819,9 +820,9 @@ function () {
 
     Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "message", _descriptor4, this);
 
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "category", _descriptor5, this);
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "categories", _descriptor5, this);
 
-    Object(mobx__WEBPACK_IMPORTED_MODULE_9__["reaction"])(function () {
+    Object(mobx__WEBPACK_IMPORTED_MODULE_10__["reaction"])(function () {
       return {
         token: _this.token,
         expires: _this.tokenExpires
@@ -855,12 +856,12 @@ function () {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["authService"].login(data);
+                return _packages_services_src_index__WEBPACK_IMPORTED_MODULE_9__["authService"].login(data);
 
               case 3:
                 response = _context.sent;
                 accessToken = response.data.accessToken;
-                Object(mobx__WEBPACK_IMPORTED_MODULE_9__["runInAction"])(function () {
+                Object(mobx__WEBPACK_IMPORTED_MODULE_10__["runInAction"])(function () {
                   _this2.tokenExpires = data.rememberMe ? 30 : 1;
                   _this2.token = accessToken;
                 });
@@ -898,7 +899,7 @@ function () {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["authService"].signup(data);
+                return _packages_services_src_index__WEBPACK_IMPORTED_MODULE_9__["authService"].signup(data);
 
               case 3:
                 return _context2.abrupt("return", _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_2___default.a.resolve());
@@ -934,9 +935,9 @@ function () {
       this.token = token;
     }
   }, {
-    key: "getCategory",
+    key: "getCategories",
     value: function () {
-      var _getCategory = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      var _getCategories = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
       _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee3() {
         var _this3 = this;
@@ -948,13 +949,13 @@ function () {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["authService"].getCategory();
+                return _packages_services_src_index__WEBPACK_IMPORTED_MODULE_9__["categoryService"].getCategories();
 
               case 2:
                 _ref2 = _context3.sent;
                 data = _ref2.data;
-                Object(mobx__WEBPACK_IMPORTED_MODULE_9__["runInAction"])(function () {
-                  _this3.category = data;
+                Object(mobx__WEBPACK_IMPORTED_MODULE_10__["runInAction"])(function () {
+                  _this3.categories = data;
                 });
                 return _context3.abrupt("return", data);
 
@@ -966,45 +967,45 @@ function () {
         }, _callee3);
       }));
 
-      function getCategory() {
-        return _getCategory.apply(this, arguments);
+      function getCategories() {
+        return _getCategories.apply(this, arguments);
       }
 
-      return getCategory;
+      return getCategories;
     }()
   }]);
 
   return AuthModel;
-}(), _temp), (_descriptor = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "tokenExpires", [mobx__WEBPACK_IMPORTED_MODULE_9__["observable"]], {
+}(), _temp), (_descriptor = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "tokenExpires", [mobx__WEBPACK_IMPORTED_MODULE_10__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return 1;
   }
-}), _descriptor2 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "token", [mobx__WEBPACK_IMPORTED_MODULE_9__["observable"]], {
+}), _descriptor2 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "token", [mobx__WEBPACK_IMPORTED_MODULE_10__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: function initializer() {
     return js_cookie__WEBPACK_IMPORTED_MODULE_12__["get"](_frontend_constants__WEBPACK_IMPORTED_MODULE_11__["KEYS"].ACCESS_TOKEN);
   }
-}), _descriptor3 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "sucess", [mobx__WEBPACK_IMPORTED_MODULE_9__["observable"]], {
+}), _descriptor3 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "sucess", [mobx__WEBPACK_IMPORTED_MODULE_10__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor4 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "message", [mobx__WEBPACK_IMPORTED_MODULE_9__["observable"]], {
+}), _descriptor4 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "message", [mobx__WEBPACK_IMPORTED_MODULE_10__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor5 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "category", [mobx__WEBPACK_IMPORTED_MODULE_9__["observable"]], {
+}), _descriptor5 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "categories", [mobx__WEBPACK_IMPORTED_MODULE_10__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "login", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "login"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "signup", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "signup"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "logout", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "logout"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "setToken", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "setToken"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "getCategory", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "getCategory"), _class.prototype)), _class);
+}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "login", [mobx__WEBPACK_IMPORTED_MODULE_10__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "login"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "signup", [mobx__WEBPACK_IMPORTED_MODULE_10__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "signup"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "logout", [mobx__WEBPACK_IMPORTED_MODULE_10__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "logout"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "setToken", [mobx__WEBPACK_IMPORTED_MODULE_10__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "setToken"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "getCategories", [mobx__WEBPACK_IMPORTED_MODULE_10__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "getCategories"), _class.prototype)), _class);
 
 /***/ }),
 
@@ -1033,6 +1034,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! mobx */ "mobx");
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(mobx__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _frontend_services__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @frontend/services */ "./packages/services/src/index.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_11__);
 
 
 
@@ -1044,6 +1047,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _class, _descriptor, _temp;
+
 
 
 
@@ -1079,7 +1083,7 @@ function () {
               case 2:
                 _ref = _context.sent;
                 data = _ref.data;
-                data.categories = data.categories.map(function (item) {
+                data.categories = Object(lodash__WEBPACK_IMPORTED_MODULE_11__["map"])(data.categories, function (item) {
                   return item.id;
                 });
                 Object(mobx__WEBPACK_IMPORTED_MODULE_9__["runInAction"])(function () {
@@ -4237,11 +4241,6 @@ function (_BaseService) {
     value: function signup(data) {
       return this.post('/signup', data);
     }
-  }, {
-    key: "getCategory",
-    value: function getCategory() {
-      return this.get('/category');
-    }
   }]);
 
   return AuthService;
@@ -4324,6 +4323,61 @@ function () {
 
   return BaseService;
 }(), _temp)) || _class);
+
+/***/ }),
+
+/***/ "./packages/services/src/CategoryService.ts":
+/*!**************************************************!*\
+  !*** ./packages/services/src/CategoryService.ts ***!
+  \**************************************************/
+/*! exports provided: CategoryService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryService", function() { return CategoryService; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _BaseService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BaseService */ "./packages/services/src/BaseService.ts");
+
+
+
+
+
+
+var CategoryService =
+/*#__PURE__*/
+function (_BaseService) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(CategoryService, _BaseService);
+
+  function CategoryService() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, CategoryService);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(CategoryService)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.name = 'categories';
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(CategoryService, [{
+    key: "getCategories",
+    value: function getCategories() {
+      return this.get('');
+    }
+  }]);
+
+  return CategoryService;
+}(_BaseService__WEBPACK_IMPORTED_MODULE_5__["BaseService"]);
 
 /***/ }),
 
@@ -4588,7 +4642,7 @@ function (_BaseService) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(ProfileService, [{
     key: "getCurrentUser",
     value: function getCurrentUser() {
-      return this.get('/me');
+      return this.get('/self');
     }
   }, {
     key: "getMyInfluencerLists",
@@ -4681,7 +4735,7 @@ function () {
 /*!****************************************!*\
   !*** ./packages/services/src/index.ts ***!
   \****************************************/
-/*! exports provided: AuthService, RestClient, ProfileService, InfluencerService, GroupService, ConfessionService, restClient, authService, profileService, influencerService, groupService, confessionService */
+/*! exports provided: AuthService, RestClient, ProfileService, InfluencerService, GroupService, ConfessionService, CategoryService, restClient, authService, profileService, influencerService, groupService, confessionService, categoryService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4692,12 +4746,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "influencerService", function() { return influencerService; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "groupService", function() { return groupService; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "confessionService", function() { return confessionService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "categoryService", function() { return categoryService; });
 /* harmony import */ var _GroupService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GroupService */ "./packages/services/src/GroupService.ts");
 /* harmony import */ var _InfluencerService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InfluencerService */ "./packages/services/src/InfluencerService.ts");
 /* harmony import */ var _ProfileService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileService */ "./packages/services/src/ProfileService.ts");
 /* harmony import */ var _RestClient__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RestClient */ "./packages/services/src/RestClient.ts");
 /* harmony import */ var _AuthService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AuthService */ "./packages/services/src/AuthService.ts");
 /* harmony import */ var _ConfessionService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ConfessionService */ "./packages/services/src/ConfessionService.ts");
+/* harmony import */ var _CategoryService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CategoryService */ "./packages/services/src/CategoryService.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return _AuthService__WEBPACK_IMPORTED_MODULE_4__["AuthService"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "RestClient", function() { return _RestClient__WEBPACK_IMPORTED_MODULE_3__["RestClient"]; });
@@ -4709,6 +4765,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupService", function() { return _GroupService__WEBPACK_IMPORTED_MODULE_0__["GroupService"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ConfessionService", function() { return _ConfessionService__WEBPACK_IMPORTED_MODULE_5__["ConfessionService"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CategoryService", function() { return _CategoryService__WEBPACK_IMPORTED_MODULE_6__["CategoryService"]; });
+
+
 
 
 
@@ -4728,6 +4788,7 @@ var profileService = new _ProfileService__WEBPACK_IMPORTED_MODULE_2__["ProfileSe
 var influencerService = new _InfluencerService__WEBPACK_IMPORTED_MODULE_1__["InfluencerService"](restClient);
 var groupService = new _GroupService__WEBPACK_IMPORTED_MODULE_0__["GroupService"](restClient);
 var confessionService = new _ConfessionService__WEBPACK_IMPORTED_MODULE_5__["ConfessionService"](restClient);
+var categoryService = new _CategoryService__WEBPACK_IMPORTED_MODULE_6__["CategoryService"](restClient);
 
 /***/ }),
 
@@ -5500,17 +5561,20 @@ var CustomAntForm = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(ant
 var CustomFormItem = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(antd__WEBPACK_IMPORTED_MODULE_1__["Form"].Item).withConfig({
   displayName: "Form__CustomFormItem",
   componentId: "cgeiko-1"
-})(["&{.ant-form-item-label > label{color:", ";}.ant-form-item-control-wrapper .ant-form-item-control .ant-form-item-children{input:hover,input:focus{border-color:", ";}input::placeholder{color:", ";}.ant-input-affix-wrapper:hover input{border-color:", ";}}}"], function (_ref) {
+})(["&{.ant-form-item-label > label{color:", ";&.ant-form-item-required::before{display:none;}&.ant-form-item-required::after{display:none;color:", ";content:'*';display:inline-block;margin-left:4px;font-size:14px;font-family:SimSun,sans-serif;line-height:1;}}.ant-form-item-control-wrapper .ant-form-item-control .ant-form-item-children{input:hover,input:focus{border-color:", ";}input::placeholder{color:", ";}.ant-input-affix-wrapper:hover input{border-color:", ";}}}"], function (_ref) {
   var theme = _ref.theme;
   return theme.colors.dark100;
 }, function (_ref2) {
   var theme = _ref2.theme;
-  return theme.colors.primary100;
+  return theme.colors.dark100;
 }, function (_ref3) {
   var theme = _ref3.theme;
-  return theme.colors.dark30;
+  return theme.colors.primary100;
 }, function (_ref4) {
   var theme = _ref4.theme;
+  return theme.colors.dark30;
+}, function (_ref5) {
+  var theme = _ref5.theme;
   return theme.colors.primary100;
 });
 var Form = function Form(props) {

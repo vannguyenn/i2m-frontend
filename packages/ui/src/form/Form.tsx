@@ -16,6 +16,20 @@ const CustomFormItem = styled(AntForm.Item)`
   & {
     .ant-form-item-label > label {
       color: ${({ theme }) => theme.colors.dark100};
+
+      &.ant-form-item-required::before {
+        display: none;
+      }
+      &.ant-form-item-required::after {
+        display: none;
+        color: ${({ theme }) => theme.colors.dark100};
+        content: '*';
+        display: inline-block;
+        margin-left: 4px;
+        font-size: 14px;
+        font-family: SimSun, sans-serif;
+        line-height: 1;
+      }
     }
 
     .ant-form-item-control-wrapper

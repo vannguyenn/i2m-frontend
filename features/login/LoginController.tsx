@@ -8,7 +8,7 @@ import {
   Button,
   Checkbox,
   Divider,
-  notification
+  notification,
 } from '@frontend/ui'
 import { Field, Form, FormRenderProps } from 'react-final-form'
 import Router from 'next/router'
@@ -17,6 +17,8 @@ import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
 import { LoginInfo } from '../../models/AuthModel'
 import { validate } from '@frontend/core'
+import { Grid, GridItem } from '@frontend/ui/src/layout'
+import { FORM_ERROR } from 'final-form'
 
 const CONSTANTS = {
   intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
@@ -96,50 +98,73 @@ const CustomDivider = styled(Divider.Divider)`
 
 const LoginForm: React.FunctionComponent<FormRenderProps> = ({
   handleSubmit,
-}) => (
-  <AntForm.Form onSubmit={handleSubmit} layout="vertical">
-    <Field
-      name={FORM_FIELDS.email.name}
-      label={FORM_FIELDS.email.label}
-      placeholder={FORM_FIELDS.email.placeholder}
-      component={Input.InputField}
-      prefix={<Icon.Icon type="mail" color="dark30" />}
-      validate={validate.field.required}
-    />
-    <Field
-      name={FORM_FIELDS.password.name}
-      label={FORM_FIELDS.password.label}
-      placeholder={FORM_FIELDS.password.placeholder}
-      component={Input.InputPasswordField}
-      prefix={<Icon.Icon type="key" rotate={225} color="dark30" />}
-    />
-    <Layout.Flex flexDirection="row" justifyContent="space-between" mt="20px">
-      <Field
-        name={FORM_FIELDS.rememberMe.name}
-        label={FORM_FIELDS.rememberMe.label}
-        render={Checkbox.CheckboxField}
-      />
-    </Layout.Flex>
-    <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-      <Button.Button
-        width="180px"
-        style={{ height: '43px' }}
-        onClick={() => Router.push(PATHS.signup)}
-      >
-        {CONSTANTS.register}
-      </Button.Button>
-      <Button.Button
-        type="primary"
-        width="180px"
-        style={{ height: '43px' }}
-        htmlType="submit"
-      >
-        {CONSTANTS.login}
-      </Button.Button>
-    </Layout.Flex>
-  </AntForm.Form>
-)
+  submitting,
+  submitError,
+}) => {
+  return (
+    <AntForm.Form onSubmit={handleSubmit} layout="vertical">
+      <Grid gridGap="15px">
+        <Field
+          name={FORM_FIELDS.email.name}
+          label={FORM_FIELDS.email.label}
+          placeholder={FORM_FIELDS.email.placeholder}
+          component={Input.InputField}
+          prefix={<Icon.Icon type="mail" color="dark30" />}
+          validate={value =>
+            validate.field.required(value) || validate.field.email(value)
+          }
+          required
+        />
+        <Field
+          name={FORM_FIELDS.password.name}
+          label={FORM_FIELDS.password.label}
+          placeholder={FORM_FIELDS.password.placeholder}
+          component={Input.InputPasswordField}
+          prefix={<Icon.Icon type="key" rotate={225} color="dark30" />}
+          required
+        />
+        <Layout.Flex
+          flexDirection="row"
+          justifyContent="space-between"
+          mt="20px"
+        >
+          <Field
+            name={FORM_FIELDS.rememberMe.name}
+            label={FORM_FIELDS.rememberMe.label}
+            render={Checkbox.CheckboxField}
+          />
+        </Layout.Flex>
+        <GridItem>
+          <span style={{ color: 'red' }}>{submitError}</span>
+        </GridItem>
 
+        <Layout.Flex
+          flexDirection="row"
+          justifyContent="space-between"
+          mt="10px"
+        >
+          <Button.Button
+            width="180px"
+            style={{ height: '43px' }}
+            onClick={() => Router.push(PATHS.signup)}
+            disabled={submitting}
+          >
+            {CONSTANTS.register}
+          </Button.Button>
+          <Button.Button
+            type="primary"
+            width="180px"
+            style={{ height: '43px' }}
+            htmlType="submit"
+            loading={submitting}
+          >
+            {CONSTANTS.login}
+          </Button.Button>
+        </Layout.Flex>
+      </Grid>
+    </AntForm.Form>
+  )
+}
 export const LoginController: React.FunctionComponent = () => {
   const appModel = useAppContext() as AppModel
 
@@ -148,12 +173,9 @@ export const LoginController: React.FunctionComponent = () => {
       await appModel.authModel.login(v)
       return undefined
     } catch (error) {
-      notification.error({
-        message: error,
-        duration: 4,
-        placement: 'bottomLeft',
-      })
-      return error
+      return {
+        [FORM_ERROR]: error,
+      }
     }
   }
 

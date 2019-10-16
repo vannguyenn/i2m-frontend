@@ -4,7 +4,7 @@ export class ProfileService extends BaseService {
   protected name: string = 'users'
 
   public getCurrentUser<T = any>() {
-    return this.get<T>('/me')
+    return this.get<T>('/self')
   }
 
   public getMyInfluencerLists<T>() {
@@ -20,6 +20,6 @@ export class ProfileService extends BaseService {
   }
 
   public uploadAvatar(file: any) {
-    return this.put('/avatar',file)
+    return this.put('/avatar', file)
   }
 }

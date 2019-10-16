@@ -1,6 +1,7 @@
 import { action, observable, reaction, runInAction, computed } from 'mobx'
 import { profileService } from '@frontend/services'
 import { AppModel } from './AppModel'
+import { map } from 'lodash'
 
 export interface IUser {
   id: string
@@ -36,14 +37,13 @@ export class ProfileModel {
   @action
   async getCurrentUser() {
     const { data } = await profileService.getCurrentUser<IUser>()
-    data.categories = data.categories.map((item: any) => item.id)
+    data.categories = map(data.categories, (item: any) => item.id)
     runInAction(() => {
       this.currentUser = data
     })
 
     return data
   }
-
 
   @action
   async updateCurrentUser(data: IUser) {
@@ -67,7 +67,7 @@ export class ProfileModel {
   }
 
   @action
-  async updateAvatar(file:any){
+  async updateAvatar(file: any) {
     try {
       await profileService.uploadAvatar(file)
       return Promise.resolve()

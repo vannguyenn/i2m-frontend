@@ -1,5 +1,5 @@
 {
-  "../features/home": [
+  "../../features/influencer/detail": [
     {
       "id": 10,
       "name": null,
@@ -23,8 +23,8 @@
     {
       "id": "./components/AuthorizedUserBtnGr.tsx",
       "name": "./components/AuthorizedUserBtnGr.tsx",
-      "file": "static/chunks/2.js",
-      "publicPath": "static/chunks/2.js"
+      "file": "static/chunks/4.js",
+      "publicPath": "static/chunks/4.js"
     }
   ],
   "./noop": [

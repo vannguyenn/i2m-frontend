@@ -6927,7 +6927,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      source_map_support_1.rewriteStacktrace(error, "E:\\I2M\\i2m-frontend\\.next");
+      source_map_support_1.rewriteStacktrace(error, "/Users/vanthihongnguyen/Documents/fpt/CAPSTONE/i2m-frontend/.next");
       return error;
     }
   };

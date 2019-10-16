@@ -7,7 +7,7 @@ import {
   Select,
   Button,
   Avatar,
-  notification
+  notification,
 } from '@frontend/ui'
 import styled from 'styled-components'
 import { Field, Form, FormRenderProps } from 'react-final-form'
@@ -21,7 +21,8 @@ import { map } from 'lodash'
 import Router from 'next/router'
 import Link from 'next/link'
 import { field } from '@frontend/core/src/validate'
-import { Upload, Icon } from 'antd';
+import { Upload, Icon } from 'antd'
+import { Grid } from '@frontend/ui/src/layout'
 
 const Content = styled(Layout.Flex)`
   min-height: calc(100vh - 150px);
@@ -72,9 +73,10 @@ export interface ICategory extends FormRenderProps {
 const MyAccountForm: React.FunctionComponent<ICategory> = ({
   handleSubmit,
   initialValues = {},
-  Lcategories
+  Lcategories,
 }) => (
-    <AntForm.Form onSubmit={handleSubmit} layout="vertical">
+  <AntForm.Form onSubmit={handleSubmit} layout="vertical">
+    <Grid gridGap="15px">
       <Field
         name={FORM_FIELDS.email.name}
         label={FORM_FIELDS.email.label}
@@ -104,31 +106,46 @@ const MyAccountForm: React.FunctionComponent<ICategory> = ({
       />
 
       <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-        <Button.Button type="ghost" htmlType="submit" width="180px" style={{ height: '43px' }}>
+        <Button.Button
+          type="ghost"
+          htmlType="submit"
+          width="180px"
+          style={{ height: '43px' }}
+        >
           Update
-      </Button.Button>
-        {initialValues.password && <Link href="/change-password">
-          <Button.Button type="primary" width="180px" style={{ height: '43px' }}>
-            Change Password
-          </Button.Button>
-        </Link>}
+        </Button.Button>
+        {initialValues.password && (
+          <Link href="/change-password">
+            <Button.Button
+              type="primary"
+              width="180px"
+              style={{ height: '43px' }}
+            >
+              Change Password
+            </Button.Button>
+          </Link>
+        )}
       </Layout.Flex>
-    </AntForm.Form>
-  )
+    </Grid>
+  </AntForm.Form>
+)
 
 export const MyAccountController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
-  
+
   useEffectOnce(() => {
     appModel.profileModel.getCurrentUser()
-    appModel.authModel.getCategory()
+    appModel.authModel.getCategories()
   })
   const token = appModel.authModel.token
   const currentUser = appModel.profileModel.currentUser
   const profileImage = currentUser && currentUser.imgUrl
-  
-  const category = appModel.authModel.category
-  const normalizeCate = map(category, (cate) => ({ value: cate.id, label: cate.name }))
+
+  const categories = appModel.authModel.categories
+  const normalizeCate = map(categories, cate => ({
+    value: cate.id,
+    label: cate.name,
+  }))
 
   const handleSubmit = async (value: any) => {
     try {
@@ -141,7 +158,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
       })
     } catch (error) {
       notification.error({
-        message: "Update user failed.",
+        message: 'Update user failed.',
         duration: 4,
         placement: 'bottomLeft',
       })
@@ -149,33 +166,33 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
     }
   }
 
-  const [imageUrl, setImageUrl] = React.useState("/static/image/user.png");
-  const [avatarUrl, setAvatarUrl] = React.useState('');
+  const [imageUrl, setImageUrl] = React.useState('/static/image/user.png')
+  const [avatarUrl, setAvatarUrl] = React.useState('')
   const [loading, setLoading] = React.useState(false)
   function getBase64(img, callback) {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
+    const reader = new FileReader()
+    reader.addEventListener('load', () => callback(reader.result))
+    reader.readAsDataURL(img)
   }
   const handleChange = info => {
     if (info.file.status === 'uploading') {
       setLoading(true)
-      return;
+      return
     }
     if (info.file.status === 'done') {
       getBase64(info.file.originFileObj, imageUrl => {
         setImageUrl(imageUrl)
         setAvatarUrl(info.file.originFileObj)
         setLoading(false)
-      });
+      })
     }
-  };
+  }
 
   const uploadAvatar = async () => {
     try {
       setLoading(true)
-      const data = new FormData();
-      data.append('file', avatarUrl);
+      const data = new FormData()
+      data.append('file', avatarUrl)
       await appModel.profileModel.updateAvatar(data)
       notification.success({
         message: MESSAGES.SAVE_SUCESS,
@@ -187,10 +204,10 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
     } catch (error) {
       console.log(error)
       setLoading(false)
-      setImageUrl("/static/image/user.png")
+      setImageUrl('/static/image/user.png')
 
       notification.error({
-        message: "Upload avata failed.",
+        message: 'Upload avata failed.',
         duration: 4,
         placement: 'bottomLeft',
       })
@@ -209,7 +226,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
           alignContent="center"
           gridGap={2}
         >
-          <Layout.Flex justifyContent="center" flex='1' flexDirection='column'>
+          <Layout.Flex justifyContent="center" flex="1" flexDirection="column">
             <Upload
               name="avatar"
               accept="image/*"
@@ -220,28 +237,37 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
               showUploadList={false}
               onChange={handleChange}
             >
-              <Icon type={loading ? 'loading' : 'plus'}
+              <Icon
+                type={loading ? 'loading' : 'plus'}
                 style={{
-                  zIndex: 6, position: 'absolute', marginLeft: '65px'
-                }} />
+                  zIndex: 6,
+                  position: 'absolute',
+                  marginLeft: '65px',
+                }}
+              />
 
               {profileImage ? (
                 <Avatar.Avatar src={currentUser.imgUrl} size={150} />
               ) : (
-                  <Avatar.Avatar src={imageUrl} size={150} />
-                )}
-
-
+                <Avatar.Avatar src={imageUrl} size={150} />
+              )}
             </Upload>
             {/* "/static/image/user.png" */}
-            <Button.Button onClick={uploadAvatar} type="ghost"
-              style={{ width: "100px", marginTop: '10px', marginLeft: '25px' }}>Upload</Button.Button>
+            <Button.Button
+              onClick={uploadAvatar}
+              type="ghost"
+              style={{ width: '100px', marginTop: '10px', marginLeft: '25px' }}
+            >
+              Upload
+            </Button.Button>
           </Layout.Flex>
 
-           <Form
+          <Form
             initialValues={currentUser}
             onSubmit={handleSubmit}
-            render={(proprs) => <MyAccountForm {...proprs} Lcategories={normalizeCate} />}
+            render={proprs => (
+              <MyAccountForm {...proprs} Lcategories={normalizeCate} />
+            )}
           />
         </FormContainer>
       </Content>

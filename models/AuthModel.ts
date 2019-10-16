@@ -1,3 +1,4 @@
+import { categoryService } from './../packages/services/src/index'
 import { action, observable, reaction, runInAction } from 'mobx'
 import { authService } from '@frontend/services'
 import { KEYS, I2MResponse, PATHS } from '@frontend/constants'
@@ -33,8 +34,8 @@ export class AuthModel {
   @observable token: string = cookies.get(KEYS.ACCESS_TOKEN)
   @observable sucess: boolean
   @observable message: string
-  @observable category: ICategory[]
- 
+  @observable categories: ICategory[]
+
   constructor() {
     reaction(
       () => ({ token: this.token, expires: this.tokenExpires }),
@@ -92,10 +93,10 @@ export class AuthModel {
   }
 
   @action
-  async getCategory() {
-    const { data } = await authService.getCategory<ICategory[]>()
+  async getCategories() {
+    const { data } = await categoryService.getCategories<ICategory[]>()
     runInAction(() => {
-      this.category = data
+      this.categories = data
     })
     return data
   }
