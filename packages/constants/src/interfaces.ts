@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { AxiosResponse } from 'axios'
+import { ICategory } from '../../../models/AuthModel'
 
 export interface ILayoutProps {
   labelCol?: object
@@ -60,4 +61,5 @@ export interface IInfluencerProps {
   followings: string
   verified: boolean
   posts?: IPostProps[]
+  categories?: ICategory[]
 }

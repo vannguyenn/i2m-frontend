@@ -12,13 +12,13 @@ import {
   Slider,
 } from '@frontend/ui'
 import styled from 'styled-components'
-import { map } from 'lodash'
+import { map, size } from 'lodash'
 import { AuthorizedUserBtnGr, GuestButtonGroup } from '../../../components'
 import { observer } from 'mobx-react-lite'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../../models'
 import { useEffectOnce } from 'react-use'
-import { Field, Form, FormRenderProps } from 'react-final-form'
+import { Field, Form } from 'react-final-form'
 import { MultipleSelectField } from '@frontend/ui/src/select'
 
 const LeftPanel = styled(Layout.Flex)`
@@ -116,9 +116,13 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
   }
   const handleSubmitSearch = (value: any) => {
     appModel.changeMinFollowers(value.followers[0])
-    appModel.changeMaxFollowers(value.followers[1])
+    !value.followers[1]
+      ? appModel.changeMaxFollowers(1000000)
+      : appModel.changeMaxFollowers(value.followers[1])
+
     appModel.changeMinEngagement(value.minEngagement)
     appModel.changeMaxEngagement(value.maxEngagement)
+    appModel.changeCurrentCategories(value.categories)
     appModel.searchInfluencers(0)
   }
   return (
@@ -142,6 +146,7 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
                 followers: [appModel.minFollowers, appModel.maxFollowers],
                 minEngagement: appModel.minEngagement,
                 maxEngagement: appModel.maxEngagement,
+                categories: appModel.currentCategories,
               }}
               render={({ handleSubmit }) => (
                 <AntForm.Form onSubmit={handleSubmit}>
@@ -184,7 +189,7 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
                       component={Slider.SliderField}
                       range
                       min={1000}
-                      max={100000000}
+                      max={1000000000}
                       step={100}
                     />
                   </Layout.Flex>
@@ -224,7 +229,7 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
               pl="30px"
             >
               <ResultText>
-                Showing <Result>{totalInfluencers || 0}</Result> results
+                Showing <Result>{size(influencerList) || 0}</Result> results
               </ResultText>
               <Layout.Flex
                 alignItems="center"

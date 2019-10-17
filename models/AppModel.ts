@@ -33,6 +33,7 @@ export class AppModel {
   @observable minEngagement: number = 0.0
   @observable maxEngagement: number = 5.0
   @observable categories: ICategory[]
+  @observable currentCategories: string[]
 
   constructor() {
     this.notification = new NotificationStore(notification)
@@ -75,7 +76,8 @@ export class AppModel {
         this.minFollowers,
         this.maxFollowers,
         this.minEngagement,
-        this.maxEngagement
+        this.maxEngagement,
+        this.currentCategories
       )
 
       runInAction(() => {
@@ -118,6 +120,11 @@ export class AppModel {
   @action
   changeMaxEngagement(maxEngagement: number) {
     this.maxEngagement = maxEngagement
+  }
+
+  @action
+  changeCurrentCategories(categories: string[]) {
+    this.currentCategories = categories
   }
 
   @action
