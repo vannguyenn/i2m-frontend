@@ -40,7 +40,8 @@ export class MyInfluencerViewModel {
   @observable deleteModalVisible: boolean
   @observable isLoadingDetail: boolean = false
   @observable removeInfluencerModalVisible: boolean
-  @observable currentEmail:string
+  @observable influencerSelected:IInfluencerProps
+  @observable historySendMailVisible: boolean
   appModel: AppModel = null
 
   constructor(appModel: AppModel) {
@@ -96,8 +97,7 @@ export class MyInfluencerViewModel {
   @action
   changeEmailModalVisible(visible: boolean,id:string) {
     this.sendEmailModalVisible = visible
-    const v= this.listDetail.influencers.filter(item=>item.id == id);
-    this.currentEmail = v.map(i=>i.email).toString()
+    this.influencerSelected = this.listDetail.influencers.find(item=>item.id == id);
   }
 
   @action
@@ -205,20 +205,16 @@ export class MyInfluencerViewModel {
 
   @action
   async sendMail(data:ISendMail,attachFile:any){
-    try {
-      let id = this.listDetail.influencers
-                   .filter(i =>i.email === data.sentTo)
-                   .map(m=>m.id).toString();
-      data.influencerId = id
-  
-      let val = new FormData();
-      val.append('attachFile',attachFile)
-      val.append('subject',data.subject)
-      val.append('body',data.body)
-      val.append('influencerId',data.influencerId)
-      await confessionService.sendEmail(val)
-    } catch (error) {
-      return error
-    }
+    let val = new FormData();
+    val.append('attachFile',attachFile)
+    val.append('subject',data.subject)
+    val.append('body',data.body)
+    val.append('influencerId',this.influencerSelected.id)
+    await confessionService.sendEmail(val)
+  }
+  @action
+  changeVisibleHistorySendMail(visible:boolean,influencersId: string){
+    console.log(influencersId)
+    this.historySendMailVisible = visible
   }
 }
