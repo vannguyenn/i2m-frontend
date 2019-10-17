@@ -215,7 +215,8 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
   onClickDeleteBtn,
   influencerId,
   influencerEmail,
-  setDrawerVisible,historySendMailVisible
+  setDrawerVisible,
+  historySendMailVisible
 }) => {
   // const [drawerVisible, setDrawerVisible] = React.useState(false)
 
@@ -442,6 +443,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
         setAttachFile('')
       } catch (error) {
         setModalVisible(false, null)
+        setLoadingSend(false)
         setAttachFile('')
         notification.error({
           message: MESSAGES.SEND_MAIL_ERROR,
