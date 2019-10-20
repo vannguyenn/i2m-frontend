@@ -28,6 +28,18 @@ export interface ISendMail{
   sentTo: string
 }
 
+export interface IHistorySendMail{
+    id: string
+    subject: string
+    body: string
+    sendDate: Date
+    fileUrl: string
+    isSent: boolean
+    receiver: string
+    fullName:string
+    email:string
+}
+
 export class MyInfluencerViewModel {
   @observable listId: string
   @observable listDetail: IListDetailProps
@@ -42,6 +54,7 @@ export class MyInfluencerViewModel {
   @observable removeInfluencerModalVisible: boolean
   @observable influencerSelected:IInfluencerProps
   @observable historySendMailVisible: boolean
+  @observable listHistorySendMail: IHistorySendMail[]
   appModel: AppModel = null
 
   constructor(appModel: AppModel) {
@@ -212,9 +225,20 @@ export class MyInfluencerViewModel {
     val.append('influencerId',this.influencerSelected.id)
     await confessionService.sendEmail(val)
   }
+
   @action
   changeVisibleHistorySendMail(visible:boolean,influencersId: string){
-    console.log(influencersId)
     this.historySendMailVisible = visible
+    console.log(influencersId)
+    influencersId && this.historySendMail(influencersId)
   }
+  
+  @action
+  async historySendMail(influencerId:string){
+     const{ data }= await confessionService.historySendMail(influencerId)
+     runInAction(()=>{
+      this.listHistorySendMail = data
+     })
+  }
+
 }

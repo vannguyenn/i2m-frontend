@@ -11,7 +11,7 @@ const BaseDrawer: React.FunctionComponent<IDrawerProps> = ({
   className,
   ...props
 }) => {
-  return <AntDrawer className={className} {...props} />
+  return <AntDrawer className={className} {...props}/>
 }
 export const Drawer = styled(BaseDrawer)<IDrawerProps>`
   .ant-drawer-body {
