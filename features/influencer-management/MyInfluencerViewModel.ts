@@ -236,10 +236,14 @@ export class MyInfluencerViewModel {
   
   @action
   async historySendMail(influencerId:string){
-     const{ data }= await confessionService.historySendMail(influencerId)
-     runInAction(()=>{
-      this.listHistorySendMail = data
-     })
+     try {
+      const{ data }= await confessionService.historySendMail(influencerId)
+      runInAction(()=>{
+       this.listHistorySendMail = data
+      })
+     } catch (error) {
+       this.listHistorySendMail = null
+     }
   }
 
 }
