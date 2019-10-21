@@ -34,10 +34,11 @@ export interface IHistorySendMail{
     body: string
     sendDate: Date
     fileUrl: string
-    isSent: boolean
-    receiver: string
+    sent: boolean
+    influName: string
     fullName:string
     email:string
+    influEmail: string
 }
 
 export class MyInfluencerViewModel {

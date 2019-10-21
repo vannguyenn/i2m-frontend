@@ -7,6 +7,8 @@ import {
     Layout,
     Icon
 } from '@frontend/ui'
+import { observer } from 'mobx-react-lite'
+
 const { Panel } = Collapse;
 
 const ReceiverFullName = styled.div`
@@ -42,17 +44,19 @@ interface IHistorySendMail {
     body: string
     sendDate: Date
     fileUrl: string
-    isSent: boolean
-    receiver: string
+    sent: boolean
+    influName: string
     fullName: string
     email: string
+    influEmail: string
 }
 const customPanelStyle = {
     background: 'white',
     borderRadius: 2,
-    margin: 3,
+    margin: 7,
     color: '#FF6265',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    fontWeight: 600
 };
 // interface ICollapse extends CollapsePanel,CollapseProps,CollapsePanelProps {};
 // const Panel = styled(Collapse)<ICollapse>`
@@ -71,25 +75,28 @@ const formatDate = (date) => {
     })
 }
 
-export const CollapseForm: React.FunctionComponent<IPropHistory> = ({
+export const CollapseForm: React.FunctionComponent<IPropHistory> = observer(({
     listHistorySendMail
 }) => {
+
     return (
         <Collapse accordion style={{ backgroundColor: '#d4d3d37a', minHeight: '100vh' }}>
             {listHistorySendMail ? listHistorySendMail.map((item, index) => (
                 <Panel
                     style={customPanelStyle}
-                    header={`${item.subject} ${formatDate(item.sendDate)}`}
+                    header={`${item.subject} - ${formatDate(item.sendDate)}`}
                     key={index.toString()}>
-                    <EmailTitle flexDirection="row" alignItems="center">
+                    <EmailTitle
+                        flexDirection="row"
+                        alignItems="center">
                         <Icon.Icon type="mail" fontSize="18px" />
                         <Layout.Flex
                             flexDirection="column"
                             justifyContent="flex-start"
                             ml="20px"
                         >
-                            <ReceiverFullName>{item.receiver}</ReceiverFullName>
-                            <EmailSubject>Re: {item.subject}</EmailSubject>
+                            <ReceiverFullName>Receiver: {item.sent ? item.influName : item.fullName}</ReceiverFullName>
+                            <EmailSubject>{item.subject}</EmailSubject>
                         </Layout.Flex>
                     </EmailTitle>
                     <Layout.Flex
@@ -97,12 +104,12 @@ export const CollapseForm: React.FunctionComponent<IPropHistory> = ({
                         justifyContent="flex-start"
                         p="15px 24px"
                     >
-                        <TimeStamp>{`${item.fullName} <${item.email}> wrote:`}
+                        <TimeStamp>{`${item.sent ? item.fullName : item.influName} <${item.sent ? item.email : item.influEmail}> wrote:`}
                         </TimeStamp>
                         <Content dangerouslySetInnerHTML={{ __html: item.body }} />
 
                         {item.fileUrl && <FileUrl>
-                            Download file : {item.fileUrl}
+                            Download file : <a href={`Media/Mail/${item.fileUrl}`}>{item.fileUrl}</a>
                         </FileUrl>}
                     </Layout.Flex>
                 </Panel>
@@ -111,3 +118,4 @@ export const CollapseForm: React.FunctionComponent<IPropHistory> = ({
         </Collapse>
     )
 }
+)
