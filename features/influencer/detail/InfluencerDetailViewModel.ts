@@ -1,9 +1,10 @@
+import { POST_STATUS } from './../../../packages/constants/src/constants'
 import { IListProps } from './../../influencer-management/MyInfluencerViewModel'
 import { AppModel } from './../../../models/AppModel'
 import { influencerService, profileService } from '@frontend/services'
 import { observable, reaction, action, runInAction } from 'mobx'
 import { IInfluencerProps, IPostProps } from '@frontend/constants'
-import { maxBy, map } from 'lodash'
+import { find, map, maxBy } from 'lodash'
 
 export class InfluencerDetailViewModel {
   @observable influencerDetail: IInfluencerProps
@@ -38,14 +39,16 @@ export class InfluencerDetailViewModel {
         })
       )
 
-      this.mostLikedPost = maxBy(
+      this.mostLikedPost = find(
         this.influencerDetail.posts,
-        (p: IPostProps) => p.likeCount
+        (p: IPostProps) => p.type === 'MOST_LIKE'
       )
-      this.mostCommentedPost = maxBy(
+
+      this.mostCommentedPost = find(
         this.influencerDetail.posts,
-        (p: IPostProps) => p.commentCount
+        p => p.type === POST_STATUS.MOST_COMMENT
       )
+
       this.mostEngagementPost = maxBy(
         this.influencerDetail.posts,
         (p: IPostProps) => p.engagement

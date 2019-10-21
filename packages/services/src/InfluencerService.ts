@@ -11,7 +11,8 @@ export class InfluencerService extends BaseService {
     minFollowers?: number,
     maxFollowers?: number,
     minEngagement?: number,
-    maxEngagement?: number
+    maxEngagement?: number,
+    categories?: string[]
   ) {
     return this.get<T>('', {
       params: {
@@ -23,6 +24,7 @@ export class InfluencerService extends BaseService {
         maxFollowers,
         minEngagement,
         maxEngagement,
+        categories,
       },
     })
   }
@@ -37,5 +39,13 @@ export class InfluencerService extends BaseService {
 
   public getMaxFollowerCount<T>() {
     return this.get('/max-followers')
+  }
+
+  public suggestInfluencer<T>() {
+    return this.get<T>('/suggestion')
+  }
+
+  public getTopInfluencer<T>() {
+    return this.get<T>('/ranking')
   }
 }

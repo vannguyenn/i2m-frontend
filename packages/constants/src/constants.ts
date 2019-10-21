@@ -10,7 +10,7 @@ export const PATHS = {
 
 export const KEYS = {
   ACCESS_TOKEN: 'x-access-token',
-  REDIRECT_URI: 'redirectUri',
+  REDIRECT_URL: 'redirectUrl',
 }
 
 export const SERVICES = {
@@ -37,11 +37,17 @@ export const GOOGLE_AUTH_URL =
 export const MESSAGES = {
   SAVE_SUCESS: 'Save successfully.',
   existing_influencer: 'Influencer is already saved to this list',
-  SEND_MAIL_SUCCESS:'Send email successfully.',
-  SEND_MAIL_ERROR:'Sorry! email delivery failure'
+  SEND_MAIL_SUCCESS: 'Send email successfully.',
+  SEND_MAIL_ERROR: 'Sorry! email delivery failure',
 }
 
 export enum MODE {
   CREATE = 'create',
   EDIT = 'edit',
+}
+
+export enum POST_STATUS {
+  MOST_COMMENT = 'MOST_COMMENT',
+  LATEST = 'LATEST',
+  MOST_LIKE = 'MOST_LIKE',
 }

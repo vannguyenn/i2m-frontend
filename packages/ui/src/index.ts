@@ -20,6 +20,7 @@ import * as TextEditor from './text-editor'
 import * as Spin from './spin'
 import * as Empty from './empty'
 import * as Collapse from './collapse'
+import * as Tag from './tag'
 
 export * from './notification'
 
@@ -45,5 +46,6 @@ export {
   TextEditor,
   Spin,
   Empty,
-  Collapse
+  Collapse,
+  Tag,
 }

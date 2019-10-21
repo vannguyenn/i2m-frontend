@@ -10,6 +10,7 @@ import {
   Form as AntForm,
   Select,
   notification,
+  Tag,
 } from '@frontend/ui'
 import styled from 'styled-components'
 import { Tab, TAB_KEYS } from './component/Tab'
@@ -29,6 +30,7 @@ import { Form as FinalForm, Field } from 'react-final-form'
 import { validate } from '@frontend/core'
 import { MESSAGES } from '@frontend/constants'
 import { InfluencerDetailContext } from '../static/context'
+import { Grid } from '@frontend/ui/src/layout'
 
 const MODAL_PROPS = {
   title: 'Save to My List',
@@ -70,6 +72,8 @@ const Fullname = styled.div`
   color: #000000;
   font-size: 24px;
   letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
 `
 const Username = styled.div`
   a {
@@ -182,9 +186,14 @@ export const InfluencerDetail: React.FunctionComponent<
     posts: get(influencerDetail, 'posts'),
   })
 
+  const useStatsSection = () => ({
+    influencer: influencerDetail,
+  })
+
   const providerValue = {
     useMediaSection,
     useAnalyticSection,
+    useStatsSection,
   }
 
   return (
@@ -221,7 +230,19 @@ export const InfluencerDetail: React.FunctionComponent<
                   justifyContent="flex-start"
                   alignItems="flex-start"
                 >
-                  <Fullname>{get(influencerDetail, 'fullName')}</Fullname>
+                  <Fullname>
+                    {get(influencerDetail, 'fullName')}
+                    <Grid gridGap="15px" ml="15px">
+                      {map(
+                        get(influencerDetail, 'categories'),
+                        (cate, index) => (
+                          <Tag.Tag color="#87d068" key={index}>
+                            {cate.name}
+                          </Tag.Tag>
+                        )
+                      )}
+                    </Grid>
+                  </Fullname>
                   <Username>
                     <a
                       href={`https://www.instagram.com/${get(
@@ -256,6 +277,14 @@ export const InfluencerDetail: React.FunctionComponent<
                     <div style={{ fontWeight: 600, marginLeft: '10px' }}>
                       {get(influencerDetail, 'email') || 'johndoe@gmail.com'}
                     </div>
+                  </Layout.Flex>
+                  <Layout.Flex style={{ fontWeight: 600 }} mt="5px">
+                    <a
+                      href={get(influencerDetail, 'externalUrl')}
+                      target="_blank"
+                    >
+                      {get(influencerDetail, 'externalUrl')}
+                    </a>
                   </Layout.Flex>
                   <div style={{ color: '#3c3c3c', marginTop: '5px' }}>
                     {get(influencerDetail, 'biography')}

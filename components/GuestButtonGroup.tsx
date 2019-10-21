@@ -38,7 +38,7 @@ export const GuestButtonGroup: React.FunctionComponent<
     <Layout.Flex flexDirection="row" alignItems="center">
       <LoginButton
         onClick={() =>
-          Router.push(`${PATHS.login}?redirectUri=${router.pathname}`)
+          Router.push(`${PATHS.login}?redirectUrl=${router.pathname}`)
         }
       >
         LOGIN

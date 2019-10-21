@@ -10,27 +10,27 @@ const LoginFeature = dynamic(() => import('../features/login'), {
 })
 
 interface ILoginPageProps {
-  redirectUri: string
+  redirectUrl: string
 }
 
-const LoginPage: NextFunctionComponent<ILoginPageProps> = ({ redirectUri }) => {
+const LoginPage: NextFunctionComponent<ILoginPageProps> = ({ redirectUrl }) => {
   React.useEffect(() => {
-    cookies.set(KEYS.REDIRECT_URI, redirectUri || '/')
-  }, [redirectUri])
+    cookies.set(KEYS.REDIRECT_URL, redirectUrl || '/')
+  }, [redirectUrl])
 
   return <LoginFeature />
 }
 
 LoginPage.getInitialProps = async (ctx: NextContext) => {
   const token = utils.getToken(ctx)
-  const redirectUri = (ctx.query.redirectUri as string) || '/'
+  const redirectUrl = (ctx.query.redirectUrl as string) || '/'
 
   if (token) {
-    utils.redirect(ctx, redirectUri)
+    utils.redirect(ctx, redirectUrl)
   }
 
   return {
-    redirectUri,
+    redirectUrl,
   }
 }
 

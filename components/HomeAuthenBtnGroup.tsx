@@ -39,7 +39,7 @@ export const HomeAuthenBtnGroup: React.FunctionComponent<
         onClick={() =>
           Router.push({
             pathname: PATHS.login,
-            query: { redirectUri: router.asPath },
+            query: { redirectUrl: router.asPath },
           })
         }
       >

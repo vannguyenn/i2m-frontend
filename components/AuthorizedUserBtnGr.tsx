@@ -1,14 +1,13 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Button, Layout, Popover, Avatar } from '@frontend/ui'
-import NextLink from 'next/link'
 import { PATHS } from '@frontend/constants'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../models'
 import { map } from 'lodash'
 import Router from 'next/router'
 
-const CustomLink = styled.a`
+const CustomLink = styled.div`
   color: #ffffff;
   font-size: 13px;
   font-weight: 600;
@@ -59,9 +58,10 @@ export const AuthorizedUserBtnGr: React.FunctionComponent = () => {
 
   return (
     <Layout.Flex flexDirection="row" alignItems="center">
-      <NextLink href={PATHS.myInfluencer}>
-        <CustomLink>My Influencers</CustomLink>
-      </NextLink>
+      <CustomLink onClick={() => Router.push(PATHS.myInfluencer)}>
+        My Influencers
+      </CustomLink>
+
       <Popover.Popover
         content={PopoverContent}
         trigger="click"

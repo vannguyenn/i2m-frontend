@@ -6,6 +6,12 @@ import { AppModel } from '../../models'
 import { AuthorizedUserBtnGr, GuestButtonGroup } from '../../components'
 import styled from 'styled-components'
 import { color } from 'styled-system'
+import { useViewModel } from '@frontend/core/src/hooks'
+import { InfluencerRankingViewModel } from './InfluencerrankingViewModel'
+import { map, take, slice, size } from 'lodash'
+import { ITopInfluencerProps } from '@frontend/constants'
+import { useEffectOnce } from 'react-use'
+import numeral from 'numeral'
 
 const CustomCard = styled(Card.Card)`
   width: 100%;
@@ -35,7 +41,13 @@ const Badge = styled.div`
   border-radius: 20px;
   margin-top: 16px;
 `
-
+const Content = styled(Layout.Flex)`
+  min-height: calc(100vh - 150px);
+  max-height: calc(100vh - 150px);
+  overflow: auto;
+  background: #f3f4f6;
+  padding: 50px 150px 50px 150px;
+`
 const AvatarWrapper = styled.div`
   position: relative;
 `
@@ -61,167 +73,204 @@ const Username = styled.div`
 const SmallUsername = styled(Username)`
   font-size: 14px;
 `
+
+const NumberTag = styled.div`
+  color: #173c51;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+`
+
+const Label = styled.div`
+  color: ${({ theme }) => theme.colors.grey45};
+`
+
 export const InfluencerRanking: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
   const token = appModel.authModel.token
+  const influencerRankingViewModel = useViewModel(
+    InfluencerRankingViewModel,
+    appModel
+  )
+
+  useEffectOnce(() => {
+    influencerRankingViewModel.getTopInfluencer()
+  })
+  const top3Influencers = take(influencerRankingViewModel.topInfluencers, 3)
+  const remainInfluencers = slice(
+    influencerRankingViewModel.topInfluencers,
+    3,
+    size(influencerRankingViewModel.topInfluencers)
+  )
+
+  const genPos = (index: number) => {
+    if (index === 0) {
+      return { pos: '1st', color: '#f6cd90' }
+    }
+    if (index === 1) {
+      return { pos: '2nd', color: '#dedede' }
+    }
+    return { pos: '3rd', color: '#da9833' }
+  }
+
+  const ordinal_suffix_of = (i: number) => {
+    const j = i % 10,
+      k = i % 100
+    if (j == 1 && k != 11) {
+      return i + 'st'
+    }
+    if (j == 2 && k != 12) {
+      return i + 'nd'
+    }
+    if (j == 3 && k != 13) {
+      return i + 'rd'
+    }
+    return i + 'th'
+  }
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
     >
-      <Layout.Grid
-        gridGap={10}
-        gridTemplateColumns="1fr 1fr 1fr"
-        mb="40px"
-        p="50px 150px 50px 150px"
-      >
-        <CustomCard
-          bordered={false}
-          actions={[
-            <Icon.Icon type="setting" key="setting" />,
-            <Icon.Icon type="edit" key="edit" />,
-            <Icon.Icon type="ellipsis" key="ellipsis" />,
-          ]}
-        >
-          <Layout.Flex
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <AvatarWrapper>
-              <Avatar.Avatar size={120} src={'/static/image/user.png'} />
-              <Position bg="#f6cd90">1st</Position>
-            </AvatarWrapper>
+      <Content flexDirection="column">
+        <Layout.Grid gridGap={10} gridTemplateColumns="1fr 1fr 1fr" mb="40px">
+          {map(top3Influencers, (influencer: ITopInfluencerProps, index) => (
+            <CustomCard
+              bordered={false}
+              key={index}
+              actions={[
+                <Layout.Flex
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <NumberTag>
+                    {numeral(influencer.followers).format('(0.0a)')}
+                  </NumberTag>
+                  <Label>Followers</Label>
+                </Layout.Flex>,
+                <Layout.Flex
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <NumberTag>
+                    {numeral(influencer.followings).format('(0.0a)')}
+                  </NumberTag>
+                  <Label>Followings</Label>
+                </Layout.Flex>,
+                <Layout.Flex
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <NumberTag>
+                    {numeral(influencer.engagement).format('(0.0a)')}
+                  </NumberTag>
+                  <Label>Engagement</Label>
+                </Layout.Flex>,
+              ]}
+            >
+              <Layout.Flex
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="center"
+              >
+                <AvatarWrapper>
+                  <Avatar.Avatar
+                    size={120}
+                    src={influencer.profile_pic_url || '/static/image/user.png'}
+                  />
+                  <Position bg={genPos(index).color}>
+                    {genPos(index).pos}
+                  </Position>
+                </AvatarWrapper>
 
-            <FullName>John Doe</FullName>
-            <Username>
-              <a href={`https://www.instagram.com/johndoe`} target="_blank">
-                @johndoe
-              </a>
-            </Username>
-            <Badge>765 Contributes</Badge>
-          </Layout.Flex>
-        </CustomCard>
-        <CustomCard
-          bordered={false}
-          actions={[
-            <Icon.Icon type="setting" key="setting" />,
-            <Icon.Icon type="edit" key="edit" />,
-            <Icon.Icon type="ellipsis" key="ellipsis" />,
-          ]}
-        >
-          <Layout.Flex
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <AvatarWrapper>
-              <Avatar.Avatar size={120} src={'/static/image/user.png'} />
-              <Position bg="#dedede">2nd</Position>
-            </AvatarWrapper>
-            <FullName>John Doe</FullName>
-            <Username>
-              <a href={`https://www.instagram.com/johndoe`} target="_blank">
-                @johndoe
-              </a>
-            </Username>
-            <Badge>765 Contributes</Badge>
-          </Layout.Flex>
-        </CustomCard>
-        <CustomCard
-          bordered={false}
-          actions={[
-            <Icon.Icon type="setting" key="setting" />,
-            <Icon.Icon type="edit" key="edit" />,
-            <Icon.Icon type="ellipsis" key="ellipsis" />,
-          ]}
-        >
-          <Layout.Flex
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <AvatarWrapper>
-              <Avatar.Avatar size={120} src={'/static/image/user.png'} />
-              <Position bg="#da9833">3rd</Position>
-            </AvatarWrapper>
-            <FullName>John Doe</FullName>
-            <Username>
-              <a href={`https://www.instagram.com/johndoe`} target="_blank">
-                @johndoe
-              </a>
-            </Username>
-            <Badge>765 Contributes</Badge>
-          </Layout.Flex>
-        </CustomCard>
-      </Layout.Grid>
-      <Layout.Grid gridGap="15px" p="0 150px 50px 150px">
-        <CustomCard bordered={false}>
-          <Layout.Grid gridTemplateColumns="1fr 3fr 2fr 3fr">
-            <Layout.Flex alignItems="center" justifyContent="center">
-              4th
-            </Layout.Flex>
-            <Layout.Flex flexDirection="row" alignItems="flex-start">
-              <Avatar.Avatar size={50} src={'/static/image/user.png'} />
-              <Layout.Flex ml="20px" flexDirection="column">
-                <SmallName>John Doe</SmallName>
-                <SmallUsername>johndoe</SmallUsername>
+                <FullName>{influencer.full_name}</FullName>
+                <Username>
+                  <a
+                    href={`https://www.instagram.com/${influencer.username}`}
+                    target="_blank"
+                  >
+                    {`@${influencer.username}`}
+                  </a>
+                </Username>
+                <Badge>{`${influencer.mail_count} Received Mails`}</Badge>
               </Layout.Flex>
-            </Layout.Flex>
-            <div>
-              <Badge style={{ marginTop: 0 }}>765 Contributes</Badge>
-            </div>
-            <Layout.Grid gridTemplateColumns="1fr 1fr 1fr">
-              <Icon.Icon type="setting" key="setting" />
-              <Icon.Icon type="edit" key="edit" />
-              <Icon.Icon type="ellipsis" key="ellipsis" />
-            </Layout.Grid>
-          </Layout.Grid>
-        </CustomCard>
-        <CustomCard bordered={false}>
-          <Layout.Grid gridTemplateColumns="1fr 3fr 2fr 3fr">
-            <Layout.Flex alignItems="center" justifyContent="center">
-              4th
-            </Layout.Flex>
-            <Layout.Flex flexDirection="row" alignItems="flex-start">
-              <Avatar.Avatar size={50} src={'/static/image/user.png'} />
-              <Layout.Flex ml="20px" flexDirection="column">
-                <SmallName>John Doe</SmallName>
-                <SmallUsername>johndoe</SmallUsername>
-              </Layout.Flex>
-            </Layout.Flex>
-            <div>
-              <Badge style={{ marginTop: 0 }}>765 Contributes</Badge>
-            </div>
-            <Layout.Grid gridTemplateColumns="1fr 1fr 1fr">
-              <Icon.Icon type="setting" key="setting" />
-              <Icon.Icon type="edit" key="edit" />
-              <Icon.Icon type="ellipsis" key="ellipsis" />
-            </Layout.Grid>
-          </Layout.Grid>
-        </CustomCard>
-        <CustomCard bordered={false}>
-          <Layout.Grid gridTemplateColumns="1fr 3fr 2fr 3fr">
-            <Layout.Flex alignItems="center" justifyContent="center">
-              4th
-            </Layout.Flex>
-            <Layout.Flex flexDirection="row" alignItems="flex-start">
-              <Avatar.Avatar size={50} src={'/static/image/user.png'} />
-              <Layout.Flex ml="20px" flexDirection="column">
-                <SmallName>John Doe</SmallName>
-                <SmallUsername>johndoe</SmallUsername>
-              </Layout.Flex>
-            </Layout.Flex>
-            <div>
-              <Badge style={{ marginTop: 0 }}>765 Contributes</Badge>
-            </div>
-            <Layout.Grid gridTemplateColumns="1fr 1fr 1fr">
-              <Icon.Icon type="setting" key="setting" />
-              <Icon.Icon type="edit" key="edit" />
-              <Icon.Icon type="ellipsis" key="ellipsis" />
-            </Layout.Grid>
-          </Layout.Grid>
-        </CustomCard>
-      </Layout.Grid>
+            </CustomCard>
+          ))}
+        </Layout.Grid>
+        <Layout.Grid gridGap="15px" pt="0px">
+          {map(remainInfluencers, (influencer: ITopInfluencerProps, index) => (
+            <CustomCard key={index} bordered={false}>
+              <Layout.Grid gridTemplateColumns="1fr 3fr 2fr 3fr">
+                <Layout.Flex
+                  alignItems="center"
+                  justifyContent="center"
+                  style={{ fontWeight: 600 }}
+                >
+                  {ordinal_suffix_of(index + 4)}
+                </Layout.Flex>
+                <Layout.Flex flexDirection="row" alignItems="flex-start">
+                  <Avatar.Avatar
+                    size={50}
+                    src={influencer.profile_pic_url || '/static/image/user.png'}
+                  />
+                  <Layout.Flex ml="20px" flexDirection="column">
+                    <SmallName>{influencer.full_name}</SmallName>
+                    <SmallUsername>
+                      <a
+                        href={`https://www.instagram.com/${
+                          influencer.username
+                        }`}
+                        target="_blank"
+                      >
+                        {`@${influencer.username}`}
+                      </a>
+                    </SmallUsername>
+                  </Layout.Flex>
+                </Layout.Flex>
+                <div>
+                  <Badge style={{ marginTop: 0 }}>{`${
+                    influencer.mail_count
+                  } Received Mails`}</Badge>
+                </div>
+                <Layout.Grid gridTemplateColumns="1fr 1fr 1fr">
+                  <Layout.Flex
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <NumberTag>
+                      {numeral(influencer.followers).format('(0.0a)')}
+                    </NumberTag>
+                    <Label>Followers</Label>
+                  </Layout.Flex>
+                  <Layout.Flex
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <NumberTag>
+                      {numeral(influencer.followings).format('(0.0a)')}
+                    </NumberTag>
+                    <Label>Followings</Label>
+                  </Layout.Flex>
+                  <Layout.Flex
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <NumberTag>
+                      {numeral(influencer.engagement).format('(0.0a)')}
+                    </NumberTag>
+                    <Label>Engagement</Label>
+                  </Layout.Flex>
+                </Layout.Grid>
+              </Layout.Grid>
+            </CustomCard>
+          ))}
+        </Layout.Grid>
+      </Content>
     </MasterLayout.MasterLayout>
   )
 })

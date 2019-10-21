@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { AxiosResponse } from 'axios'
+import { ICategory } from '../../../models/AuthModel'
 
 export interface ILayoutProps {
   labelCol?: object
@@ -45,6 +46,7 @@ export interface IPostProps {
   video: boolean
   viewCount: number
   engagement: number
+  type: string
 }
 export interface IInfluencerProps {
   id: string
@@ -54,10 +56,27 @@ export interface IInfluencerProps {
   username: string
   mediaCount: number
   profilePicUrl: string
+  externalUrl?: string
   email?: string
   engagement: number
   category: string[]
   followings: string
   verified: boolean
   posts?: IPostProps[]
+  categories?: ICategory[]
+}
+
+export interface ITopInfluencerProps {
+  mail_count: number
+  id: string
+  full_name: string
+  biography: string
+  followers: number
+  username: string
+  email?: string
+  profile_pic_url: string
+  media_count: number
+  is_verified: boolean
+  engagement: number
+  followings: number
 }

@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Flex } from '../layout'
 import { SearchContainer } from '../../../../components/SearchContainer'
+import Router from 'next/router'
 
 const Header = styled(Flex)`
   height: 150px;
@@ -28,6 +29,8 @@ export const MasterLayout: React.FunctionComponent<IMasterLayoutProps> = ({
           justifyContent="space-between"
           alignItems="center"
           p="20px 50px"
+          style={{ cursor: 'pointer' }}
+          onClick={() => Router.push('/')}
         >
           <img src="/static/image/small-logo.png" />
           <RightAction />

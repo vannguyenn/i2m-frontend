@@ -28,11 +28,12 @@ export class AppModel {
   @observable currentPage: number
   @observable isLast: boolean
   @observable sortBy: string = 'followers'
-  @observable minFollowers: number = 1000
+  @observable minFollowers: number = 0
   @observable maxFollowers: number
   @observable minEngagement: number = 0.0
   @observable maxEngagement: number = 5.0
   @observable categories: ICategory[]
+  @observable currentCategories: string[]
 
   constructor() {
     this.notification = new NotificationStore(notification)
@@ -75,7 +76,8 @@ export class AppModel {
         this.minFollowers,
         this.maxFollowers,
         this.minEngagement,
-        this.maxEngagement
+        this.maxEngagement,
+        this.currentCategories
       )
 
       runInAction(() => {
@@ -120,6 +122,19 @@ export class AppModel {
     this.maxEngagement = maxEngagement
   }
 
+  @action
+  changeCurrentCategories(categories: string[]) {
+    this.currentCategories = categories
+  }
+
+  @action
+  resetFilter() {
+    this.minEngagement = 0
+    this.maxEngagement = 5
+    this.minFollowers = 0
+    this.currentCategories = []
+    this.searchInfluencers(0)
+  }
   @action
   async getCategories() {
     const { data } = await categoryService.getCategories<ICategory[]>()

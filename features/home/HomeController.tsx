@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Layout, Button, Input, Card, Icon } from '@frontend/ui'
+import { Layout, Button, Input, Card, Icon, Spin } from '@frontend/ui'
 import { map } from 'lodash'
 import { PATHS } from '@frontend/constants'
 import Router from 'next/router'
@@ -8,6 +8,9 @@ import { HomeAuthenBtnGroup, HomeAuthorizedBtnGr } from '../../components'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
 import { observer } from 'mobx-react-lite'
+import { HomeViewModel } from './HomeViewModel'
+import { useViewModel } from '@frontend/core/src/hooks'
+import { useEffectOnce } from 'react-use'
 
 const Container = styled.div`
   height: 100%;
@@ -76,60 +79,14 @@ const MoreInfluencerBtn = styled(Button.Button)`
   }
 `
 
-const influencers = [
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-  {
-    fullname: 'John Doe',
-    numberOfFollowers: 1.2,
-    biography:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    engagementRate: 4.83,
-    likesPerPost: 59.3,
-  },
-]
 export const HomeController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
+  const homeViewModel = useViewModel(HomeViewModel, appModel)
   const token = appModel.authModel.token
 
+  useEffectOnce(() => {
+    homeViewModel.getSuggestedInfluencers()
+  })
   const onChange = (e: any) => {
     const value = e.target.value
     appModel.changeGlobalSearch(value)
@@ -171,24 +128,26 @@ export const HomeController: React.FunctionComponent = observer(() => {
         </SearchContainer>
       </Layout.Flex>
       <Content>
-        <Layout.Grid
-          gridGap={2}
-          gridTemplateColumns="1fr 1fr 1fr"
-          mt="30px"
-          justifyItems="center"
-        >
-          {map(influencers, (influencer, key) => (
-            <Card.InfluencerCard {...influencer} width="350px" key={key} />
-          ))}
-        </Layout.Grid>
-        <Layout.Flex justifyContent="center" flexDirection="row">
-          <MoreInfluencerBtn
-            mt="40px"
-            onClick={() => Router.push(PATHS.influencers)}
+        <Spin.Spin spinning={homeViewModel.isFetching}>
+          <Layout.Grid
+            gridGap={2}
+            gridTemplateColumns="1fr 1fr 1fr"
+            mt="30px"
+            justifyItems="center"
           >
-            More Influencers <Icon.Icon type="arrow-right" />
-          </MoreInfluencerBtn>
-        </Layout.Flex>
+            {map(homeViewModel.suggestedInfluencers, (influencer, key) => (
+              <Card.InfluencerCard {...influencer} width="350px" key={key} />
+            ))}
+          </Layout.Grid>
+          <Layout.Flex justifyContent="center" flexDirection="row">
+            <MoreInfluencerBtn
+              mt="40px"
+              onClick={() => Router.push(PATHS.influencers)}
+            >
+              More Influencers <Icon.Icon type="arrow-right" />
+            </MoreInfluencerBtn>
+          </Layout.Flex>
+        </Spin.Spin>
       </Content>
     </Container>
   )
