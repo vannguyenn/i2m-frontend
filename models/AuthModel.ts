@@ -61,7 +61,7 @@ export class AuthModel {
         this.tokenExpires = data.rememberMe ? 30 : 1
         this.token = accessToken
       })
-      utils.redirect(undefined, cookies.get(KEYS.REDIRECT_URI))
+      utils.redirect(undefined, cookies.get(KEYS.REDIRECT_URL))
       return Promise.resolve()
     } catch (error) {
       return Promise.reject(

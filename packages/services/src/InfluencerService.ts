@@ -44,4 +44,8 @@ export class InfluencerService extends BaseService {
   public suggestInfluencer<T>() {
     return this.get<T>('/suggestion')
   }
+
+  public getTopInfluencer<T>() {
+    return this.get<T>('/ranking')
+  }
 }

@@ -117,13 +117,19 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
   const handleSubmitSearch = (value: any) => {
     appModel.changeMinFollowers(value.followers[0])
     !value.followers[1]
-      ? appModel.changeMaxFollowers(1000000)
+      ? appModel.changeMaxFollowers(1000000000)
       : appModel.changeMaxFollowers(value.followers[1])
 
     appModel.changeMinEngagement(value.minEngagement)
-    appModel.changeMaxEngagement(value.maxEngagement)
+    value.maxEngagement <= value.minEngagement
+      ? appModel.changeMaxEngagement(value.minEngagement + 1)
+      : appModel.changeMaxEngagement(value.maxEngagement)
     appModel.changeCurrentCategories(value.categories)
     appModel.searchInfluencers(0)
+  }
+
+  const clickReset = () => {
+    appModel.resetFilter()
   }
   return (
     <MasterLayout.MasterLayout
@@ -164,14 +170,14 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
                       min={0}
                       max={10}
                       step={0.1}
-                      formatter={value => `${value}%`}
+                      formatter={value => (!value ? `${0}%` : `${value}%`)}
                       parser={value => value.replace('%', '')}
                     />
                     <Field
                       min={0}
                       max={10}
                       step={0.1}
-                      formatter={value => `${value}%`}
+                      formatter={value => (!value ? `${0}%` : `${value}%`)}
                       parser={value => value.replace('%', '')}
                       name="maxEngagement"
                       component={Input.InputNumberField}
@@ -211,7 +217,7 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
                     justifyContent="space-between"
                   >
                     <SearchBtn htmlType="submit">Search</SearchBtn>
-                    <ResetBtn>Reset Filters</ResetBtn>
+                    <ResetBtn onClick={clickReset}>Reset Filters</ResetBtn>
                   </Layout.Flex>
                 </AntForm.Form>
               )}
@@ -229,7 +235,7 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
               pl="30px"
             >
               <ResultText>
-                Showing <Result>{size(influencerList) || 0}</Result> results
+                Showing <Result>{totalInfluencers || 0}</Result> results
               </ResultText>
               <Layout.Flex
                 alignItems="center"

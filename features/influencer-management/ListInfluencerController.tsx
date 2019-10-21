@@ -677,6 +677,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
               title={MODALPROPS.title}
               okText={MODALPROPS.footer.okText}
               onCancel={() => setModalVisible(false, null)}
+              maskClosable={false}
               okButtonProps={{
                 form: MODALPROPS.sendMailForm,
                 loading: loadingSend,
@@ -699,7 +700,6 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                         placeholder={MODALPROPS.fields.sendTo.placeholder}
                         label={MODALPROPS.fields.sendTo.label}
                         disabled={true}
-                        style={SentToStyle}
                       />
                       <Field
                         name={MODALPROPS.fields.subject.name}
@@ -708,7 +708,6 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                         label={MODALPROPS.fields.subject.label}
                         validate={field.required}
                         required
-                        style={SubjectStyle}
                       />
                     </Layout.Grid>
                     <Field

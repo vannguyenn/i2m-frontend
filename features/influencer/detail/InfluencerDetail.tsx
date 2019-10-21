@@ -186,9 +186,14 @@ export const InfluencerDetail: React.FunctionComponent<
     posts: get(influencerDetail, 'posts'),
   })
 
+  const useStatsSection = () => ({
+    influencer: influencerDetail,
+  })
+
   const providerValue = {
     useMediaSection,
     useAnalyticSection,
+    useStatsSection,
   }
 
   return (
@@ -272,6 +277,14 @@ export const InfluencerDetail: React.FunctionComponent<
                     <div style={{ fontWeight: 600, marginLeft: '10px' }}>
                       {get(influencerDetail, 'email') || 'johndoe@gmail.com'}
                     </div>
+                  </Layout.Flex>
+                  <Layout.Flex style={{ fontWeight: 600 }} mt="5px">
+                    <a
+                      href={get(influencerDetail, 'externalUrl')}
+                      target="_blank"
+                    >
+                      {get(influencerDetail, 'externalUrl')}
+                    </a>
                   </Layout.Flex>
                   <div style={{ color: '#3c3c3c', marginTop: '5px' }}>
                     {get(influencerDetail, 'biography')}

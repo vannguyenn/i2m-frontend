@@ -72,63 +72,65 @@ export interface ICategory extends FormRenderProps {
 
 const MyAccountForm: React.FunctionComponent<ICategory> = ({
   handleSubmit,
+  submitting,
   initialValues = {},
   Lcategories,
 }) => (
-    <AntForm.Form onSubmit={handleSubmit} layout="vertical">
-      <Grid gridGap="15px">
-        <Field
-          name={FORM_FIELDS.email.name}
-          label={FORM_FIELDS.email.label}
-          placeholder={FORM_FIELDS.email.placeholder}
-          component={Input.InputField}
-          disabled={true}
-        />
-        <Field
-          name={FORM_FIELDS.fullname.name}
-          label={FORM_FIELDS.fullname.label}
-          placeholder={FORM_FIELDS.fullname.placeholder}
-          component={Input.InputField}
-          validate={field.required}
-        />
-        {/* <Field
+  <AntForm.Form onSubmit={handleSubmit} layout="vertical">
+    <Grid gridGap="15px">
+      <Field
+        name={FORM_FIELDS.email.name}
+        label={FORM_FIELDS.email.label}
+        placeholder={FORM_FIELDS.email.placeholder}
+        component={Input.InputField}
+        disabled={true}
+      />
+      <Field
+        name={FORM_FIELDS.fullname.name}
+        label={FORM_FIELDS.fullname.label}
+        placeholder={FORM_FIELDS.fullname.placeholder}
+        component={Input.InputField}
+        validate={field.required}
+      />
+      {/* <Field
       name={FORM_FIELDS.password.name}
       label={FORM_FIELDS.password.label}
       placeholder={FORM_FIELDS.password.placeholder}
       component={Input.InputPasswordField}
     /> */}
-        <Field
-          name={FORM_FIELDS.category.name}
-          label={FORM_FIELDS.category.label}
-          placeholder={FORM_FIELDS.category.placeholder}
-          component={Select.MultipleSelectField}
-          options={Lcategories}
-        />
+      <Field
+        name={FORM_FIELDS.category.name}
+        label={FORM_FIELDS.category.label}
+        placeholder={FORM_FIELDS.category.placeholder}
+        component={Select.MultipleSelectField}
+        options={Lcategories}
+      />
 
-        <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
-          <Button.Button
-            type="ghost"
-            htmlType="submit"
-            width="180px"
-            style={{ height: '43px' }}
-          >
-            Update
+      <Layout.Flex flexDirection="row" justifyContent="space-between" mt="10px">
+        <Button.Button
+          type="primary"
+          htmlType="submit"
+          width="180px"
+          style={{ height: '43px' }}
+          loading={submitting}
+        >
+          Update
         </Button.Button>
-          {initialValues.password && (
-            <Link href="/change-password">
-              <Button.Button
-                type="primary"
-                width="180px"
-                style={{ height: '43px' }}
-              >
-                Change Password
+        {initialValues.password && (
+          <Link href="/change-password">
+            <Button.Button
+              type="primary"
+              width="180px"
+              style={{ height: '43px' }}
+            >
+              Change Password
             </Button.Button>
-            </Link>
-          )}
-        </Layout.Flex>
-      </Grid>
-    </AntForm.Form>
-  )
+          </Link>
+        )}
+      </Layout.Flex>
+    </Grid>
+  </AntForm.Form>
+)
 
 export const MyAccountController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
@@ -247,8 +249,8 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
               {profileImage ? (
                 <Avatar.Avatar src={currentUser.imgUrl} size={150} />
               ) : (
-                  <Avatar.Avatar src={imageUrl} size={150} />
-                )}
+                <Avatar.Avatar src={imageUrl} size={150} />
+              )}
             </Upload>
             {/* "/static/image/user.png" */}
             <Button.Button

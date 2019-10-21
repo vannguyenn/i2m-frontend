@@ -1,8 +1,9 @@
-import { IPostProps } from '@frontend/constants'
+import { IPostProps, IInfluencerProps } from '@frontend/constants'
 
 export interface IInfluencerDetailContext {
   useMediaSection: () => IMediaSection
   useAnalyticSection: () => IAnalyticSection
+  useStatsSection: () => IStatsSection
 }
 
 export interface IMediaSection {
@@ -14,4 +15,8 @@ export interface IMediaSection {
 
 export interface IAnalyticSection {
   posts: IPostProps[]
+}
+
+export interface IStatsSection {
+  influencer: IInfluencerProps
 }
