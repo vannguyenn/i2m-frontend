@@ -330,7 +330,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       removeInfluencerModalVisible,
       influencerSelected,
       historySendMailVisible,
-      listHistorySendMail,
+      listHistorySendMail
     } = myInfluencerViewModel
     const setModalVisible = (visible: boolean, id: string) => {
       myInfluencerViewModel.changeEmailModalVisible(visible, id)
@@ -692,7 +692,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
               okButtonProps={{
                 form: MODALPROPS.sendMailForm,
                 loading: loadingSend,
-                disabled: true,
+                disabled: false,
               }}
             >
               <FinalForm
