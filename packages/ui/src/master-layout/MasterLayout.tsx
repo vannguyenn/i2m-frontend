@@ -29,10 +29,12 @@ export const MasterLayout: React.FunctionComponent<IMasterLayoutProps> = ({
           justifyContent="space-between"
           alignItems="center"
           p="20px 50px"
-          style={{ cursor: 'pointer' }}
-          onClick={() => Router.push('/')}
         >
-          <img src="/static/image/small-logo.png" />
+          <img
+            src="/static/image/small-logo.png"
+            onClick={() => Router.push('/')}
+            style={{ cursor: 'pointer' }}
+          />
           <RightAction />
         </Flex>
         <SearchContainer />

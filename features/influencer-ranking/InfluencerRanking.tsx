@@ -164,7 +164,7 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
                   justifyContent="center"
                 >
                   <NumberTag>
-                    {numeral(influencer.engagement).format('(0.0a)')}
+                    {numeral(influencer.engagement).format('0.00%')}
                   </NumberTag>
                   <Label>Engagement</Label>
                 </Layout.Flex>,
@@ -200,75 +200,79 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
           ))}
         </Layout.Grid>
         <Layout.Grid gridGap="15px" pt="0px">
-          {map(remainInfluencers, (influencer: ITopInfluencerProps, index) => (
-            <CustomCard key={index} bordered={false}>
-              <Layout.Grid gridTemplateColumns="1fr 3fr 2fr 3fr">
-                <Layout.Flex
-                  alignItems="center"
-                  justifyContent="center"
-                  style={{ fontWeight: 600 }}
-                >
-                  {ordinal_suffix_of(index + 4)}
-                </Layout.Flex>
-                <Layout.Flex flexDirection="row" alignItems="flex-start">
-                  <Avatar.Avatar
-                    size={50}
-                    src={influencer.profile_pic_url || '/static/image/user.png'}
-                  />
-                  <Layout.Flex ml="20px" flexDirection="column">
-                    <SmallName>{influencer.full_name}</SmallName>
-                    <SmallUsername>
-                      <a
-                        href={`https://www.instagram.com/${
-                          influencer.username
-                        }`}
-                        target="_blank"
-                      >
-                        {`@${influencer.username}`}
-                      </a>
-                    </SmallUsername>
-                  </Layout.Flex>
-                </Layout.Flex>
-                <div>
-                  <Badge style={{ marginTop: 0 }}>{`${
-                    influencer.mail_count
-                  } Received Mails`}</Badge>
-                </div>
-                <Layout.Grid gridTemplateColumns="1fr 1fr 1fr">
+          {map(remainInfluencers, (influencer: ITopInfluencerProps, index) => {
+            return (
+              <CustomCard key={index} bordered={false}>
+                <Layout.Grid gridTemplateColumns="1fr 3fr 2fr 3fr">
                   <Layout.Flex
-                    flexDirection="column"
                     alignItems="center"
                     justifyContent="center"
+                    style={{ fontWeight: 600 }}
                   >
-                    <NumberTag>
-                      {numeral(influencer.followers).format('(0.0a)')}
-                    </NumberTag>
-                    <Label>Followers</Label>
+                    {ordinal_suffix_of(index + 4)}
                   </Layout.Flex>
-                  <Layout.Flex
-                    flexDirection="column"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <NumberTag>
-                      {numeral(influencer.followings).format('(0.0a)')}
-                    </NumberTag>
-                    <Label>Followings</Label>
+                  <Layout.Flex flexDirection="row" alignItems="flex-start">
+                    <Avatar.Avatar
+                      size={50}
+                      src={
+                        influencer.profile_pic_url || '/static/image/user.png'
+                      }
+                    />
+                    <Layout.Flex ml="20px" flexDirection="column">
+                      <SmallName>{influencer.full_name}</SmallName>
+                      <SmallUsername>
+                        <a
+                          href={`https://www.instagram.com/${
+                            influencer.username
+                          }`}
+                          target="_blank"
+                        >
+                          {`@${influencer.username}`}
+                        </a>
+                      </SmallUsername>
+                    </Layout.Flex>
                   </Layout.Flex>
-                  <Layout.Flex
-                    flexDirection="column"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <NumberTag>
-                      {numeral(influencer.engagement).format('(0.0a)')}
-                    </NumberTag>
-                    <Label>Engagement</Label>
-                  </Layout.Flex>
+                  <div>
+                    <Badge style={{ marginTop: 0 }}>{`${
+                      influencer.mail_count
+                    } Received Mails`}</Badge>
+                  </div>
+                  <Layout.Grid gridTemplateColumns="1fr 1fr 1fr">
+                    <Layout.Flex
+                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <NumberTag>
+                        {numeral(influencer.followers).format('(0.0a)')}
+                      </NumberTag>
+                      <Label>Followers</Label>
+                    </Layout.Flex>
+                    <Layout.Flex
+                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <NumberTag>
+                        {numeral(influencer.followings).format('(0.0a)')}
+                      </NumberTag>
+                      <Label>Followings</Label>
+                    </Layout.Flex>
+                    <Layout.Flex
+                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <NumberTag>
+                        {numeral(influencer.engagement).format('0.00%')}
+                      </NumberTag>
+                      <Label>Engagement</Label>
+                    </Layout.Flex>
+                  </Layout.Grid>
                 </Layout.Grid>
-              </Layout.Grid>
-            </CustomCard>
-          ))}
+              </CustomCard>
+            )
+          })}
         </Layout.Grid>
       </Content>
     </MasterLayout.MasterLayout>

@@ -272,12 +272,19 @@ export const InfluencerDetail: React.FunctionComponent<
                     </NumberText>
                     <NumberUnit>Following</NumberUnit>
                   </Layout.Flex>
-                  <Layout.Flex flexDirection="row" alignItems="center" mt="5px">
-                    Email:
-                    <div style={{ fontWeight: 600, marginLeft: '10px' }}>
-                      {get(influencerDetail, 'email') || 'johndoe@gmail.com'}
-                    </div>
-                  </Layout.Flex>
+                  {get(influencerDetail, 'email') && (
+                    <Layout.Flex
+                      flexDirection="row"
+                      alignItems="center"
+                      mt="5px"
+                    >
+                      Email:
+                      <div style={{ fontWeight: 600, marginLeft: '10px' }}>
+                        {get(influencerDetail, 'email')}
+                      </div>
+                    </Layout.Flex>
+                  )}
+
                   <Layout.Flex style={{ fontWeight: 600 }} mt="5px">
                     <a
                       href={get(influencerDetail, 'externalUrl')}

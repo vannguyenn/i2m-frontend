@@ -5,6 +5,7 @@ import { influencerService, profileService } from '@frontend/services'
 import { observable, reaction, action, runInAction } from 'mobx'
 import { IInfluencerProps, IPostProps } from '@frontend/constants'
 import { find, map, maxBy } from 'lodash'
+import { extractEmails } from '@frontend/core/src/utils'
 
 export class InfluencerDetailViewModel {
   @observable influencerDetail: IInfluencerProps
@@ -30,7 +31,11 @@ export class InfluencerDetailViewModel {
     >(id)
     runInAction(() => {
       this.isFetching = false
-      this.influencerDetail = data
+      this.influencerDetail = {
+        ...data,
+        email:
+          data.email || (data.biography ? extractEmails(data.biography) : null),
+      }
       this.influencerDetail.posts = map(
         this.influencerDetail.posts,
         (p: IPostProps) => ({

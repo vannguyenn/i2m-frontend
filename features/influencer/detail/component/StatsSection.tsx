@@ -104,7 +104,6 @@ export const StatsSection: React.FunctionComponent<IStatsSection> = observer(
     engagementRate,
   }) => {
     const { influencer } = useInfluencerDetailContext().useStatsSection()
-    console.log(get(influencer, 'engagement'))
     return (
       <Section flexDirection="column">
         <Title>Instagram Stats Overview</Title>

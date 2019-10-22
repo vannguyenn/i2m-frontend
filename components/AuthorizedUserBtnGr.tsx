@@ -13,6 +13,7 @@ const CustomLink = styled.div`
   font-weight: 600;
   text-transform: uppercase;
   margin-left: 20px;
+  cursor: pointer;
   &:hover,
   &:focus {
     color: #ffffff;

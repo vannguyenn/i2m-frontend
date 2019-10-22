@@ -5,9 +5,10 @@ import {
   groupService,
   confessionService,
 } from '@frontend/services'
-import { head, get, filter, find } from 'lodash'
+import { head, get, filter, map } from 'lodash'
 import { MODE, IInfluencerProps, MESSAGES } from '@frontend/constants'
 import { notification } from '@frontend/ui'
+import { extractEmails } from '@frontend/core/src/utils'
 
 export interface IListDetailProps {
   id: string
@@ -57,7 +58,7 @@ export class MyInfluencerViewModel {
   @observable deleteModalVisible: boolean
   @observable isLoadingDetail: boolean = false
   @observable removeInfluencerModalVisible: boolean
-  @observable influencerSelected:IInfluencerProps
+  @observable influencerSelected: IInfluencerProps
   @observable historySendMailVisible: boolean
   @observable listHistorySendMail: IHistorySendMail[]
   appModel: AppModel = null
@@ -103,7 +104,15 @@ export class MyInfluencerViewModel {
     const { data } = await groupService.getMyListDetail(id)
     this.isLoadingDetail = false
     runInAction(() => {
-      this.listDetail = data
+      this.listDetail = {
+        ...data,
+        influencers: map(data.influencers, influencer => ({
+          ...influencer,
+          email:
+            influencer.email ||
+            (influencer.biography ? extractEmails(influencer.biography) : null),
+        })),
+      }
     })
   }
 
@@ -115,7 +124,9 @@ export class MyInfluencerViewModel {
   @action
   changeEmailModalVisible(visible: boolean, id: string) {
     this.sendEmailModalVisible = visible
-    this.influencerSelected = this.listDetail.influencers.find(item=>item.id == id);
+    this.influencerSelected = this.listDetail.influencers.find(
+      item => item.id === id
+    )
   }
 
   @action
@@ -222,19 +233,18 @@ export class MyInfluencerViewModel {
   }
 
   @action
-  async sendMail(data:ISendMail,attachFile:any){
-    let val = new FormData();
-    val.append('attachFile',attachFile)
-    val.append('subject',data.subject)
-    val.append('body',data.body)
-    val.append('influencerId',this.influencerSelected.id)
+  async sendMail(data: ISendMail, attachFile: any) {
+    const val = new FormData()
+    val.append('attachFile', attachFile)
+    val.append('subject', data.subject)
+    val.append('body', data.body)
+    val.append('influencerId', this.influencerSelected.id)
     await confessionService.sendEmail(val)
   }
 
   @action
   changeVisibleHistorySendMail(visible:boolean,influencersId: string){
     this.historySendMailVisible = visible
-    console.log(influencersId)
     influencersId && this.historySendMail(influencersId)
   }
   

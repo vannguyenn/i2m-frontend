@@ -81,9 +81,9 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
             alignItems="center"
           >
             <Title>ENGAGEMENT</Title>
-            <NumberContainer>{`${(engagement &&
-              numeral(engagement).format('0.0')) ||
-              0}%`}</NumberContainer>
+            <NumberContainer>
+              {(engagement && numeral(engagement).format('0.00%')) || 0}
+            </NumberContainer>
           </Flex>
           <Flex
             flexDirection="column"
