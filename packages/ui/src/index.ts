@@ -21,6 +21,7 @@ import * as Spin from './spin'
 import * as Empty from './empty'
 import * as Collapse from './collapse'
 import * as Tag from './tag'
+import * as Upload from './upload'
 
 export * from './notification'
 
@@ -48,4 +49,5 @@ export {
   Empty,
   Collapse,
   Tag,
+  Upload,
 }
