@@ -99,7 +99,7 @@ const InfluencerRow = styled.div<{ isActive: boolean }>`
   cursor: pointer;
   border-left: 4px solid
     ${({ theme, isActive }) =>
-    isActive ? theme.colors.primary : 'transparent'};
+      isActive ? theme.colors.primary : 'transparent'};
   &:last-child {
     border-bottom: 1px solid ${({ theme }) => theme.colors.grey15};
   }
@@ -207,7 +207,7 @@ interface ActionButtonProps {
   influencerId: string
   influencerEmail: string
   setDrawerVisible: (visible: boolean, influencerId: string) => void
-  historySendMailVisible:boolean
+  historySendMailVisible: boolean
 }
 
 const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
@@ -216,9 +216,9 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
   influencerId,
   influencerEmail,
   setDrawerVisible,
-  historySendMailVisible
+  historySendMailVisible,
 }) => {
-  //const [drawerVisible, setDrawerVisible] = React.useState(false)
+  // const [drawerVisible, setDrawerVisible] = React.useState(false)
 
   return (
     <>
@@ -325,7 +325,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       isLoadingDetail,
       removeInfluencerModalVisible,
       influencerSelected,
-      historySendMailVisible
+      historySendMailVisible,
     } = myInfluencerViewModel
     const setModalVisible = (visible: boolean, id: string) => {
       myInfluencerViewModel.changeEmailModalVisible(visible, id)
@@ -408,7 +408,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       setAttachFile('')
       if (info.file.status === 'uploading') {
         setLoading(true)
-        return;
+        return
       }
       if (info.file.status === 'done') {
         setAttachFile(info.file.originFileObj)
@@ -427,7 +427,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
           placement: 'bottomLeft',
         })
       }
-    };
+    }
 
     const handleSendMail = async (v: any) => {
       try {
@@ -531,122 +531,126 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                       mt="10px"
                     >
                       {myInfluencerViewModel.listDetail.influencers.length >
-                        0 ? (
-                          map(
-                            get(myInfluencerViewModel.listDetail, 'influencers'),
-                            (influencer: IInfluencerProps, index) => (
-                              <InfluencerCard
-                                flexDirection="row"
-                                alignItems="flex-start"
-                                p="20px 30px"
-                                key={index}
+                      0 ? (
+                        map(
+                          get(myInfluencerViewModel.listDetail, 'influencers'),
+                          (influencer: IInfluencerProps, index) => (
+                            <InfluencerCard
+                              flexDirection="row"
+                              alignItems="flex-start"
+                              p="20px 30px"
+                              key={index}
+                            >
+                              <Avatar.Avatar
+                                size={100}
+                                src={get(influencer, 'profilePicUrl')}
+                              />
+                              <Layout.Flex
+                                flexDirection="column"
+                                justifyContent="flex-start"
+                                ml="25px"
+                                width="calc(100% - 200px)"
                               >
-                                <Avatar.Avatar
-                                  size={100}
-                                  src={get(influencer, 'profilePicUrl')}
-                                />
-                                <Layout.Flex
-                                  flexDirection="column"
-                                  justifyContent="flex-start"
-                                  ml="25px"
-                                  width="calc(100% - 200px)"
+                                <Layout.Grid
+                                  gridTemplateColumns="2fr 9fr"
+                                  alignContent="center"
                                 >
+                                  <Layout.Flex
+                                    flexDirection="column"
+                                    justifyContent="center"
+                                    pl="10px"
+                                  >
+                                    <Fullname>{influencer.fullName}</Fullname>
+                                    <Username>{`@${
+                                      influencer.username
+                                    }`}</Username>
+                                  </Layout.Flex>
                                   <Layout.Grid
-                                    gridTemplateColumns="2fr 9fr"
+                                    gridTemplateColumns="1fr 1fr 1fr"
                                     alignContent="center"
+                                    ml="80px"
+                                    mt="20px"
                                   >
                                     <Layout.Flex
                                       flexDirection="column"
-                                      justifyContent="center"
-                                      pl="10px"
-                                    >
-                                      <Fullname>{influencer.fullName}</Fullname>
-                                      <Username>{`@${
-                                        influencer.username
-                                        }`}</Username>
-                                    </Layout.Flex>
-                                    <Layout.Grid
-                                      gridTemplateColumns="1fr 1fr 1fr"
-                                      alignContent="center"
-                                      ml="80px"
-                                      mt="20px"
-                                    >
-                                      <Layout.Flex
-                                        flexDirection="column"
-                                        justifyContent="flex-start"
-                                        alignItems="center"
-                                      >
-                                        <StatsLabel>Followers</StatsLabel>
-                                        <StatsValue>
-                                          {numeral(influencer.followers).format(
-                                            '(0.0a)'
-                                          )}
-                                        </StatsValue>
-                                      </Layout.Flex>
-                                      <Layout.Flex
-                                        flexDirection="column"
-                                        justifyContent="flex-start"
-                                        alignItems="center"
-                                      >
-                                        <StatsLabel>Engagement</StatsLabel>
-                                        <StatsValue>{`${
-                                          influencer.engagement
-                                          }%`}</StatsValue>
-                                      </Layout.Flex>
-                                      <Layout.Flex
-                                        flexDirection="column"
-                                        justifyContent="flex-start"
-                                        alignItems="center"
-                                      >
-                                        <StatsLabel>
-                                          Estimated Post Value
-                                      </StatsLabel>
-                                        <StatsValue>{0}</StatsValue>
-                                      </Layout.Flex>
-                                    </Layout.Grid>
-                                  </Layout.Grid>
-                                  {influencer.email && (
-                                    <Layout.Flex
-                                      flexDirection="row"
+                                      justifyContent="flex-start"
                                       alignItems="center"
-                                      pl="10px"
-                                      mt="10px"
                                     >
-                                      Email:
-                                    <div
-                                        style={{
-                                          fontWeight: 600,
-                                          marginLeft: '10px',
-                                        }}
-                                      >
-                                        {influencer.email}
-                                      </div>
+                                      <StatsLabel>Followers</StatsLabel>
+                                      <StatsValue>
+                                        {numeral(influencer.followers).format(
+                                          '(0.0a)'
+                                        )}
+                                      </StatsValue>
                                     </Layout.Flex>
-                                  )}
-                                </Layout.Flex>
-                                <ActionButton
-                                  setModalVisible={setModalVisible}
-                                  influencerId={influencer.id}
-                                  influencerEmail={influencer.email}
-                                  setDrawerVisible={setDrawerVisible}
-                                  historySendMailVisible={historySendMailVisible}
-                                  onClickDeleteBtn={() =>
-                                    onClickDeleteInfluencerBtn(influencer)
-                                  }
-                                />
-                              </InfluencerCard>
-                            )
+                                    <Layout.Flex
+                                      flexDirection="column"
+                                      justifyContent="flex-start"
+                                      alignItems="center"
+                                    >
+                                      <StatsLabel>Engagement</StatsLabel>
+                                      <StatsValue>
+                                        {numeral(
+                                          get(influencer, 'engagement')
+                                        ).format('0.00%')}
+                                      </StatsValue>
+                                    </Layout.Flex>
+                                    <Layout.Flex
+                                      flexDirection="column"
+                                      justifyContent="flex-start"
+                                      alignItems="center"
+                                    >
+                                      <StatsLabel>Followings</StatsLabel>
+                                      <StatsValue>
+                                        {numeral(influencer.followings).format(
+                                          '(0.0a)'
+                                        )}
+                                      </StatsValue>
+                                    </Layout.Flex>
+                                  </Layout.Grid>
+                                </Layout.Grid>
+                                {influencer.email && (
+                                  <Layout.Flex
+                                    flexDirection="row"
+                                    alignItems="center"
+                                    pl="10px"
+                                    mt="10px"
+                                  >
+                                    Email:
+                                    <div
+                                      style={{
+                                        fontWeight: 600,
+                                        marginLeft: '10px',
+                                      }}
+                                    >
+                                      {influencer.email}
+                                    </div>
+                                  </Layout.Flex>
+                                )}
+                              </Layout.Flex>
+                              <ActionButton
+                                setModalVisible={setModalVisible}
+                                influencerId={influencer.id}
+                                influencerEmail={influencer.email}
+                                setDrawerVisible={setDrawerVisible}
+                                historySendMailVisible={historySendMailVisible}
+                                onClickDeleteBtn={() =>
+                                  onClickDeleteInfluencerBtn(influencer)
+                                }
+                              />
+                            </InfluencerCard>
                           )
-                        ) : (
-                          <Empty.Empty />
-                        )}
+                        )
+                      ) : (
+                        <Empty.Empty />
+                      )}
                     </Layout.Flex>
                   </>
                 ) : (
-                    <Layout.Flex mt="50px" justifyContent="center">
-                      <Empty.Empty />
-                    </Layout.Flex>
-                  )}
+                  <Layout.Flex mt="50px" justifyContent="center">
+                    <Empty.Empty />
+                  </Layout.Flex>
+                )}
               </Spin.Spin>
             </RightPanel>
           </Content>
@@ -655,7 +659,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
               visible={removeInfluencerModalVisible}
               title={`Delete ${currentInfluencer.fullName} from ${
                 listDetail.name
-                } ?`}
+              } ?`}
               onCancel={() => setRemoveInfluencerModalVisible(false)}
               width="400px"
               footer={
@@ -681,7 +685,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
               okButtonProps={{
                 form: MODALPROPS.sendMailForm,
                 loading: loadingSend,
-                disabled: loading
+                disabled: loading,
               }}
             >
               <FinalForm
@@ -772,39 +776,39 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                 />
               </Modal.SmallModal>
             ) : (
-                <Modal.SmallModal
-                  title={MODALPROPS.editList.title}
-                  okText={MODALPROPS.editList.okText}
-                  visible={createListModalVisible}
-                  onCancel={() => setCreateModalVisible(false)}
-                  okButtonProps={{
-                    form: MODALPROPS.editList.editListForm,
-                    loading: isLoading,
-                  }}
-                >
-                  <FinalForm
-                    onSubmit={handleRename}
-                    initialValues={
-                      mode === MODE.EDIT && { name: get(listDetail, 'name') }
-                    }
-                    render={({ handleSubmit }) => (
-                      <AntForm.Form
-                        onSubmit={handleSubmit}
-                        id={MODALPROPS.editList.editListForm}
-                      >
-                        <Field
-                          name={MODALPROPS.newList.fields.listName.name}
-                          component={Input.InputField}
-                          placeholder={
-                            MODALPROPS.newList.fields.listName.placeholder
-                          }
-                          validate={validate.field.required}
-                        />
-                      </AntForm.Form>
-                    )}
-                  />
-                </Modal.SmallModal>
-              ))}
+              <Modal.SmallModal
+                title={MODALPROPS.editList.title}
+                okText={MODALPROPS.editList.okText}
+                visible={createListModalVisible}
+                onCancel={() => setCreateModalVisible(false)}
+                okButtonProps={{
+                  form: MODALPROPS.editList.editListForm,
+                  loading: isLoading,
+                }}
+              >
+                <FinalForm
+                  onSubmit={handleRename}
+                  initialValues={
+                    mode === MODE.EDIT && { name: get(listDetail, 'name') }
+                  }
+                  render={({ handleSubmit }) => (
+                    <AntForm.Form
+                      onSubmit={handleSubmit}
+                      id={MODALPROPS.editList.editListForm}
+                    >
+                      <Field
+                        name={MODALPROPS.newList.fields.listName.name}
+                        component={Input.InputField}
+                        placeholder={
+                          MODALPROPS.newList.fields.listName.placeholder
+                        }
+                        validate={validate.field.required}
+                      />
+                    </AntForm.Form>
+                  )}
+                />
+              </Modal.SmallModal>
+            ))}
           {deleteModalVisible && (
             <Modal.SmallModal
               visible={deleteModalVisible}

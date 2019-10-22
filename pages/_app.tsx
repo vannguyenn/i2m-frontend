@@ -69,8 +69,6 @@ MyApp.getInitialProps = async (appContext: NextAppContext) => {
   const isInfluencerDetail = appContext.ctx.pathname.startsWith(
     PATHS.influencerDetail
   )
-  // const isLoginPage = appContext.ctx.pathname.startsWith(PATHS.login)
-  // const ignoreSignUp = appContext.ctx.pathname.startsWith(PATHS.signup)
 
   if (!token && (isMyAccountPage || isMyInfluencerPage || isInfluencerDetail)) {
     const redirectUrl =
