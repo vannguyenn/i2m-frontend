@@ -6,4 +6,8 @@ export class ConfessionService extends BaseService {
     public sendEmail<T = any>(data: any) {
         return this.post<T>('', data)
     }
+
+    public historySendMail<T=any>(influencer: string){
+        return this.get<T>(`/history/${influencer}`)
+    }
 }

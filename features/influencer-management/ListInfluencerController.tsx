@@ -14,6 +14,7 @@ import {
   notification,
   Spin,
   Empty,
+  Collapse
 } from '@frontend/ui'
 import styled from 'styled-components'
 import { observer } from 'mobx-react-lite'
@@ -208,17 +209,32 @@ interface ActionButtonProps {
   influencerEmail: string
   setDrawerVisible: (visible: boolean, influencerId: string) => void
   historySendMailVisible: boolean
+  listHistorySendMail: IHistorySendMail[]
 }
 
-const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
+interface IHistorySendMail {
+  id: string
+  subject: string
+  body: string
+  sendDate: Date
+  fileUrl: string
+  sent: boolean
+  influName: string
+  fullName:string
+  email:string
+  influEmail: string
+}
+
+const ActionButton: React.FunctionComponent<ActionButtonProps> = observer(({
   setModalVisible,
   onClickDeleteBtn,
   influencerId,
   influencerEmail,
   setDrawerVisible,
   historySendMailVisible,
+  listHistorySendMail
 }) => {
-  // const [drawerVisible, setDrawerVisible] = React.useState(false)
+  //const [drawerVisible, setDrawerVisible] = React.useState(false)
 
   return (
     <>
@@ -241,6 +257,7 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
           </IconButton>
         )}
       </Layout.Flex>
+
       <Drawer.Drawer
         title="Sent Emails"
         visible={historySendMailVisible}
@@ -249,32 +266,12 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
         width={500}
         closable={false}
       >
-        <EmailTitle flexDirection="row" alignItems="center">
-          <Icon.Icon type="mail" fontSize="18px" />
-          <Layout.Flex
-            flexDirection="column"
-            justifyContent="flex-start"
-            ml="20px"
-          >
-            <ReceiverFullName>{`"John Doe"`}</ReceiverFullName>
-            <EmailSubject>Re: Room for Interview</EmailSubject>
-          </Layout.Flex>
-        </EmailTitle>
-        <Layout.Flex
-          flexDirection="column"
-          justifyContent="flex-start"
-          p="15px 24px"
-        >
-          <TimeStamp>{`On Fri, 13 Sep 2019 at 09:09, Van Nguyen
-<pinkcloudvnn@gmail.com> wrote:
-`}</TimeStamp>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua
-        </Layout.Flex>
+        <Collapse.CollapseForm listHistorySendMail={listHistorySendMail}/>
       </Drawer.Drawer>
+
     </>
   )
-}
+})
 
 interface FooterProps {
   setDeleteModalVisible: (visible: boolean) => void
@@ -326,6 +323,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       removeInfluencerModalVisible,
       influencerSelected,
       historySendMailVisible,
+      listHistorySendMail
     } = myInfluencerViewModel
     const setModalVisible = (visible: boolean, id: string) => {
       myInfluencerViewModel.changeEmailModalVisible(visible, id)
@@ -618,27 +616,29 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                   >
                                     Email:
                                     <div
-                                      style={{
-                                        fontWeight: 600,
-                                        marginLeft: '10px',
-                                      }}
-                                    >
-                                      {influencer.email}
-                                    </div>
-                                  </Layout.Flex>
-                                )}
-                              </Layout.Flex>
-                              <ActionButton
-                                setModalVisible={setModalVisible}
-                                influencerId={influencer.id}
-                                influencerEmail={influencer.email}
-                                setDrawerVisible={setDrawerVisible}
-                                historySendMailVisible={historySendMailVisible}
-                                onClickDeleteBtn={() =>
-                                  onClickDeleteInfluencerBtn(influencer)
-                                }
-                              />
-                            </InfluencerCard>
+                                        style={{
+                                          fontWeight: 600,
+                                          marginLeft: '10px',
+                                        }}
+                                      >
+                                        {influencer.email}
+                                      </div>
+                                    </Layout.Flex>
+                                  )}
+                                </Layout.Flex>
+                                <ActionButton
+                                  setModalVisible={setModalVisible}
+                                  influencerId={influencer.id}
+                                  influencerEmail={influencer.email}
+                                  setDrawerVisible={setDrawerVisible}
+                                  historySendMailVisible={historySendMailVisible}
+                                  listHistorySendMail={listHistorySendMail}
+                                  onClickDeleteBtn={() =>
+                                    onClickDeleteInfluencerBtn(influencer)
+                                  }
+                                />
+                              </InfluencerCard>
+                            )
                           )
                         )
                       ) : (
