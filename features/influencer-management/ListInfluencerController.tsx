@@ -210,6 +210,7 @@ interface ActionButtonProps {
   setDrawerVisible: (visible: boolean, influencerId: string) => void
   historySendMailVisible: boolean
   listHistorySendMail: IHistorySendMail[]
+  isLoading: boolean
 }
 
 interface IHistorySendMail {
@@ -220,8 +221,8 @@ interface IHistorySendMail {
   fileUrl: string
   sent: boolean
   influName: string
-  fullName:string
-  email:string
+  fullName: string
+  email: string
   influEmail: string
 }
 
@@ -232,9 +233,10 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = observer(({
   influencerEmail,
   setDrawerVisible,
   historySendMailVisible,
-  listHistorySendMail
+  listHistorySendMail,
+  isLoading
 }) => {
-  
+
   return (
     <>
       <Layout.Flex
@@ -265,7 +267,12 @@ const ActionButton: React.FunctionComponent<ActionButtonProps> = observer(({
         width={500}
         closable={false}
       >
-        <Collapse.CollapseForm listHistorySendMail={listHistorySendMail}/>
+        <Spin.Spin
+          spinning={isLoading}
+          style={{ maxHeight: '500px', minHeight: '500px' }}
+        >
+          <Collapse.CollapseForm listHistorySendMail={listHistorySendMail} />
+        </Spin.Spin>
       </Drawer.Drawer>
 
     </>
@@ -628,6 +635,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                   setDrawerVisible={setDrawerVisible}
                                   historySendMailVisible={historySendMailVisible}
                                   listHistorySendMail={listHistorySendMail}
+                                  isLoading={isLoading}
                                   onClickDeleteBtn={() =>
                                     onClickDeleteInfluencerBtn(influencer)
                                   }
