@@ -48,6 +48,7 @@ export const SelectField: React.FunctionComponent<
         onChange={input.onChange}
         value={value}
         onBlur={onBlurSelect}
+        allowClear={!required}
         {...rest}
         {...selectProps}
       >

@@ -9,9 +9,10 @@ import { color } from 'styled-system'
 import { useViewModel } from '@frontend/core/src/hooks'
 import { InfluencerRankingViewModel } from './InfluencerrankingViewModel'
 import { map, take, slice, size } from 'lodash'
-import { ITopInfluencerProps } from '@frontend/constants'
+import { ITopInfluencerProps, PATHS } from '@frontend/constants'
 import { useEffectOnce } from 'react-use'
 import numeral from 'numeral'
+import Router from 'next/router'
 
 const CustomCard = styled(Card.Card)`
   width: 100%;
@@ -135,6 +136,11 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
         <Layout.Grid gridGap={10} gridTemplateColumns="1fr 1fr 1fr" mb="40px">
           {map(top3Influencers, (influencer: ITopInfluencerProps, index) => (
             <CustomCard
+              onClick={() =>
+                Router.push(
+                  `${PATHS.influencerDetail}?id=${influencer.id}&tab=stats`
+                )
+              }
               bordered={false}
               key={index}
               actions={[
@@ -202,7 +208,15 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
         <Layout.Grid gridGap="15px" pt="0px">
           {map(remainInfluencers, (influencer: ITopInfluencerProps, index) => {
             return (
-              <CustomCard key={index} bordered={false}>
+              <CustomCard
+                key={index}
+                bordered={false}
+                onClick={() =>
+                  Router.push(
+                    `${PATHS.influencerDetail}?id=${influencer.id}&tab=stats`
+                  )
+                }
+              >
                 <Layout.Grid gridTemplateColumns="1fr 3fr 2fr 3fr">
                   <Layout.Flex
                     alignItems="center"

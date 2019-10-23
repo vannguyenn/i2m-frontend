@@ -20,6 +20,9 @@ import { AppModel } from '../../../models'
 import { useEffectOnce } from 'react-use'
 import { Field, Form } from 'react-final-form'
 import { MultipleSelectField } from '@frontend/ui/src/select'
+import { Grid } from '@frontend/ui/src/layout'
+import Router from 'next/router'
+import { PATHS } from '@frontend/constants'
 
 const LeftPanel = styled(Layout.Flex)`
   min-height: calc(100vh - 150px);
@@ -146,6 +149,16 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
             justifyContent="flex-start"
             width="260px"
           >
+            <Grid mb="15px">
+              <Button.Button
+                onClick={() => Router.push(PATHS.influencerRanking)}
+                block
+                style={{ height: '40px', fontSize: '16px' }}
+                icon="crown"
+              >
+                Top Influencers
+              </Button.Button>
+            </Grid>
             <Form
               onSubmit={handleSubmitSearch}
               initialValues={{

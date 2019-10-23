@@ -6,6 +6,7 @@ export const PATHS = {
   influencers: '/influencers',
   detail: '/influencers/detail?tab=stats',
   influencerDetail: '/influencers/detail',
+  influencerRanking: '/influencers/ranking',
 }
 
 export const KEYS = {
@@ -50,4 +51,10 @@ export enum POST_STATUS {
   MOST_COMMENT = 'MOST_COMMENT',
   LATEST = 'LATEST',
   MOST_LIKE = 'MOST_LIKE',
+}
+
+export interface IEmailTemplateProps {
+  id: string
+  content: string
+  name: string
 }

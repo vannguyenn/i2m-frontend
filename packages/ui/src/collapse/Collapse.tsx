@@ -5,12 +5,14 @@ import styled from 'styled-components'
 
 import { Layout, Icon, Empty } from '@frontend/ui'
 import { observer } from 'mobx-react-lite'
+import { TextEditorView } from '../text-editor'
+import { Grid } from '../layout'
 
 const { Panel } = Collapse
 
 const ReceiverFullName = styled.div`
   color: ${({ theme }) => theme.colors.grey85};
-  font-weight: 700;
+  font-weight: 600;
   font-size: 18px;
 `
 const EmailSubject = styled.div`
@@ -26,11 +28,6 @@ const EmailTitle = styled(Layout.Flex)`
 `
 const FileUrl = styled.div`
   color: ${({ theme }) => theme.colors.grey65};
-`
-const Content = styled.p`
-  font-weight: 700;
-  padding-top: 20px;
-  padding-bottom: 20px;
 `
 interface IPropHistory {
   listHistorySendMail: IHistorySendMail[]
@@ -103,7 +100,9 @@ export const CollapseForm: React.FunctionComponent<IPropHistory> = observer(
                     item.sent ? item.email : item.influEmail
                   }> wrote:`}
                 </TimeStamp>
-                <Content dangerouslySetInnerHTML={{ __html: item.body }} />
+                <Grid mt="15px">
+                  <TextEditorView color="black85" description={item.body} />
+                </Grid>
 
                 {item.fileUrl && (
                   <FileUrl>

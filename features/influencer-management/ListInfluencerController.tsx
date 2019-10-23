@@ -25,13 +25,19 @@ import { useViewModel } from '@frontend/core/src/hooks'
 import { MyInfluencerViewModel } from './MyInfluencerViewModel'
 import { useEffectOnce } from 'react-use'
 import { map, get } from 'lodash'
-import { Form as FinalForm, Field } from 'react-final-form'
+import { Form as FinalForm, Field, FormSpy } from 'react-final-form'
 import { validate } from '@frontend/core'
-import { MESSAGES, MODE, IInfluencerProps } from '@frontend/constants'
+import {
+  MESSAGES,
+  MODE,
+  IInfluencerProps,
+  IEmailTemplateProps,
+} from '@frontend/constants'
 import numeral from 'numeral'
 import { field } from '@frontend/core/src/validate'
 
 import { Icon as AntIcon, Button as AntButton } from 'antd'
+import { SelectField } from '@frontend/ui/src/select'
 
 const MODALPROPS = {
   title: 'Send Mail',
@@ -55,6 +61,11 @@ const MODALPROPS = {
       name: 'body',
       placeholder: 'Mail Content',
       label: 'Content',
+    },
+    emailTemplate: {
+      name: 'emailTemplateId',
+      placeholder: 'Select an email template',
+      label: 'Email Template',
     },
   },
   sendMailForm: 'sendMailForm',
@@ -167,42 +178,6 @@ const StatsValue = styled.div`
   font-size: 16px;
 `
 
-const EmailTitle = styled(Layout.Flex)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey25};
-  padding: 15px 24px;
-`
-
-const ReceiverFullName = styled.div`
-  color: ${({ theme }) => theme.colors.grey85};
-  font-weight: 700;
-  font-size: 18px;
-`
-const EmailSubject = styled.div`
-  color: ${({ theme }) => theme.colors.grey65};
-  font-size: 16px;
-`
-const TimeStamp = styled.div`
-  color: ${({ theme }) => theme.colors.grey65};
-`
-
-const SentToStyle = {
-  borderTop: 'none',
-  borderLeft: 'none',
-  borderRight: 'none',
-  borderRadius: '0px',
-  fontWeight: 'bold',
-  fontSize: '14px',
-  borderBottomWidth: 0.5,
-}
-
-const SubjectStyle = {
-  borderTop: 'none',
-  borderLeft: 'none',
-  borderRight: 'none',
-  borderRadius: '0px',
-  borderBottomWidth: 0.5,
-}
-
 interface ActionButtonProps {
   setModalVisible: (visible: boolean, influencerId: string) => void
   onClickDeleteBtn: () => void
@@ -212,6 +187,7 @@ interface ActionButtonProps {
   historySendMailVisible: boolean
   listHistorySendMail: IHistorySendMail[]
   isLoading: boolean
+  resetListHistoryMail: () => void
 }
 
 interface IHistorySendMail {
@@ -227,58 +203,63 @@ interface IHistorySendMail {
   influEmail: string
 }
 
-const ActionButton: React.FunctionComponent<ActionButtonProps> = observer(({
-  setModalVisible,
-  onClickDeleteBtn,
-  influencerId,
-  influencerEmail,
-  setDrawerVisible,
-  historySendMailVisible,
-  listHistorySendMail,
-  isLoading
-}) => {
-
-  return (
-    <>
-      <Layout.Flex
-        flexDirection="row"
-        alignItems="center"
-        style={{ position: 'absolute', top: '5px', right: '10px' }}
-      >
-        <IconButton onClick={onClickDeleteBtn}>
-          <Icon.Icon type="delete" theme="filled" />
-        </IconButton>
-        {influencerEmail && (
-          <IconButton onClick={() => setDrawerVisible(true, influencerId)}>
-            <Icon.Icon type="clock-circle" theme="filled" />
-          </IconButton>
-        )}
-        {influencerEmail && (
-          <IconButton onClick={() => setModalVisible(true, influencerId)}>
-            <Icon.Icon type="mail" theme="filled" />
-          </IconButton>
-        )}
-      </Layout.Flex>
-
-      <Drawer.Drawer
-        title="Sent Emails"
-        visible={historySendMailVisible}
-        onClose={() => setDrawerVisible(false, null)}
-        placement="right"
-        width={500}
-        closable={false}
-      >
-        <Spin.Spin
-          spinning={isLoading}
-          style={{ maxHeight: '500px', minHeight: '500px' }}
+const ActionButton: React.FunctionComponent<ActionButtonProps> = observer(
+  ({
+    setModalVisible,
+    onClickDeleteBtn,
+    influencerId,
+    influencerEmail,
+    setDrawerVisible,
+    historySendMailVisible,
+    listHistorySendMail,
+    isLoading,
+    resetListHistoryMail,
+  }) => {
+    return (
+      <>
+        <Layout.Flex
+          flexDirection="row"
+          alignItems="center"
+          style={{ position: 'absolute', top: '5px', right: '10px' }}
         >
-          <Collapse.CollapseForm listHistorySendMail={listHistorySendMail} />
-        </Spin.Spin>
-      </Drawer.Drawer>
+          <IconButton onClick={onClickDeleteBtn}>
+            <Icon.Icon type="delete" theme="filled" />
+          </IconButton>
+          {influencerEmail && (
+            <IconButton onClick={() => setDrawerVisible(true, influencerId)}>
+              <Icon.Icon type="clock-circle" theme="filled" />
+            </IconButton>
+          )}
+          {influencerEmail && (
+            <IconButton onClick={() => setModalVisible(true, influencerId)}>
+              <Icon.Icon type="mail" theme="filled" />
+            </IconButton>
+          )}
+        </Layout.Flex>
 
-    </>
-  )
-})
+        <Drawer.Drawer
+          destroyOnClose={true}
+          title="Sent Emails"
+          visible={historySendMailVisible}
+          onClose={() => {
+            setDrawerVisible(false, null)
+            resetListHistoryMail()
+          }}
+          placement="right"
+          width={500}
+          closable={false}
+        >
+          <Spin.Spin
+            spinning={isLoading}
+            style={{ maxHeight: '500px', minHeight: '500px' }}
+          >
+            <Collapse.CollapseForm listHistorySendMail={listHistorySendMail} />
+          </Spin.Spin>
+        </Drawer.Drawer>
+      </>
+    )
+  }
+)
 
 interface FooterProps {
   setDeleteModalVisible: (visible: boolean) => void
@@ -315,6 +296,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
 
     useEffectOnce(() => {
       myInfluencerViewModel.fetchMyList()
+      myInfluencerViewModel.fetchEmailTemplate()
     })
 
     const listOfLeads = myInfluencerViewModel.myList
@@ -330,8 +312,16 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       removeInfluencerModalVisible,
       influencerSelected,
       historySendMailVisible,
-      listHistorySendMail
+      listHistorySendMail,
+      emailTemplates,
     } = myInfluencerViewModel
+
+    const normalizedEmailTemplate = map(
+      emailTemplates,
+      (e: IEmailTemplateProps) => ({ label: e.name, value: e.id })
+    )
+    const resetListHistoryMail = () => myInfluencerViewModel.resetListHistory()
+
     const setModalVisible = (visible: boolean, id: string) => {
       myInfluencerViewModel.changeEmailModalVisible(visible, id)
     }
@@ -641,6 +631,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                 historySendMailVisible={historySendMailVisible}
                                 listHistorySendMail={listHistorySendMail}
                                 isLoading={isLoading}
+                                resetListHistoryMail={resetListHistoryMail}
                                 onClickDeleteBtn={() =>
                                   onClickDeleteInfluencerBtn(influencer)
                                 }
@@ -697,54 +688,71 @@ export const ListInfluencerController: React.FunctionComponent = observer(
               <FinalForm
                 initialValues={influencerSelected}
                 onSubmit={handleSendMail}
-                render={({ handleSubmit }) => (
-                  <AntForm.Form
-                    onSubmit={handleSubmit}
-                    id="sendMailForm"
-                    layout="vertical"
-                  >
-                    <Layout.Grid mb="15px" gridGap="15px">
-                      <Field
-                        name={MODALPROPS.fields.sendTo.name}
-                        component={Input.InputField}
-                        placeholder={MODALPROPS.fields.sendTo.placeholder}
-                        label={MODALPROPS.fields.sendTo.label}
-                        disabled={true}
-                      />
-                      <Field
-                        name={MODALPROPS.fields.subject.name}
-                        component={Input.InputField}
-                        placeholder={MODALPROPS.fields.subject.placeholder}
-                        label={MODALPROPS.fields.subject.label}
-                        validate={field.required}
-                        required
-                      />
-                    </Layout.Grid>
-                    <Field
-                      name={MODALPROPS.fields.content.name}
-                      component={TextEditor.TextEditorField}
-                      placeholder={MODALPROPS.fields.content.placeholder}
-                      //  label={MODALPROPS.fields.content.label}
-                      height="230px"
-                      validate={field.required}
+                render={({ handleSubmit, form }) => (
+                  <>
+                    <FormSpy
+                      onChange={values =>
+                        myInfluencerViewModel.changeFormValue(values, form)
+                      }
                     />
-                    <Layout.Grid mt="15px">
-                      <Upload.Upload
-                        name="file"
-                        multiple={false}
-                        accept="image/*,.doc,.docx,.xlsx,.pdf,pptx,txt"
-                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                        className="uploader"
-                        showUploadList={true}
-                        onChange={handleChange}
-                      >
-                        <AntButton type="dashed">
-                          <AntIcon type={loading ? 'loading' : 'upload'} />
-                          Click to Upload
-                        </AntButton>
-                      </Upload.Upload>
-                    </Layout.Grid>
-                  </AntForm.Form>
+                    <AntForm.Form
+                      onSubmit={handleSubmit}
+                      id="sendMailForm"
+                      layout="vertical"
+                    >
+                      <Layout.Grid mb="15px" gridGap="15px">
+                        <Field
+                          name={MODALPROPS.fields.sendTo.name}
+                          component={Input.InputField}
+                          placeholder={MODALPROPS.fields.sendTo.placeholder}
+                          label={MODALPROPS.fields.sendTo.label}
+                          disabled={true}
+                        />
+                        <Field
+                          name={MODALPROPS.fields.subject.name}
+                          component={Input.InputField}
+                          placeholder={MODALPROPS.fields.subject.placeholder}
+                          label={MODALPROPS.fields.subject.label}
+                          validate={field.required}
+                          required
+                        />
+
+                        <Field
+                          name={MODALPROPS.fields.emailTemplate.name}
+                          component={SelectField}
+                          options={normalizedEmailTemplate}
+                          placeholder={
+                            MODALPROPS.fields.emailTemplate.placeholder
+                          }
+                          label={MODALPROPS.fields.emailTemplate.label}
+                        />
+                      </Layout.Grid>
+                      <Field
+                        name={MODALPROPS.fields.content.name}
+                        component={TextEditor.TextEditorField}
+                        placeholder={MODALPROPS.fields.content.placeholder}
+                        //  label={MODALPROPS.fields.content.label}
+                        height="230px"
+                        validate={field.required}
+                      />
+                      <Layout.Grid mt="15px">
+                        <Upload.Upload
+                          name="file"
+                          multiple={false}
+                          accept="image/*,.doc,.docx,.xlsx,.pdf,pptx,txt"
+                          action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                          className="uploader"
+                          showUploadList={true}
+                          onChange={handleChange}
+                        >
+                          <AntButton type="dashed">
+                            <AntIcon type={loading ? 'loading' : 'upload'} />
+                            Click to Upload
+                          </AntButton>
+                        </Upload.Upload>
+                      </Layout.Grid>
+                    </AntForm.Form>
+                  </>
                 )}
               />
             </Modal.MediumModal>

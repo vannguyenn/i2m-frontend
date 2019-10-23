@@ -4,11 +4,18 @@ import {
   profileService,
   groupService,
   confessionService,
+  emailTemplateService,
 } from '@frontend/services'
-import { head, get, filter, map } from 'lodash'
-import { MODE, IInfluencerProps, MESSAGES } from '@frontend/constants'
+import { head, get, filter, map, find } from 'lodash'
+import {
+  MODE,
+  IInfluencerProps,
+  MESSAGES,
+  IEmailTemplateProps,
+} from '@frontend/constants'
 import { notification } from '@frontend/ui'
 import { extractEmails } from '@frontend/core/src/utils'
+import { FormState, FormApi } from 'final-form'
 
 export interface IListDetailProps {
   id: string
@@ -33,17 +40,17 @@ export interface ISendMail {
   sentTo: string
 }
 
-export interface IHistorySendMail{
-    id: string
-    subject: string
-    body: string
-    sendDate: Date
-    fileUrl: string
-    sent: boolean
-    influName: string
-    fullName:string
-    email:string
-    influEmail: string
+export interface IHistorySendMail {
+  id: string
+  subject: string
+  body: string
+  sendDate: Date
+  fileUrl: string
+  sent: boolean
+  influName: string
+  fullName: string
+  email: string
+  influEmail: string
 }
 
 export class MyInfluencerViewModel {
@@ -61,6 +68,9 @@ export class MyInfluencerViewModel {
   @observable influencerSelected: IInfluencerProps
   @observable historySendMailVisible: boolean
   @observable listHistorySendMail: IHistorySendMail[]
+  @observable emailTemplates: IEmailTemplateProps[]
+  @observable formValues: any
+
   appModel: AppModel = null
 
   constructor(appModel: AppModel) {
@@ -243,24 +253,47 @@ export class MyInfluencerViewModel {
   }
 
   @action
-  changeVisibleHistorySendMail(visible:boolean,influencersId: string){
+  changeVisibleHistorySendMail(visible: boolean, influencersId: string) {
     this.historySendMailVisible = visible
     influencersId && this.historySendMail(influencersId)
   }
-  
+
   @action
-  async historySendMail(influencerId:string){
-     try {
+  async historySendMail(influencerId: string) {
+    try {
       this.isLoading = true
-      const{ data }= await confessionService.historySendMail(influencerId)
-      runInAction(()=>{
-       this.listHistorySendMail = data
+      const { data } = await confessionService.historySendMail(influencerId)
+      runInAction(() => {
+        this.listHistorySendMail = data
       })
       this.isLoading = false
-     } catch (error) {
+    } catch (error) {
       this.isLoading = false
-       this.listHistorySendMail = null
-     }
+      this.listHistorySendMail = null
+    }
   }
 
+  @action
+  resetListHistory() {
+    this.listHistorySendMail = null
+  }
+
+  @action
+  async fetchEmailTemplate() {
+    const { data } = await emailTemplateService.getEmailTemplate<
+      IEmailTemplateProps[]
+    >()
+    this.emailTemplates = data
+  }
+
+  @action
+  changeFormValue(value: FormState, formApi: FormApi) {
+    if (value.values.emailTemplateId && value.active !== 'body') {
+      formApi.change(
+        'body',
+        find(this.emailTemplates, em => em.id === value.values.emailTemplateId)
+          .content
+      )
+    }
+  }
 }

@@ -48,4 +48,8 @@ export class InfluencerService extends BaseService {
   public getTopInfluencer<T>() {
     return this.get<T>('/ranking')
   }
+
+  public loadMoreInfluencer<T>(limit: number) {
+    return this.get<T>(`/load-more?limit=${limit}`)
+  }
 }
