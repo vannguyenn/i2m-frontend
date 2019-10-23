@@ -21,6 +21,7 @@ export const Button = styled(AntButton)<IButtonProps>`
     background: ${({ theme }) => theme.colors.primary100};
     border-color: ${({ theme }) => theme.colors.primary100};
     font-weight: 500;
+
     /* box-shadow: 0px 3px 5px rgba(255, 98, 101, 0.4); */
   }
   &&&.ant-btn-danger {
