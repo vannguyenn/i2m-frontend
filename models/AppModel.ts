@@ -28,7 +28,7 @@ export class AppModel {
   @observable currentPage: number
   @observable isLast: boolean
   @observable sortBy: string = 'followers'
-  @observable minFollowers: number = 0
+  @observable minFollowers: number = 1000
   @observable maxFollowers: number
   @observable minEngagement: number = 0.0
   @observable maxEngagement: number = 5.0

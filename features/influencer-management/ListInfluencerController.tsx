@@ -686,7 +686,6 @@ export const ListInfluencerController: React.FunctionComponent = observer(
               okButtonProps={{
                 form: MODALPROPS.sendMailForm,
                 loading: loadingSend,
-                disabled: true,
               }}
             >
               <FinalForm
