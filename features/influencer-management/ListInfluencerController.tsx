@@ -211,6 +211,7 @@ interface ActionButtonProps {
   setDrawerVisible: (visible: boolean, influencerId: string) => void
   historySendMailVisible: boolean
   listHistorySendMail: IHistorySendMail[]
+  isLoading: boolean
 }
 
 interface IHistorySendMail {
@@ -226,54 +227,58 @@ interface IHistorySendMail {
   influEmail: string
 }
 
-const ActionButton: React.FunctionComponent<ActionButtonProps> = observer(
-  ({
-    setModalVisible,
-    onClickDeleteBtn,
-    influencerId,
-    influencerEmail,
-    setDrawerVisible,
-    historySendMailVisible,
-    listHistorySendMail,
-  }) => {
-    // const [drawerVisible, setDrawerVisible] = React.useState(false)
+const ActionButton: React.FunctionComponent<ActionButtonProps> = observer(({
+  setModalVisible,
+  onClickDeleteBtn,
+  influencerId,
+  influencerEmail,
+  setDrawerVisible,
+  historySendMailVisible,
+  listHistorySendMail,
+  isLoading
+}) => {
 
-    return (
-      <>
-        <Layout.Flex
-          flexDirection="row"
-          alignItems="center"
-          style={{ position: 'absolute', top: '5px', right: '10px' }}
-        >
-          <IconButton onClick={onClickDeleteBtn}>
-            <Icon.Icon type="delete" theme="filled" />
+  return (
+    <>
+      <Layout.Flex
+        flexDirection="row"
+        alignItems="center"
+        style={{ position: 'absolute', top: '5px', right: '10px' }}
+      >
+        <IconButton onClick={onClickDeleteBtn}>
+          <Icon.Icon type="delete" theme="filled" />
+        </IconButton>
+        {influencerEmail && (
+          <IconButton onClick={() => setDrawerVisible(true, influencerId)}>
+            <Icon.Icon type="clock-circle" theme="filled" />
           </IconButton>
-          {influencerEmail && (
-            <IconButton onClick={() => setDrawerVisible(true, influencerId)}>
-              <Icon.Icon type="clock-circle" theme="filled" />
-            </IconButton>
-          )}
-          {influencerEmail && (
-            <IconButton onClick={() => setModalVisible(true, influencerId)}>
-              <Icon.Icon type="mail" theme="filled" />
-            </IconButton>
-          )}
-        </Layout.Flex>
+        )}
+        {influencerEmail && (
+          <IconButton onClick={() => setModalVisible(true, influencerId)}>
+            <Icon.Icon type="mail" theme="filled" />
+          </IconButton>
+        )}
+      </Layout.Flex>
 
-        <Drawer.Drawer
-          title="Sent Emails"
-          visible={historySendMailVisible}
-          onClose={() => setDrawerVisible(false, null)}
-          placement="right"
-          width={500}
-          closable={false}
+      <Drawer.Drawer
+        title="Sent Emails"
+        visible={historySendMailVisible}
+        onClose={() => setDrawerVisible(false, null)}
+        placement="right"
+        width={500}
+        closable={false}
+      >
+        <Spin.Spin
+          spinning={isLoading}
+          style={{ maxHeight: '500px', minHeight: '500px' }}
         >
           <Collapse.CollapseForm listHistorySendMail={listHistorySendMail} />
-        </Drawer.Drawer>
-      </>
-    )
-  }
-)
+        </Spin.Spin>
+      </Drawer.Drawer>
+
+    </>
+  )
+})
 
 interface FooterProps {
   setDeleteModalVisible: (visible: boolean) => void
@@ -325,7 +330,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       removeInfluencerModalVisible,
       influencerSelected,
       historySendMailVisible,
-      listHistorySendMail,
+      listHistorySendMail
     } = myInfluencerViewModel
     const setModalVisible = (visible: boolean, id: string) => {
       myInfluencerViewModel.changeEmailModalVisible(visible, id)
@@ -635,6 +640,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                 setDrawerVisible={setDrawerVisible}
                                 historySendMailVisible={historySendMailVisible}
                                 listHistorySendMail={listHistorySendMail}
+                                isLoading={isLoading}
                                 onClickDeleteBtn={() =>
                                   onClickDeleteInfluencerBtn(influencer)
                                 }
