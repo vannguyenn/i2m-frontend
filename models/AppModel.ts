@@ -1,3 +1,4 @@
+import { map } from 'lodash'
 import { categoryService } from './../packages/services/src/index'
 import { ProfileModel, ICategory } from './ProfileModel'
 import { NotificationStore } from '@frontend/core/src/stores'
@@ -31,7 +32,7 @@ export class AppModel {
   @observable minFollowers: number = 1000
   @observable maxFollowers: number
   @observable minEngagement: number = 0.0
-  @observable maxEngagement: number = 5.0
+  @observable maxEngagement: number = 100
   @observable categories: ICategory[]
   @observable currentCategories: string[]
 
@@ -86,6 +87,7 @@ export class AppModel {
         }
         this.influencerList = [...this.influencerList, ...data.content]
 
+        map(this.influencerList, el => !el.authentic && console.log(el))
         if (this.isFetchingInfluencers) {
           this.isFetchingInfluencers = false
         }

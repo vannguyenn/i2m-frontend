@@ -129,8 +129,11 @@ export const StatsSection: React.FunctionComponent<IStatsSection> = observer(
               </IconContainer>
             </Layout.Flex>
             <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>{`${avgLikePerPost || 59.3}K`}</NumberTag>
-              <PercentageTag>{`(${likePercentage || 4.8}%)`}</PercentageTag>
+              <NumberTag>
+                {numeral(get(influencer, 'averageLikePerPost')).format(
+                  '(0.0a)'
+                )}
+              </NumberTag>
             </Layout.Flex>
           </Card>
           <Card flexDirection="column">
@@ -149,8 +152,12 @@ export const StatsSection: React.FunctionComponent<IStatsSection> = observer(
               </IconContainer>
             </Layout.Flex>
             <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>{`${avgRepliesPerPost || 169.8}`}</NumberTag>
-              <PercentageTag>{`(${replyPercentage || 0.1}%)`}</PercentageTag>
+              <NumberTag>
+                {numeral(get(influencer, 'averageCommentPerPost')).format(
+                  '(0.0a)'
+                )}
+              </NumberTag>
+              {/* <PercentageTag>{`(${replyPercentage || 0.1}%)`}</PercentageTag> */}
             </Layout.Flex>
           </Card>
           <Card flexDirection="column">
@@ -169,7 +176,11 @@ export const StatsSection: React.FunctionComponent<IStatsSection> = observer(
               </IconContainer>
             </Layout.Flex>
             <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>{`${avgViewPerVideo || 171.6}K`}</NumberTag>
+              <NumberTag>
+                {numeral(get(influencer, 'averageViewPerVideo')).format(
+                  '(0.0a)'
+                )}
+              </NumberTag>
             </Layout.Flex>
           </Card>
           <Card flexDirection="column">
@@ -188,7 +199,11 @@ export const StatsSection: React.FunctionComponent<IStatsSection> = observer(
               </IconContainer>
             </Layout.Flex>
             <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>{`${numOfFollowers || 2.6}K`}</NumberTag>
+              <NumberTag>
+                {get(influencer, 'followings') !== 0 ? numeral(
+                  get(influencer, 'followers') / get(influencer, 'followings')
+                ).format('(0.0a)') : 0}
+              </NumberTag>
             </Layout.Flex>
           </Card>
           <Card flexDirection="column">
@@ -207,7 +222,11 @@ export const StatsSection: React.FunctionComponent<IStatsSection> = observer(
               </IconContainer>
             </Layout.Flex>
             <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>{`${imageEngagment || 4.9}%`}</NumberTag>
+              <NumberTag>
+                {numeral(get(influencer, 'averageEngagementPerImage')).format(
+                  '(0.00%)'
+                )}
+              </NumberTag>
             </Layout.Flex>
           </Card>
           <Card flexDirection="column">
@@ -226,11 +245,15 @@ export const StatsSection: React.FunctionComponent<IStatsSection> = observer(
               </IconContainer>
             </Layout.Flex>
             <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>{`${videoEngagment || 171.6}K`}</NumberTag>
+              <NumberTag>
+                {numeral(get(influencer, 'averageEngagementPerVideo')).format(
+                  '(0.00%)'
+                )}
+              </NumberTag>
             </Layout.Flex>
           </Card>
         </Layout.Grid>
-        <Layout.Flex
+        {/* <Layout.Flex
           flexDirection="row"
           alignItems="center"
           p="20px 0"
@@ -255,7 +278,7 @@ export const StatsSection: React.FunctionComponent<IStatsSection> = observer(
               {numeral(get(influencer, 'engagement')).format('0.00%')}
             </NumberTag>
           </Layout.Flex>
-        </Layout.Flex>
+        </Layout.Flex> */}
         <Layout.Grid gridGap={10} gridTemplateColumns="1fr 1fr" mt="60px">
           <Layout.Box style={{ background: '#ffffff' }}>
             <Line data={data} />

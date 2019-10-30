@@ -188,7 +188,7 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
                     />
                     <Field
                       min={0}
-                      max={10}
+                      max={100}
                       step={0.1}
                       formatter={value => (!value ? `${0}%` : `${value}%`)}
                       parser={value => value.replace('%', '')}

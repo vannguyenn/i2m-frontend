@@ -232,7 +232,7 @@ export const InfluencerDetail: React.FunctionComponent<
                 >
                   <Fullname>
                     {get(influencerDetail, 'fullName')}
-                    <Grid gridGap="15px" ml="15px">
+                    <Grid gridGap="10px" ml="15px" gridAutoFlow="column">
                       {map(
                         get(influencerDetail, 'categories'),
                         (cate, index) => (
@@ -270,7 +270,13 @@ export const InfluencerDetail: React.FunctionComponent<
                         '(0.0a)'
                       )}
                     </NumberText>
-                    <NumberUnit>Following</NumberUnit>
+                    <NumberUnit>Followings</NumberUnit>
+                    <NumberText>
+                      {numeral(get(influencerDetail, 'engagement')).format(
+                        '(0.00%)'
+                      )}
+                    </NumberText>
+                    <NumberUnit>Engagement Rate</NumberUnit>
                   </Layout.Flex>
                   {get(influencerDetail, 'email') && (
                     <Layout.Flex

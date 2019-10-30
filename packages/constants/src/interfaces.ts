@@ -50,6 +50,7 @@ export interface IPostProps {
 }
 export interface IInfluencerProps {
   id: string
+  authentic: boolean
   fullName: string
   biography: string
   followers: number
@@ -64,6 +65,11 @@ export interface IInfluencerProps {
   verified: boolean
   posts?: IPostProps[]
   categories?: ICategory[]
+  averageCommentPerPost: number
+  averageEngagementPerImage: number
+  averageEngagementPerVideo: number
+  averageLikePerPost: number
+  averageViewPerVideo: number
 }
 
 export interface ITopInfluencerProps {
