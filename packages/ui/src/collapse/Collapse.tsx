@@ -31,6 +31,7 @@ const FileUrl = styled.div`
 `
 interface IPropHistory {
   listHistorySendMail: IHistorySendMail[]
+  downloadFile: any
 }
 interface IHistorySendMail {
   id: string
@@ -64,7 +65,7 @@ const formatDate = date => {
 }
 
 export const CollapseForm: React.FunctionComponent<IPropHistory> = observer(
-  ({ listHistorySendMail }) => {
+  ({ listHistorySendMail,downloadFile }) => {
     return (
       <Collapse
         accordion
@@ -98,7 +99,7 @@ export const CollapseForm: React.FunctionComponent<IPropHistory> = observer(
                 <TimeStamp>
                   {`${item.sent ? item.fullName : item.influName} <${
                     item.sent ? item.email : item.influEmail
-                  }> wrote:`}
+                    }> wrote:`}
                 </TimeStamp>
                 <Grid mt="15px">
                   <TextEditorView color="black85" description={item.body} />
@@ -107,17 +108,17 @@ export const CollapseForm: React.FunctionComponent<IPropHistory> = observer(
                 {item.fileUrl && (
                   <FileUrl>
                     Download file :
-                    <a href={`Media/Mail/${item.fileUrl}`}>{item.fileUrl}</a>
+                    <a onClick={()=>downloadFile(item.fileUrl)}>{item.fileUrl}</a>
                   </FileUrl>
                 )}
               </Layout.Flex>
             </Panel>
           ))
         ) : (
-          <EmailSubject style={{ paddingTop: '30px' }}>
-            <Empty.Empty />
-          </EmailSubject>
-        )}
+            <EmailSubject style={{ paddingTop: '30px' }}>
+              <Empty.Empty />
+            </EmailSubject>
+          )}
       </Collapse>
     )
   }

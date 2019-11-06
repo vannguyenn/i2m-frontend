@@ -52,4 +52,5 @@ export class InfluencerService extends BaseService {
   public loadMoreInfluencer<T>(limit: number) {
     return this.get<T>(`/load-more?limit=${limit}`)
   }
+
 }
