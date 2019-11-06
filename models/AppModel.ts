@@ -140,6 +140,7 @@ export class AppModel {
   @action
   async getCategories() {
     const { data } = await categoryService.getCategories<ICategory[]>()
+
     runInAction(() => {
       this.categories = data
     })

@@ -106,6 +106,7 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
     label: cate.name,
     value: cate.id,
   }))
+
   const handleScroll = e => {
     const bottom =
       e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight

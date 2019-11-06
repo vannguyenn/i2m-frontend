@@ -47,6 +47,7 @@ export interface IPostProps {
   viewCount: number
   engagement: number
   type: string
+  takenAt: any
 }
 export interface IInfluencerProps {
   id: string
@@ -76,13 +77,22 @@ export interface ITopInfluencerProps {
   mail_count: number
   id: string
   full_name: string
-  biography: string
   followers: number
   username: string
   email?: string
   profile_pic_url: string
-  media_count: number
-  is_verified: boolean
   engagement: number
   followings: number
+  average_comment_per_post: number
+  average_like_per_post: number
+  weight: number
+}
+
+export interface IReportProps {
+  id: string
+  followers: number
+  engagement: number
+  influencerId: string
+  type: string
+  createdDate: any
 }

@@ -13,6 +13,7 @@ import { ITopInfluencerProps, PATHS } from '@frontend/constants'
 import { useEffectOnce } from 'react-use'
 import numeral from 'numeral'
 import Router from 'next/router'
+import { Spin } from '@frontend/ui/src/spin'
 
 const CustomCard = styled(Card.Card)`
   width: 100%;
@@ -32,7 +33,7 @@ const SmallName = styled(FullName)`
 
 const Badge = styled.div`
   background: ${({ theme }) => theme.colors.primary65};
-  width: 150px;
+  width: 200px;
   color: ${({ theme }) => theme.colors.primary};
   font-weight: 600;
   height: 40px;
@@ -132,163 +133,175 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
     >
-      <Content flexDirection="column">
-        <Layout.Grid gridGap={10} gridTemplateColumns="1fr 1fr 1fr" mb="40px">
-          {map(top3Influencers, (influencer: ITopInfluencerProps, index) => (
-            <CustomCard
-              onClick={() =>
-                Router.push(
-                  `${PATHS.influencerDetail}?id=${influencer.id}&tab=stats`
-                )
-              }
-              bordered={false}
-              key={index}
-              actions={[
-                <Layout.Flex
-                  flexDirection="column"
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <NumberTag>
-                    {numeral(influencer.followers).format('(0.0a)')}
-                  </NumberTag>
-                  <Label>Followers</Label>
-                </Layout.Flex>,
-                <Layout.Flex
-                  flexDirection="column"
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <NumberTag>
-                    {numeral(influencer.followings).format('(0.0a)')}
-                  </NumberTag>
-                  <Label>Followings</Label>
-                </Layout.Flex>,
-                <Layout.Flex
-                  flexDirection="column"
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <NumberTag>
-                    {numeral(influencer.engagement).format('0.00%')}
-                  </NumberTag>
-                  <Label>Engagement</Label>
-                </Layout.Flex>,
-              ]}
-            >
-              <Layout.Flex
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <AvatarWrapper>
-                  <Avatar.Avatar
-                    size={120}
-                    src={influencer.profile_pic_url || '/static/image/user.png'}
-                  />
-                  <Position bg={genPos(index).color}>
-                    {genPos(index).pos}
-                  </Position>
-                </AvatarWrapper>
-
-                <FullName>{influencer.full_name}</FullName>
-                <Username>
-                  <a
-                    href={`https://www.instagram.com/${influencer.username}`}
-                    target="_blank"
-                  >
-                    {`@${influencer.username}`}
-                  </a>
-                </Username>
-                <Badge>{`${influencer.mail_count} Received Mails`}</Badge>
-              </Layout.Flex>
-            </CustomCard>
-          ))}
-        </Layout.Grid>
-        <Layout.Grid gridGap="15px" pt="0px">
-          {map(remainInfluencers, (influencer: ITopInfluencerProps, index) => {
-            return (
+      <Spin spinning={influencerRankingViewModel.isLoading}>
+        <Content flexDirection="column">
+          <Layout.Grid gridGap={10} gridTemplateColumns="1fr 1fr 1fr" mb="40px">
+            {map(top3Influencers, (influencer: ITopInfluencerProps, index) => (
               <CustomCard
-                key={index}
-                bordered={false}
                 onClick={() =>
                   Router.push(
                     `${PATHS.influencerDetail}?id=${influencer.id}&tab=stats`
                   )
                 }
-              >
-                <Layout.Grid gridTemplateColumns="1fr 3fr 2fr 3fr">
+                bordered={false}
+                key={index}
+                actions={[
                   <Layout.Flex
+                    flexDirection="column"
                     alignItems="center"
                     justifyContent="center"
-                    style={{ fontWeight: 600 }}
                   >
-                    {ordinal_suffix_of(index + 4)}
-                  </Layout.Flex>
-                  <Layout.Flex flexDirection="row" alignItems="flex-start">
+                    <NumberTag>
+                      {numeral(influencer.followers).format('(0.0a)')}
+                    </NumberTag>
+                    <Label>Followers</Label>
+                  </Layout.Flex>,
+                  <Layout.Flex
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <NumberTag>
+                      {numeral(influencer.followings).format('(0.0a)')}
+                    </NumberTag>
+                    <Label>Followings</Label>
+                  </Layout.Flex>,
+                  <Layout.Flex
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <NumberTag>
+                      {numeral(influencer.engagement).format('0.00%')}
+                    </NumberTag>
+                    <Label>Engagement</Label>
+                  </Layout.Flex>,
+                ]}
+              >
+                <Layout.Flex
+                  flexDirection="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <AvatarWrapper>
                     <Avatar.Avatar
-                      size={50}
+                      size={120}
                       src={
                         influencer.profile_pic_url || '/static/image/user.png'
                       }
                     />
-                    <Layout.Flex ml="20px" flexDirection="column">
-                      <SmallName>{influencer.full_name}</SmallName>
-                      <SmallUsername>
-                        <a
-                          href={`https://www.instagram.com/${
-                            influencer.username
-                          }`}
-                          target="_blank"
-                        >
-                          {`@${influencer.username}`}
-                        </a>
-                      </SmallUsername>
-                    </Layout.Flex>
-                  </Layout.Flex>
-                  <div>
-                    <Badge style={{ marginTop: 0 }}>{`${
-                      influencer.mail_count
-                    } Received Mails`}</Badge>
-                  </div>
-                  <Layout.Grid gridTemplateColumns="1fr 1fr 1fr">
-                    <Layout.Flex
-                      flexDirection="column"
-                      alignItems="center"
-                      justifyContent="center"
+                    <Position bg={genPos(index).color}>
+                      {genPos(index).pos}
+                    </Position>
+                  </AvatarWrapper>
+
+                  <FullName>{influencer.full_name}</FullName>
+                  <Username>
+                    <a
+                      href={`https://www.instagram.com/${influencer.username}`}
+                      target="_blank"
                     >
-                      <NumberTag>
-                        {numeral(influencer.followers).format('(0.0a)')}
-                      </NumberTag>
-                      <Label>Followers</Label>
-                    </Layout.Flex>
-                    <Layout.Flex
-                      flexDirection="column"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      <NumberTag>
-                        {numeral(influencer.followings).format('(0.0a)')}
-                      </NumberTag>
-                      <Label>Followings</Label>
-                    </Layout.Flex>
-                    <Layout.Flex
-                      flexDirection="column"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      <NumberTag>
-                        {numeral(influencer.engagement).format('0.00%')}
-                      </NumberTag>
-                      <Label>Engagement</Label>
-                    </Layout.Flex>
-                  </Layout.Grid>
-                </Layout.Grid>
+                      {`@${influencer.username}`}
+                    </a>
+                  </Username>
+                  <Badge>{`${numeral(influencer.engagement).format(
+                    '(0.00%)'
+                  )} Engagment Rate`}</Badge>
+                </Layout.Flex>
               </CustomCard>
-            )
-          })}
-        </Layout.Grid>
-      </Content>
+            ))}
+          </Layout.Grid>
+          <Layout.Grid gridGap="15px" pt="0px">
+            {map(
+              remainInfluencers,
+              (influencer: ITopInfluencerProps, index) => {
+                return (
+                  <CustomCard
+                    key={index}
+                    bordered={false}
+                    onClick={() =>
+                      Router.push(
+                        `${PATHS.influencerDetail}?id=${
+                          influencer.id
+                        }&tab=stats`
+                      )
+                    }
+                  >
+                    <Layout.Grid gridTemplateColumns="1fr 3fr 2fr 3fr">
+                      <Layout.Flex
+                        alignItems="center"
+                        justifyContent="center"
+                        style={{ fontWeight: 600 }}
+                      >
+                        {ordinal_suffix_of(index + 4)}
+                      </Layout.Flex>
+                      <Layout.Flex flexDirection="row" alignItems="flex-start">
+                        <Avatar.Avatar
+                          size={50}
+                          src={
+                            influencer.profile_pic_url ||
+                            '/static/image/user.png'
+                          }
+                        />
+                        <Layout.Flex ml="20px" flexDirection="column">
+                          <SmallName>{influencer.full_name}</SmallName>
+                          <SmallUsername>
+                            <a
+                              href={`https://www.instagram.com/${
+                                influencer.username
+                              }`}
+                              target="_blank"
+                            >
+                              {`@${influencer.username}`}
+                            </a>
+                          </SmallUsername>
+                        </Layout.Flex>
+                      </Layout.Flex>
+                      <div>
+                        <Badge>{`${numeral(influencer.engagement).format(
+                          '(0.00%)'
+                        )} Engagment Rate`}</Badge>
+                      </div>
+                      <Layout.Grid gridTemplateColumns="1fr 1fr 1fr">
+                        <Layout.Flex
+                          flexDirection="column"
+                          alignItems="center"
+                          justifyContent="center"
+                        >
+                          <NumberTag>
+                            {numeral(influencer.followers).format('(0.0a)')}
+                          </NumberTag>
+                          <Label>Followers</Label>
+                        </Layout.Flex>
+                        <Layout.Flex
+                          flexDirection="column"
+                          alignItems="center"
+                          justifyContent="center"
+                        >
+                          <NumberTag>
+                            {numeral(influencer.followings).format('(0.0a)')}
+                          </NumberTag>
+                          <Label>Followings</Label>
+                        </Layout.Flex>
+                        <Layout.Flex
+                          flexDirection="column"
+                          alignItems="center"
+                          justifyContent="center"
+                        >
+                          <NumberTag>
+                            {numeral(influencer.engagement).format('0.00%')}
+                          </NumberTag>
+                          <Label>Engagement</Label>
+                        </Layout.Flex>
+                      </Layout.Grid>
+                    </Layout.Grid>
+                  </CustomCard>
+                )
+              }
+            )}
+          </Layout.Grid>
+        </Content>
+      </Spin>
     </MasterLayout.MasterLayout>
   )
 })

@@ -57,7 +57,10 @@ export const MediaSection: React.FunctionComponent = observer(() => {
             <img
               alt="example"
               src={
-                get(mostLikedPost, 'thumbnailUrl') || '/static/image/cover1.jpg'
+                `https://www.instagram.com/p/${get(
+                  mostLikedPost,
+                  'code'
+                )}/media` || '/static/image/cover1.jpg'
               }
             />
           }
@@ -84,8 +87,10 @@ export const MediaSection: React.FunctionComponent = observer(() => {
             <img
               alt="example"
               src={
-                get(mostCommentedPost, 'thumbnailUrl') ||
-                '/static/image/cover2.jpg'
+                `https://www.instagram.com/p/${get(
+                  mostCommentedPost,
+                  'code'
+                )}/media` || '/static/image/cover2.jpg'
               }
             />
           }
@@ -114,8 +119,10 @@ export const MediaSection: React.FunctionComponent = observer(() => {
             <img
               alt="example"
               src={
-                get(mostEngagementPost, 'thumbnailUrl') ||
-                '/static/image/cover3.jpg'
+                `https://www.instagram.com/p/${get(
+                  mostEngagementPost,
+                  'code'
+                )}/media` || '/static/image/cover3.jpg'
               }
             />
           }
@@ -141,7 +148,10 @@ export const MediaSection: React.FunctionComponent = observer(() => {
         {map(posts, (post: IPostProps, index) => (
           <LatestPost
             onClick={() => onCardClick(post)}
-            src={post.thumbnailUrl || '/static/image/cover2.jpg'}
+            src={
+              `https://www.instagram.com/p/${post.code}/media` ||
+              '/static/image/cover2.jpg'
+            }
             key={index}
           />
         ))}

@@ -1,10 +1,14 @@
 import { POST_STATUS } from './../../../packages/constants/src/constants'
 import { IListProps } from './../../influencer-management/MyInfluencerViewModel'
 import { AppModel } from './../../../models/AppModel'
-import { influencerService, profileService } from '@frontend/services'
-import { observable, reaction, action, runInAction } from 'mobx'
-import { IInfluencerProps, IPostProps } from '@frontend/constants'
-import { find, map, maxBy } from 'lodash'
+import {
+  influencerService,
+  profileService,
+  reportService,
+} from '@frontend/services'
+import { observable, action, runInAction } from 'mobx'
+import { IInfluencerProps, IPostProps, IReportProps } from '@frontend/constants'
+import { find, map, maxBy, get, filter } from 'lodash'
 import { extractEmails } from '@frontend/core/src/utils'
 
 export class InfluencerDetailViewModel {
@@ -16,6 +20,8 @@ export class InfluencerDetailViewModel {
   @observable mostLikedPost: IPostProps
   @observable mostCommentedPost: IPostProps
   @observable mostEngagementPost: IPostProps
+  @observable followerData: IReportProps[]
+  @observable engagementData: IReportProps[]
 
   appModel: AppModel = null
 
@@ -24,11 +30,13 @@ export class InfluencerDetailViewModel {
   }
 
   @action
-  async fetchInfluencerDetail(id: number) {
+  async fetchInfluencerDetail(id: string) {
     this.isFetching = true
     const { data } = await influencerService.fetchInfluencerDetail<
       IInfluencerProps
     >(id)
+    const reportResponse = await reportService.fetchReport(id)
+
     runInAction(() => {
       this.isFetching = false
       this.influencerDetail = {
@@ -57,6 +65,15 @@ export class InfluencerDetailViewModel {
       this.mostEngagementPost = maxBy(
         this.influencerDetail.posts,
         (p: IPostProps) => p.engagement
+      )
+
+      this.followerData = filter(
+        get(reportResponse, 'data'),
+        ({ type }) => type === 'FOLLOWERS'
+      )
+      this.engagementData = filter(
+        get(reportResponse, 'data'),
+        ({ type }) => type === 'ENGAGEMENT'
       )
     })
   }
