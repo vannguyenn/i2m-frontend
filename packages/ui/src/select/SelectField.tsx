@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { find } from 'lodash'
 import { FieldRenderProps } from 'react-final-form'
-import { Select, Option } from './Select'
+import { Select } from './Select'
 import { ISelectOption } from '@frontend/constants'
 import { FormItemProps } from 'antd/lib/form'
 import { FormControl } from '../form'
@@ -49,15 +49,10 @@ export const SelectField: React.FunctionComponent<
         value={value}
         onBlur={onBlurSelect}
         allowClear={!required}
+        options={options}
         {...rest}
         {...selectProps}
-      >
-        {options.map(({ value, label }) => (
-          <Option key={value} value={value}>
-            {label}
-          </Option>
-        ))}
-      </Select>
+      />
     </FormControl>
   )
 }

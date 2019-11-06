@@ -2,38 +2,12 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Layout, Icon } from '@frontend/ui'
 import { color } from 'styled-system'
-import { get } from 'lodash'
+import { get, map } from 'lodash'
 import { Line } from 'react-chartjs-2'
 import { observer } from 'mobx-react-lite'
 import { useInfluencerDetailContext } from '../../static/context'
 import numeral from 'numeral'
-
-const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [
-    {
-      label: 'My First dataset',
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'rgba(75,192,192,0.4)',
-      borderColor: 'rgba(75,192,192,1)',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(75,192,192,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40],
-    },
-  ],
-}
+import * as moment from 'moment'
 
 export const Title = styled.div`
   padding-left: 20px;
@@ -73,187 +47,226 @@ const PercentageTag = styled.div`
   font-weight: 500;
   margin-left: 15px;
 `
-export interface IStatsSection {
-  avgLikePerPost: number
-  likePercentage: number
-  avgRepliesPerPost: number
-  replyPercentage: number
-  avgViewPerVideo: number
-  numOfFollowers: number
-  imageEngagment: number
-  videoEngagment: number
-  postPerDay: number
-  postPerWeek: number
-  estimatedPostValue: number
-  engagementRate: number
-}
 
-export const StatsSection: React.FunctionComponent<IStatsSection> = observer(
-  ({
-    avgLikePerPost,
-    likePercentage,
-    replyPercentage,
-    avgRepliesPerPost,
-    avgViewPerVideo,
-    numOfFollowers,
-    imageEngagment,
-    videoEngagment,
-    postPerDay,
-    postPerWeek,
-    estimatedPostValue,
-    engagementRate,
-  }) => {
-    const { influencer } = useInfluencerDetailContext().useStatsSection()
-    return (
-      <Section flexDirection="column">
-        <Title>Instagram Stats Overview</Title>
-        <Layout.Grid
-          gridGap={10}
-          gridTemplateColumns="1fr 1fr 1fr"
-          alignContent="center"
-          mt="20px"
-        >
-          <Card flexDirection="column">
-            <Layout.Flex
-              flexDirection="row"
-              justifyContent="space-between"
+export const StatsSection: React.FunctionComponent = observer(() => {
+  const {
+    influencer,
+    followersData,
+    engagementData,
+  } = useInfluencerDetailContext().useStatsSection()
+
+  const followerLabels = map(followersData, ({ createdDate }) =>
+    moment(createdDate).format('DD/MM/YYYY')
+  )
+
+  const engagementLabels = map(engagementData, ({ createdDate }) =>
+    moment(createdDate).format('DD/MM/YYYY')
+  )
+  const followerData = map(followersData, ({ followers }) => followers)
+  const engagements = map(engagementData, ({ engagement }) => engagement)
+  const followersReport = {
+    labels: followerLabels,
+    datasets: [
+      {
+        label: 'Followers',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(75,192,192,0.4)',
+        borderColor: 'rgba(75,192,192,1)',
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgba(75,192,192,1)',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: followerData,
+      },
+    ],
+  }
+
+  const engagementReport = {
+    labels: engagementLabels,
+    datasets: [
+      {
+        label: 'Engagement',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(75,192,192,0.4)',
+        borderColor: 'rgba(75,192,192,1)',
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'rgba(75,192,192,1)',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: engagements,
+      },
+    ],
+  }
+
+  return (
+    <Section flexDirection="column">
+      <Title>Instagram Stats Overview</Title>
+      <Layout.Grid
+        gridGap={10}
+        gridTemplateColumns="1fr 1fr 1fr"
+        alignContent="center"
+        mt="20px"
+      >
+        <Card flexDirection="column">
+          <Layout.Flex
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <CardTitle>Avg likes per post</CardTitle>
+            <IconContainer
+              bg="#FDDFDF"
+              justifyContent="center"
               alignItems="center"
             >
-              <CardTitle>Avg likes per post</CardTitle>
-              <IconContainer
-                bg="#FDDFDF"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Icon.Icon type="heart" theme="filled" color="#F12B2C" />
-              </IconContainer>
-            </Layout.Flex>
-            <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>
-                {numeral(get(influencer, 'averageLikePerPost')).format(
-                  '(0.0a)'
-                )}
-              </NumberTag>
-            </Layout.Flex>
-          </Card>
-          <Card flexDirection="column">
-            <Layout.Flex
-              flexDirection="row"
-              justifyContent="space-between"
+              <Icon.Icon type="heart" theme="filled" color="#F12B2C" />
+            </IconContainer>
+          </Layout.Flex>
+          <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
+            <NumberTag>
+              {numeral(get(influencer, 'averageLikePerPost')).format('(0.0a)')}
+            </NumberTag>
+          </Layout.Flex>
+        </Card>
+        <Card flexDirection="column">
+          <Layout.Flex
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <CardTitle>Avg replies per post</CardTitle>
+            <IconContainer
+              bg="#FFF6D9"
+              justifyContent="center"
               alignItems="center"
             >
-              <CardTitle>Avg replies per post</CardTitle>
-              <IconContainer
-                bg="#FFF6D9"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Icon.Icon type="wechat" theme="filled" color="#F4AE1F" />
-              </IconContainer>
-            </Layout.Flex>
-            <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>
-                {numeral(get(influencer, 'averageCommentPerPost')).format(
-                  '(0.0a)'
-                )}
-              </NumberTag>
-              {/* <PercentageTag>{`(${replyPercentage || 0.1}%)`}</PercentageTag> */}
-            </Layout.Flex>
-          </Card>
-          <Card flexDirection="column">
-            <Layout.Flex
-              flexDirection="row"
-              justifyContent="space-between"
+              <Icon.Icon type="wechat" theme="filled" color="#F4AE1F" />
+            </IconContainer>
+          </Layout.Flex>
+          <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
+            <NumberTag>
+              {numeral(get(influencer, 'averageCommentPerPost')).format(
+                '(0.0a)'
+              )}
+            </NumberTag>
+            {/* <PercentageTag>{`(${replyPercentage || 0.1}%)`}</PercentageTag> */}
+          </Layout.Flex>
+        </Card>
+        <Card flexDirection="column">
+          <Layout.Flex
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <CardTitle>Avg views per video</CardTitle>
+            <IconContainer
+              bg="#F8E1F3"
+              justifyContent="center"
               alignItems="center"
             >
-              <CardTitle>Avg views per video</CardTitle>
-              <IconContainer
-                bg="#F8E1F3"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Icon.Icon type="video-camera" theme="filled" color="#8857FC" />
-              </IconContainer>
-            </Layout.Flex>
-            <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>
-                {numeral(get(influencer, 'averageViewPerVideo')).format(
-                  '(0.0a)'
-                )}
-              </NumberTag>
-            </Layout.Flex>
-          </Card>
-          <Card flexDirection="column">
-            <Layout.Flex
-              flexDirection="row"
-              justifyContent="space-between"
+              <Icon.Icon type="video-camera" theme="filled" color="#8857FC" />
+            </IconContainer>
+          </Layout.Flex>
+          <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
+            <NumberTag>
+              {numeral(get(influencer, 'averageViewPerVideo')).format('(0.0a)')}
+            </NumberTag>
+          </Layout.Flex>
+        </Card>
+        <Card flexDirection="column">
+          <Layout.Flex
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <CardTitle>Followers/Following</CardTitle>
+            <IconContainer
+              bg="#DAEDFE"
+              justifyContent="center"
               alignItems="center"
             >
-              <CardTitle>Followers/Following</CardTitle>
-              <IconContainer
-                bg="#DAEDFE"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Icon.Icon type="user" color="blue" />
-              </IconContainer>
-            </Layout.Flex>
-            <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>
-                {get(influencer, 'followings') !== 0 ? numeral(
-                  get(influencer, 'followers') / get(influencer, 'followings')
-                ).format('(0.0a)') : 0}
-              </NumberTag>
-            </Layout.Flex>
-          </Card>
-          <Card flexDirection="column">
-            <Layout.Flex
-              flexDirection="row"
-              justifyContent="space-between"
+              <Icon.Icon type="user" color="blue" />
+            </IconContainer>
+          </Layout.Flex>
+          <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
+            <NumberTag>
+              {get(influencer, 'followings') !== 0
+                ? numeral(
+                    get(influencer, 'followers') /
+                      get(influencer, 'followings')
+                  ).format('(0.0a)')
+                : 0}
+            </NumberTag>
+          </Layout.Flex>
+        </Card>
+        <Card flexDirection="column">
+          <Layout.Flex
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <CardTitle>Images engagement</CardTitle>
+            <IconContainer
+              bg="#FFF6D9"
+              justifyContent="center"
               alignItems="center"
             >
-              <CardTitle>Images engagement</CardTitle>
-              <IconContainer
-                bg="#FFF6D9"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Icon.Icon type="file-image" theme="filled" color="#F4AE1F" />
-              </IconContainer>
-            </Layout.Flex>
-            <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>
-                {numeral(get(influencer, 'averageEngagementPerImage')).format(
-                  '(0.00%)'
-                )}
-              </NumberTag>
-            </Layout.Flex>
-          </Card>
-          <Card flexDirection="column">
-            <Layout.Flex
-              flexDirection="row"
-              justifyContent="space-between"
+              <Icon.Icon type="file-image" theme="filled" color="#F4AE1F" />
+            </IconContainer>
+          </Layout.Flex>
+          <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
+            <NumberTag>
+              {numeral(get(influencer, 'averageEngagementPerImage')).format(
+                '(0.00%)'
+              )}
+            </NumberTag>
+          </Layout.Flex>
+        </Card>
+        <Card flexDirection="column">
+          <Layout.Flex
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <CardTitle>Videos engagement</CardTitle>
+            <IconContainer
+              bg="#f8e1f3"
+              justifyContent="center"
               alignItems="center"
             >
-              <CardTitle>Videos engagement</CardTitle>
-              <IconContainer
-                bg="#f8e1f3"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Icon.Icon type="video-camera" theme="filled" color="#cb38ae" />
-              </IconContainer>
-            </Layout.Flex>
-            <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
-              <NumberTag>
-                {numeral(get(influencer, 'averageEngagementPerVideo')).format(
-                  '(0.00%)'
-                )}
-              </NumberTag>
-            </Layout.Flex>
-          </Card>
-        </Layout.Grid>
-        {/* <Layout.Flex
+              <Icon.Icon type="video-camera" theme="filled" color="#cb38ae" />
+            </IconContainer>
+          </Layout.Flex>
+          <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
+            <NumberTag>
+              {numeral(get(influencer, 'averageEngagementPerVideo')).format(
+                '(0.00%)'
+              )}
+            </NumberTag>
+          </Layout.Flex>
+        </Card>
+      </Layout.Grid>
+      {/* <Layout.Flex
           flexDirection="row"
           alignItems="center"
           p="20px 0"
@@ -279,16 +292,15 @@ export const StatsSection: React.FunctionComponent<IStatsSection> = observer(
             </NumberTag>
           </Layout.Flex>
         </Layout.Flex> */}
-        <Layout.Grid gridGap={10} gridTemplateColumns="1fr 1fr" mt="60px">
-          <Layout.Box style={{ background: '#ffffff' }}>
-            <Line data={data} />
-          </Layout.Box>
+      <Layout.Grid gridGap={10} gridTemplateColumns="1fr 1fr" mt="60px">
+        <Layout.Box style={{ background: '#ffffff' }}>
+          <Line data={followersReport} />
+        </Layout.Box>
 
-          <Layout.Box style={{ background: '#ffffff' }}>
-            <Line data={data} />
-          </Layout.Box>
-        </Layout.Grid>
-      </Section>
-    )
-  }
-)
+        <Layout.Box style={{ background: '#ffffff' }}>
+          <Line data={engagementReport} />
+        </Layout.Box>
+      </Layout.Grid>
+    </Section>
+  )
+})

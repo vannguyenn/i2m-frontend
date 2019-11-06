@@ -10,7 +10,7 @@ const InfluencerDetail = dynamic(
 )
 
 interface IRouterQuery {
-  id: number
+  id: string
   tab: string
 }
 

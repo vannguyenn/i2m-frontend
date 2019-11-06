@@ -4,7 +4,7 @@ import { FieldRenderProps } from 'react-final-form'
 import { ISelectOption, IFormLayout } from '@frontend/constants'
 import { FormItemProps } from 'antd/lib/form'
 import { FormControl } from '../form'
-import { Select, Option } from './Select'
+import { Select } from './Select'
 import { SelectProps } from 'antd/lib/select'
 
 interface TagSelectFieldProps {
@@ -29,7 +29,6 @@ export const MultipleSelectField: React.FunctionComponent<
 }) => {
   const value = isArray(input.value) ? input.value : []
   const onBlurSelect = event => input.onBlur(event)
-
   return (
     <FormControl
       label={label}
@@ -43,15 +42,10 @@ export const MultipleSelectField: React.FunctionComponent<
         onBlur={onBlurSelect}
         value={value}
         onChange={input.onChange}
+        options={options}
         {...rest}
         {...selectProps}
-      >
-        {options.map(({ value, label }) => (
-          <Option key={value} value={value}>
-            {label}
-          </Option>
-        ))}
-      </Select>
+      />
     </FormControl>
   )
 }

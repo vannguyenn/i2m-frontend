@@ -9,6 +9,7 @@ import { Icon } from '@frontend/ui/src/icon'
 import { color } from 'styled-system'
 import { NumberTag } from './StatsSection'
 import numeral from 'numeral'
+import * as moment from 'moment'
 
 interface IDetailPostProps extends ModalProps {
   detail: IPostProps
@@ -54,8 +55,18 @@ export const DetailPost: React.FunctionComponent<IDetailPostProps> = ({
   return (
     <InfoModal {...props} width="800px">
       <Content gridTemplateColumns="1fr 1fr" gridGap="15px">
-        <img src={get(detail, 'thumbnailUrl') || '/static/image/cover3.jpg'} />
+        <img
+          src={
+            `https://www.instagram.com/p/${get(detail, 'code')}/media` ||
+            '/static/image/cover3.jpg'
+          }
+        />
         <RightInfo>
+          <Flex justifyContent="center" mb="5px">
+            <span>
+              {moment(get(detail, 'takenAt')).format('DD/MM/YYYY HH:mm')}
+            </span>
+          </Flex>
           <Grid gridTemplateColumns="1fr 1fr" gridGap="0">
             <Flex flexDirection="column">
               <Square>

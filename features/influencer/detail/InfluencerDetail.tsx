@@ -25,7 +25,7 @@ import { InfluencerDetailViewModel } from './InfluencerDetailViewModel'
 import { useEffectOnce } from 'react-use'
 import { observer } from 'mobx-react-lite'
 import numeral from 'numeral'
-import { get, map } from 'lodash'
+import { get, map, toUpper } from 'lodash'
 import { Form as FinalForm, Field } from 'react-final-form'
 import { validate } from '@frontend/core'
 import { MESSAGES } from '@frontend/constants'
@@ -105,7 +105,7 @@ const BlueTick = styled.div`
 `
 
 export interface IInfluencerDetailProps {
-  id: number
+  id: string
   tab: string
 }
 
@@ -138,6 +138,8 @@ export const InfluencerDetail: React.FunctionComponent<
     mostLikedPost,
     mostCommentedPost,
     mostEngagementPost,
+    followerData,
+    engagementData,
   } = influencerDetailViewModel
 
   const changeSaveToListModalVisible = (visible: boolean) =>
@@ -188,6 +190,8 @@ export const InfluencerDetail: React.FunctionComponent<
 
   const useStatsSection = () => ({
     influencer: influencerDetail,
+    followersData: followerData,
+    engagementData,
   })
 
   const providerValue = {
@@ -260,14 +264,18 @@ export const InfluencerDetail: React.FunctionComponent<
                     </NumberText>
                     <NumberUnit>Posts</NumberUnit>
                     <NumberText>
-                      {numeral(get(influencerDetail, 'followers')).format(
-                        '(0.0a)'
+                      {toUpper(
+                        numeral(get(influencerDetail, 'followers')).format(
+                          '(0.0a)'
+                        )
                       )}
                     </NumberText>
                     <NumberUnit>Followers</NumberUnit>
                     <NumberText>
-                      {numeral(get(influencerDetail, 'followings')).format(
-                        '(0.0a)'
+                      {toUpper(
+                        numeral(get(influencerDetail, 'followings')).format(
+                          '(0.0a)'
+                        )
                       )}
                     </NumberText>
                     <NumberUnit>Followings</NumberUnit>

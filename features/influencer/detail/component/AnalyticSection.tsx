@@ -22,9 +22,18 @@ const TotalReactTag = styled(PostData)`
 const columns = [
   {
     title: 'Posts',
-    dataIndex: 'thumbnailUrl',
-    key: 'thumbnailUrl',
-    render: url => <PostThumbnail src={url || '/static/image/cover2.jpg'} />,
+    dataIndex: 'code',
+    key: 'code',
+    render: code => {
+      return (
+        <PostThumbnail
+          src={
+            `https://www.instagram.com/p/${code}/media` ||
+            '/static/image/cover2.jpg'
+          }
+        />
+      )
+    },
   },
   {
     title: 'Likes',
@@ -75,6 +84,7 @@ const Title = styled.div`
 
 export const AnalyticSection: React.FunctionComponent = observer(() => {
   const { posts } = useInfluencerDetailContext().useAnalyticSection()
+
   const normalizePost = map(posts, (p: IPostProps, index) => ({
     ...p,
     key: index,

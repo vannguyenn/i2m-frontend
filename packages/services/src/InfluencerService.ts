@@ -29,7 +29,7 @@ export class InfluencerService extends BaseService {
     })
   }
 
-  public fetchInfluencerDetail<T>(id: number) {
+  public fetchInfluencerDetail<T>(id: string) {
     return this.get<T>(`/${id}`)
   }
 
