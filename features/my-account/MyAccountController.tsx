@@ -167,9 +167,8 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
       return error
     }
   }
-
+  
   const [imageUrl, setImageUrl] = React.useState('/static/image/user.png')
-  const [avatarUrl, setAvatarUrl] = React.useState('')
   const [loading, setLoading] = React.useState(false)
   function getBase64(img, callback) {
     const reader = new FileReader()
@@ -182,19 +181,18 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
       return
     }
     if (info.file.status === 'done') {
+      uploadAvatar(info.file.originFileObj)
       getBase64(info.file.originFileObj, imageUrl => {
         setImageUrl(imageUrl)
-        setAvatarUrl(info.file.originFileObj)
         setLoading(false)
       })
     }
   }
 
-  const uploadAvatar = async () => {
+  const uploadAvatar = async (urlAvt) => {
     try {
-      setLoading(true)
       const data = new FormData()
-      data.append('file', avatarUrl)
+      data.append('file', urlAvt)
       await appModel.profileModel.updateAvatar(data)
       Router.push(PATHS.myProfile)
       notification.success({
@@ -202,9 +200,9 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
         duration: 4,
         placement: 'bottomLeft',
       })
-      setLoading(false)
+     
     } catch (error) {
-      setLoading(false)
+
       setImageUrl('/static/image/user.png')
       notification.error({
         message: 'Upload avata failed.',
@@ -226,7 +224,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
           alignContent="center"
           gridGap={2}
         >
-          <Layout.Flex justifyContent="center" flex="1" flexDirection="column">
+          <Layout.Flex justifyContent="center" flex="1" flexDirection="row">
             <Upload
               name="avatar"
               accept="image/*"
@@ -252,14 +250,6 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
                 <Avatar.Avatar src={imageUrl} size={150} />
               )}
             </Upload>
-            {/* "/static/image/user.png" */}
-            <Button.Button
-              onClick={uploadAvatar}
-              type="ghost"
-              style={{ width: '100px', marginTop: '10px', marginLeft: '25px' }}
-            >
-              Upload
-            </Button.Button>
           </Layout.Flex>
 
           <Form
