@@ -7,7 +7,11 @@ export class ConfessionService extends BaseService {
         return this.post<T>('', data)
     }
 
-    public historySendMail<T=any>(influencer: string){
+    public historySendMail<T = any>(influencer: string) {
         return this.get<T>(`/history/${influencer}`)
+    }
+
+    public downloadFile<T = any>(fileName: string) {
+        return this.get<T>(`/download/${fileName}`)
     }
 }
