@@ -10,6 +10,7 @@ import {
   Spin,
   Form as AntForm,
   Slider,
+  notification,
 } from '@frontend/ui'
 import styled from 'styled-components'
 import { map, size } from 'lodash'
@@ -98,8 +99,12 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
   } = appModel
 
   useEffectOnce(() => {
-    appModel.searchInfluencers(0)
-    appModel.getCategories()
+    try {
+      appModel.searchInfluencers(0)
+      appModel.getCategories()
+    } catch (error) {
+      notification.error({ message: error })
+    }
   })
 
   const normalizeCategory = map(appModel.categories, cate => ({
