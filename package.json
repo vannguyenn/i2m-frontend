@@ -16,7 +16,7 @@
     "start": "NODE_ENV=production node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "vannguyen",
   "license": "ISC",
   "private": true,
   "dependencies": {
