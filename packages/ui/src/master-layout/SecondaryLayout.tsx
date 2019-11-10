@@ -14,7 +14,7 @@ export interface ISecondaryLayout {
 
 export const SecondaryLayout: React.FunctionComponent<ISecondaryLayout> = ({
   children,
-  actionButton,
+  actionButton: ActionButton,
 }) => {
   return (
     <Layout.Flex
@@ -35,7 +35,7 @@ export const SecondaryLayout: React.FunctionComponent<ISecondaryLayout> = ({
           />
         </Link>
 
-        {actionButton}
+        <ActionButton/>
       </Header>
       {children}
     </Layout.Flex>

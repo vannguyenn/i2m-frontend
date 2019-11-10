@@ -26,7 +26,7 @@ module.exports = withPlugins(
       config.module.rules.push({
         test: /\.+(js|jsx|ts|tsx)$/,
         loader: options.defaultLoaders.babel,
-        include: [/packages/],
+        include: [/core/, /ui/, /constants/, /packages/, /services/],
         exclude: [/node_modules/],
       })
 
