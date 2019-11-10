@@ -2,14 +2,20 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { Layout } from '@frontend/ui'
 import Link from 'next/link'
-import { AuthorizedUserBtnGr } from '../../../../components'
 
 const Header = styled(Layout.Flex)`
   width: 100%;
   height: 50px;
   background-color: ${({ theme }) => theme.colors.primary};
 `
-export const SecondaryLayout: React.FunctionComponent = ({ children }) => {
+export interface ISecondaryLayout {
+  actionButton?: React.FunctionComponent
+}
+
+export const SecondaryLayout: React.FunctionComponent<ISecondaryLayout> = ({
+  children,
+  actionButton,
+}) => {
   return (
     <Layout.Flex
       flexDirection="column"
@@ -29,7 +35,7 @@ export const SecondaryLayout: React.FunctionComponent = ({ children }) => {
           />
         </Link>
 
-        <AuthorizedUserBtnGr />
+        {actionButton}
       </Header>
       {children}
     </Layout.Flex>

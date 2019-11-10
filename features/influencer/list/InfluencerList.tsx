@@ -24,6 +24,7 @@ import { MultipleSelectField } from '@frontend/ui/src/select'
 import { Grid } from '@frontend/ui/src/layout'
 import Router from 'next/router'
 import { PATHS } from '@frontend/constants'
+import { SearchContainer } from '../../../components/SearchContainer'
 
 const LeftPanel = styled(Layout.Flex)`
   min-height: calc(100vh - 150px);
@@ -143,6 +144,7 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
+      searchComponent={SearchContainer}
     >
       <Spin.Spin spinning={isFetchingInfluencers}>
         <Layout.Flex

@@ -390,39 +390,54 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./features/influencer-ranking/InfluencerRanking.tsx":
-/*!***********************************************************!*\
-  !*** ./features/influencer-ranking/InfluencerRanking.tsx ***!
-  \***********************************************************/
-/*! exports provided: InfluencerRanking */
+/***/ "./features/influencer/detail/InfluencerDetail.tsx":
+/*!*********************************************************!*\
+  !*** ./features/influencer/detail/InfluencerDetail.tsx ***!
+  \*********************************************************/
+/*! exports provided: InfluencerDetail */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfluencerRanking", function() { return InfluencerRanking; });
-/* harmony import */ var react_use_lib_useEffectOnce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-use/lib/useEffectOnce */ "react-use/lib/useEffectOnce");
-/* harmony import */ var react_use_lib_useEffectOnce__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_use_lib_useEffectOnce__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
-/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react-lite */ "mobx-react-lite");
-/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(mobx_react_lite__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _frontend_core_src_context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @frontend/core/src/context */ "./packages/core/src/context/index.ts");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components */ "./components/index.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfluencerDetail", function() { return InfluencerDetail; });
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var react_use_lib_useEffectOnce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-use/lib/useEffectOnce */ "react-use/lib/useEffectOnce");
+/* harmony import */ var react_use_lib_useEffectOnce__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_use_lib_useEffectOnce__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var styled_system__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-system */ "styled-system");
-/* harmony import */ var styled_system__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(styled_system__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _frontend_core_src_hooks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @frontend/core/src/hooks */ "./packages/core/src/hooks/index.ts");
-/* harmony import */ var _InfluencerrankingViewModel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./InfluencerrankingViewModel */ "./features/influencer-ranking/InfluencerrankingViewModel.ts");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
-/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! numeral */ "numeral");
-/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(numeral__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _frontend_ui_src_spin__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @frontend/ui/src/spin */ "./packages/ui/src/spin/index.ts");
+/* harmony import */ var _component_Tab__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./component/Tab */ "./features/influencer/detail/component/Tab.tsx");
+/* harmony import */ var _component_StatsSection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./component/StatsSection */ "./features/influencer/detail/component/StatsSection.tsx");
+/* harmony import */ var _component_MediaSection__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./component/MediaSection */ "./features/influencer/detail/component/MediaSection.tsx");
+/* harmony import */ var _component_AnalyticSection__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./component/AnalyticSection */ "./features/influencer/detail/component/AnalyticSection.tsx");
+/* harmony import */ var _frontend_core_src_context__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @frontend/core/src/context */ "./packages/core/src/context/index.ts");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../components */ "./components/index.ts");
+/* harmony import */ var _frontend_core_src_hooks__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @frontend/core/src/hooks */ "./packages/core/src/hooks/index.ts");
+/* harmony import */ var _InfluencerDetailViewModel__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./InfluencerDetailViewModel */ "./features/influencer/detail/InfluencerDetailViewModel.ts");
+/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! mobx-react-lite */ "mobx-react-lite");
+/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(mobx_react_lite__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! numeral */ "numeral");
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(numeral__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var react_final_form__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-final-form */ "react-final-form");
+/* harmony import */ var react_final_form__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(react_final_form__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _frontend_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @frontend/core */ "./packages/core/src/index.ts");
+/* harmony import */ var _frontend_constants__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @frontend/constants */ "./packages/constants/src/index.ts");
+/* harmony import */ var _static_context__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../static/context */ "./features/influencer/static/context.ts");
+/* harmony import */ var _frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @frontend/ui/src/layout */ "./packages/ui/src/layout/index.ts");
+/* harmony import */ var _components_SearchContainer__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../../components/SearchContainer */ "./components/SearchContainer.tsx");
+
+
+
+
+
+var _tabContents;
 
 
 
@@ -438,233 +453,320 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var CustomCard = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Card"].Card).withConfig({
-  displayName: "InfluencerRanking__CustomCard",
-  componentId: "sc-1fg5oma-0"
-})(["width:100%;"]);
-var FullName = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
-  displayName: "InfluencerRanking__FullName",
-  componentId: "sc-1fg5oma-1"
-})(["font-weight:700;margin-top:15px;font-size:20px;color:", ";"], function (_ref) {
-  var theme = _ref.theme;
-  return theme.colors.grey100;
-});
-var SmallName = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(FullName).withConfig({
-  displayName: "InfluencerRanking__SmallName",
-  componentId: "sc-1fg5oma-2"
-})(["font-size:15px;margin-top:0;"]);
-var Badge = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
-  displayName: "InfluencerRanking__Badge",
-  componentId: "sc-1fg5oma-3"
-})(["background:", ";width:200px;color:", ";font-weight:600;height:40px;display:flex;align-items:center;justify-content:center;border-radius:20px;margin-top:16px;"], function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.colors.primary65;
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.colors.primary;
-});
-var Content = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
-  displayName: "InfluencerRanking__Content",
-  componentId: "sc-1fg5oma-4"
-})(["min-height:calc(100vh - 150px);max-height:calc(100vh - 150px);overflow:auto;background:#f3f4f6;padding:50px 150px 50px 150px;"]);
-var AvatarWrapper = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
-  displayName: "InfluencerRanking__AvatarWrapper",
-  componentId: "sc-1fg5oma-5"
-})(["position:relative;"]);
-var Position = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
-  displayName: "InfluencerRanking__Position",
-  componentId: "sc-1fg5oma-6"
-})(["width:35px;height:35px;border-radius:50%;position:absolute;display:flex;align-items:center;justify-content:center;right:0;font-weight:600;bottom:5px;", ";"], styled_system__WEBPACK_IMPORTED_MODULE_7__["color"]);
+
+
+
+
+
+
+var MODAL_PROPS = {
+  title: 'Save to My List',
+  footer: {
+    okText: 'Save'
+  },
+  saveToListForm: {
+    form: 'saveToListForm',
+    list: {
+      name: 'listId',
+      label: 'My Influencer Lists',
+      placeholder: 'Select one of existing lists'
+    }
+  }
+};
+var Content = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Layout"].Flex).withConfig({
+  displayName: "InfluencerDetail__Content",
+  componentId: "sc-7py668-0"
+})(["min-height:calc(100vh - 150px);max-height:calc(100vh - 150px);overflow:auto;background:#f3f4f6;padding:20px 60px 50px 60px;"]);
+var GeneralInfo = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Layout"].Flex).withConfig({
+  displayName: "InfluencerDetail__GeneralInfo",
+  componentId: "sc-7py668-1"
+})(["padding:20px 20px 20px 80px;margin-bottom:30px;position:relative;"]);
+var SaveToListBtn = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Button"].Button).withConfig({
+  displayName: "InfluencerDetail__SaveToListBtn",
+  componentId: "sc-7py668-2"
+})(["&&&{position:absolute;top:20px;right:20px;border-radius:2px;}"]);
+var Fullname = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
+  displayName: "InfluencerDetail__Fullname",
+  componentId: "sc-7py668-3"
+})(["font-weight:600;color:#000000;font-size:24px;letter-spacing:0.5px;display:flex;align-items:center;"]);
 var Username = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
-  displayName: "InfluencerRanking__Username",
-  componentId: "sc-1fg5oma-7"
-})(["a{color:", ";}font-size:16px;"], function (_ref4) {
-  var theme = _ref4.theme;
+  displayName: "InfluencerDetail__Username",
+  componentId: "sc-7py668-4"
+})(["a{color:", ";}font-size:16px;"], function (_ref) {
+  var theme = _ref.theme;
   return theme.colors.dark100;
 });
-var SmallUsername = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(Username).withConfig({
-  displayName: "InfluencerRanking__SmallUsername",
-  componentId: "sc-1fg5oma-8"
-})(["font-size:14px;"]);
-var NumberTag = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
-  displayName: "InfluencerRanking__NumberTag",
-  componentId: "sc-1fg5oma-9"
-})(["color:#173c51;font-size:20px;font-weight:700;text-transform:uppercase;"]);
-var Label = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
-  displayName: "InfluencerRanking__Label",
-  componentId: "sc-1fg5oma-10"
-})(["color:", ";"], function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.colors.grey45;
-});
-var InfluencerRanking = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_3__["observer"])(function () {
-  var appModel = Object(_frontend_core_src_context__WEBPACK_IMPORTED_MODULE_4__["useAppContext"])();
+var NumberUnit = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(Username).withConfig({
+  displayName: "InfluencerDetail__NumberUnit",
+  componentId: "sc-7py668-5"
+})(["font-size:18px;margin-right:30px;"]);
+var NumberText = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
+  displayName: "InfluencerDetail__NumberText",
+  componentId: "sc-7py668-6"
+})(["font-size:18px;margin-right:5px;"]);
+var AvatarContainer = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
+  displayName: "InfluencerDetail__AvatarContainer",
+  componentId: "sc-7py668-7"
+})(["position:relative;"]);
+var BlueTick = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
+  displayName: "InfluencerDetail__BlueTick",
+  componentId: "sc-7py668-8"
+})(["position:absolute;right:-10px;bottom:5px;img{width:20px;height:20px;}"]);
+var tabContents = (_tabContents = {}, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(_tabContents, _component_Tab__WEBPACK_IMPORTED_MODULE_7__["TAB_KEYS"].stats, function () {
+  return react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_component_StatsSection__WEBPACK_IMPORTED_MODULE_8__["StatsSection"], null);
+}), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(_tabContents, _component_Tab__WEBPACK_IMPORTED_MODULE_7__["TAB_KEYS"].media, function () {
+  return react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_component_MediaSection__WEBPACK_IMPORTED_MODULE_9__["MediaSection"], null);
+}), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(_tabContents, _component_Tab__WEBPACK_IMPORTED_MODULE_7__["TAB_KEYS"].analytics, function () {
+  return react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_component_AnalyticSection__WEBPACK_IMPORTED_MODULE_10__["AnalyticSection"], null);
+}), _tabContents);
+var InfluencerDetail = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_15__["observer"])(function (_ref2) {
+  var id = _ref2.id,
+      tab = _ref2.tab;
+  var appModel = Object(_frontend_core_src_context__WEBPACK_IMPORTED_MODULE_11__["useAppContext"])();
   var token = appModel.authModel.token;
-  var influencerRankingViewModel = Object(_frontend_core_src_hooks__WEBPACK_IMPORTED_MODULE_8__["useViewModel"])(_InfluencerrankingViewModel__WEBPACK_IMPORTED_MODULE_9__["InfluencerRankingViewModel"], appModel);
+  var influencerDetailViewModel = Object(_frontend_core_src_hooks__WEBPACK_IMPORTED_MODULE_13__["useViewModel"])(_InfluencerDetailViewModel__WEBPACK_IMPORTED_MODULE_14__["InfluencerDetailViewModel"], appModel);
 
-  react_use_lib_useEffectOnce__WEBPACK_IMPORTED_MODULE_0___default()(function () {
-    influencerRankingViewModel.getTopInfluencer();
+  react_use_lib_useEffectOnce__WEBPACK_IMPORTED_MODULE_2___default()(function () {
+    influencerDetailViewModel.fetchInfluencerDetail(id);
   });
 
-  var top3Influencers = Object(lodash__WEBPACK_IMPORTED_MODULE_10__["take"])(influencerRankingViewModel.topInfluencers, 3);
-  var remainInfluencers = Object(lodash__WEBPACK_IMPORTED_MODULE_10__["slice"])(influencerRankingViewModel.topInfluencers, 3, Object(lodash__WEBPACK_IMPORTED_MODULE_10__["size"])(influencerRankingViewModel.topInfluencers));
+  var isFetching = influencerDetailViewModel.isFetching,
+      influencerDetail = influencerDetailViewModel.influencerDetail,
+      isLoading = influencerDetailViewModel.isLoading,
+      saveToListModalVisible = influencerDetailViewModel.saveToListModalVisible,
+      myList = influencerDetailViewModel.myList,
+      mostLikedPost = influencerDetailViewModel.mostLikedPost,
+      mostCommentedPost = influencerDetailViewModel.mostCommentedPost,
+      mostEngagementPost = influencerDetailViewModel.mostEngagementPost,
+      followerData = influencerDetailViewModel.followerData,
+      engagementData = influencerDetailViewModel.engagementData;
 
-  var genPos = function genPos(index) {
-    if (index === 0) {
-      return {
-        pos: '1st',
-        color: '#f6cd90'
-      };
-    }
+  var changeSaveToListModalVisible = function changeSaveToListModalVisible(visible) {
+    return influencerDetailViewModel.changeSaveToListModalVisible(visible);
+  };
 
-    if (index === 1) {
-      return {
-        pos: '2nd',
-        color: '#dedede'
-      };
-    }
+  var onClickSaveToListBtn = function onClickSaveToListBtn() {
+    influencerDetailViewModel.changeSaveToListModalVisible(true);
+    influencerDetailViewModel.fetchMyList();
+  };
 
+  var normalizedList = Object(lodash__WEBPACK_IMPORTED_MODULE_17__["map"])(myList, function (list) {
     return {
-      pos: '3rd',
-      color: '#da9833'
+      value: list.id,
+      label: list.name
+    };
+  });
+
+  var handleSaveToList =
+  /*#__PURE__*/
+  function () {
+    var _ref3 = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+    /*#__PURE__*/
+    _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(v) {
+      var code, formError;
+      return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              influencerDetailViewModel.setLoading(true);
+              _context.next = 4;
+              return influencerDetailViewModel.saveInfluencerToList(v.listId, influencerDetail.id);
+
+            case 4:
+              influencerDetailViewModel.setLoading(false);
+              _frontend_ui__WEBPACK_IMPORTED_MODULE_5__["notification"].success({
+                message: _frontend_constants__WEBPACK_IMPORTED_MODULE_20__["MESSAGES"].SAVE_SUCESS,
+                duration: 3,
+                placement: 'bottomLeft'
+              });
+              _context.next = 14;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](0);
+              influencerDetailViewModel.setLoading(false);
+              code = Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(_context.t0, 'response.data.message');
+              formError = {
+                listId: _frontend_constants__WEBPACK_IMPORTED_MODULE_20__["MESSAGES"][code]
+              };
+              return _context.abrupt("return", formError);
+
+            case 14:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 8]]);
+    }));
+
+    return function handleSaveToList(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var TabContent = tabContents[tab];
+
+  var useMediaSection = function useMediaSection() {
+    return {
+      posts: Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'posts'),
+      mostLikedPost: mostLikedPost,
+      mostCommentedPost: mostCommentedPost,
+      mostEngagementPost: mostEngagementPost
     };
   };
 
-  var ordinal_suffix_of = function ordinal_suffix_of(i) {
-    var j = i % 10,
-        k = i % 100;
-
-    if (j == 1 && k != 11) {
-      return i + 'st';
-    }
-
-    if (j == 2 && k != 12) {
-      return i + 'nd';
-    }
-
-    if (j == 3 && k != 13) {
-      return i + 'rd';
-    }
-
-    return i + 'th';
+  var useAnalyticSection = function useAnalyticSection() {
+    return {
+      posts: Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'posts')
+    };
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["MasterLayout"].MasterLayout, {
-    rightAction: token ? _components__WEBPACK_IMPORTED_MODULE_5__["AuthorizedUserBtnGr"] : _components__WEBPACK_IMPORTED_MODULE_5__["GuestButtonGroup"]
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui_src_spin__WEBPACK_IMPORTED_MODULE_14__["Spin"], {
-    spinning: influencerRankingViewModel.isLoading
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Content, {
+  var useStatsSection = function useStatsSection() {
+    return {
+      influencer: influencerDetail,
+      followersData: followerData,
+      engagementData: engagementData
+    };
+  };
+
+  var providerValue = {
+    useMediaSection: useMediaSection,
+    useAnalyticSection: useAnalyticSection,
+    useStatsSection: useStatsSection
+  };
+  return react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_static_context__WEBPACK_IMPORTED_MODULE_21__["InfluencerDetailContext"].Provider, {
+    value: providerValue
+  }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["MasterLayout"].MasterLayout, {
+    rightAction: token ? _components__WEBPACK_IMPORTED_MODULE_12__["AuthorizedUserBtnGr"] : _components__WEBPACK_IMPORTED_MODULE_12__["GuestButtonGroup"],
+    searchComponent: _components_SearchContainer__WEBPACK_IMPORTED_MODULE_23__["SearchContainer"]
+  }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Spin"].Spin, {
+    spinning: isFetching
+  }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](Content, {
     flexDirection: "column"
-  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Grid, {
-    gridGap: 10,
-    gridTemplateColumns: "1fr 1fr 1fr",
-    mb: "40px"
-  }, Object(lodash__WEBPACK_IMPORTED_MODULE_10__["map"])(top3Influencers, function (influencer, index) {
-    return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](CustomCard, {
-      onClick: function onClick() {
-        return next_router__WEBPACK_IMPORTED_MODULE_13___default.a.push("".concat(_frontend_constants__WEBPACK_IMPORTED_MODULE_11__["PATHS"].influencerDetail, "?id=").concat(influencer.id, "&tab=stats"));
-      },
-      bordered: false,
-      key: index,
-      actions: [react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberTag, null, numeral__WEBPACK_IMPORTED_MODULE_12___default()(influencer.followers).format('(0.0a)')), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Label, null, "Followers")), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberTag, null, numeral__WEBPACK_IMPORTED_MODULE_12___default()(influencer.followings).format('(0.0a)')), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Label, null, "Followings")), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center"
-      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberTag, null, numeral__WEBPACK_IMPORTED_MODULE_12___default()(influencer.engagement).format('0.00%')), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Label, null, "Engagement"))]
-    }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center"
-    }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](AvatarWrapper, null, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Avatar"].Avatar, {
-      size: 120,
-      src: influencer.profile_pic_url || '/static/image/user.png'
-    }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Position, {
-      bg: genPos(index).color
-    }, genPos(index).pos)), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](FullName, null, influencer.full_name), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Username, null, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("a", {
-      href: "https://www.instagram.com/".concat(influencer.username),
-      target: "_blank"
-    }, "@".concat(influencer.username))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Badge, null, "".concat(numeral__WEBPACK_IMPORTED_MODULE_12___default()(influencer.engagement).format('(0.00%)'), " Engagment Rate"))));
-  })), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Grid, {
-    gridGap: "15px",
-    pt: "0px"
-  }, Object(lodash__WEBPACK_IMPORTED_MODULE_10__["map"])(remainInfluencers, function (influencer, index) {
-    return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](CustomCard, {
-      key: index,
-      bordered: false,
-      onClick: function onClick() {
-        return next_router__WEBPACK_IMPORTED_MODULE_13___default.a.push("".concat(_frontend_constants__WEBPACK_IMPORTED_MODULE_11__["PATHS"].influencerDetail, "?id=").concat(influencer.id, "&tab=stats"));
-      }
-    }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Grid, {
-      gridTemplateColumns: "1fr 3fr 2fr 3fr"
-    }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-      alignItems: "center",
-      justifyContent: "center",
-      style: {
-        fontWeight: 600
-      }
-    }, ordinal_suffix_of(index + 4)), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-      flexDirection: "row",
-      alignItems: "flex-start"
-    }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Avatar"].Avatar, {
-      size: 50,
-      src: influencer.profile_pic_url || '/static/image/user.png'
-    }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-      ml: "20px",
-      flexDirection: "column"
-    }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](SmallName, null, influencer.full_name), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](SmallUsername, null, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("a", {
-      href: "https://www.instagram.com/".concat(influencer.username),
-      target: "_blank"
-    }, "@".concat(influencer.username))))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Badge, null, "".concat(numeral__WEBPACK_IMPORTED_MODULE_12___default()(influencer.engagement).format('(0.00%)'), " Engagment Rate"))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Grid, {
-      gridTemplateColumns: "1fr 1fr 1fr"
-    }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center"
-    }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberTag, null, numeral__WEBPACK_IMPORTED_MODULE_12___default()(influencer.followers).format('(0.0a)')), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Label, null, "Followers")), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center"
-    }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberTag, null, numeral__WEBPACK_IMPORTED_MODULE_12___default()(influencer.followings).format('(0.0a)')), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Label, null, "Followings")), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center"
-    }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](NumberTag, null, numeral__WEBPACK_IMPORTED_MODULE_12___default()(influencer.engagement).format('0.00%')), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Label, null, "Engagement")))));
-  })))));
+  }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Layout"].Flex, {
+    flexDirection: "column",
+    style: {
+      position: 'relative'
+    },
+    bg: "white"
+  }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](GeneralInfo, {
+    flexDirection: "row",
+    alignItems: "flex-start"
+  }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](AvatarContainer, null, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Avatar"].Avatar, {
+    size: 150,
+    src: Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'profilePicUrl') || '/static/image/user.png'
+  }), Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'verified') && react__WEBPACK_IMPORTED_MODULE_4__["createElement"](BlueTick, null, react__WEBPACK_IMPORTED_MODULE_4__["createElement"]("img", {
+    src: "/static/image/blue-tick.svg"
+  }))), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Layout"].Flex, {
+    flexDirection: "column",
+    ml: "50px",
+    justifyContent: "flex-start",
+    alignItems: "flex-start"
+  }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](Fullname, null, Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'fullName'), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_22__["Grid"], {
+    gridGap: "10px",
+    ml: "15px",
+    gridAutoFlow: "column"
+  }, Object(lodash__WEBPACK_IMPORTED_MODULE_17__["map"])(Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'categories'), function (cate, index) {
+    return react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Tag"].Tag, {
+      color: "#87d068",
+      key: index
+    }, cate.name);
+  }))), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](Username, null, react__WEBPACK_IMPORTED_MODULE_4__["createElement"]("a", {
+    href: "https://www.instagram.com/".concat(Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'username')),
+    target: "_blank"
+  }, "@".concat(Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'username')))), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Layout"].Flex, {
+    flexDirection: "row",
+    alignItems: "center",
+    mt: "5px"
+  }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](NumberText, null, Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'mediaCount')), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](NumberUnit, null, "Posts"), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](NumberText, null, Object(lodash__WEBPACK_IMPORTED_MODULE_17__["toUpper"])(numeral__WEBPACK_IMPORTED_MODULE_16___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'followers')).format('(0.0a)'))), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](NumberUnit, null, "Followers"), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](NumberText, null, Object(lodash__WEBPACK_IMPORTED_MODULE_17__["toUpper"])(numeral__WEBPACK_IMPORTED_MODULE_16___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'followings')).format('(0.0a)'))), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](NumberUnit, null, "Followings"), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](NumberText, null, numeral__WEBPACK_IMPORTED_MODULE_16___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'engagement')).format('(0.00%)')), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](NumberUnit, null, "Engagement Rate")), Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'email') && react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Layout"].Flex, {
+    flexDirection: "row",
+    alignItems: "center",
+    mt: "5px"
+  }, "Email:", react__WEBPACK_IMPORTED_MODULE_4__["createElement"]("div", {
+    style: {
+      fontWeight: 600,
+      marginLeft: '10px'
+    }
+  }, Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'email'))), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Layout"].Flex, {
+    style: {
+      fontWeight: 600
+    },
+    mt: "5px"
+  }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"]("a", {
+    href: Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'externalUrl'),
+    target: "_blank"
+  }, Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'externalUrl'))), react__WEBPACK_IMPORTED_MODULE_4__["createElement"]("div", {
+    style: {
+      color: '#3c3c3c',
+      marginTop: '5px'
+    }
+  }, Object(lodash__WEBPACK_IMPORTED_MODULE_17__["get"])(influencerDetail, 'biography'))), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](SaveToListBtn, {
+    onClick: onClickSaveToListBtn
+  }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Icon"].Icon, {
+    type: "heart"
+  }), "Save to My List"), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Modal"].SmallModal, {
+    title: MODAL_PROPS.title,
+    okText: MODAL_PROPS.footer.okText,
+    okButtonProps: {
+      loading: isLoading,
+      form: MODAL_PROPS.saveToListForm.form
+    },
+    visible: saveToListModalVisible,
+    onCancel: function onCancel() {
+      return changeSaveToListModalVisible(false);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](react_final_form__WEBPACK_IMPORTED_MODULE_18__["Form"], {
+    onSubmit: handleSaveToList,
+    render: function render(_ref4) {
+      var handleSubmit = _ref4.handleSubmit;
+      return react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Form"].Form, {
+        onSubmit: handleSubmit,
+        id: MODAL_PROPS.saveToListForm.form
+      }, react__WEBPACK_IMPORTED_MODULE_4__["createElement"](react_final_form__WEBPACK_IMPORTED_MODULE_18__["Field"], {
+        name: MODAL_PROPS.saveToListForm.list.name,
+        component: _frontend_ui__WEBPACK_IMPORTED_MODULE_5__["Select"].SelectField,
+        placeholder: MODAL_PROPS.saveToListForm.list.placeholder,
+        options: normalizedList,
+        validate: _frontend_core__WEBPACK_IMPORTED_MODULE_19__["validate"].field.required
+      }));
+    }
+  }))), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](_component_Tab__WEBPACK_IMPORTED_MODULE_7__["Tab"], {
+    tab: tab
+  })), react__WEBPACK_IMPORTED_MODULE_4__["createElement"](TabContent, null)))));
 });
 
 /***/ }),
 
-/***/ "./features/influencer-ranking/InfluencerrankingViewModel.ts":
-/*!*******************************************************************!*\
-  !*** ./features/influencer-ranking/InfluencerrankingViewModel.ts ***!
-  \*******************************************************************/
-/*! exports provided: InfluencerRankingViewModel */
+/***/ "./features/influencer/detail/InfluencerDetailViewModel.ts":
+/*!*****************************************************************!*\
+  !*** ./features/influencer/detail/InfluencerDetailViewModel.ts ***!
+  \*****************************************************************/
+/*! exports provided: InfluencerDetailViewModel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfluencerRankingViewModel", function() { return InfluencerRankingViewModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfluencerDetailViewModel", function() { return InfluencerDetailViewModel; });
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptor */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js");
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
 /* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerDefineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerDefineProperty.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor */ "./node_modules/@babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerWarningHelper */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerWarningHelper.js");
-/* harmony import */ var _frontend_services__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @frontend/services */ "./packages/services/src/index.ts");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! mobx */ "mobx");
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(mobx__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerDefineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerDefineProperty.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor */ "./node_modules/@babel/runtime-corejs2/helpers/esm/applyDecoratedDescriptor.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/initializerWarningHelper */ "./node_modules/@babel/runtime-corejs2/helpers/esm/initializerWarningHelper.js");
+/* harmony import */ var _packages_constants_src_constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../../packages/constants/src/constants */ "./packages/constants/src/constants.ts");
+/* harmony import */ var _frontend_services__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @frontend/services */ "./packages/services/src/index.ts");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! mobx */ "mobx");
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(mobx__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _frontend_core_src_utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @frontend/core/src/utils */ "./packages/core/src/utils/index.ts");
 
 
 
@@ -674,52 +776,100 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _class, _descriptor, _descriptor2, _temp;
+
+var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _temp;
 
 
 
-var InfluencerRankingViewModel = (_class = (_temp =
+
+
+
+var InfluencerDetailViewModel = (_class = (_temp =
 /*#__PURE__*/
 function () {
-  function InfluencerRankingViewModel(appModel) {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__["default"])(this, InfluencerRankingViewModel);
+  function InfluencerDetailViewModel(appModel) {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_5__["default"])(this, InfluencerDetailViewModel);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "influencerDetail", _descriptor, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "isFetching", _descriptor2, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "myList", _descriptor3, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "saveToListModalVisible", _descriptor4, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "isLoading", _descriptor5, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "mostLikedPost", _descriptor6, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "mostCommentedPost", _descriptor7, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "mostEngagementPost", _descriptor8, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "followerData", _descriptor9, this);
+
+    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_4__["default"])(this, "engagementData", _descriptor10, this);
 
     this.appModel = null;
-
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "topInfluencers", _descriptor, this);
-
-    Object(_babel_runtime_corejs2_helpers_esm_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "isLoading", _descriptor2, this);
-
     this.appModel = appModel;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(InfluencerRankingViewModel, [{
-    key: "getTopInfluencer",
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_6__["default"])(InfluencerDetailViewModel, [{
+    key: "fetchInfluencerDetail",
     value: function () {
-      var _getTopInfluencer = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__["default"])(
+      var _fetchInfluencerDetail = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee() {
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee(id) {
         var _this = this;
 
-        var _ref, data;
+        var _ref, data, reportResponse;
 
         return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                this.isLoading = true;
+                this.isFetching = true;
                 _context.next = 3;
-                return _frontend_services__WEBPACK_IMPORTED_MODULE_8__["influencerService"].getTopInfluencer();
+                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["influencerService"].fetchInfluencerDetail(id);
 
               case 3:
                 _ref = _context.sent;
                 data = _ref.data;
-                this.isLoading = false;
-                Object(mobx__WEBPACK_IMPORTED_MODULE_9__["runInAction"])(function () {
-                  _this.topInfluencers = data;
-                });
+                _context.next = 7;
+                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["reportService"].fetchReport(id);
 
               case 7:
+                reportResponse = _context.sent;
+                Object(mobx__WEBPACK_IMPORTED_MODULE_11__["runInAction"])(function () {
+                  _this.isFetching = false;
+                  _this.influencerDetail = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_2__["default"])({}, data, {
+                    email: data.email || (data.biography ? Object(_frontend_core_src_utils__WEBPACK_IMPORTED_MODULE_13__["extractEmails"])(data.biography) : null)
+                  });
+                  _this.influencerDetail.posts = Object(lodash__WEBPACK_IMPORTED_MODULE_12__["map"])(_this.influencerDetail.posts, function (p) {
+                    return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_2__["default"])({}, p, {
+                      engagement: (p.commentCount + p.likeCount) / data.followers
+                    });
+                  });
+                  _this.mostLikedPost = Object(lodash__WEBPACK_IMPORTED_MODULE_12__["find"])(_this.influencerDetail.posts, function (p) {
+                    return p.type === 'MOST_LIKE';
+                  });
+                  _this.mostCommentedPost = Object(lodash__WEBPACK_IMPORTED_MODULE_12__["find"])(_this.influencerDetail.posts, function (p) {
+                    return p.type === _packages_constants_src_constants__WEBPACK_IMPORTED_MODULE_9__["POST_STATUS"].MOST_COMMENT;
+                  });
+                  _this.mostEngagementPost = Object(lodash__WEBPACK_IMPORTED_MODULE_12__["maxBy"])(_this.influencerDetail.posts, function (p) {
+                    return p.engagement;
+                  });
+                  _this.followerData = Object(lodash__WEBPACK_IMPORTED_MODULE_12__["filter"])(Object(lodash__WEBPACK_IMPORTED_MODULE_12__["get"])(reportResponse, 'data'), function (_ref2) {
+                    var type = _ref2.type;
+                    return type === 'FOLLOWERS';
+                  });
+                  _this.engagementData = Object(lodash__WEBPACK_IMPORTED_MODULE_12__["filter"])(Object(lodash__WEBPACK_IMPORTED_MODULE_12__["get"])(reportResponse, 'data'), function (_ref3) {
+                    var type = _ref3.type;
+                    return type === 'ENGAGEMENT';
+                  });
+                });
+
+              case 9:
               case "end":
                 return _context.stop();
             }
@@ -727,41 +877,958 @@ function () {
         }, _callee, this);
       }));
 
-      function getTopInfluencer() {
-        return _getTopInfluencer.apply(this, arguments);
+      function fetchInfluencerDetail(_x) {
+        return _fetchInfluencerDetail.apply(this, arguments);
       }
 
-      return getTopInfluencer;
+      return fetchInfluencerDetail;
     }()
+  }, {
+    key: "fetchMyList",
+    value: function () {
+      var _fetchMyList = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee2() {
+        var _this2 = this;
+
+        var _ref4, data;
+
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["profileService"].getMyInfluencerLists();
+
+              case 2:
+                _ref4 = _context2.sent;
+                data = _ref4.data;
+                Object(mobx__WEBPACK_IMPORTED_MODULE_11__["runInAction"])(function () {
+                  _this2.myList = data;
+                });
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function fetchMyList() {
+        return _fetchMyList.apply(this, arguments);
+      }
+
+      return fetchMyList;
+    }()
+  }, {
+    key: "changeSaveToListModalVisible",
+    value: function changeSaveToListModalVisible(visible) {
+      this.saveToListModalVisible = visible;
+    }
+  }, {
+    key: "saveInfluencerToList",
+    value: function () {
+      var _saveInfluencerToList = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
+      /*#__PURE__*/
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee3(listId, name) {
+        var _this3 = this;
+
+        var response;
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _frontend_services__WEBPACK_IMPORTED_MODULE_10__["influencerService"].saveInfluencerToList(listId, name);
+
+              case 2:
+                response = _context3.sent;
+                Object(mobx__WEBPACK_IMPORTED_MODULE_11__["runInAction"])(function () {
+                  _this3.saveToListModalVisible = false;
+                });
+                return _context3.abrupt("return", response);
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      function saveInfluencerToList(_x2, _x3) {
+        return _saveInfluencerToList.apply(this, arguments);
+      }
+
+      return saveInfluencerToList;
+    }()
+  }, {
+    key: "setLoading",
+    value: function setLoading(isLoading) {
+      this.isLoading = isLoading;
+    }
   }]);
 
-  return InfluencerRankingViewModel;
-}(), _temp), (_descriptor = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "topInfluencers", [mobx__WEBPACK_IMPORTED_MODULE_9__["observable"]], {
+  return InfluencerDetailViewModel;
+}(), _temp), (_descriptor = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "influencerDetail", [mobx__WEBPACK_IMPORTED_MODULE_11__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor2 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "isLoading", [mobx__WEBPACK_IMPORTED_MODULE_9__["observable"]], {
+}), _descriptor2 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "isFetching", [mobx__WEBPACK_IMPORTED_MODULE_11__["observable"]], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_6__["default"])(_class.prototype, "getTopInfluencer", [mobx__WEBPACK_IMPORTED_MODULE_9__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "getTopInfluencer"), _class.prototype)), _class);
+}), _descriptor3 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "myList", [mobx__WEBPACK_IMPORTED_MODULE_11__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor4 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "saveToListModalVisible", [mobx__WEBPACK_IMPORTED_MODULE_11__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor5 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "isLoading", [mobx__WEBPACK_IMPORTED_MODULE_11__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor6 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "mostLikedPost", [mobx__WEBPACK_IMPORTED_MODULE_11__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor7 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "mostCommentedPost", [mobx__WEBPACK_IMPORTED_MODULE_11__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor8 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "mostEngagementPost", [mobx__WEBPACK_IMPORTED_MODULE_11__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor9 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "followerData", [mobx__WEBPACK_IMPORTED_MODULE_11__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor10 = Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "engagementData", [mobx__WEBPACK_IMPORTED_MODULE_11__["observable"]], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "fetchInfluencerDetail", [mobx__WEBPACK_IMPORTED_MODULE_11__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "fetchInfluencerDetail"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "fetchMyList", [mobx__WEBPACK_IMPORTED_MODULE_11__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "fetchMyList"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "changeSaveToListModalVisible", [mobx__WEBPACK_IMPORTED_MODULE_11__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "changeSaveToListModalVisible"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "saveInfluencerToList", [mobx__WEBPACK_IMPORTED_MODULE_11__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "saveInfluencerToList"), _class.prototype), Object(_babel_runtime_corejs2_helpers_esm_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_7__["default"])(_class.prototype, "setLoading", [mobx__WEBPACK_IMPORTED_MODULE_11__["action"]], _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(_class.prototype, "setLoading"), _class.prototype)), _class);
 
 /***/ }),
 
-/***/ "./features/influencer-ranking/index.ts":
-/*!**********************************************!*\
-  !*** ./features/influencer-ranking/index.ts ***!
-  \**********************************************/
+/***/ "./features/influencer/detail/component/AnalyticSection.tsx":
+/*!******************************************************************!*\
+  !*** ./features/influencer/detail/component/AnalyticSection.tsx ***!
+  \******************************************************************/
+/*! exports provided: AnalyticSection */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnalyticSection", function() { return AnalyticSection; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
+/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx-react-lite */ "mobx-react-lite");
+/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(mobx_react_lite__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _static_context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../static/context */ "./features/influencer/static/context.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! numeral */ "numeral");
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(numeral__WEBPACK_IMPORTED_MODULE_7__);
+
+
+
+
+
+
+
+
+var PostThumbnail = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.img.withConfig({
+  displayName: "AnalyticSection__PostThumbnail",
+  componentId: "sc-15x8r32-0"
+})(["max-width:80px;max-height:80px;border-radius:4px;"]);
+var PostData = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.span.withConfig({
+  displayName: "AnalyticSection__PostData",
+  componentId: "sc-15x8r32-1"
+})(["text-transform:uppercase;font-size:16px;"]);
+var TotalReactTag = styled_components__WEBPACK_IMPORTED_MODULE_2___default()(PostData).withConfig({
+  displayName: "AnalyticSection__TotalReactTag",
+  componentId: "sc-15x8r32-2"
+})(["color:", ";"], function (_ref) {
+  var theme = _ref.theme;
+  return theme.colors.primary;
+});
+var columns = [{
+  title: 'Posts',
+  dataIndex: 'code',
+  key: 'code',
+  render: function render(code) {
+    return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](PostThumbnail, {
+      src: "https://www.instagram.com/p/".concat(code, "/media") || false
+    });
+  }
+}, {
+  title: 'Likes',
+  dataIndex: 'likeCount',
+  key: 'likeCount',
+  render: function render(likeCount) {
+    return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](PostData, null, numeral__WEBPACK_IMPORTED_MODULE_7___default()(likeCount).format('(0.0a)'));
+  }
+}, {
+  title: 'Replies',
+  dataIndex: 'commentCount',
+  key: 'commentCount',
+  render: function render(cmtCount) {
+    return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](PostData, null, numeral__WEBPACK_IMPORTED_MODULE_7___default()(cmtCount).format('(0.0a)'));
+  }
+}, {
+  title: 'Engagement Rate',
+  dataIndex: 'engagement',
+  key: 'engagement',
+  render: function render(engagement) {
+    return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](PostData, null, numeral__WEBPACK_IMPORTED_MODULE_7___default()(engagement).format('0.00%'));
+  }
+}, {
+  title: 'Total Reach',
+  dataIndex: 'totalReach',
+  key: 'totalReach',
+  render: function render(totalReach) {
+    return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](TotalReactTag, null, numeral__WEBPACK_IMPORTED_MODULE_7___default()(totalReach).format('(0.0a)'));
+  }
+}];
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+  displayName: "AnalyticSection__Container",
+  componentId: "sc-15x8r32-3"
+})(["margin-top:30px;background:#ffffff;padding:20px;width:100%;"]);
+var Title = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+  displayName: "AnalyticSection__Title",
+  componentId: "sc-15x8r32-4"
+})(["font-weight:600;font-size:16px;color:", ";margin-bottom:20px;"], function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.colors.grey100;
+});
+var AnalyticSection = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_4__["observer"])(function () {
+  var _useInfluencerDetailC = Object(_static_context__WEBPACK_IMPORTED_MODULE_5__["useInfluencerDetailContext"])().useAnalyticSection(),
+      posts = _useInfluencerDetailC.posts;
+
+  var normalizePost = Object(lodash__WEBPACK_IMPORTED_MODULE_6__["map"])(posts, function (p, index) {
+    return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, p, {
+      key: index,
+      totalReach: p.commentCount + p.likeCount
+    });
+  });
+  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Container, null, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Title, null, "Recent Posts Performance"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_3__["Table"].Table, {
+    dataSource: normalizePost,
+    columns: columns
+  }));
+});
+
+/***/ }),
+
+/***/ "./features/influencer/detail/component/DetailPost.tsx":
+/*!*************************************************************!*\
+  !*** ./features/influencer/detail/component/DetailPost.tsx ***!
+  \*************************************************************/
+/*! exports provided: DetailPost */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DetailPost", function() { return DetailPost; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _frontend_ui_src_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @frontend/ui/src/modal */ "./packages/ui/src/modal/index.ts");
+/* harmony import */ var _frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @frontend/ui/src/layout */ "./packages/ui/src/layout/index.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _frontend_ui_src_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @frontend/ui/src/icon */ "./packages/ui/src/icon/index.ts");
+/* harmony import */ var styled_system__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-system */ "styled-system");
+/* harmony import */ var styled_system__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(styled_system__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _StatsSection__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./StatsSection */ "./features/influencer/detail/component/StatsSection.tsx");
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! numeral */ "numeral");
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(numeral__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_11__);
+
+
+
+
+
+
+
+
+
+
+
+
+var Content = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(_frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_4__["Grid"]).withConfig({
+  displayName: "DetailPost__Content",
+  componentId: "e4amm2-0"
+})(["img{max-width:400px;max-height:330px;}"]);
+var RightInfo = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
+  displayName: "DetailPost__RightInfo",
+  componentId: "e4amm2-1"
+})(["width:100%;"]);
+var IconContainer = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(_frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_4__["Flex"]).withConfig({
+  displayName: "DetailPost__IconContainer",
+  componentId: "e4amm2-2"
+})(["width:30px;height:30px;border-radius:50%;font-size:20px;", ";"], styled_system__WEBPACK_IMPORTED_MODULE_8__["color"]);
+var Square = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(_frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_4__["Flex"]).withConfig({
+  displayName: "DetailPost__Square",
+  componentId: "e4amm2-3"
+})(["width:100%;height:140px;flex-direction:column;border:1px solid ", ";align-items:center;justify-content:center;"], function (_ref) {
+  var theme = _ref.theme;
+  return theme.colors.grey15;
+});
+var Label = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div.withConfig({
+  displayName: "DetailPost__Label",
+  componentId: "e4amm2-4"
+})(["color:", ";"], function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.colors.grey45;
+});
+var PostContent = styled_components__WEBPACK_IMPORTED_MODULE_6___default()(_frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_4__["Flex"]).withConfig({
+  displayName: "DetailPost__PostContent",
+  componentId: "e4amm2-5"
+})(["font-weight:700;"]);
+var DetailPost = function DetailPost(_ref3) {
+  var detail = _ref3.detail,
+      props = Object(_babel_runtime_corejs2_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref3, ["detail"]);
+
+  return react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_frontend_ui_src_modal__WEBPACK_IMPORTED_MODULE_3__["InfoModal"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+    width: "800px"
+  }), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](Content, {
+    gridTemplateColumns: "1fr 1fr",
+    gridGap: "15px"
+  }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"]("img", {
+    src: "https://www.instagram.com/p/".concat(Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(detail, 'code'), "/media") || false
+  }), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](RightInfo, null, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_4__["Flex"], {
+    justifyContent: "center",
+    mb: "5px"
+  }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"]("span", null, moment__WEBPACK_IMPORTED_MODULE_11__(Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(detail, 'takenAt')).format('DD/MM/YYYY HH:mm'))), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_4__["Grid"], {
+    gridTemplateColumns: "1fr 1fr",
+    gridGap: "0"
+  }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_4__["Flex"], {
+    flexDirection: "column"
+  }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](Square, null, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](IconContainer, {
+    bg: "#FDDFDF",
+    justifyContent: "center",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_frontend_ui_src_icon__WEBPACK_IMPORTED_MODULE_7__["Icon"], {
+    type: "heart",
+    theme: "filled",
+    color: "#F12B2C"
+  })), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_9__["NumberTag"], null, numeral__WEBPACK_IMPORTED_MODULE_10___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(detail, 'likeCount')).format('(0.0a)')), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](Label, null, "Likes")), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](Square, null, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](IconContainer, {
+    bg: "#FFF6D9",
+    justifyContent: "center",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_frontend_ui_src_icon__WEBPACK_IMPORTED_MODULE_7__["Icon"], {
+    type: "dashboard",
+    theme: "filled",
+    color: "#F4AE1F"
+  })), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_9__["NumberTag"], null, numeral__WEBPACK_IMPORTED_MODULE_10___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(detail, 'engagement')).format('0.00%')), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](Label, null, "Engagement"))), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_frontend_ui_src_layout__WEBPACK_IMPORTED_MODULE_4__["Flex"], {
+    flexDirection: "column"
+  }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](Square, null, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](IconContainer, {
+    bg: "#FFF6D9",
+    justifyContent: "center",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_frontend_ui_src_icon__WEBPACK_IMPORTED_MODULE_7__["Icon"], {
+    type: "wechat",
+    theme: "filled",
+    color: "#F4AE1F"
+  })), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_9__["NumberTag"], null, numeral__WEBPACK_IMPORTED_MODULE_10___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(detail, 'commentCount')).format('(0.0a)')), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](Label, null, "Comments")), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](Square, null, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](IconContainer, {
+    bg: "#edeaff",
+    justifyContent: "center",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_frontend_ui_src_icon__WEBPACK_IMPORTED_MODULE_7__["Icon"], {
+    type: "eye",
+    theme: "filled",
+    color: "#8d73ff"
+  })), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_9__["NumberTag"], null, numeral__WEBPACK_IMPORTED_MODULE_10___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(detail, 'commentCount') + Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(detail, 'likeCount')).format('(0.0a)')), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](Label, null, "Total Reach")))), react__WEBPACK_IMPORTED_MODULE_2__["createElement"](PostContent, {
+    mt: "16px"
+  }, Object(lodash__WEBPACK_IMPORTED_MODULE_5__["get"])(detail, 'content')))));
+};
+
+/***/ }),
+
+/***/ "./features/influencer/detail/component/MediaSection.tsx":
+/*!***************************************************************!*\
+  !*** ./features/influencer/detail/component/MediaSection.tsx ***!
+  \***************************************************************/
+/*! exports provided: MediaSection */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MediaSection", function() { return MediaSection; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _StatsSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StatsSection */ "./features/influencer/detail/component/StatsSection.tsx");
+/* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
+/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! mobx-react-lite */ "mobx-react-lite");
+/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(mobx_react_lite__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _static_context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../static/context */ "./features/influencer/static/context.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! numeral */ "numeral");
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(numeral__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _DetailPost__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./DetailPost */ "./features/influencer/detail/component/DetailPost.tsx");
+
+
+
+
+
+
+
+
+
+
+var Description = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+  displayName: "MediaSection__Description",
+  componentId: "vyi180-0"
+})(["padding-left:20px;"]);
+var CardTitle = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+  displayName: "MediaSection__CardTitle",
+  componentId: "vyi180-1"
+})(["color:", ";font-size:16px;"], function (_ref) {
+  var theme = _ref.theme;
+  return theme.colors.dark100;
+});
+var LatestPost = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.img.withConfig({
+  displayName: "MediaSection__LatestPost",
+  componentId: "vyi180-2"
+})(["max-width:400px;max-height:300px;cursor:pointer;"]);
+var MediaSection = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_5__["observer"])(function () {
+  var _useInfluencerDetailC = Object(_static_context__WEBPACK_IMPORTED_MODULE_6__["useInfluencerDetailContext"])().useMediaSection(),
+      posts = _useInfluencerDetailC.posts,
+      mostLikedPost = _useInfluencerDetailC.mostLikedPost,
+      mostCommentedPost = _useInfluencerDetailC.mostCommentedPost,
+      mostEngagementPost = _useInfluencerDetailC.mostEngagementPost;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__["useState"](false),
+      _React$useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_React$useState, 2),
+      modalVisible = _React$useState2[0],
+      changeModalVisible = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__["useState"](undefined),
+      _React$useState4 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_React$useState3, 2),
+      currentSelectedPost = _React$useState4[0],
+      changeCurrentSelectedPost = _React$useState4[1];
+
+  var onCardClick = function onCardClick(currentPost) {
+    changeCurrentSelectedPost(currentPost);
+    changeModalVisible(true);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["Section"], {
+    flexDirection: "column"
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["Title"], null, "Best Posts"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](Description, null, "Here are the most liked and talked about posts"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Grid, {
+    gridGap: 10,
+    gridTemplateColumns: "1fr 1fr 1fr",
+    alignContent: "center",
+    mt: "20px",
+    mb: "40px"
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Card"].Card, {
+    onClick: function onClick() {
+      return onCardClick(mostLikedPost);
+    },
+    bordered: false,
+    cover: react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("img", {
+      alt: "example",
+      src: "https://www.instagram.com/p/".concat(Object(lodash__WEBPACK_IMPORTED_MODULE_7__["get"])(mostLikedPost, 'code'), "/media") || false
+    })
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
+    flexDirection: "column",
+    alignItems: "center",
+    width: "100%"
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](CardTitle, null, "Most Liked Post"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
+    flexDirection: "row",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Icon"].Icon, {
+    type: "heart",
+    theme: "filled",
+    color: "#F12B2C",
+    fontSize: "18px"
+  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["NumberTag"], {
+    style: {
+      marginLeft: '10px'
+    }
+  }, numeral__WEBPACK_IMPORTED_MODULE_8___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_7__["get"])(mostLikedPost, 'likeCount')).format('(0.0a)'))))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Card"].Card, {
+    onClick: function onClick() {
+      return onCardClick(mostCommentedPost);
+    },
+    bordered: false,
+    cover: react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("img", {
+      alt: "example",
+      src: "https://www.instagram.com/p/".concat(Object(lodash__WEBPACK_IMPORTED_MODULE_7__["get"])(mostCommentedPost, 'code'), "/media") || false
+    })
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
+    flexDirection: "column",
+    alignItems: "center",
+    width: "100%"
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](CardTitle, null, "Most Commented Post"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
+    flexDirection: "row",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Icon"].Icon, {
+    type: "wechat",
+    theme: "filled",
+    color: "#F4AE1F",
+    fontSize: "18px"
+  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["NumberTag"], {
+    style: {
+      marginLeft: '10px'
+    }
+  }, numeral__WEBPACK_IMPORTED_MODULE_8___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_7__["get"])(mostCommentedPost, 'commentCount')).format('(0.0a)'))))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Card"].Card, {
+    onClick: function onClick() {
+      return onCardClick(mostEngagementPost);
+    },
+    bordered: false,
+    cover: react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("img", {
+      alt: "example",
+      src: "https://www.instagram.com/p/".concat(Object(lodash__WEBPACK_IMPORTED_MODULE_7__["get"])(mostEngagementPost, 'code'), "/media") || false
+    })
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
+    flexDirection: "column",
+    alignItems: "center",
+    width: "100%"
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](CardTitle, null, "Most Engaging Post"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Flex, {
+    flexDirection: "row",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Icon"].Icon, {
+    type: "dashboard",
+    color: "#34c635",
+    fontSize: "18px"
+  }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["NumberTag"], {
+    style: {
+      marginLeft: '10px'
+    }
+  }, numeral__WEBPACK_IMPORTED_MODULE_8___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_7__["get"])(mostEngagementPost, 'engagement')).format('0.00%')))))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_StatsSection__WEBPACK_IMPORTED_MODULE_3__["Title"], null, "Latest Posts"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_4__["Layout"].Grid, {
+    gridGap: 10,
+    gridTemplateColumns: "1fr 1fr 1fr",
+    alignContent: "center",
+    mt: "40px"
+  }, Object(lodash__WEBPACK_IMPORTED_MODULE_7__["map"])(posts, function (post, index) {
+    return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](LatestPost, {
+      onClick: function onClick() {
+        return onCardClick(post);
+      },
+      src: "https://www.instagram.com/p/".concat(post.code, "/media") || false,
+      key: index
+    });
+  })), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_DetailPost__WEBPACK_IMPORTED_MODULE_9__["DetailPost"], {
+    detail: currentSelectedPost,
+    visible: modalVisible,
+    onCancel: function onCancel() {
+      return changeModalVisible(false);
+    }
+  }));
+});
+
+/***/ }),
+
+/***/ "./features/influencer/detail/component/StatsSection.tsx":
+/*!***************************************************************!*\
+  !*** ./features/influencer/detail/component/StatsSection.tsx ***!
+  \***************************************************************/
+/*! exports provided: Title, Section, NumberTag, StatsSection */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Title", function() { return Title; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Section", function() { return Section; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NumberTag", function() { return NumberTag; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatsSection", function() { return StatsSection; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
+/* harmony import */ var styled_system__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-system */ "styled-system");
+/* harmony import */ var styled_system__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_system__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-chartjs-2 */ "react-chartjs-2");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_chartjs_2__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! mobx-react-lite */ "mobx-react-lite");
+/* harmony import */ var mobx_react_lite__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(mobx_react_lite__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _static_context__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../static/context */ "./features/influencer/static/context.ts");
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! numeral */ "numeral");
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(numeral__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_9__);
+
+
+
+
+
+
+
+
+
+
+var Title = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "StatsSection__Title",
+  componentId: "sc-1mkig5l-0"
+})(["padding-left:20px;font-weight:600;font-size:16px;color:", ";"], function (_ref) {
+  var theme = _ref.theme;
+  return theme.colors.grey100;
+});
+var Section = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
+  displayName: "StatsSection__Section",
+  componentId: "sc-1mkig5l-1"
+})(["padding:20px 0;"]);
+var Card = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
+  displayName: "StatsSection__Card",
+  componentId: "sc-1mkig5l-2"
+})(["background:#ffffff;height:200px;padding:20px 30px;"]);
+var CardTitle = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "StatsSection__CardTitle",
+  componentId: "sc-1mkig5l-3"
+})(["color:#727f86;font-size:16px;"]);
+var IconContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex).withConfig({
+  displayName: "StatsSection__IconContainer",
+  componentId: "sc-1mkig5l-4"
+})(["width:50px;height:50px;border-radius:50%;font-size:20px;", ";"], styled_system__WEBPACK_IMPORTED_MODULE_3__["color"]);
+var NumberTag = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "StatsSection__NumberTag",
+  componentId: "sc-1mkig5l-5"
+})(["color:#173c51;font-size:30px;font-weight:700;text-transform:uppercase;"]);
+var PercentageTag = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "StatsSection__PercentageTag",
+  componentId: "sc-1mkig5l-6"
+})(["color:#173c51;font-size:20px;font-weight:500;margin-left:15px;"]);
+var StatsSection = Object(mobx_react_lite__WEBPACK_IMPORTED_MODULE_6__["observer"])(function () {
+  var _useInfluencerDetailC = Object(_static_context__WEBPACK_IMPORTED_MODULE_7__["useInfluencerDetailContext"])().useStatsSection(),
+      influencer = _useInfluencerDetailC.influencer,
+      followersData = _useInfluencerDetailC.followersData,
+      engagementData = _useInfluencerDetailC.engagementData;
+
+  var followerLabels = Object(lodash__WEBPACK_IMPORTED_MODULE_4__["map"])(followersData, function (_ref2) {
+    var createdDate = _ref2.createdDate;
+    return moment__WEBPACK_IMPORTED_MODULE_9__(createdDate).format('DD/MM');
+  });
+  var engagementLabels = Object(lodash__WEBPACK_IMPORTED_MODULE_4__["map"])(engagementData, function (_ref3) {
+    var createdDate = _ref3.createdDate;
+    return moment__WEBPACK_IMPORTED_MODULE_9__(createdDate).format('DD/MM/YYYY');
+  });
+  var followerData = Object(lodash__WEBPACK_IMPORTED_MODULE_4__["map"])(followersData, function (_ref4) {
+    var followers = _ref4.followers;
+    return followers;
+  });
+  var engagements = Object(lodash__WEBPACK_IMPORTED_MODULE_4__["map"])(engagementData, function (_ref5) {
+    var engagement = _ref5.engagement;
+    return engagement;
+  });
+  var followersReport = {
+    labels: followerLabels,
+    datasets: [{
+      label: 'Followers',
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: 'rgba(75,192,192,0.4)',
+      borderColor: 'rgba(75,192,192,1)',
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: 'rgba(75,192,192,1)',
+      pointBackgroundColor: '#fff',
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+      pointHoverBorderColor: 'rgba(220,220,220,1)',
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      data: followerData
+    }]
+  };
+  var engagementReport = {
+    labels: engagementLabels,
+    datasets: [{
+      label: 'Engagement',
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: 'rgba(75,192,192,0.4)',
+      borderColor: 'rgba(75,192,192,1)',
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: 'rgba(75,192,192,1)',
+      pointBackgroundColor: '#fff',
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+      pointHoverBorderColor: 'rgba(220,220,220,1)',
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      data: engagements
+    }]
+  };
+  return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Section, {
+    flexDirection: "column"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Title, null, "Instagram Stats Overview"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Grid, {
+    gridGap: 10,
+    gridTemplateColumns: "1fr 1fr 1fr",
+    alignContent: "center",
+    mt: "20px"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
+    flexDirection: "column"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, null, "Avg likes per post"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
+    bg: "#FDDFDF",
+    justifyContent: "center",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
+    type: "heart",
+    theme: "filled",
+    color: "#F12B2C"
+  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    mt: "10px",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, null, numeral__WEBPACK_IMPORTED_MODULE_8___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(influencer, 'averageLikePerPost')).format('(0.0a)')))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
+    flexDirection: "column"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, null, "Avg replies per post"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
+    bg: "#FFF6D9",
+    justifyContent: "center",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
+    type: "wechat",
+    theme: "filled",
+    color: "#F4AE1F"
+  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    mt: "10px",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, null, numeral__WEBPACK_IMPORTED_MODULE_8___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(influencer, 'averageCommentPerPost')).format('(0.0a)')))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
+    flexDirection: "column"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, null, "Avg views per video"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
+    bg: "#F8E1F3",
+    justifyContent: "center",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
+    type: "video-camera",
+    theme: "filled",
+    color: "#8857FC"
+  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    mt: "10px",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, null, numeral__WEBPACK_IMPORTED_MODULE_8___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(influencer, 'averageViewPerVideo')).format('(0.0a)')))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
+    flexDirection: "column"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, null, "Followers/Following"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
+    bg: "#DAEDFE",
+    justifyContent: "center",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
+    type: "user",
+    color: "blue"
+  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    mt: "10px",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, null, Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(influencer, 'followings') !== 0 ? numeral__WEBPACK_IMPORTED_MODULE_8___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(influencer, 'followers') / Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(influencer, 'followings')).format('(0.0a)') : 0))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
+    flexDirection: "column"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, null, "Images engagement"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
+    bg: "#FFF6D9",
+    justifyContent: "center",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
+    type: "file-image",
+    theme: "filled",
+    color: "#F4AE1F"
+  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    mt: "10px",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, null, numeral__WEBPACK_IMPORTED_MODULE_8___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(influencer, 'averageEngagementPerImage')).format('(0.00%)')))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Card, {
+    flexDirection: "column"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](CardTitle, null, "Videos engagement"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](IconContainer, {
+    bg: "#f8e1f3",
+    justifyContent: "center",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"].Icon, {
+    type: "video-camera",
+    theme: "filled",
+    color: "#cb38ae"
+  }))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
+    flexDirection: "row",
+    mt: "10px",
+    alignItems: "center"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](NumberTag, null, numeral__WEBPACK_IMPORTED_MODULE_8___default()(Object(lodash__WEBPACK_IMPORTED_MODULE_4__["get"])(influencer, 'averageEngagementPerVideo')).format('(0.00%)'))))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Grid, {
+    gridGap: 10,
+    gridTemplateColumns: "1fr 1fr",
+    mt: "60px"
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Box, {
+    style: {
+      background: '#ffffff'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_chartjs_2__WEBPACK_IMPORTED_MODULE_5__["Line"], {
+    data: followersReport
+  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Box, {
+    style: {
+      background: '#ffffff'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_chartjs_2__WEBPACK_IMPORTED_MODULE_5__["Line"], {
+    data: engagementReport
+  }))));
+});
+
+/***/ }),
+
+/***/ "./features/influencer/detail/component/Tab.tsx":
+/*!******************************************************!*\
+  !*** ./features/influencer/detail/component/Tab.tsx ***!
+  \******************************************************/
+/*! exports provided: TAB_KEYS, Tab */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TAB_KEYS", function() { return TAB_KEYS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tab", function() { return Tab; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+var TabContainer = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.ul.withConfig({
+  displayName: "Tab__TabContainer",
+  componentId: "qt2xnk-0"
+})(["display:flex;flex-direction:row;align-items:center;position:absolute;bottom:0;left:20px;margin-bottom:0;padding-inline-start:0;"]);
+var TabItem = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.li.withConfig({
+  displayName: "Tab__TabItem",
+  componentId: "qt2xnk-1"
+})(["list-style-type:none;padding:0 10px 5px 10px;border-bottom:1.5px solid ", ";a{color:", ";font-weight:600;}"], function (_ref) {
+  var isActive = _ref.isActive;
+  return isActive ? '#700940' : 'transparent';
+}, function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.colors.grey100;
+});
+var TAB_KEYS = {
+  stats: 'stats',
+  media: 'media',
+  analytics: 'analytics'
+};
+var tabs = [{
+  title: 'Stats',
+  name: TAB_KEYS.stats
+}, {
+  title: 'Media',
+  name: TAB_KEYS.media
+}, {
+  title: 'Analytics',
+  name: TAB_KEYS.analytics
+}];
+var Tab = function Tab(_ref3) {
+  var tab = _ref3.tab;
+  return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](TabContainer, null, tabs.map(function (el, index) {
+    return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](TabItem, {
+      isActive: tab === el.name,
+      key: index
+    }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      href: {
+        pathname: next_router__WEBPACK_IMPORTED_MODULE_4___default.a.pathname,
+        query: Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, next_router__WEBPACK_IMPORTED_MODULE_4___default.a.query, {
+          tab: el.name
+        })
+      }
+    }, el.title));
+  }));
+};
+
+/***/ }),
+
+/***/ "./features/influencer/detail/index.ts":
+/*!*********************************************!*\
+  !*** ./features/influencer/detail/index.ts ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _InfluencerRanking__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InfluencerRanking */ "./features/influencer-ranking/InfluencerRanking.tsx");
+/* harmony import */ var _InfluencerDetail__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InfluencerDetail */ "./features/influencer/detail/InfluencerDetail.tsx");
 
-/* harmony default export */ __webpack_exports__["default"] = (_InfluencerRanking__WEBPACK_IMPORTED_MODULE_0__["InfluencerRanking"]);
+/* harmony default export */ __webpack_exports__["default"] = (_InfluencerDetail__WEBPACK_IMPORTED_MODULE_0__["InfluencerDetail"]);
+
+/***/ }),
+
+/***/ "./features/influencer/static/context.ts":
+/*!***********************************************!*\
+  !*** ./features/influencer/static/context.ts ***!
+  \***********************************************/
+/*! exports provided: InfluencerDetailContext, useInfluencerDetailContext */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfluencerDetailContext", function() { return InfluencerDetailContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useInfluencerDetailContext", function() { return useInfluencerDetailContext; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var InfluencerDetailContext = react__WEBPACK_IMPORTED_MODULE_0__["createContext"](undefined);
+var useInfluencerDetailContext = function useInfluencerDetailContext() {
+  return react__WEBPACK_IMPORTED_MODULE_0__["useContext"](InfluencerDetailContext);
+};
 
 /***/ }),
 
@@ -2302,7 +3369,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************!*\
   !*** ./packages/core/src/hooks/index.ts ***!
   \******************************************/
-/*! exports provided: useEffectOnce, usePrevious, useWindowSize, useViewModel */
+/*! exports provided: useEffectOnce, usePrevious, useViewModel */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2313,12 +3380,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _usePrevious__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./usePrevious */ "./packages/core/src/hooks/usePrevious.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "usePrevious", function() { return _usePrevious__WEBPACK_IMPORTED_MODULE_1__["usePrevious"]; });
 
-/* harmony import */ var _useWindowSize__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useWindowSize */ "./packages/core/src/hooks/useWindowSize.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useWindowSize", function() { return _useWindowSize__WEBPACK_IMPORTED_MODULE_2__["useWindowSize"]; });
-
-/* harmony import */ var _useViewModel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useViewModel */ "./packages/core/src/hooks/useViewModel.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useViewModel", function() { return _useViewModel__WEBPACK_IMPORTED_MODULE_3__["useViewModel"]; });
-
+/* harmony import */ var _useViewModel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useViewModel */ "./packages/core/src/hooks/useViewModel.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useViewModel", function() { return _useViewModel__WEBPACK_IMPORTED_MODULE_2__["useViewModel"]; });
 
 
 
@@ -2391,54 +3454,6 @@ var useViewModel = function useViewModel(VmConstructor, params) {
   }
 
   return vmRef.current;
-};
-
-/***/ }),
-
-/***/ "./packages/core/src/hooks/useWindowSize.ts":
-/*!**************************************************!*\
-  !*** ./packages/core/src/hooks/useWindowSize.ts ***!
-  \**************************************************/
-/*! exports provided: useWindowSize */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useWindowSize", function() { return useWindowSize; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-
-
-var useWindowSize = function useWindowSize() {
-  var isClient = typeof window === 'object';
-  var getSize = Object(react__WEBPACK_IMPORTED_MODULE_1__["useCallback"])(function () {
-    return {
-      width: isClient ? window.innerWidth : undefined,
-      height: isClient ? window.innerHeight : undefined
-    };
-  }, [isClient]);
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(getSize),
-      _useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState, 2),
-      windowSize = _useState2[0],
-      setWindowSize = _useState2[1];
-
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    if (!isClient) {
-      return false;
-    }
-
-    function handleResize() {
-      setWindowSize(getSize());
-    }
-
-    window.addEventListener('resize', handleResize);
-    return function () {
-      return window.removeEventListener('resize', handleResize);
-    };
-  }, [getSize, isClient]);
-  return windowSize;
 };
 
 /***/ }),
@@ -2651,35 +3666,6 @@ var convertFileSize = function convertFileSize(value) {
 
 /***/ }),
 
-/***/ "./packages/core/src/utils/date.ts":
-/*!*****************************************!*\
-  !*** ./packages/core/src/utils/date.ts ***!
-  \*****************************************/
-/*! exports provided: isBeforeDays */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBeforeDays", function() { return isBeforeDays; });
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "moment");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-
-
-var isBeforeDays = function isBeforeDays(date, numOfDay) {
-  if (Object(lodash__WEBPACK_IMPORTED_MODULE_1__["isEmpty"])(date)) {
-    return false;
-  }
-
-  var endDate = moment__WEBPACK_IMPORTED_MODULE_0__(date, 'YYYY-MM-DD');
-  var currentDate = moment__WEBPACK_IMPORTED_MODULE_0__().startOf('day');
-  var duration = moment__WEBPACK_IMPORTED_MODULE_0__["duration"](endDate - currentDate).asDays();
-  return duration <= numOfDay && duration > 0;
-};
-
-/***/ }),
-
 /***/ "./packages/core/src/utils/downloadLink.ts":
 /*!*************************************************!*\
   !*** ./packages/core/src/utils/downloadLink.ts ***!
@@ -2822,7 +3808,7 @@ var getBase64 = function getBase64(file) {
 /*!******************************************!*\
   !*** ./packages/core/src/utils/index.ts ***!
   \******************************************/
-/*! exports provided: selectTagNormalizer, toRegExp, testRegExpString, redirect, auth, getToken, normalizeAccessLevel, trimData, downloadLink, convertFileSize, getBase64, generateString, useFormVisited, checkTouchedForm, isMatchKeyword, isBeforeDays, mapMasterDataOptions, toRawObject, extractEmails */
+/*! exports provided: selectTagNormalizer, toRegExp, testRegExpString, redirect, auth, getToken, normalizeAccessLevel, trimData, downloadLink, convertFileSize, getBase64, generateString, useFormVisited, checkTouchedForm, isMatchKeyword, mapMasterDataOptions, toRawObject, extractEmails */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2869,18 +3855,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _isMatchKeyword__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./isMatchKeyword */ "./packages/core/src/utils/isMatchKeyword.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isMatchKeyword", function() { return _isMatchKeyword__WEBPACK_IMPORTED_MODULE_11__["isMatchKeyword"]; });
 
-/* harmony import */ var _date__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./date */ "./packages/core/src/utils/date.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isBeforeDays", function() { return _date__WEBPACK_IMPORTED_MODULE_12__["isBeforeDays"]; });
+/* harmony import */ var _mapMasterDataOptions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./mapMasterDataOptions */ "./packages/core/src/utils/mapMasterDataOptions.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mapMasterDataOptions", function() { return _mapMasterDataOptions__WEBPACK_IMPORTED_MODULE_12__["mapMasterDataOptions"]; });
 
-/* harmony import */ var _mapMasterDataOptions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./mapMasterDataOptions */ "./packages/core/src/utils/mapMasterDataOptions.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mapMasterDataOptions", function() { return _mapMasterDataOptions__WEBPACK_IMPORTED_MODULE_13__["mapMasterDataOptions"]; });
+/* harmony import */ var _toRawObject__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./toRawObject */ "./packages/core/src/utils/toRawObject.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "toRawObject", function() { return _toRawObject__WEBPACK_IMPORTED_MODULE_13__["toRawObject"]; });
 
-/* harmony import */ var _toRawObject__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./toRawObject */ "./packages/core/src/utils/toRawObject.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "toRawObject", function() { return _toRawObject__WEBPACK_IMPORTED_MODULE_14__["toRawObject"]; });
-
-/* harmony import */ var _extractEmail__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./extractEmail */ "./packages/core/src/utils/extractEmail.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "extractEmails", function() { return _extractEmail__WEBPACK_IMPORTED_MODULE_15__["extractEmails"]; });
-
+/* harmony import */ var _extractEmail__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./extractEmail */ "./packages/core/src/utils/extractEmail.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "extractEmails", function() { return _extractEmail__WEBPACK_IMPORTED_MODULE_14__["extractEmails"]; });
 
 
 
@@ -5729,10 +6711,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../layout */ "./packages/ui/src/layout/index.ts");
-/* harmony import */ var _components_SearchContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../components/SearchContainer */ "./components/SearchContainer.tsx");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
-
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -5746,6 +6726,7 @@ var Header = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(_layout__W
 });
 var MasterLayout = function MasterLayout(_ref2) {
   var RightAction = _ref2.rightAction,
+      SearchContainer = _ref2.searchComponent,
       children = _ref2.children;
   return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_layout__WEBPACK_IMPORTED_MODULE_2__["Flex"], {
     flexDirection: "column",
@@ -5764,12 +6745,12 @@ var MasterLayout = function MasterLayout(_ref2) {
   }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
     src: "/static/image/small-logo.png",
     onClick: function onClick() {
-      return next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push('/');
+      return next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push('/');
     },
     style: {
       cursor: 'pointer'
     }
-  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RightAction, null)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_components_SearchContainer__WEBPACK_IMPORTED_MODULE_3__["SearchContainer"], null)), children);
+  }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](RightAction, null)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SearchContainer, null)), children);
 };
 
 /***/ }),
@@ -5791,8 +6772,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _frontend_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @frontend/ui */ "./packages/ui/src/index.ts");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../components */ "./components/index.ts");
-
 
 
 
@@ -5805,7 +6784,8 @@ var Header = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(_frontend_
   return theme.colors.primary;
 });
 var SecondaryLayout = function SecondaryLayout(_ref2) {
-  var children = _ref2.children;
+  var children = _ref2.children,
+      actionButton = _ref2.actionButton;
   return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_frontend_ui__WEBPACK_IMPORTED_MODULE_2__["Layout"].Flex, {
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -5824,7 +6804,7 @@ var SecondaryLayout = function SecondaryLayout(_ref2) {
     style: {
       cursor: 'pointer'
     }
-  })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_components__WEBPACK_IMPORTED_MODULE_4__["AuthorizedUserBtnGr"], null)), children);
+  })), actionButton), children);
 };
 
 /***/ }),
@@ -6444,8 +7424,7 @@ var Select = function Select(props) {
         renderLabel = _ref.renderLabel;
     return react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_CoreSelect__WEBPACK_IMPORTED_MODULE_2__["Option"], {
       key: index,
-      value: value,
-      label: label
+      value: value
     }, renderLabel || label);
   }));
 };

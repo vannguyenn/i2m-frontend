@@ -14,6 +14,7 @@ import { useEffectOnce } from 'react-use'
 import numeral from 'numeral'
 import Router from 'next/router'
 import { Spin } from '@frontend/ui/src/spin'
+import { SearchContainer } from '../../components/SearchContainer'
 
 const CustomCard = styled(Card.Card)`
   width: 100%;
@@ -132,6 +133,7 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
+      searchComponent={SearchContainer}
     >
       <Spin spinning={influencerRankingViewModel.isLoading}>
         <Content flexDirection="column">

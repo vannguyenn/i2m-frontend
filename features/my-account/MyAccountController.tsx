@@ -23,6 +23,7 @@ import Link from 'next/link'
 import { field } from '@frontend/core/src/validate'
 import { Upload, Icon } from 'antd'
 import { Grid } from '@frontend/ui/src/layout'
+import { SearchContainer } from '../../components/SearchContainer'
 
 const Content = styled(Layout.Flex)`
   min-height: calc(100vh - 150px);
@@ -218,6 +219,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
+      searchComponent={SearchContainer}
     >
       <Content flexDirection="column" justifyContent="flex-start">
         <Title>Account Setting</Title>
