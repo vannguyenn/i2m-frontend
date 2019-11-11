@@ -298,17 +298,17 @@ export class MyInfluencerViewModel {
   }
 
   @action
- async downloadFile(fileName:string){
+  async downloadFile(fileName: string) {
     try {
-    await confessionService.downloadFile(fileName)
-    notification.success({
-      message: `Download file ${fileName} successfully.`,
-      duration: 3,
-      placement: 'bottomLeft',
-    })
-  
+      await confessionService.downloadFile(fileName)
+
+      notification.success({
+        message: `Download file ${fileName} successfully.`,
+        duration: 3,
+        placement: 'bottomLeft',
+      })
     } catch (error) {
-     // this.isLoading = false
+      // this.isLoading = false
       notification.error({
         message: `Download file ${fileName} failed.`,
         duration: 3,

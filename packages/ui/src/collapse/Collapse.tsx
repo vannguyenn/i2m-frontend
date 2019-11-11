@@ -44,6 +44,7 @@ interface IHistorySendMail {
   fullName: string
   email: string
   influEmail: string
+  fileName: string
 }
 const customPanelStyle = {
   background: 'white',
@@ -65,7 +66,7 @@ const formatDate = date => {
 }
 
 export const CollapseForm: React.FunctionComponent<IPropHistory> = observer(
-  ({ listHistorySendMail,downloadFile }) => {
+  ({ listHistorySendMail, downloadFile }) => {
     return (
       <Collapse
         accordion
@@ -99,7 +100,7 @@ export const CollapseForm: React.FunctionComponent<IPropHistory> = observer(
                 <TimeStamp>
                   {`${item.sent ? item.fullName : item.influName} <${
                     item.sent ? item.email : item.influEmail
-                    }> wrote:`}
+                  }> wrote:`}
                 </TimeStamp>
                 <Grid mt="15px">
                   <TextEditorView color="black85" description={item.body} />
@@ -107,18 +108,20 @@ export const CollapseForm: React.FunctionComponent<IPropHistory> = observer(
 
                 {item.fileUrl && (
                   <FileUrl>
-                    Download file :
-                    <a onClick={()=>downloadFile(item.fileUrl)}>{item.fileUrl}</a>
+                    Download file:
+                    <a href={item.fileUrl} target="_blank">
+                      {item.fileName}
+                    </a>
                   </FileUrl>
                 )}
               </Layout.Flex>
             </Panel>
           ))
         ) : (
-            <EmailSubject style={{ paddingTop: '30px' }}>
-              <Empty.Empty />
-            </EmailSubject>
-          )}
+          <EmailSubject style={{ paddingTop: '30px' }}>
+            <Empty.Empty />
+          </EmailSubject>
+        )}
       </Collapse>
     )
   }

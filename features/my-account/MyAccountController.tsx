@@ -8,6 +8,7 @@ import {
   Button,
   Avatar,
   notification,
+  Spin,
 } from '@frontend/ui'
 import styled from 'styled-components'
 import { Field, Form, FormRenderProps } from 'react-final-form'
@@ -168,7 +169,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
       return error
     }
   }
-  
+
   const [imageUrl, setImageUrl] = React.useState('/static/image/user.png')
   const [loading, setLoading] = React.useState(false)
   function getBase64(img, callback) {
@@ -185,25 +186,24 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
       uploadAvatar(info.file.originFileObj)
       getBase64(info.file.originFileObj, imageUrl => {
         setImageUrl(imageUrl)
-        setLoading(false)
       })
     }
   }
 
-  const uploadAvatar = async (urlAvt) => {
+  const uploadAvatar = async urlAvt => {
     try {
       const data = new FormData()
       data.append('file', urlAvt)
       await appModel.profileModel.updateAvatar(data)
+      await appModel.profileModel.getCurrentUser()
+      setLoading(false)
       Router.push(PATHS.myProfile)
       notification.success({
         message: MESSAGES.SAVE_SUCESS,
         duration: 4,
         placement: 'bottomLeft',
       })
-     
     } catch (error) {
-
       setImageUrl('/static/image/user.png')
       notification.error({
         message: 'Upload avata failed.',
@@ -237,20 +237,29 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
               showUploadList={false}
               onChange={handleChange}
             >
-              <Icon
+              {/* <Icon
                 type={loading ? 'loading' : 'null'}
                 style={{
                   zIndex: 6,
                   position: 'absolute',
                   marginLeft: '65px',
                 }}
-              />
-
-              {profileImage ? (
-                <Avatar.Avatar src={currentUser.imgUrl} size={150} />
-              ) : (
-                <Avatar.Avatar src={imageUrl} size={150} />
-              )}
+              /> */}
+              <Spin.Spin spinning={loading}>
+                {profileImage ? (
+                  <Avatar.Avatar
+                    style={{ cursor: 'pointer' }}
+                    src={currentUser.imgUrl}
+                    size={150}
+                  />
+                ) : (
+                  <Avatar.Avatar
+                    style={{ cursor: 'pointer' }}
+                    src={imageUrl}
+                    size={150}
+                  />
+                )}
+              </Spin.Spin>
             </Upload>
           </Layout.Flex>
 
