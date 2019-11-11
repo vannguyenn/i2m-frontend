@@ -1,6 +1,14 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Layout, Button, Input, Card, Icon, Spin } from '@frontend/ui'
+import {
+  Layout,
+  Button,
+  Input,
+  Card,
+  Icon,
+  Spin,
+  notification,
+} from '@frontend/ui'
 import { map } from 'lodash'
 import { PATHS } from '@frontend/constants'
 import Router from 'next/router'
@@ -85,7 +93,11 @@ export const HomeController: React.FunctionComponent = observer(() => {
   const token = appModel.authModel.token
 
   useEffectOnce(() => {
-    homeViewModel.getSuggestedInfluencers()
+    try {
+      homeViewModel.getSuggestedInfluencers()
+    } catch (error) {
+      notification.error({ message: error })
+    }
   })
   const onChange = (e: any) => {
     const value = e.target.value

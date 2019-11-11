@@ -2,11 +2,7 @@ import { influencerService } from '@frontend/services'
 import { action, observable, runInAction } from 'mobx'
 import { AppModel } from '../../models'
 import { IInfluencerProps } from '@frontend/constants'
-import { map } from 'lodash'
 
-interface ILoadMoreProps {
-  moreInfluencers: IInfluencerProps[]
-}
 export class HomeViewModel {
   appModel: AppModel = null
   @observable suggestedInfluencers: IInfluencerProps[] = []
@@ -18,20 +14,24 @@ export class HomeViewModel {
 
   @action
   async getSuggestedInfluencers() {
-    this.isFetching = true
-    let { data } = await influencerService.suggestInfluencer<
-      IInfluencerProps[]
-    >()
+    try {
+      this.isFetching = true
+      let { data } = await influencerService.suggestInfluencer<
+        IInfluencerProps[]
+      >()
 
-    if (data && data.length < 9) {
-      const newData = await this.loadMoreInfluencer(9 - data.length)
-      data = [...data, ...newData]
-    }
+      if (data && data.length < 9) {
+        const newData = await this.loadMoreInfluencer(9 - data.length)
+        data = [...data, ...newData]
+      }
 
-    runInAction(() => {
+      runInAction(() => {
+        this.isFetching = false
+        this.suggestedInfluencers = data
+      })
+    } catch (error) {
       this.isFetching = false
-      this.suggestedInfluencers = data
-    })
+    }
   }
 
   @action

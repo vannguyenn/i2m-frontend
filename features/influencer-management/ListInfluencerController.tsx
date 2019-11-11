@@ -38,6 +38,7 @@ import { field } from '@frontend/core/src/validate'
 
 import { Icon as AntIcon, Button as AntButton } from 'antd'
 import { SelectField } from '@frontend/ui/src/select'
+import { AuthorizedUserBtnGr } from '../../components'
 
 const MODALPROPS = {
   title: 'Send Mail',
@@ -460,7 +461,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
     }
 
     return (
-      <MasterLayout.SecondaryLayout>
+      <MasterLayout.SecondaryLayout actionButton={AuthorizedUserBtnGr}>
         <Spin.Spin spinning={isInitializing}>
           <Content flexDirection="row" alignItems="flex-start">
             <LeftPanel flexDirection="column" justifyContent="flex-start">

@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Flex } from '../layout'
-import { SearchContainer } from '../../../../components/SearchContainer'
 import Router from 'next/router'
 
 const Header = styled(Flex)`
@@ -11,10 +10,12 @@ const Header = styled(Flex)`
 
 export interface IMasterLayoutProps {
   rightAction?: React.FunctionComponent
+  searchComponent?: React.FunctionComponent
 }
 
 export const MasterLayout: React.FunctionComponent<IMasterLayoutProps> = ({
   rightAction: RightAction,
+  searchComponent: SearchContainer,
   children,
 }) => {
   return (

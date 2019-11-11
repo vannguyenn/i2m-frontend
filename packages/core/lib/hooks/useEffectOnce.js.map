@@ -1,0 +1,1 @@
+{"version":3,"file":"useEffectOnce.js","sourceRoot":"","sources":["../../src/hooks/useEffectOnce.ts"],"names":[],"mappings":";;AAAA,+BAAiD;AAEpC,QAAA,aAAa,GAAG,UAAC,MAAsB;IAClD,OAAA,iBAAS,CAAC;QACR,MAAM,EAAE,CAAA;QACR,uDAAuD;IACzD,CAAC,EAAE,EAAE,CAAC;AAHN,CAGM,CAAA"}

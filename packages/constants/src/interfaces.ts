@@ -1,6 +1,10 @@
 import * as React from 'react'
 import { AxiosResponse } from 'axios'
-import { ICategory } from '../../../models/AuthModel'
+
+export interface ICategory {
+  id: string
+  name: string
+}
 
 export interface ILayoutProps {
   labelCol?: object

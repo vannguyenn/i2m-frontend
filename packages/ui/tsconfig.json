@@ -13,16 +13,18 @@
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
+    "composite": true,
+    "types": ["reflect-metadata"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "declaration": true,
-    "resolveJsonModule": true,
-    "rootDirs": ["./src", "./stories"],
+    "rootDir": "./src",
     "baseUrl": ".",
     "paths": {
       "@frontend/ui": ["./src"],
       "@frontend/ui/*": ["./src/*"]
     },
-    "outDir": "lib"
-  }
+    "outDir": "./lib"
+  },
+  "include": ["src/**/*"]
 }

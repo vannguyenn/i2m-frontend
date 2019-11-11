@@ -31,6 +31,7 @@ import { validate } from '@frontend/core'
 import { MESSAGES } from '@frontend/constants'
 import { InfluencerDetailContext } from '../static/context'
 import { Grid } from '@frontend/ui/src/layout'
+import { SearchContainer } from '../../../components/SearchContainer'
 
 const MODAL_PROPS = {
   title: 'Save to My List',
@@ -204,6 +205,7 @@ export const InfluencerDetail: React.FunctionComponent<
     <InfluencerDetailContext.Provider value={providerValue}>
       <MasterLayout.MasterLayout
         rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
+        searchComponent={SearchContainer}
       >
         <Spin.Spin spinning={isFetching}>
           <Content flexDirection="column">

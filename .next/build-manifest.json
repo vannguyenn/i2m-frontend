@@ -1,25 +1,77 @@
 {
-  "devFiles": [
-    "static/development/dll/dll_4b0746e12e4485c42d64.js"
-  ],
+  "devFiles": [],
   "pages": {
+    "/": [
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
+    ],
     "/_app": [
-      "static/runtime/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
     ],
     "/_error": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
+    ],
+    "/change-password": [
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
+    ],
+    "/index": [
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
     ],
     "/influencers": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
     ],
     "/influencers/detail": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
+    ],
+    "/influencers/ranking": [
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
+    ],
+    "/login": [
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
+    ],
+    "/my-account": [
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
+    ],
+    "/my-influencers": [
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
+    ],
+    "/register": [
+      "static/runtime/webpack-a1617afecf7e75a5308e.js",
+      "static/css/commons.4b7f5633.chunk.css",
+      "static/chunks/commons.9774868a8c10a6453e97.js",
+      "static/runtime/main-e102e267ee0d8ae2d252.js"
     ]
   }
 }

@@ -97,7 +97,8 @@ export class AppModel {
         this.isLast = data.last
       })
     } catch (error) {
-      return error
+      this.isFetchingInfluencers = false
+      throw error
     }
   }
 

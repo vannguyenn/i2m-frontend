@@ -1,0 +1,1 @@
+{"version":3,"file":"AppContext.js","sourceRoot":"","sources":["../../src/context/AppContext.ts"],"names":[],"mappings":";;AAAA,6BAA8B;AAEjB,QAAA,UAAU,GAAG,KAAK,CAAC,aAAa,CAAM,SAAS,CAAC,CAAA;AAEhD,QAAA,aAAa,GAAG;IAC3B,OAAO,KAAK,CAAC,UAAU,CAAC,kBAAU,CAAM,CAAA;AAC1C,CAAC,CAAA"}

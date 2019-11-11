@@ -16,7 +16,7 @@ const DEFAULT_FILTER = (input: any, option: any) => {
 export const Select: React.FunctionComponent<ISelectProps> = props => (
   <CoreSelect showSearch filterOption={DEFAULT_FILTER} {...props}>
     {map(props.options, ({ value, label, renderLabel }, index) => (
-      <Option key={index} value={value} label={label}>
+      <Option key={index} value={value}>
         {renderLabel || label}
       </Option>
     ))}

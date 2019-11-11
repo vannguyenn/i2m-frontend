@@ -1,0 +1,10 @@
+"use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var styled_components_1 = require("styled-components");
+exports.notificationStyle = styled_components_1.css(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  .ant-notification {\n    width: auto !important;\n  }\n  .grove-notification {\n    &.ant-notification-notice {\n      display: flex;\n      align-items: center;\n      padding: 0 24px;\n      height: 56px;\n    }\n    .ant-notification-notice-content {\n      width: 100%;\n      line-height: 56px;\n    }\n    .ant-notification-notice-message {\n      width: 100%;\n    }\n    &.ant-notification-notice-closable .ant-notification-notice-message {\n      padding-right: 14px;\n    }\n    .ant-notification-notice-with-icon {\n      display: flex;\n      align-items: center;\n\n      .ant-notification-notice-message {\n        margin-bottom: 0;\n        min-width: calc(100% - 48px);\n      }\n    }\n    .ant-notification-notice-close {\n      right: 26px;\n    }\n  }\n"], ["\n  .ant-notification {\n    width: auto !important;\n  }\n  .grove-notification {\n    &.ant-notification-notice {\n      display: flex;\n      align-items: center;\n      padding: 0 24px;\n      height: 56px;\n    }\n    .ant-notification-notice-content {\n      width: 100%;\n      line-height: 56px;\n    }\n    .ant-notification-notice-message {\n      width: 100%;\n    }\n    &.ant-notification-notice-closable .ant-notification-notice-message {\n      padding-right: 14px;\n    }\n    .ant-notification-notice-with-icon {\n      display: flex;\n      align-items: center;\n\n      .ant-notification-notice-message {\n        margin-bottom: 0;\n        min-width: calc(100% - 48px);\n      }\n    }\n    .ant-notification-notice-close {\n      right: 26px;\n    }\n  }\n"])));
+var templateObject_1;
+//# sourceMappingURL=notification.js.map
