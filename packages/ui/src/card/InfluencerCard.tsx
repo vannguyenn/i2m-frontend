@@ -46,6 +46,7 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
   followers,
   engagement,
   width,
+  averageLikePerPost,
 }) => {
   return (
     <Card
@@ -91,7 +92,9 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
             alignItems="center"
           >
             <Title>LIKES PER POST</Title>
-            <NumberContainer>{0}</NumberContainer>
+            <NumberContainer>
+              {numeral(averageLikePerPost).format('(0a)')}
+            </NumberContainer>
           </Flex>
         </Grid>
       </Flex>

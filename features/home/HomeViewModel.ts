@@ -31,14 +31,19 @@ export class HomeViewModel {
       })
     } catch (error) {
       this.isFetching = false
+      console.log('TODO: ', error)
     }
   }
 
   @action
-  async loadMoreInfluencer(limit: number) {
-    const { data } = await influencerService.loadMoreInfluencer<
-      IInfluencerProps[]
-    >(limit)
-    return data
+  loadMoreInfluencer = async (limit: number) => {
+    try {
+      const { data } = await influencerService.loadMoreInfluencer<
+        IInfluencerProps[]
+      >(limit)
+      return data
+    } catch (error) {
+      console.log('TODO: ', error)
+    }
   }
 }

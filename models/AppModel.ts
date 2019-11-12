@@ -41,25 +41,12 @@ export class AppModel {
 
     this.authModel = new AuthModel()
     this.profileModel = new ProfileModel(this)
-    reaction(
-      () => this.sortBy,
-      () => {
-        this.searchInfluencers(0)
-      },
-      { fireImmediately: true }
-    )
-    reaction(
-      () => this.globalSearch,
-      () => {
-        this.searchInfluencers(0)
-      },
-      { fireImmediately: true }
-    )
   }
 
   @action
   changeGlobalSearch(search: string) {
     this.globalSearch = search
+    this.searchInfluencers(0)
   }
 
   @action
@@ -105,6 +92,7 @@ export class AppModel {
   @action
   changeSortBy(sortBy: string) {
     this.sortBy = sortBy
+    this.searchInfluencers(0)
   }
 
   @action
@@ -139,12 +127,16 @@ export class AppModel {
     this.searchInfluencers(0)
   }
   @action
-  async getCategories() {
-    const { data } = await categoryService.getCategories<ICategory[]>()
+  getCategories = async () => {
+    try {
+      const { data } = await categoryService.getCategories<ICategory[]>()
 
-    runInAction(() => {
-      this.categories = data
-    })
+      runInAction(() => {
+        this.categories = data
+      })
+    } catch (error) {
+      console.log('TODO: ', error)
+    }
   }
 }
 

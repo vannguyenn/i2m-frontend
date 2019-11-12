@@ -24,15 +24,19 @@ export class InfluencerRankingViewModel {
   }
 
   @action
-  async getTopInfluencer() {
-    this.isLoading = true
-    const { data } = await influencerService.getTopInfluencer<
-      ITopInfluencerProps[]
-    >()
+  getTopInfluencer = async () => {
+    try {
+      this.isLoading = true
+      const { data } = await influencerService.getTopInfluencer<
+        ITopInfluencerProps[]
+      >()
 
-    this.isLoading = false
-    runInAction(() => {
-      this.topInfluencers = data
-    })
+      this.isLoading = false
+      runInAction(() => {
+        this.topInfluencers = data
+      })
+    } catch (error) {
+      console.log('TODO: ', error)
+    }
   }
 }

@@ -93,11 +93,15 @@ export class AuthModel {
   }
 
   @action
-  async getCategories() {
-    const { data } = await categoryService.getCategories<ICategory[]>()
-    runInAction(() => {
-      this.categories = data
-    })
-    return data
+  getCategories = async () => {
+    try {
+      const { data } = await categoryService.getCategories<ICategory[]>()
+      runInAction(() => {
+        this.categories = data
+      })
+      return data
+    } catch (error) {
+      console.log('TODO: ' + error)
+    }
   }
 }

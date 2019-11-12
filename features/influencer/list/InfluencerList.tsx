@@ -264,7 +264,7 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
                 justifyContent="space-between"
               >
                 Sort by
-                <SortSelect defaultValue="followers" onChange={onSortChange}>
+                <SortSelect value={appModel.sortBy} onChange={onSortChange}>
                   <Select.Option value="followers">Followers</Select.Option>
                   <Select.Option value="engagement">Engagement</Select.Option>
                 </SortSelect>
