@@ -145,6 +145,7 @@ export class AppModel {
     this.minEngagement = 0
     this.maxEngagement = 100
     this.minFollowers = 1000
+    this.maxFollowers = undefined
     this.currentCategories = []
     this.influencerCategory = ''
     this.searchInfluencers(0)

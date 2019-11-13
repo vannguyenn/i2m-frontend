@@ -7,6 +7,7 @@ import { context, utils } from '@frontend/core'
 import { PATHS } from '@frontend/constants'
 import { observer } from 'mobx-react-lite'
 import * as client from '@frontend/services'
+import { isEmpty } from 'lodash'
 
 const AppProvider: React.FunctionComponent<I2MAppProps> = observer(
   ({
@@ -20,7 +21,9 @@ const AppProvider: React.FunctionComponent<I2MAppProps> = observer(
       const token = appModel.authModel.token
 
       if (token) {
-        appModel.profileModel.init(currentUser)
+        !isEmpty(currentUser)
+          ? appModel.profileModel.init(currentUser)
+          : appModel.profileModel.getCurrentUser()
       }
 
       if (
