@@ -1,6 +1,6 @@
 import { categoryService } from './../packages/services/src/index'
 import { action, observable, reaction, runInAction } from 'mobx'
-import { authService } from '@frontend/services'
+import { authService, profileService } from '@frontend/services'
 import { KEYS, I2MResponse, PATHS } from '@frontend/constants'
 import * as cookies from 'js-cookie'
 import Router from 'next/router'
@@ -61,6 +61,7 @@ export class AuthModel {
         this.tokenExpires = data.rememberMe ? 30 : 1
         this.token = accessToken
       })
+      await profileService.getCurrentUser()
       utils.redirect(undefined, cookies.get(KEYS.REDIRECT_URL))
       return Promise.resolve()
     } catch (error) {

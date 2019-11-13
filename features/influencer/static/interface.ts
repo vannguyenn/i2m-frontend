@@ -15,6 +15,7 @@ export interface IMediaSection {
 
 export interface IAnalyticSection {
   posts: IPostProps[]
+  lastUpdate: any
 }
 
 export interface IStatsSection {

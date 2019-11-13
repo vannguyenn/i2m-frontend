@@ -1,10 +1,9 @@
-import { map } from 'lodash'
 import { categoryService } from './../packages/services/src/index'
 import { ProfileModel, ICategory } from './ProfileModel'
 import { NotificationStore } from '@frontend/core/src/stores'
 import { notification } from 'antd'
 import { AuthModel } from './AuthModel'
-import { observable, action, runInAction, reaction } from 'mobx'
+import { observable, action, runInAction } from 'mobx'
 import { IInfluencerProps } from '@frontend/constants'
 import { influencerService } from '@frontend/services'
 
@@ -35,6 +34,7 @@ export class AppModel {
   @observable maxEngagement: number = 100
   @observable categories: ICategory[]
   @observable currentCategories: string[]
+  @observable influencerCategory: string = ''
 
   constructor() {
     this.notification = new NotificationStore(notification)
@@ -74,7 +74,6 @@ export class AppModel {
         }
         this.influencerList = [...this.influencerList, ...data.content]
 
-        map(this.influencerList, el => !el.authentic && console.log(el))
         if (this.isFetchingInfluencers) {
           this.isFetchingInfluencers = false
         }
@@ -92,6 +91,29 @@ export class AppModel {
   @action
   changeSortBy(sortBy: string) {
     this.sortBy = sortBy
+    this.searchInfluencers(0)
+  }
+
+  @action
+  changeInfluencerCategory(category: string) {
+    this.influencerCategory = category
+    if (category === 'megaInfluencer') {
+      this.minFollowers = 1000000
+      this.maxFollowers = 1000000000
+    } else if (category === 'macroInfluencer') {
+      this.minFollowers = 100000
+      this.maxFollowers = 1000000
+    } else if (category === 'microInfluencer') {
+      this.minFollowers = 10000
+      this.maxFollowers = 100000
+    } else if (category === 'nanoInfluencer') {
+      this.minFollowers = 1000
+      this.maxFollowers = 10000
+    } else if (category === '') {
+      this.minFollowers = 1000
+      this.maxFollowers = 1000000000
+    }
+
     this.searchInfluencers(0)
   }
 
@@ -121,9 +143,10 @@ export class AppModel {
   @action
   resetFilter() {
     this.minEngagement = 0
-    this.maxEngagement = 5
-    this.minFollowers = 0
+    this.maxEngagement = 100
+    this.minFollowers = 1000
     this.currentCategories = []
+    this.influencerCategory = ''
     this.searchInfluencers(0)
   }
   @action

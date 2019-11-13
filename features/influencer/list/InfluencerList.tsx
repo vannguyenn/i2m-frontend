@@ -124,6 +124,11 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
   const onSortChange = (value: string) => {
     appModel.changeSortBy(value)
   }
+
+  const onCategoryChange = (value: string) => {
+    appModel.changeInfluencerCategory(value)
+  }
+
   const handleSubmitSearch = (value: any) => {
     appModel.changeMinFollowers(value.followers[0])
     !value.followers[1]
@@ -258,16 +263,38 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
               <ResultText>
                 Showing <Result>{totalInfluencers || 0}</Result> results
               </ResultText>
-              <Layout.Flex
-                alignItems="center"
-                width="200px"
-                justifyContent="space-between"
-              >
-                Sort by
-                <SortSelect value={appModel.sortBy} onChange={onSortChange}>
-                  <Select.Option value="followers">Followers</Select.Option>
-                  <Select.Option value="engagement">Engagement</Select.Option>
+              <Layout.Flex alignItems="center">
+                <SortSelect
+                  value={appModel.influencerCategory}
+                  onChange={onCategoryChange}
+                  style={{ width: '160px' }}
+                >
+                  <Select.Option value="megaInfluencer">
+                    Mega-Influencer
+                  </Select.Option>
+                  <Select.Option value="macroInfluencer">
+                    Macro-Influencer
+                  </Select.Option>
+                  <Select.Option value="microInfluencer">
+                    Micro-Influencer
+                  </Select.Option>
+                  <Select.Option value="nanoInfluencer">
+                    Nano-Influencer
+                  </Select.Option>
+                  <Select.Option value="">All Influencers</Select.Option>
                 </SortSelect>
+                <Layout.Flex
+                  alignItems="center"
+                  width="200px"
+                  justifyContent="space-between"
+                  ml="20px"
+                >
+                  Sort by
+                  <SortSelect value={appModel.sortBy} onChange={onSortChange}>
+                    <Select.Option value="followers">Followers</Select.Option>
+                    <Select.Option value="engagement">Engagement</Select.Option>
+                  </SortSelect>
+                </Layout.Flex>
               </Layout.Flex>
             </Layout.Flex>
 
