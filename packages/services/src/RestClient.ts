@@ -13,8 +13,8 @@ const DEFAULT_AXIOS_CONFIG: AxiosRequestConfig = {
 export class RestClient {
   public instance: AxiosInstance
 
-  constructor() {
-    this.instance = axios.create(DEFAULT_AXIOS_CONFIG)
+  constructor(config?: AxiosRequestConfig) {
+    this.instance = axios.create({ ...DEFAULT_AXIOS_CONFIG, ...config })
     this.instance.interceptors.request.use(config => {
       const accessToken = cookies.get(KEYS.ACCESS_TOKEN)
       if (accessToken) {

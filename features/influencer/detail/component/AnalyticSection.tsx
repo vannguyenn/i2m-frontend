@@ -1,11 +1,12 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Table } from '@frontend/ui'
+import { Table, Layout } from '@frontend/ui'
 import { observer } from 'mobx-react-lite'
 import { useInfluencerDetailContext } from '../../static/context'
 import { map } from 'lodash'
 import { IPostProps } from '@frontend/constants'
 import numeral from 'numeral'
+import * as moment from 'moment'
 
 const PostThumbnail = styled.img`
   max-width: 80px;
@@ -42,6 +43,7 @@ const columns = [
     render: likeCount => (
       <PostData>{numeral(likeCount).format('(0.0a)')}</PostData>
     ),
+    sorter: (a, b) => a.likeCount - b.likeCount,
   },
   {
     title: 'Replies',
@@ -50,11 +52,13 @@ const columns = [
     render: cmtCount => (
       <PostData>{numeral(cmtCount).format('(0.0a)')}</PostData>
     ),
+    sorter: (a, b) => a.commentCount - b.commentCount,
   },
   {
     title: 'Engagement Rate',
     dataIndex: 'engagement',
     key: 'engagement',
+    sorter: (a, b) => a.engagement - b.engagement,
     render: engagement => (
       <PostData>{numeral(engagement).format('0.00%')}</PostData>
     ),
@@ -63,6 +67,8 @@ const columns = [
     title: 'Total Reach',
     dataIndex: 'totalReach',
     key: 'totalReach',
+    defaultSortOrder: 'descend',
+    sorter: (a, b) => a.totalReach - b.totalReach,
     render: totalReach => (
       <TotalReactTag>{numeral(totalReach).format('(0.0a)')}</TotalReactTag>
     ),
@@ -78,12 +84,18 @@ const Container = styled.div`
 const Title = styled.div`
   font-weight: 600;
   font-size: 16px;
+  margin-right: 15px;
   color: ${({ theme }) => theme.colors.grey100};
-  margin-bottom: 20px;
 `
-
+const Description = styled.div`
+  color: ${({ theme }) => theme.colors.grey65};
+  font-style: italic;
+`
 export const AnalyticSection: React.FunctionComponent = observer(() => {
-  const { posts } = useInfluencerDetailContext().useAnalyticSection()
+  const {
+    posts,
+    lastUpdate,
+  } = useInfluencerDetailContext().useAnalyticSection()
 
   const normalizePost = map(posts, (p: IPostProps, index) => ({
     ...p,
@@ -92,7 +104,13 @@ export const AnalyticSection: React.FunctionComponent = observer(() => {
   }))
   return (
     <Container>
-      <Title>Recent Posts Performance</Title>
+      <Layout.Flex alignItems="center" mb="20px">
+        <Title>Recent Posts Performance</Title>
+        <Description>
+          Last update at: {moment(lastUpdate).format('DD/MM/YYYY HH:mm')}
+        </Description>
+      </Layout.Flex>
+
       <Table.Table dataSource={normalizePost} columns={columns} />
     </Container>
   )

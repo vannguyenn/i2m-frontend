@@ -25,7 +25,7 @@ import { InfluencerDetailViewModel } from './InfluencerDetailViewModel'
 import { useEffectOnce } from 'react-use'
 import { observer } from 'mobx-react-lite'
 import numeral from 'numeral'
-import { get, map, toUpper } from 'lodash'
+import { get, map, toUpper, last } from 'lodash'
 import { Form as FinalForm, Field } from 'react-final-form'
 import { validate } from '@frontend/core'
 import { MESSAGES } from '@frontend/constants'
@@ -187,6 +187,7 @@ export const InfluencerDetail: React.FunctionComponent<
 
   const useAnalyticSection = () => ({
     posts: get(influencerDetail, 'posts'),
+    lastUpdate: get(last(followerData), 'createdDate'),
   })
 
   const useStatsSection = () => ({

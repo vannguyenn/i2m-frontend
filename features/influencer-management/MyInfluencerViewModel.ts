@@ -279,11 +279,15 @@ export class MyInfluencerViewModel {
   }
 
   @action
-  async fetchEmailTemplate() {
-    const { data } = await emailTemplateService.getEmailTemplate<
-      IEmailTemplateProps[]
-    >()
-    this.emailTemplates = data
+  fetchEmailTemplate = async () => {
+    try {
+      const { data } = await emailTemplateService.getEmailTemplate<
+        IEmailTemplateProps[]
+      >()
+      this.emailTemplates = data
+    } catch (error) {
+      console.log('TODO: ', error)
+    }
   }
 
   @action

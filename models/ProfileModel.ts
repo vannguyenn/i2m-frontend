@@ -35,14 +35,23 @@ export class ProfileModel {
   }
 
   @action
-  async getCurrentUser() {
-    const { data } = await profileService.getCurrentUser<IUser>()
-    data.categories = map(data.categories, (item: any) => item.id)
-    runInAction(() => {
-      this.currentUser = data
-    })
+  init = (currentUser: IUser) => {
+    this.currentUser = currentUser
+  }
 
-    return data
+  @action
+  getCurrentUser = async () => {
+    try {
+      const { data } = await profileService.getCurrentUser<IUser>()
+
+      runInAction(() => {
+        this.currentUser = data
+      })
+
+      return data
+    } catch (error) {
+      console.log('TODO: ', error)
+    }
   }
 
   @action

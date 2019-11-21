@@ -138,11 +138,17 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
 
   useEffectOnce(() => {
-    appModel.profileModel.getCurrentUser()
     appModel.authModel.getCategories()
+    appModel.profileModel.getCurrentUser()
   })
   const token = appModel.authModel.token
-  const currentUser = appModel.profileModel.currentUser
+  const currentUser = {
+    ...appModel.profileModel.currentUser,
+    categories: map(
+      appModel.profileModel.currentUser.categories,
+      ({ id }) => id
+    ),
+  }
   const profileImage = currentUser && currentUser.imgUrl
 
   const categories = appModel.authModel.categories
@@ -150,7 +156,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
     value: cate.id,
     label: cate.name,
   }))
-
+  // console.log(currentUser)
   const handleSubmit = async (value: any) => {
     try {
       await appModel.profileModel.updateCurrentUser(value)

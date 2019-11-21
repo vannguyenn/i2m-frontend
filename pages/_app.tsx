@@ -6,16 +6,24 @@ import { appModel } from '../models'
 import { context, utils } from '@frontend/core'
 import { PATHS } from '@frontend/constants'
 import { observer } from 'mobx-react-lite'
-
-const currentUser = async () => await appModel.profileModel.getCurrentUser()
+import * as client from '@frontend/services'
+import { isEmpty } from 'lodash'
 
 const AppProvider: React.FunctionComponent<I2MAppProps> = observer(
-  ({ children, isMyAccountPage, isMyInfluencerPage, isInfluencerDetail }) => {
+  ({
+    children,
+    isMyAccountPage,
+    isMyInfluencerPage,
+    isInfluencerDetail,
+    currentUser,
+  }) => {
     React.useEffect(() => {
       const token = appModel.authModel.token
 
       if (token) {
-        currentUser()
+        !isEmpty(currentUser)
+          ? appModel.profileModel.init(currentUser)
+          : appModel.profileModel.getCurrentUser()
       }
 
       if (
@@ -58,6 +66,7 @@ interface I2MAppProps {
   isMyAccountPage: boolean
   isMyInfluencerPage: boolean
   isInfluencerDetail: boolean
+  currentUser: any
 }
 
 MyApp.getInitialProps = async (appContext: NextAppContext) => {
@@ -66,10 +75,36 @@ MyApp.getInitialProps = async (appContext: NextAppContext) => {
   const isMyInfluencerPage = appContext.ctx.pathname.startsWith(
     PATHS.myInfluencer
   )
+
+  const baseURL = process.browser
+    ? '/api'
+    : process.env.NEXT_APP_PROXY ||
+      `http://${appContext.ctx.req.headers.host}/api`
+
   const isInfluencerDetail = appContext.ctx.pathname.startsWith(
     PATHS.influencerDetail
   )
+  const newClient = process.browser
+    ? client
+    : client.createClient({
+        baseURL,
+        headers: {
+          'Content-Type': 'application/json',
+          "Accept": 'application/json',
+          "Authorization": token ? `Bearer ${token}` : '',
+        },
+      })
 
+  let currentUser = {}
+
+  try {
+    if (token && !process.browser) {
+      const { data } = await newClient.profileService.getCurrentUser()
+      currentUser = data
+    }
+  } catch (error) {
+    console.log('SSR', error)
+  }
   if (!token && (isMyAccountPage || isMyInfluencerPage || isInfluencerDetail)) {
     const redirectUrl =
       appContext.ctx.pathname !== '/'
@@ -89,6 +124,7 @@ MyApp.getInitialProps = async (appContext: NextAppContext) => {
     isMyInfluencerPage,
     isMyAccountPage,
     isInfluencerDetail,
+    currentUser,
   }
 }
 

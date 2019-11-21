@@ -13,12 +13,12 @@ var Header = styled_components_1.default(ui_1.Layout.Flex)(templateObject_1 || (
     return theme.colors.primary;
 });
 exports.SecondaryLayout = function (_a) {
-    var children = _a.children, actionButton = _a.actionButton;
+    var children = _a.children, ActionButton = _a.actionButton;
     return (React.createElement(ui_1.Layout.Flex, { flexDirection: "column", justifyContent: "flex-start", style: { minHeight: '100%' } },
         React.createElement(Header, { flexDirection: "row", alignItems: "center", justifyContent: "space-between", p: "20px 50px" },
             React.createElement(link_1.default, { href: "/" },
                 React.createElement("img", { src: "/static/image/small-logo.png", style: { cursor: 'pointer' } })),
-            actionButton),
+            React.createElement(ActionButton, null)),
         children));
 };
 var templateObject_1;

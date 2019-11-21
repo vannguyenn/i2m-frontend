@@ -1,12 +1,13 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { Card } from './Card'
-import { Flex, Grid } from '../layout'
+import { Flex, Grid, Box } from '../layout'
 import { Avatar } from '../avatar'
 import { Divider } from '../divider'
 import Router from 'next/router'
 import { PATHS, IInfluencerProps } from '@frontend/constants'
 import numeral from 'numeral'
+import { Tag } from '..'
 
 export interface IInfluencerCardProps extends IInfluencerProps {
   width?: string
@@ -46,6 +47,8 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
   followers,
   engagement,
   width,
+  private: isPrivate,
+  averageLikePerPost,
 }) => {
   return (
     <Card
@@ -53,6 +56,7 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
       width={width}
       mt="60px"
       onClick={() =>
+        !isPrivate &&
         Router.push(`${PATHS.influencerDetail}?id=${id}&tab=stats`)
       }
     >
@@ -67,33 +71,47 @@ export const InfluencerCard: React.FunctionComponent<IInfluencerCardProps> = ({
           {(followers && numeral(followers).format('(0.0a)')) || 0}
         </NumberOfFollowers>
         <Title>FOLLOWERS</Title>
-        <FullName>{fullName}</FullName>
+        <Flex alignItems="center">
+          <FullName>{fullName}</FullName>
+          {isPrivate && (
+            <Box ml="5px">
+              <Tag.Tag color="red">Private</Tag.Tag>
+            </Box>
+          )}
+        </Flex>
+
         <Biography>{biography}</Biography>
-        <Divider type="horizontal" />
-        <Grid
-          gridGap="70px"
-          gridTemplateColumns="1fr 1fr"
-          justifyContent="center"
-        >
-          <Flex
-            flexDirection="column"
-            justifyContent="flex-start"
-            alignItems="center"
-          >
-            <Title>ENGAGEMENT</Title>
-            <NumberContainer>
-              {(engagement && numeral(engagement).format('0.00%')) || 0}
-            </NumberContainer>
-          </Flex>
-          <Flex
-            flexDirection="column"
-            justifyContent="flex-start"
-            alignItems="center"
-          >
-            <Title>LIKES PER POST</Title>
-            <NumberContainer>{0}</NumberContainer>
-          </Flex>
-        </Grid>
+        {!isPrivate && (
+          <>
+            <Divider type="horizontal" />
+            <Grid
+              gridGap="70px"
+              gridTemplateColumns="1fr 1fr"
+              justifyContent="center"
+            >
+              <Flex
+                flexDirection="column"
+                justifyContent="flex-start"
+                alignItems="center"
+              >
+                <Title>ENGAGEMENT</Title>
+                <NumberContainer>
+                  {(engagement && numeral(engagement).format('0.00%')) || 0}
+                </NumberContainer>
+              </Flex>
+              <Flex
+                flexDirection="column"
+                justifyContent="flex-start"
+                alignItems="center"
+              >
+                <Title>LIKES PER POST</Title>
+                <NumberContainer>
+                  {numeral(averageLikePerPost).format('(0a)')}
+                </NumberContainer>
+              </Flex>
+            </Grid>
+          </>
+        )}
       </Flex>
     </Card>
   )

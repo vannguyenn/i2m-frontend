@@ -106,7 +106,7 @@ export const CollapseForm: React.FunctionComponent<IPropHistory> = observer(
                   <TextEditorView color="black85" description={item.body} />
                 </Grid>
 
-                {item.fileUrl && (
+                {item.fileName.length > 0 && (
                   <FileUrl>
                     Download file:
                     <a href={item.fileUrl} target="_blank">

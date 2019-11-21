@@ -48,6 +48,29 @@ const PercentageTag = styled.div`
   margin-left: 15px;
 `
 
+const engagementOptions = {
+  scales: {
+    yAxes: [
+      {
+        ticks: {
+          // Include a dollar sign in the ticks
+          callback(value, index, values) {
+            return numeral(value).format('(0.0%)')
+          },
+        },
+      },
+    ],
+  },
+  tooltips: {
+    callbacks: {
+      label(tooltipItem, data) {
+        return `Engagement: ${numeral(
+          data.datasets[0].data[tooltipItem.index]
+        ).format('(0.0%)')}`
+      },
+    },
+  },
+}
 export const StatsSection: React.FunctionComponent = observer(() => {
   const {
     influencer,
@@ -64,6 +87,7 @@ export const StatsSection: React.FunctionComponent = observer(() => {
   )
   const followerData = map(followersData, ({ followers }) => followers)
   const engagements = map(engagementData, ({ engagement }) => engagement)
+
   const followersReport = {
     labels: followerLabels,
     datasets: [
@@ -95,7 +119,7 @@ export const StatsSection: React.FunctionComponent = observer(() => {
     labels: engagementLabels,
     datasets: [
       {
-        label: 'Engagement',
+        label: 'Average Engagement Rate',
         fill: false,
         lineTension: 0.1,
         backgroundColor: 'rgba(75,192,192,0.4)',
@@ -298,7 +322,11 @@ export const StatsSection: React.FunctionComponent = observer(() => {
         </Layout.Box>
 
         <Layout.Box style={{ background: '#ffffff' }}>
-          <Line data={engagementReport} />
+          <Line data={engagementReport} options={engagementOptions} />
+          <Layout.Flex justifyContent="center" pb="15px" pt="5px">
+            Average Engagement Rate (%) Per Post = Total Engagement / Follower
+            Counts / Number of Posts x 100
+          </Layout.Flex>
         </Layout.Box>
       </Layout.Grid>
     </Section>

@@ -30,62 +30,72 @@ export class InfluencerDetailViewModel {
   }
 
   @action
-  async fetchInfluencerDetail(id: string) {
-    this.isFetching = true
-    const { data } = await influencerService.fetchInfluencerDetail<
-      IInfluencerProps
-    >(id)
-    const reportResponse = await reportService.fetchReport(id)
+  fetchInfluencerDetail = async (id: string) => {
+    try {
+      this.isFetching = true
+      const { data } = await influencerService.fetchInfluencerDetail<
+        IInfluencerProps
+      >(id)
+      const reportResponse = await reportService.fetchReport(id)
 
-    runInAction(() => {
+      runInAction(() => {
+        this.isFetching = false
+        this.influencerDetail = {
+          ...data,
+          email:
+            data.email ||
+            (data.biography ? extractEmails(data.biography) : null),
+        }
+        this.influencerDetail.posts = map(
+          this.influencerDetail.posts,
+          (p: IPostProps) => ({
+            ...p,
+            engagement: (p.commentCount + p.likeCount) / data.followers,
+          })
+        )
+
+        this.mostLikedPost = find(
+          this.influencerDetail.posts,
+          (p: IPostProps) => p.type === 'MOST_LIKE'
+        )
+
+        this.mostCommentedPost = find(
+          this.influencerDetail.posts,
+          p => p.type === POST_STATUS.MOST_COMMENT
+        )
+
+        this.mostEngagementPost = maxBy(
+          this.influencerDetail.posts,
+          (p: IPostProps) => p.engagement
+        )
+
+        this.followerData = filter(
+          get(reportResponse, 'data'),
+          ({ type }) => type === 'FOLLOWERS'
+        )
+        this.engagementData = filter(
+          get(reportResponse, 'data'),
+          ({ type }) => type === 'ENGAGEMENT'
+        )
+      })
+    } catch (error) {
       this.isFetching = false
-      this.influencerDetail = {
-        ...data,
-        email:
-          data.email || (data.biography ? extractEmails(data.biography) : null),
-      }
-      this.influencerDetail.posts = map(
-        this.influencerDetail.posts,
-        (p: IPostProps) => ({
-          ...p,
-          engagement: (p.commentCount + p.likeCount) / data.followers,
-        })
-      )
-
-      this.mostLikedPost = find(
-        this.influencerDetail.posts,
-        (p: IPostProps) => p.type === 'MOST_LIKE'
-      )
-
-      this.mostCommentedPost = find(
-        this.influencerDetail.posts,
-        p => p.type === POST_STATUS.MOST_COMMENT
-      )
-
-      this.mostEngagementPost = maxBy(
-        this.influencerDetail.posts,
-        (p: IPostProps) => p.engagement
-      )
-
-      this.followerData = filter(
-        get(reportResponse, 'data'),
-        ({ type }) => type === 'FOLLOWERS'
-      )
-      this.engagementData = filter(
-        get(reportResponse, 'data'),
-        ({ type }) => type === 'ENGAGEMENT'
-      )
-    })
+      console.log('TODO: ', error)
+    }
   }
 
   @action
-  async fetchMyList() {
-    // call api here
-    const { data } = await profileService.getMyInfluencerLists<IListProps[]>()
+  fetchMyList = async () => {
+    try {
+      const { data } = await profileService.getMyInfluencerLists<IListProps[]>()
 
-    runInAction(() => {
-      this.myList = data
-    })
+      runInAction(() => {
+        this.myList = data
+      })
+    } catch (error) {
+      console.log('TODO: ', error)
+    }
+    // call api here
   }
 
   @action
@@ -94,12 +104,19 @@ export class InfluencerDetailViewModel {
   }
 
   @action
-  async saveInfluencerToList(listId: string, name: string) {
-    const response = await influencerService.saveInfluencerToList(listId, name)
-    runInAction(() => {
-      this.saveToListModalVisible = false
-    })
-    return response
+  saveInfluencerToList = async (listId: string, name: string) => {
+    try {
+      const response = await influencerService.saveInfluencerToList(
+        listId,
+        name
+      )
+      runInAction(() => {
+        this.saveToListModalVisible = false
+      })
+      return response
+    } catch (error) {
+      console.log('TODO: ', error)
+    }
   }
 
   @action

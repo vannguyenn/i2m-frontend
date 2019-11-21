@@ -68,6 +68,7 @@ export interface IInfluencerProps {
   category: string[]
   followings: string
   verified: boolean
+  private: boolean
   posts?: IPostProps[]
   categories?: ICategory[]
   averageCommentPerPost: number

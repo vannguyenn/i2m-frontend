@@ -7,6 +7,7 @@ import { ConfessionService } from './ConfessionService'
 import { CategoryService } from './CategoryService'
 import { EmailTemplateService } from './EmailTemplateService'
 import { ReportService } from './ReportService'
+import { AxiosRequestConfig } from 'axios'
 
 export * from './AuthService'
 export * from './RestClient'
@@ -18,12 +19,29 @@ export * from './CategoryService'
 export * from './EmailTemplateService'
 export * from './ReportService'
 
-export const restClient = new RestClient()
-export const authService = new AuthService(restClient)
-export const profileService = new ProfileService(restClient)
-export const influencerService = new InfluencerService(restClient)
-export const groupService = new GroupService(restClient)
-export const confessionService = new ConfessionService(restClient)
-export const categoryService = new CategoryService(restClient)
-export const emailTemplateService = new EmailTemplateService(restClient)
-export const reportService = new ReportService(restClient)
+export const createClient = (config?: AxiosRequestConfig) => {
+  const newRestClient = new RestClient(config)
+  return {
+    restClient: newRestClient,
+    authService: new AuthService(newRestClient),
+    profileService: new ProfileService(newRestClient),
+    influencerService: new InfluencerService(newRestClient),
+    groupService: new GroupService(newRestClient),
+    confessionService: new ConfessionService(newRestClient),
+    categoryService: new CategoryService(newRestClient),
+    emailTemplateService: new EmailTemplateService(newRestClient),
+    reportService: new ReportService(newRestClient),
+  }
+}
+
+export const {
+  restClient,
+  authService,
+  profileService,
+  influencerService,
+  groupService,
+  confessionService,
+  categoryService,
+  emailTemplateService,
+  reportService,
+} = createClient()
