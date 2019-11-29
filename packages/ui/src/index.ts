@@ -22,6 +22,7 @@ import * as Empty from './empty'
 import * as Collapse from './collapse'
 import * as Tag from './tag'
 import * as Upload from './upload'
+import * as Tooltip from './tooltip'
 
 export * from './notification'
 
@@ -50,4 +51,5 @@ export {
   Collapse,
   Tag,
   Upload,
+  Tooltip,
 }

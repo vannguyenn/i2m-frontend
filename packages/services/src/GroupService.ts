@@ -19,7 +19,11 @@ export class GroupService extends BaseService {
     return this.get<T>(`/${id}`)
   }
 
-  public removeAnInfluencerFromList<T>(id: string, influencerId: string) {
-    return this.post<T>(`/${id}`, { influencerId })
+  public removeAnInfluencerFromList<T>(
+    id: string,
+    influencerId: string,
+    isDeleteAll?: boolean,
+  ) {
+    return this.post<T>(`/${id}`, { influencerId, deleteAll: isDeleteAll })
   }
 }

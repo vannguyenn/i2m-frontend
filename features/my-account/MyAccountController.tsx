@@ -22,30 +22,36 @@ import { map } from 'lodash'
 import Router from 'next/router'
 import Link from 'next/link'
 import { field } from '@frontend/core/src/validate'
-import { Upload, Icon } from 'antd'
+import { Upload } from 'antd'
 import { Grid } from '@frontend/ui/src/layout'
 import { SearchContainer } from '../../components/SearchContainer'
+import { MediumModal } from '@frontend/ui/src/modal'
+import { IPasswordUpdate } from '../../models/ProfileModel'
+import { Icon } from '@frontend/ui/src/icon'
 
-const Content = styled(Layout.Flex)`
-  min-height: calc(100vh - 150px);
-  max-height: calc(100vh - 150px);
-  overflow: auto;
-  background: #f3f4f6;
-  padding: 20px 100px;
-`
-const FormContainer = styled(Layout.Grid)`
-  width: 100%;
-  background: #fff;
-  padding: 20px;
-  margin-top: 20px;
-`
-const Title = styled.div`
-  color: ${({ theme }) => theme.colors.grey100};
-  font-weight: 600;
-  font-size: 18px;
-`
+const CONSTANTS = {
+  intro: 'CHANGE YOUR PASSWORD',
+  loginTitle: ' ',
+  comeback: 'Comeback',
+  Change: 'Change Password',
+}
 
 const FORM_FIELDS = {
+  confirmPassord: {
+    name: 'confirm',
+    placeholder: 'Comfirm Password',
+    label: 'Comfirm Password',
+  },
+  newPassword: {
+    name: 'password',
+    placeholder: 'New Your Password',
+    label: 'New Password',
+  },
+  oldPassword: {
+    name: 'oldPassword',
+    placeholder: 'Old Password',
+    label: 'Old Password',
+  },
   email: {
     name: 'email',
     placeholder: 'Your E-Mail',
@@ -68,8 +74,25 @@ const FORM_FIELDS = {
   },
 }
 
+const FormContainer = styled(Layout.Flex)`
+  padding: 30px 40px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  width: 500px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-top: 10px;
+`
+const Title = styled(Layout.Flex)`
+  color: ${({ theme }) => theme.colors.grey100};
+  font-weight: 600;
+  font-size: 18px;
+`
+
 export interface ICategory extends FormRenderProps {
   Lcategories: ISelectOption[]
+  onClickChangePass: (state: any) => void
 }
 
 const MyAccountForm: React.FunctionComponent<ICategory> = ({
@@ -77,6 +100,7 @@ const MyAccountForm: React.FunctionComponent<ICategory> = ({
   submitting,
   initialValues = {},
   Lcategories,
+  onClickChangePass,
 }) => (
   <AntForm.Form onSubmit={handleSubmit} layout="vertical">
     <Grid gridGap="15px">
@@ -112,25 +136,57 @@ const MyAccountForm: React.FunctionComponent<ICategory> = ({
         <Button.Button
           type="primary"
           htmlType="submit"
-          width="180px"
+          width="150px"
           style={{ height: '43px' }}
           loading={submitting}
         >
           Update
         </Button.Button>
         {initialValues.password && (
-          <Link href="/change-password">
-            <Button.Button
-              type="primary"
-              width="180px"
-              style={{ height: '43px' }}
-            >
-              Change Password
-            </Button.Button>
-          </Link>
+          <Button.Button
+            width="180px"
+            style={{ height: '43px' }}
+            onClick={() => onClickChangePass(true)}
+          >
+            Change Password
+          </Button.Button>
         )}
       </Layout.Flex>
     </Grid>
+  </AntForm.Form>
+)
+
+const ChangePasswordForm: React.FunctionComponent<FormRenderProps> = ({
+  handleSubmit,
+}) => (
+  <AntForm.Form
+    onSubmit={handleSubmit}
+    layout="vertical"
+    id="changePasswordFrm"
+  >
+    <Layout.Grid gridGap="15px">
+      <Field
+        name={FORM_FIELDS.oldPassword.name}
+        label={FORM_FIELDS.oldPassword.label}
+        placeholder={FORM_FIELDS.oldPassword.placeholder}
+        component={Input.InputPasswordField}
+        validate={field.required}
+      />
+      <Field
+        name={FORM_FIELDS.newPassword.name}
+        label={FORM_FIELDS.newPassword.label}
+        placeholder={FORM_FIELDS.newPassword.placeholder}
+        component={Input.InputPasswordField}
+        validate={field.required && field.minLength(8)}
+      />
+      <Field
+        name={FORM_FIELDS.confirmPassord.name}
+        label={FORM_FIELDS.confirmPassord.label}
+        placeholder={FORM_FIELDS.confirmPassord.placeholder}
+        component={Input.InputPasswordField}
+        validate={field.required && field.matchPassword}
+      />
+    </Layout.Grid>
   </AntForm.Form>
 )
 
@@ -146,7 +202,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
     ...appModel.profileModel.currentUser,
     categories: map(
       appModel.profileModel.currentUser.categories,
-      ({ id }) => id
+      ({ id }) => id,
     ),
   }
   const profileImage = currentUser && currentUser.imgUrl
@@ -178,6 +234,10 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
 
   const [imageUrl, setImageUrl] = React.useState('/static/image/user.png')
   const [loading, setLoading] = React.useState(false)
+  const [passwordModalVisible, changePasswordModalVisible] = React.useState(
+    false,
+  )
+
   function getBase64(img, callback) {
     const reader = new FileReader()
     reader.addEventListener('load', () => callback(reader.result))
@@ -220,19 +280,49 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
     }
   }
 
+  const handleChangePass = async (v: IPasswordUpdate) => {
+    try {
+      await appModel.profileModel.updatePassword(v)
+      notification.success({
+        message: MESSAGES.SAVE_SUCESS,
+        duration: 3,
+        placement: 'bottomLeft',
+      })
+      await appModel.authModel.logout()
+      changePasswordModalVisible(false)
+      return undefined
+    } catch (error) {
+      notification.error({
+        message: error.response.data,
+        duration: 3,
+        placement: 'bottomLeft',
+      })
+      // console.log(error.response.data)
+      return error
+    }
+  }
+
   return (
     <MasterLayout.MasterLayout
       rightAction={token ? AuthorizedUserBtnGr : GuestButtonGroup}
       searchComponent={SearchContainer}
     >
-      <Content flexDirection="column" justifyContent="flex-start">
+      <Layout.Flex
+        width="100%"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        pt="25px"
+        style={{ height: '100%' }}
+      >
         <Title>Account Setting</Title>
-        <FormContainer
-          gridTemplateColumns="2fr 8fr"
-          alignContent="center"
-          gridGap={2}
-        >
-          <Layout.Flex justifyContent="center" flex="1" flexDirection="row">
+        <FormContainer>
+          <Layout.Flex
+            justifyContent="center"
+            flex="1"
+            flexDirection="row"
+            mb="15px"
+          >
             <Upload
               name="avatar"
               accept="image/*"
@@ -243,14 +333,6 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
               showUploadList={false}
               onChange={handleChange}
             >
-              {/* <Icon
-                type={loading ? 'loading' : 'null'}
-                style={{
-                  zIndex: 6,
-                  position: 'absolute',
-                  marginLeft: '65px',
-                }}
-              /> */}
               <Spin.Spin spinning={loading}>
                 {profileImage ? (
                   <Avatar.Avatar
@@ -268,16 +350,34 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
               </Spin.Spin>
             </Upload>
           </Layout.Flex>
-
           <Form
             initialValues={currentUser}
             onSubmit={handleSubmit}
             render={proprs => (
-              <MyAccountForm {...proprs} Lcategories={normalizeCate} />
+              <MyAccountForm
+                {...proprs}
+                Lcategories={normalizeCate}
+                onClickChangePass={changePasswordModalVisible}
+              />
             )}
           />
         </FormContainer>
-      </Content>
+      </Layout.Flex>
+      {passwordModalVisible && (
+        <MediumModal
+          title="Change Password"
+          okText="Update"
+          maskClosable={false}
+          visible={passwordModalVisible}
+          onCancel={() => changePasswordModalVisible(false)}
+          okButtonProps={{
+            form: 'changePasswordFrm',
+            loading: appModel.profileModel.loading,
+          }}
+        >
+          <Form onSubmit={handleChangePass} render={ChangePasswordForm} />
+        </MediumModal>
+      )}
     </MasterLayout.MasterLayout>
   )
 })

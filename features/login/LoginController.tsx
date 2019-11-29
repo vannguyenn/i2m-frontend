@@ -12,13 +12,14 @@ import {
 } from '@frontend/ui'
 import { Field, Form, FormRenderProps } from 'react-final-form'
 import Router from 'next/router'
-import { PATHS, GOOGLE_AUTH_URL } from '@frontend/constants'
+import { PATHS, GOOGLE_AUTH_URL, KEYS } from '@frontend/constants'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
 import { LoginInfo } from '../../models/AuthModel'
 import { validate } from '@frontend/core'
 import { Grid, GridItem } from '@frontend/ui/src/layout'
 import { FORM_ERROR } from 'final-form'
+import * as cookies from 'js-cookie'
 
 const CONSTANTS = {
   intro: 'START YOUR INFLUENCER MARKETING CAMPAIGN',
@@ -167,6 +168,7 @@ const LoginForm: React.FunctionComponent<FormRenderProps> = ({
 }
 export const LoginController: React.FunctionComponent = () => {
   const appModel = useAppContext() as AppModel
+  const redirectUri = cookies.get(KEYS.REDIRECT_URL)
 
   const handleLogin = async (v: LoginInfo) => {
     try {

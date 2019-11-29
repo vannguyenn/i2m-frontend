@@ -1,15 +1,10 @@
-FROM node:12
+FROM node:11-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json ./
-RUN npm install
+COPY . /app
 
-# Copying source files
-COPY . .
+RUN yarn && \
+    yarn build
 
-# Building app
-RUN npm run build
-
-# Running the app
-CMD [ "npm", "start" ]
+CMD ["yarn","start"]

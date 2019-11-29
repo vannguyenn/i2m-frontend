@@ -124,7 +124,7 @@ export const InfluencerDetail: React.FunctionComponent<
 
   const influencerDetailViewModel = useViewModel(
     InfluencerDetailViewModel,
-    appModel
+    appModel,
   )
   useEffectOnce(() => {
     influencerDetailViewModel.fetchInfluencerDetail(id)
@@ -159,7 +159,7 @@ export const InfluencerDetail: React.FunctionComponent<
       influencerDetailViewModel.setLoading(true)
       await influencerDetailViewModel.saveInfluencerToList(
         v.listId,
-        influencerDetail.id
+        influencerDetail.id,
       )
       influencerDetailViewModel.setLoading(false)
       notification.success({
@@ -169,6 +169,7 @@ export const InfluencerDetail: React.FunctionComponent<
       })
     } catch (error) {
       influencerDetailViewModel.setLoading(false)
+
       const code = get(error, 'response.data.message')
       const formError = {
         listId: MESSAGES[code],
@@ -246,7 +247,7 @@ export const InfluencerDetail: React.FunctionComponent<
                           <Tag.Tag color="#87d068" key={index}>
                             {cate.name}
                           </Tag.Tag>
-                        )
+                        ),
                       )}
                     </Grid>
                   </Fullname>
@@ -254,7 +255,7 @@ export const InfluencerDetail: React.FunctionComponent<
                     <a
                       href={`https://www.instagram.com/${get(
                         influencerDetail,
-                        'username'
+                        'username',
                       )}`}
                       target="_blank"
                     >
@@ -269,22 +270,22 @@ export const InfluencerDetail: React.FunctionComponent<
                     <NumberText>
                       {toUpper(
                         numeral(get(influencerDetail, 'followers')).format(
-                          '(0.0a)'
-                        )
+                          '(0a)',
+                        ),
                       )}
                     </NumberText>
                     <NumberUnit>Followers</NumberUnit>
                     <NumberText>
                       {toUpper(
                         numeral(get(influencerDetail, 'followings')).format(
-                          '(0.0a)'
-                        )
+                          '(0a)',
+                        ),
                       )}
                     </NumberText>
                     <NumberUnit>Followings</NumberUnit>
                     <NumberText>
                       {numeral(get(influencerDetail, 'engagement')).format(
-                        '(0.00%)'
+                        '(0.00%)',
                       )}
                     </NumberText>
                     <NumberUnit>Engagement Rate</NumberUnit>
@@ -318,36 +319,38 @@ export const InfluencerDetail: React.FunctionComponent<
                   <Icon.Icon type="heart" />
                   Save to My List
                 </SaveToListBtn>
-                <Modal.SmallModal
-                  title={MODAL_PROPS.title}
-                  okText={MODAL_PROPS.footer.okText}
-                  okButtonProps={{
-                    loading: isLoading,
-                    form: MODAL_PROPS.saveToListForm.form,
-                  }}
-                  visible={saveToListModalVisible}
-                  onCancel={() => changeSaveToListModalVisible(false)}
-                >
-                  <FinalForm
-                    onSubmit={handleSaveToList}
-                    render={({ handleSubmit }) => (
-                      <AntForm.Form
-                        onSubmit={handleSubmit}
-                        id={MODAL_PROPS.saveToListForm.form}
-                      >
-                        <Field
-                          name={MODAL_PROPS.saveToListForm.list.name}
-                          component={Select.SelectField}
-                          placeholder={
-                            MODAL_PROPS.saveToListForm.list.placeholder
-                          }
-                          options={normalizedList}
-                          validate={validate.field.required}
-                        />
-                      </AntForm.Form>
-                    )}
-                  />
-                </Modal.SmallModal>
+                {saveToListModalVisible && (
+                  <Modal.SmallModal
+                    title={MODAL_PROPS.title}
+                    okText={MODAL_PROPS.footer.okText}
+                    okButtonProps={{
+                      loading: isLoading,
+                      form: MODAL_PROPS.saveToListForm.form,
+                    }}
+                    visible={saveToListModalVisible}
+                    onCancel={() => changeSaveToListModalVisible(false)}
+                  >
+                    <FinalForm
+                      onSubmit={handleSaveToList}
+                      render={({ handleSubmit }) => (
+                        <AntForm.Form
+                          onSubmit={handleSubmit}
+                          id={MODAL_PROPS.saveToListForm.form}
+                        >
+                          <Field
+                            name={MODAL_PROPS.saveToListForm.list.name}
+                            component={Select.SelectField}
+                            placeholder={
+                              MODAL_PROPS.saveToListForm.list.placeholder
+                            }
+                            options={normalizedList}
+                            validate={validate.field.required}
+                          />
+                        </AntForm.Form>
+                      )}
+                    />
+                  </Modal.SmallModal>
+                )}
               </GeneralInfo>
               <Tab tab={tab} />
             </Layout.Flex>

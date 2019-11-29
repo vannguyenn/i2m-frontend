@@ -22,7 +22,11 @@ import { observer } from 'mobx-react-lite'
 import { useAppContext } from '@frontend/core/src/context'
 import { AppModel } from '../../models'
 import { useViewModel } from '@frontend/core/src/hooks'
-import { MyInfluencerViewModel } from './MyInfluencerViewModel'
+import {
+  MyInfluencerViewModel,
+  IHistorySendMail,
+  ICustomInfluencerProps,
+} from './MyInfluencerViewModel'
 import { useEffectOnce } from 'react-use'
 import { map, get } from 'lodash'
 import { Form as FinalForm, Field, FormSpy } from 'react-final-form'
@@ -39,6 +43,8 @@ import { field } from '@frontend/core/src/validate'
 import { Icon as AntIcon, Button as AntButton } from 'antd'
 import { SelectField } from '@frontend/ui/src/select'
 import { AuthorizedUserBtnGr } from '../../components'
+import { Tag } from '@frontend/ui/src/tag'
+import { Checkbox } from '@frontend/ui/src/checkbox'
 
 const MODALPROPS = {
   title: 'Send Mail',
@@ -50,7 +56,7 @@ const MODALPROPS = {
   fields: {
     sendTo: {
       name: 'email',
-      placeholder: 'Enter influencer\'s email',
+      placeholder: "Enter influencer's email",
       label: 'Send To',
     },
     subject: {
@@ -192,81 +198,65 @@ interface ActionButtonProps {
   downloadFile: any
 }
 
-interface IHistorySendMail {
-  id: string
-  subject: string
-  body: string
-  sendDate: Date
-  fileUrl: string
-  sent: boolean
-  influName: string
-  fullName: string
-  email: string
-  influEmail: string
-  fileName: string
-}
-
-const ActionButton: React.FunctionComponent<ActionButtonProps> = observer(
-  ({
-    setModalVisible,
-    onClickDeleteBtn,
-    influencerId,
-    influencerEmail,
-    setDrawerVisible,
-    historySendMailVisible,
-    listHistorySendMail,
-    isLoading,
-    resetListHistoryMail,
-    downloadFile,
-  }) => {
-    return (
-      <>
-        <Layout.Flex
-          flexDirection="row"
-          alignItems="center"
-          style={{ position: 'absolute', top: '5px', right: '10px' }}
-        >
-          <IconButton onClick={onClickDeleteBtn}>
-            <Icon.Icon type="delete" theme="filled" />
+const ActionButton: React.FunctionComponent<ActionButtonProps> = ({
+  setModalVisible,
+  onClickDeleteBtn,
+  influencerId,
+  influencerEmail,
+  setDrawerVisible,
+  historySendMailVisible,
+  listHistorySendMail = [],
+  isLoading,
+  resetListHistoryMail,
+  downloadFile,
+}) => {
+  return (
+    <>
+      <Layout.Flex
+        flexDirection="row"
+        alignItems="center"
+        style={{ position: 'absolute', top: '5px', right: '10px' }}
+      >
+        <IconButton onClick={onClickDeleteBtn}>
+          <Icon.Icon type="delete" theme="filled" />
+        </IconButton>
+        {influencerEmail && (
+          <IconButton onClick={() => setDrawerVisible(true, influencerId)}>
+            <Icon.Icon type="clock-circle" theme="filled" />
           </IconButton>
-          {influencerEmail && (
-            <IconButton onClick={() => setDrawerVisible(true, influencerId)}>
-              <Icon.Icon type="clock-circle" theme="filled" />
-            </IconButton>
-          )}
-          {influencerEmail && (
-            <IconButton onClick={() => setModalVisible(true, influencerId)}>
-              <Icon.Icon type="mail" theme="filled" />
-            </IconButton>
-          )}
-        </Layout.Flex>
+        )}
+        {influencerEmail && (
+          <IconButton onClick={() => setModalVisible(true, influencerId)}>
+            <Icon.Icon type="mail" theme="filled" />
+          </IconButton>
+        )}
+      </Layout.Flex>
 
-        <Drawer.Drawer
-          destroyOnClose={true}
-          title="Sent Emails"
-          visible={historySendMailVisible}
-          onClose={() => {
-            setDrawerVisible(false, null)
-            resetListHistoryMail()
-          }}
-          placement="right"
-          width={500}
-          closable={false}
+      <Drawer.Drawer
+        destroyOnClose={true}
+        title="Sent Emails"
+        visible={historySendMailVisible}
+        onClose={() => {
+          setDrawerVisible(false, null)
+          resetListHistoryMail()
+        }}
+        placement="right"
+        width={500}
+        closable={false}
+      >
+        <Spin.Spin
+          spinning={isLoading}
+          style={{ maxHeight: '500px', minHeight: '500px' }}
         >
-          <Spin.Spin
-            spinning={isLoading}
-            style={{ maxHeight: '500px', minHeight: '500px' }}
-          >
-            <Collapse.CollapseForm
-              listHistorySendMail={listHistorySendMail}
-              downloadFile={downloadFile}
-            />
-          </Spin.Spin>
-        </Drawer.Drawer>
-      </>
-    )
-  }
-)
+          <Collapse.CollapseForm
+            listHistorySendMail={listHistorySendMail}
+            downloadFile={downloadFile}
+          />
+        </Spin.Spin>
+      </Drawer.Drawer>
+    </>
+  )
+}
 
 interface FooterProps {
   setDeleteModalVisible: (visible: boolean) => void
@@ -319,14 +309,15 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       removeInfluencerModalVisible,
       influencerSelected,
       historySendMailVisible,
-      listHistorySendMail,
       emailTemplates,
       downloadFile,
+      historyMails,
+      changeDeleteAllState,
+      isDeleteAll,
     } = myInfluencerViewModel
-
     const normalizedEmailTemplate = map(
       emailTemplates,
-      (e: IEmailTemplateProps) => ({ label: e.name, value: e.id })
+      (e: IEmailTemplateProps) => ({ label: e.name, value: e.id }),
     )
     const resetListHistoryMail = () => myInfluencerViewModel.resetListHistory()
 
@@ -351,7 +342,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
 
     const removeInfluencer = async () => {
       await myInfluencerViewModel.removeAnInfluencerFromList(
-        currentInfluencer.id
+        currentInfluencer.id,
       )
     }
 
@@ -457,8 +448,11 @@ export const ListInfluencerController: React.FunctionComponent = observer(
       }
     }
 
-    const setDrawerVisible = (visible: boolean, id: string) => {
-      myInfluencerViewModel.changeVisibleHistorySendMail(visible, id)
+    const setDrawerVisible = async (visible: boolean, id: string) => {
+      myInfluencerViewModel.changeVisibleHistorySendMail(visible)
+      if (visible) {
+        await myInfluencerViewModel.fetchMailHistories(id)
+      }
     }
 
     return (
@@ -533,11 +527,14 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                       p="0 20px"
                       mt="10px"
                     >
-                      {myInfluencerViewModel.listDetail.influencers.length >
+                      {myInfluencerViewModel.listDetail.influencerList.length >
                       0 ? (
                         map(
-                          get(myInfluencerViewModel.listDetail, 'influencers'),
-                          (influencer: IInfluencerProps, index) => (
+                          get(
+                            myInfluencerViewModel.listDetail,
+                            'influencerList',
+                          ),
+                          (influencer: ICustomInfluencerProps, index) => (
                             <InfluencerCard
                               flexDirection="row"
                               alignItems="flex-start"
@@ -582,7 +579,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                       <StatsLabel>Followers</StatsLabel>
                                       <StatsValue>
                                         {numeral(influencer.followers).format(
-                                          '(0.0a)'
+                                          '(0.0a)',
                                         )}
                                       </StatsValue>
                                     </Layout.Flex>
@@ -594,7 +591,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                       <StatsLabel>Engagement</StatsLabel>
                                       <StatsValue>
                                         {numeral(
-                                          get(influencer, 'engagement')
+                                          get(influencer, 'engagement'),
                                         ).format('0.00%')}
                                       </StatsValue>
                                     </Layout.Flex>
@@ -606,7 +603,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                       <StatsLabel>Followings</StatsLabel>
                                       <StatsValue>
                                         {numeral(influencer.followings).format(
-                                          '(0.0a)'
+                                          '(0.0a)',
                                         )}
                                       </StatsValue>
                                     </Layout.Flex>
@@ -630,6 +627,19 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                     </div>
                                   </Layout.Flex>
                                 )}
+                                <Layout.Grid
+                                  gridGap="10px"
+                                  ml="10px"
+                                  mt="10px"
+                                  gridAutoFlow="column"
+                                  style={{ width: 'fit-content' }}
+                                >
+                                  {map(influencer.packs, (p, i) => (
+                                    <Tag color="#87d068" key={i}>
+                                      {p.name}
+                                    </Tag>
+                                  ))}
+                                </Layout.Grid>
                               </Layout.Flex>
                               <ActionButton
                                 setModalVisible={setModalVisible}
@@ -637,7 +647,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                 influencerEmail={influencer.email}
                                 setDrawerVisible={setDrawerVisible}
                                 historySendMailVisible={historySendMailVisible}
-                                listHistorySendMail={listHistorySendMail}
+                                listHistorySendMail={historyMails}
                                 isLoading={isLoading}
                                 resetListHistoryMail={resetListHistoryMail}
                                 onClickDeleteBtn={() =>
@@ -646,7 +656,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                 downloadFile={downloadFile}
                               />
                             </InfluencerCard>
-                          )
+                          ),
                         )
                       ) : (
                         <Empty.Empty />
@@ -664,9 +674,9 @@ export const ListInfluencerController: React.FunctionComponent = observer(
           {removeInfluencerModalVisible && (
             <Modal.SmallModal
               visible={removeInfluencerModalVisible}
-              title={`Delete ${currentInfluencer.fullName} from ${
+              title={`Delete "${currentInfluencer.fullName}" from "${
                 listDetail.name
-              } ?`}
+              }" ?`}
               onCancel={() => setRemoveInfluencerModalVisible(false)}
               width="400px"
               footer={
@@ -677,7 +687,18 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                   loading={isLoading}
                 />
               }
-            />
+            >
+              {currentInfluencer.packs.length > 1 && (
+                <Layout.Flex>
+                  <Checkbox
+                    checked={isDeleteAll}
+                    onChange={e => changeDeleteAllState(e.target.checked)}
+                  >{`Also delete "${
+                    currentInfluencer.fullName
+                  }" from other lists.`}</Checkbox>
+                </Layout.Flex>
+              )}
+            </Modal.SmallModal>
           )}
 
           {/* Send Mail */}
@@ -851,5 +872,5 @@ export const ListInfluencerController: React.FunctionComponent = observer(
         </Spin.Spin>
       </MasterLayout.SecondaryLayout>
     )
-  }
+  },
 )

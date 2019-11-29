@@ -7,6 +7,7 @@ import { Layout, Icon, Empty } from '@frontend/ui'
 import { observer } from 'mobx-react-lite'
 import { TextEditorView } from '../text-editor'
 import { Grid } from '../layout'
+import { get } from 'lodash'
 
 const { Panel } = Collapse
 
@@ -39,12 +40,12 @@ interface IHistorySendMail {
   body: string
   sendDate: Date
   fileUrl: string
+  fileName?: string
   sent: boolean
   influName: string
   fullName: string
   email: string
   influEmail: string
-  fileName: string
 }
 const customPanelStyle = {
   background: 'white',
@@ -65,64 +66,69 @@ const formatDate = date => {
   })
 }
 
-export const CollapseForm: React.FunctionComponent<IPropHistory> = observer(
-  ({ listHistorySendMail, downloadFile }) => {
-    return (
-      <Collapse
-        accordion
-        style={{ backgroundColor: '#d4d3d37a', minHeight: '100vh' }}
-      >
-        {listHistorySendMail ? (
-          listHistorySendMail.map((item, index) => (
-            <Panel
-              style={customPanelStyle}
-              header={`${item.subject} - ${formatDate(item.sendDate)}`}
-              key={index.toString()}
-            >
-              <EmailTitle flexDirection="row" alignItems="center">
-                <Icon.Icon type="mail" fontSize="18px" />
-                <Layout.Flex
-                  flexDirection="column"
-                  justifyContent="flex-start"
-                  ml="20px"
-                >
-                  <ReceiverFullName>
-                    Receiver: {item.sent ? item.influName : item.fullName}
-                  </ReceiverFullName>
-                  <EmailSubject>{item.subject}</EmailSubject>
-                </Layout.Flex>
-              </EmailTitle>
+export const CollapseForm: React.FunctionComponent<IPropHistory> = ({
+  listHistorySendMail,
+  downloadFile,
+}) => {
+  return (
+    <Collapse
+      accordion
+      style={{ backgroundColor: '#d4d3d37a', minHeight: '100vh' }}
+    >
+      {listHistorySendMail ? (
+        listHistorySendMail.map((item, index) => (
+          <Panel
+            style={customPanelStyle}
+            header={`${item.subject} - ${formatDate(item.sendDate)}`}
+            key={index.toString()}
+          >
+            <EmailTitle flexDirection="row" alignItems="center">
+              <Icon.Icon type="mail" fontSize="18px" />
               <Layout.Flex
                 flexDirection="column"
                 justifyContent="flex-start"
-                p="15px 24px"
+                ml="20px"
               >
-                <TimeStamp>
-                  {`${item.sent ? item.fullName : item.influName} <${
-                    item.sent ? item.email : item.influEmail
-                  }> wrote:`}
-                </TimeStamp>
-                <Grid mt="15px">
-                  <TextEditorView color="black85" description={item.body} />
-                </Grid>
-
-                {item.fileName.length > 0 && (
-                  <FileUrl>
-                    Download file:
-                    <a href={item.fileUrl} target="_blank">
-                      {item.fileName}
-                    </a>
-                  </FileUrl>
-                )}
+                <ReceiverFullName>
+                  Receiver: {item.sent ? item.influName : item.fullName}
+                </ReceiverFullName>
+                <EmailSubject>{item.subject}</EmailSubject>
               </Layout.Flex>
-            </Panel>
-          ))
-        ) : (
-          <EmailSubject style={{ paddingTop: '30px' }}>
-            <Empty.Empty />
-          </EmailSubject>
-        )}
-      </Collapse>
-    )
-  }
-)
+            </EmailTitle>
+            <Layout.Flex
+              flexDirection="column"
+              justifyContent="flex-start"
+              p="15px 24px"
+            >
+              <TimeStamp>
+                {`${item.sent ? item.fullName : item.influName} <${
+                  item.sent ? item.email : item.influEmail
+                }> wrote:`}
+              </TimeStamp>
+              <Grid mt="15px">
+                <TextEditorView color="black85" description={item.body} />
+              </Grid>
+
+              {get(item, 'fileName.length') > 0 && (
+                <FileUrl>
+                  Download file:
+                  <a
+                    href={item.fileUrl}
+                    target="_blank"
+                    style={{ marginLeft: '5px' }}
+                  >
+                    {item.fileName}
+                  </a>
+                </FileUrl>
+              )}
+            </Layout.Flex>
+          </Panel>
+        ))
+      ) : (
+        <EmailSubject style={{ paddingTop: '30px' }}>
+          <Empty.Empty />
+        </EmailSubject>
+      )}
+    </Collapse>
+  )
+}
