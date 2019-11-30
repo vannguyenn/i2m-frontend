@@ -9,7 +9,7 @@ export interface IButtonProps extends ButtonProps, WidthProps, SpaceProps {}
 export const Button = styled(AntButton)<IButtonProps>`
   box-shadow: none;
   &.ant-btn {
-    border-radius: 6px;
+    border-radius: 2px;
   }
   &.ant-btn:not(.ant-btn-primary) {
     border: 1px solid ${({ theme }) => theme.colors.primary100};

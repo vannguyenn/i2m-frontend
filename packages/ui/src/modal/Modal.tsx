@@ -37,7 +37,7 @@ const mediumModalStyle = css`
 `
 const smallModalStyle = css`
   min-width: 320px;
-  max-width: 640px;
+  /* max-width: 640px; */
 
   &.ant-modal {
     top: calc(50vh - 200px);

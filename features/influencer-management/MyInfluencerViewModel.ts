@@ -20,9 +20,12 @@ import { FormState, FormApi } from 'final-form'
 export interface IListDetailProps {
   id: string
   name: string
-  influencers: IInfluencerProps[]
+  influencerList: ICustomInfluencerProps[]
 }
 
+export interface ICustomInfluencerProps extends IInfluencerProps {
+  packs: any[]
+}
 export interface IListProps {
   name: string
   id: string
@@ -46,6 +49,7 @@ export interface IHistorySendMail {
   body: string
   sendDate: Date
   fileUrl: string
+  fileName?: string
   sent: boolean
   influName: string
   fullName: string
@@ -67,9 +71,10 @@ export class MyInfluencerViewModel {
   @observable removeInfluencerModalVisible: boolean
   @observable influencerSelected: IInfluencerProps
   @observable historySendMailVisible: boolean
-  @observable listHistorySendMail: IHistorySendMail[]
+  @observable historyMails: IHistorySendMail[] = []
   @observable emailTemplates: IEmailTemplateProps[]
   @observable formValues: any
+  @observable isDeleteAll: boolean
 
   appModel: AppModel = null
 
@@ -84,7 +89,7 @@ export class MyInfluencerViewModel {
           this.listDetail = null
         }
       },
-      { fireImmediately: true }
+      { fireImmediately: true },
     )
   }
 
@@ -116,7 +121,7 @@ export class MyInfluencerViewModel {
     runInAction(() => {
       this.listDetail = {
         ...data,
-        influencers: map(data.influencers, influencer => ({
+        influencerList: map(data.influencerList, influencer => ({
           ...influencer,
           email:
             influencer.email ||
@@ -134,8 +139,8 @@ export class MyInfluencerViewModel {
   @action
   changeEmailModalVisible(visible: boolean, id: string) {
     this.sendEmailModalVisible = visible
-    this.influencerSelected = this.listDetail.influencers.find(
-      item => item.id === id
+    this.influencerSelected = this.listDetail.influencerList.find(
+      item => item.id === id,
     )
   }
 
@@ -167,7 +172,7 @@ export class MyInfluencerViewModel {
       this.isLoading = true
       const { data } = await groupService.updateGroup<IListDetailProps>(
         this.listId,
-        requestData
+        requestData,
       )
       this.isLoading = false
       this.createListModalVisible = false
@@ -195,7 +200,7 @@ export class MyInfluencerViewModel {
       runInAction(() => {
         this.myList = filter(
           this.myList,
-          list => get(list, 'id') !== this.listId
+          list => get(list, 'id') !== this.listId,
         )
         this.listId = get(head(this.myList), 'id')
       })
@@ -226,7 +231,7 @@ export class MyInfluencerViewModel {
       this.isLoading = true
       const { data } = await groupService.removeAnInfluencerFromList<
         IListDetailProps
-      >(this.listId, influencerId)
+      >(this.listId, influencerId, this.isDeleteAll)
       runInAction(() => {
         this.isLoading = false
         this.removeInfluencerModalVisible = false
@@ -253,29 +258,43 @@ export class MyInfluencerViewModel {
   }
 
   @action
-  changeVisibleHistorySendMail(visible: boolean, influencersId: string) {
+  changeVisibleHistorySendMail(visible: boolean) {
     this.historySendMailVisible = visible
-    influencersId && this.historySendMail(influencersId)
   }
 
+  // @action
+  // fetchMailHistory = async (influencerId: string) => {
+  //   try {
+  //     this.isLoading = true
+  //     const { data } = await confessionService.historySendMail<
+  //       IHistorySendMail[]
+  //     >(influencerId)
+
+  //     this.isLoading = false
+  //     return data
+  //   } catch (error) {
+  //     this.isLoading = false
+  //     this.historyMails = null
+  //   }
+  // }
+
   @action
-  async historySendMail(influencerId: string) {
+  fetchMailHistories = async (influencerId: string) => {
     try {
       this.isLoading = true
-      const { data } = await confessionService.historySendMail(influencerId)
-      runInAction(() => {
-        this.listHistorySendMail = data
-      })
+      const { data } = await confessionService.historySendMail<
+        IHistorySendMail[]
+      >(influencerId)
+      this.historyMails = data
       this.isLoading = false
     } catch (error) {
       this.isLoading = false
-      this.listHistorySendMail = null
+      this.historyMails = null
     }
   }
-
   @action
   resetListHistory() {
-    this.listHistorySendMail = null
+    this.historyMails = null
   }
 
   @action
@@ -296,7 +315,7 @@ export class MyInfluencerViewModel {
       formApi.change(
         'body',
         find(this.emailTemplates, em => em.id === value.values.emailTemplateId)
-          .content
+          .content,
       )
     }
   }
@@ -319,5 +338,10 @@ export class MyInfluencerViewModel {
         placement: 'bottomLeft',
       })
     }
+  }
+
+  @action
+  changeDeleteAllState = (state: boolean) => {
+    this.isDeleteAll = state
   }
 }

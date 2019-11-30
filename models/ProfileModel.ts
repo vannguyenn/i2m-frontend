@@ -28,6 +28,7 @@ export interface IPasswordUpdate {
 
 export class ProfileModel {
   @observable currentUser: IUser
+  @observable loading: boolean
   appModel: AppModel
 
   constructor(appModel: AppModel) {
@@ -67,10 +68,13 @@ export class ProfileModel {
   @action
   async updatePassword(data: IPasswordUpdate) {
     try {
+      this.loading = true
       const id = this.currentUser.id
       await profileService.updatePassword<IPasswordUpdate>(id, data)
+      this.loading = false
       return Promise.resolve()
     } catch (error) {
+      this.loading = false
       return Promise.reject(error)
     }
   }

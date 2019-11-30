@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Layout, Icon } from '@frontend/ui'
+import { Layout, Icon, Tooltip } from '@frontend/ui'
 import { color } from 'styled-system'
 import { get, map } from 'lodash'
 import { Line } from 'react-chartjs-2'
@@ -41,11 +41,10 @@ export const NumberTag = styled.div`
   font-weight: 700;
   text-transform: uppercase;
 `
-const PercentageTag = styled.div`
-  color: #173c51;
-  font-size: 20px;
-  font-weight: 500;
-  margin-left: 15px;
+const InfoDiv = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 15px;
 `
 
 const engagementOptions = {
@@ -65,8 +64,32 @@ const engagementOptions = {
     callbacks: {
       label(tooltipItem, data) {
         return `Engagement: ${numeral(
-          data.datasets[0].data[tooltipItem.index]
+          data.datasets[0].data[tooltipItem.index],
         ).format('(0.0%)')}`
+      },
+    },
+  },
+}
+
+const followerOptions = {
+  scales: {
+    yAxes: [
+      {
+        ticks: {
+          // Include a dollar sign in the ticks
+          callback(value, index, values) {
+            return numeral(value).format('0,0')
+          },
+        },
+      },
+    ],
+  },
+  tooltips: {
+    callbacks: {
+      label(tooltipItem, data) {
+        return `Followers: ${numeral(
+          data.datasets[0].data[tooltipItem.index],
+        ).format('0,0')}`
       },
     },
   },
@@ -79,11 +102,11 @@ export const StatsSection: React.FunctionComponent = observer(() => {
   } = useInfluencerDetailContext().useStatsSection()
 
   const followerLabels = map(followersData, ({ createdDate }) =>
-    moment(createdDate).format('DD/MM')
+    moment(createdDate).format('DD/MM'),
   )
 
   const engagementLabels = map(engagementData, ({ createdDate }) =>
-    moment(createdDate).format('DD/MM/YYYY')
+    moment(createdDate).format('DD/MM/YYYY'),
   )
   const followerData = map(followersData, ({ followers }) => followers)
   const engagements = map(engagementData, ({ engagement }) => engagement)
@@ -190,7 +213,7 @@ export const StatsSection: React.FunctionComponent = observer(() => {
           <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
             <NumberTag>
               {numeral(get(influencer, 'averageCommentPerPost')).format(
-                '(0.0a)'
+                '(0.0a)',
               )}
             </NumberTag>
             {/* <PercentageTag>{`(${replyPercentage || 0.1}%)`}</PercentageTag> */}
@@ -237,7 +260,7 @@ export const StatsSection: React.FunctionComponent = observer(() => {
               {get(influencer, 'followings') !== 0
                 ? numeral(
                     get(influencer, 'followers') /
-                      get(influencer, 'followings')
+                      get(influencer, 'followings'),
                   ).format('(0.0a)')
                 : 0}
             </NumberTag>
@@ -261,7 +284,7 @@ export const StatsSection: React.FunctionComponent = observer(() => {
           <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
             <NumberTag>
               {numeral(get(influencer, 'averageEngagementPerImage')).format(
-                '(0.00%)'
+                '(0.00%)',
               )}
             </NumberTag>
           </Layout.Flex>
@@ -284,7 +307,7 @@ export const StatsSection: React.FunctionComponent = observer(() => {
           <Layout.Flex flexDirection="row" mt="10px" alignItems="center">
             <NumberTag>
               {numeral(get(influencer, 'averageEngagementPerVideo')).format(
-                '(0.00%)'
+                '(0.00%)',
               )}
             </NumberTag>
           </Layout.Flex>
@@ -318,15 +341,23 @@ export const StatsSection: React.FunctionComponent = observer(() => {
         </Layout.Flex> */}
       <Layout.Grid gridGap={10} gridTemplateColumns="1fr 1fr" mt="60px">
         <Layout.Box style={{ background: '#ffffff' }}>
-          <Line data={followersReport} />
+          <Line data={followersReport} options={followerOptions} />
         </Layout.Box>
 
-        <Layout.Box style={{ background: '#ffffff' }}>
+        <Layout.Box style={{ background: '#ffffff', position: 'relative' }}>
+          <Tooltip.Tooltip
+            title="Average Engagement Rate (%) Per Post = Total Engagement / Follower
+            Counts / Number of Posts x 100"
+          >
+            <InfoDiv>
+              <Icon.Icon
+                fontSize="16px"
+                color="grey85"
+                type="exclamation-circle"
+              />
+            </InfoDiv>
+          </Tooltip.Tooltip>
           <Line data={engagementReport} options={engagementOptions} />
-          <Layout.Flex justifyContent="center" pb="15px" pt="5px">
-            Average Engagement Rate (%) Per Post = Total Engagement / Follower
-            Counts / Number of Posts x 100
-          </Layout.Flex>
         </Layout.Box>
       </Layout.Grid>
     </Section>

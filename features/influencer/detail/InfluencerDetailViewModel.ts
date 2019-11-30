@@ -51,31 +51,31 @@ export class InfluencerDetailViewModel {
           (p: IPostProps) => ({
             ...p,
             engagement: (p.commentCount + p.likeCount) / data.followers,
-          })
+          }),
         )
 
         this.mostLikedPost = find(
           this.influencerDetail.posts,
-          (p: IPostProps) => p.type === 'MOST_LIKE'
+          (p: IPostProps) => p.type === 'MOST_LIKE',
         )
 
         this.mostCommentedPost = find(
           this.influencerDetail.posts,
-          p => p.type === POST_STATUS.MOST_COMMENT
+          p => p.type === POST_STATUS.MOST_COMMENT,
         )
 
         this.mostEngagementPost = maxBy(
           this.influencerDetail.posts,
-          (p: IPostProps) => p.engagement
+          (p: IPostProps) => p.engagement,
         )
 
         this.followerData = filter(
           get(reportResponse, 'data'),
-          ({ type }) => type === 'FOLLOWERS'
+          ({ type }) => type === 'FOLLOWERS',
         )
         this.engagementData = filter(
           get(reportResponse, 'data'),
-          ({ type }) => type === 'ENGAGEMENT'
+          ({ type }) => type === 'ENGAGEMENT',
         )
       })
     } catch (error) {
@@ -108,7 +108,7 @@ export class InfluencerDetailViewModel {
     try {
       const response = await influencerService.saveInfluencerToList(
         listId,
-        name
+        name,
       )
       runInAction(() => {
         this.saveToListModalVisible = false
@@ -116,6 +116,7 @@ export class InfluencerDetailViewModel {
       return response
     } catch (error) {
       console.log('TODO: ', error)
+      throw error
     }
   }
 
