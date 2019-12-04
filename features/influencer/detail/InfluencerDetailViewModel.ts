@@ -8,7 +8,7 @@ import {
 } from '@frontend/services'
 import { observable, action, runInAction } from 'mobx'
 import { IInfluencerProps, IPostProps, IReportProps } from '@frontend/constants'
-import { find, map, maxBy, get, filter } from 'lodash'
+import { find, map, maxBy, get, filter, sortBy, reverse } from 'lodash'
 import { extractEmails } from '@frontend/core/src/utils'
 
 export class InfluencerDetailViewModel {
@@ -33,10 +33,12 @@ export class InfluencerDetailViewModel {
   fetchInfluencerDetail = async (id: string) => {
     try {
       this.isFetching = true
-      const { data } = await influencerService.fetchInfluencerDetail<
-        IInfluencerProps
-      >(id)
-      const reportResponse = await reportService.fetchReport(id)
+      const [influencerDetail, reportResponse] = await Promise.all([
+        influencerService.fetchInfluencerDetail<IInfluencerProps>(id),
+        reportService.fetchReport(id),
+      ])
+
+      const data = get(influencerDetail, 'data')
 
       runInAction(() => {
         this.isFetching = false
@@ -46,12 +48,14 @@ export class InfluencerDetailViewModel {
             data.email ||
             (data.biography ? extractEmails(data.biography) : null),
         }
-        this.influencerDetail.posts = map(
-          this.influencerDetail.posts,
-          (p: IPostProps) => ({
-            ...p,
-            engagement: (p.commentCount + p.likeCount) / data.followers,
-          }),
+        this.influencerDetail.posts = reverse(
+          sortBy(
+            map(this.influencerDetail.posts, (p: IPostProps) => ({
+              ...p,
+              engagement: (p.commentCount + p.likeCount) / data.followers,
+            })),
+            (p: IPostProps) => p.takenAt,
+          ),
         )
 
         this.mostLikedPost = find(
