@@ -47,6 +47,11 @@ const FORM_FIELDS = {
     label: 'Category',
     placeholder: 'Please choose your interested category',
   },
+  confirmPassword: {
+    name: 'confirm',
+    placeholder: 'Confirm Password',
+    label: 'Confirm Password',
+  },
 }
 
 const LoginBox = styled(Layout.Flex)`
@@ -109,6 +114,14 @@ const RegisterForm: React.FunctionComponent<IRegisterForm> = observer(
           placeholder={FORM_FIELDS.password.placeholder}
           component={Input.InputPasswordField}
           validate={field.required}
+          required
+        />
+        <Field
+          name={FORM_FIELDS.confirmPassword.name}
+          label={FORM_FIELDS.confirmPassword.label}
+          placeholder={FORM_FIELDS.confirmPassword.placeholder}
+          component={Input.InputPasswordField}
+          validate={field.matchPassword}
           required
         />
         <Field
