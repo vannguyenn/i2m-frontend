@@ -270,9 +270,10 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
         placement: 'bottomLeft',
       })
     } catch (error) {
+      setLoading(false)
       setImageUrl('/static/image/user.png')
       notification.error({
-        message: 'Upload avata failed.',
+        message: 'Upload avatar failed.',
         duration: 4,
         placement: 'bottomLeft',
       })
