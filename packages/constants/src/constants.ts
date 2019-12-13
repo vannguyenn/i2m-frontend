@@ -42,6 +42,7 @@ export const MESSAGES = {
   pack_not_found: 'This list no longer exists.',
   SEND_MAIL_SUCCESS: 'Send email successfully.',
   SEND_MAIL_ERROR: 'Sorry! email delivery failure',
+  pack_name_existed: 'This name is already existed.',
 }
 
 export enum MODE {

@@ -6,7 +6,7 @@ import {
   profileService,
   reportService,
 } from '@frontend/services'
-import { observable, action, runInAction } from 'mobx'
+import { observable, action, runInAction, computed } from 'mobx'
 import { IInfluencerProps, IPostProps, IReportProps } from '@frontend/constants'
 import { find, map, maxBy, get, filter, sortBy, reverse } from 'lodash'
 import { extractEmails } from '@frontend/core/src/utils'
@@ -22,7 +22,7 @@ export class InfluencerDetailViewModel {
   @observable mostEngagementPost: IPostProps
   @observable followerData: IReportProps[]
   @observable engagementData: IReportProps[]
-
+  @observable postPrediction: string
   appModel: AppModel = null
 
   constructor(appModel: AppModel) {
@@ -81,6 +81,14 @@ export class InfluencerDetailViewModel {
           get(reportResponse, 'data'),
           ({ type }) => type === 'ENGAGEMENT',
         )
+
+        this.postPrediction = maxBy(
+          filter(
+            this.influencerDetail.posts,
+            (p: IPostProps) => p.type === 'LATEST',
+          ),
+          p => p.commentCount,
+        ).prediction
       })
     } catch (error) {
       this.isFetching = false

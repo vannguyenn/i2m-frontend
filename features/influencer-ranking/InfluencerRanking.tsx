@@ -15,6 +15,7 @@ import numeral from 'numeral'
 import Router from 'next/router'
 import { Spin } from '@frontend/ui/src/spin'
 import { SearchContainer } from '../../components/SearchContainer'
+import { Flex } from '@frontend/ui/src/layout'
 
 const CustomCard = styled(Card.Card)`
   width: 100%;
@@ -49,7 +50,7 @@ const Content = styled(Layout.Flex)`
   max-height: calc(100vh - 150px);
   overflow: auto;
   background: #f3f4f6;
-  padding: 50px 150px 50px 150px;
+  padding: 20px 150px 50px 150px;
 `
 const AvatarWrapper = styled.div`
   position: relative;
@@ -88,12 +89,19 @@ const Label = styled.div`
   color: ${({ theme }) => theme.colors.grey45};
 `
 
+const Title = styled(Flex)`
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 600;
+  color: #3c3c3c;
+`
+
 export const InfluencerRanking: React.FunctionComponent = observer(() => {
   const appModel = useAppContext() as AppModel
   const token = appModel.authModel.token
   const influencerRankingViewModel = useViewModel(
     InfluencerRankingViewModel,
-    appModel
+    appModel,
   )
 
   useEffectOnce(() => {
@@ -103,7 +111,7 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
   const remainInfluencers = slice(
     influencerRankingViewModel.topInfluencers,
     3,
-    size(influencerRankingViewModel.topInfluencers)
+    size(influencerRankingViewModel.topInfluencers),
   )
 
   const genPos = (index: number) => {
@@ -137,12 +145,18 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
     >
       <Spin spinning={influencerRankingViewModel.isLoading}>
         <Content flexDirection="column">
+          <Title>Top 10 Engaged Instagram Influencers</Title>
+          <Title
+            style={{ fontSize: '20px', fontWeight: 500, marginBottom: '20px' }}
+          >
+            by the number of quality and engaged followers
+          </Title>
           <Layout.Grid gridGap={10} gridTemplateColumns="1fr 1fr 1fr" mb="40px">
             {map(top3Influencers, (influencer: ITopInfluencerProps, index) => (
               <CustomCard
                 onClick={() =>
                   Router.push(
-                    `${PATHS.influencerDetail}?id=${influencer.id}&tab=stats`
+                    `${PATHS.influencerDetail}?id=${influencer.id}&tab=stats`,
                   )
                 }
                 bordered={false}
@@ -207,7 +221,7 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
                     </a>
                   </Username>
                   <Badge>{`${numeral(influencer.engagement).format(
-                    '(0.00%)'
+                    '(0.00%)',
                   )} Engagment Rate`}</Badge>
                 </Layout.Flex>
               </CustomCard>
@@ -225,7 +239,7 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
                       Router.push(
                         `${PATHS.influencerDetail}?id=${
                           influencer.id
-                        }&tab=stats`
+                        }&tab=stats`,
                       )
                     }
                   >
@@ -261,7 +275,7 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
                       </Layout.Flex>
                       <div>
                         <Badge>{`${numeral(influencer.engagement).format(
-                          '(0.00%)'
+                          '(0.00%)',
                         )} Engagment Rate`}</Badge>
                       </div>
                       <Layout.Grid gridTemplateColumns="1fr 1fr 1fr">
@@ -299,7 +313,7 @@ export const InfluencerRanking: React.FunctionComponent = observer(() => {
                     </Layout.Grid>
                   </CustomCard>
                 )
-              }
+              },
             )}
           </Layout.Grid>
         </Content>

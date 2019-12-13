@@ -52,6 +52,7 @@ export interface IPostProps {
   engagement: number
   type: string
   takenAt: any
+  prediction?: string
 }
 export interface IInfluencerProps {
   id: string

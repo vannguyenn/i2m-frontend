@@ -162,7 +162,8 @@ export class MyInfluencerViewModel {
       })
     } catch (error) {
       this.isLoading = false
-      return error
+
+      throw error
     }
   }
 
@@ -181,7 +182,7 @@ export class MyInfluencerViewModel {
       this.fetchListDetail(data.id)
     } catch (error) {
       this.isLoading = false
-      return error
+      throw error
     }
   }
 

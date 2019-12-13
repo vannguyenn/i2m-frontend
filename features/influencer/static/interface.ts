@@ -22,4 +22,5 @@ export interface IStatsSection {
   influencer: IInfluencerProps
   followersData: IReportProps[]
   engagementData: IReportProps[]
+  postPrediction: string
 }

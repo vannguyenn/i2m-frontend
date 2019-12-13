@@ -24,6 +24,18 @@ const Card = styled(Layout.Flex)`
   height: 200px;
   padding: 20px 30px;
 `
+const Comment = styled.div<{ isPositive: boolean }>`
+  font-size: 24px;
+  color: ${({ isPositive }) => (isPositive ? 'rgb(29, 177, 0)' : '#173c51')};
+  font-weight: 600;
+`
+
+const EngagementEvaluation = styled.div`
+  font-size: 26px;
+  font-weight: 600;
+  ${color};
+`
+
 const CardTitle = styled.div`
   color: #727f86;
   font-size: 16px;
@@ -94,11 +106,22 @@ const followerOptions = {
     },
   },
 }
+
+const engagementEvaluate = engagement => {
+  if (engagement < 0.01) return { value: 'Low', color: '#F12B2C' }
+  if (0.01 <= engagement && engagement < 0.035)
+    return { value: 'Good', color: 'rgb(29, 177, 0)' }
+  if (engagement >= 0.035 && engagement < 0.06)
+    return { value: 'High', color: 'rgb(29, 177, 0)' }
+  return { value: 'Very High', color: 'rgb(29, 177, 0)' }
+}
+
 export const StatsSection: React.FunctionComponent = observer(() => {
   const {
     influencer,
     followersData,
     engagementData,
+    postPrediction,
   } = useInfluencerDetailContext().useStatsSection()
 
   const followerLabels = map(followersData, ({ createdDate }) =>
@@ -165,14 +188,68 @@ export const StatsSection: React.FunctionComponent = observer(() => {
     ],
   }
 
+  const engagementEvaluation = engagementEvaluate(get(influencer, 'engagement'))
+
   return (
     <Section flexDirection="column">
       <Title>Instagram Stats Overview</Title>
+      <Layout.Flex
+        flexDirection="row"
+        alignItems="center"
+        p="20px 0"
+        mt="20px"
+        bg="white"
+      >
+        <Layout.Flex flexDirection="column" width="100%" alignItems="center">
+          <Layout.Flex alignItems="center">
+            <CardTitle>Comment Analysis</CardTitle>
+            <Tooltip.Tooltip title="Accuracy: 70%">
+              <div style={{ marginLeft: '5px' }}>
+                <Icon.Icon
+                  fontSize="16px"
+                  color="#727f86"
+                  type="exclamation-circle"
+                />
+              </div>
+            </Tooltip.Tooltip>
+          </Layout.Flex>
+
+          <Comment isPositive={postPrediction === 'Positive'}>
+            {postPrediction === 'Positive'
+              ? postPrediction
+              : 'Not Positive' || 'N/A'}
+          </Comment>
+        </Layout.Flex>
+        <Layout.Flex flexDirection="column" width="100%" alignItems="center">
+          <Layout.Flex alignItems="center">
+            <CardTitle>Avg. Engagement Rate</CardTitle>
+            <Tooltip.Tooltip title="Percent of the audience who like or comment the posts (engage with the content)">
+              <div style={{ marginLeft: '5px' }}>
+                <Icon.Icon
+                  fontSize="16px"
+                  color="#727f86"
+                  type="exclamation-circle"
+                />
+              </div>
+            </Tooltip.Tooltip>
+          </Layout.Flex>
+
+          <NumberTag>
+            {numeral(get(influencer, 'engagement')).format('0.00%')}
+          </NumberTag>
+        </Layout.Flex>
+        <Layout.Flex flexDirection="column" width="100%" alignItems="center">
+          <CardTitle>Engagement Evalutaion</CardTitle>
+          <EngagementEvaluation color={engagementEvaluation.color}>
+            {engagementEvaluation.value}
+          </EngagementEvaluation>
+        </Layout.Flex>
+      </Layout.Flex>
       <Layout.Grid
         gridGap={10}
         gridTemplateColumns="1fr 1fr 1fr"
         alignContent="center"
-        mt="20px"
+        mt="50px"
       >
         <Card flexDirection="column">
           <Layout.Flex
@@ -313,32 +390,7 @@ export const StatsSection: React.FunctionComponent = observer(() => {
           </Layout.Flex>
         </Card>
       </Layout.Grid>
-      {/* <Layout.Flex
-          flexDirection="row"
-          alignItems="center"
-          p="20px 0"
-          mt="50px"
-          bg="white"
-        >
-          <Layout.Flex flexDirection="column" width="100%" alignItems="center">
-            <CardTitle>Posts per Day</CardTitle>
-            <NumberTag>{postPerDay || 1.4}</NumberTag>
-          </Layout.Flex>
-          <Layout.Flex flexDirection="column" width="100%" alignItems="center">
-            <CardTitle>Posts per Week</CardTitle>
-            <NumberTag>{postPerWeek || 10}</NumberTag>
-          </Layout.Flex>
-          <Layout.Flex flexDirection="column" width="100%" alignItems="center">
-            <CardTitle>Estimated Post value</CardTitle>
-            <NumberTag>{`\$${estimatedPostValue || 10830}`}</NumberTag>
-          </Layout.Flex>
-          <Layout.Flex flexDirection="column" width="100%" alignItems="center">
-            <CardTitle>Avg. Engagement Rate</CardTitle>
-            <NumberTag>
-              {numeral(get(influencer, 'engagement')).format('0.00%')}
-            </NumberTag>
-          </Layout.Flex>
-        </Layout.Flex> */}
+
       <Layout.Grid gridGap={10} gridTemplateColumns="1fr 1fr" mt="60px">
         <Layout.Box style={{ background: '#ffffff' }}>
           <Line data={followersReport} options={followerOptions} />

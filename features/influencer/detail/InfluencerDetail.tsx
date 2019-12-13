@@ -141,6 +141,7 @@ export const InfluencerDetail: React.FunctionComponent<
     mostEngagementPost,
     followerData,
     engagementData,
+    postPrediction,
   } = influencerDetailViewModel
 
   const changeSaveToListModalVisible = (visible: boolean) =>
@@ -195,6 +196,7 @@ export const InfluencerDetail: React.FunctionComponent<
     influencer: influencerDetail,
     followersData: followerData,
     engagementData,
+    postPrediction,
   })
 
   const providerValue = {

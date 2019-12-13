@@ -356,7 +356,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
           placement: 'bottomLeft',
         })
       } catch (error) {
-        return error
+        return { name: 'This name is already existed.' }
       }
     }
 
@@ -369,7 +369,7 @@ export const ListInfluencerController: React.FunctionComponent = observer(
           placement: 'bottomLeft',
         })
       } catch (error) {
-        return error
+        return { name: 'This name is already existed.' }
       }
     }
     const onClickRename = () => {
