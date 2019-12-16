@@ -282,86 +282,6 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
                 Showing <Result>{totalInfluencers || 0}</Result> results
               </ResultText>
               <Layout.Flex alignItems="center">
-                {/* <SortSelect
-                  value={appModel.influencerCategory}
-                  onChange={onCategoryChange}
-                  style={{ width: '160px' }}
-                >
-                  <Select.Option value="megaInfluencer">
-                    Mega-Influencer
-                  </Select.Option>
-                  <Select.Option value="macroInfluencer">
-                    Macro-Influencer
-                  </Select.Option>
-                  <Select.Option value="microInfluencer">
-                    Micro-Influencer
-                  </Select.Option>
-                  <Select.Option value="nanoInfluencer">
-                    Nano-Influencer
-                  </Select.Option>
-                  <Select.Option value="">All Influencers</Select.Option>
-                </SortSelect> */}
-                <Grid gridAutoFlow="column" gridGap="15px">
-                  <CustomTag
-                    onClick={() => onCategoryChange('')}
-                    isActive={appModel.influencerCategory === ''}
-                  >
-                    All Influencers
-                  </CustomTag>
-
-                  <Tooltip
-                    placement="bottom"
-                    title="Celebrities, whether it be an actor/actress, singer or internet personality, and they usually have at least one million followers"
-                  >
-                    <CustomTag
-                      onClick={() => onCategoryChange('megaInfluencer')}
-                      isActive={
-                        appModel.influencerCategory === 'megaInfluencer'
-                      }
-                    >
-                      Mega-Influencer
-                    </CustomTag>
-                  </Tooltip>
-                  <Tooltip
-                    placement="bottom"
-                    title="Who have a following of 100,000 to 1 million."
-                  >
-                    <CustomTag
-                      onClick={() => onCategoryChange('macroInfluencer')}
-                      isActive={
-                        appModel.influencerCategory === 'macroInfluencer'
-                      }
-                    >
-                      Macro-Influencer
-                    </CustomTag>
-                  </Tooltip>
-                  <Tooltip
-                    placement="bottom"
-                    title="Micro-influencers have anywhere from 10,000 to 100,000 followers and usually have some experience working with brands."
-                  >
-                    <CustomTag
-                      onClick={() => onCategoryChange('microInfluencer')}
-                      isActive={
-                        appModel.influencerCategory === 'microInfluencer'
-                      }
-                    >
-                      Micro-Influencer
-                    </CustomTag>
-                  </Tooltip>
-                  <Tooltip
-                    placement="bottom"
-                    title="Nano-influencers are individuals who have influence within their local community. They typically have a very social media following (less than 10,000)."
-                  >
-                    <CustomTag
-                      onClick={() => onCategoryChange('nanoInfluencer')}
-                      isActive={
-                        appModel.influencerCategory === 'nanoInfluencer'
-                      }
-                    >
-                      Nano-Influencer
-                    </CustomTag>
-                  </Tooltip>
-                </Grid>
                 <Layout.Flex
                   alignItems="center"
                   width="200px"
@@ -376,6 +296,59 @@ export const InfluencerList: React.FunctionComponent = observer(() => {
                 </Layout.Flex>
               </Layout.Flex>
             </Layout.Flex>
+            <Grid gridAutoFlow="column" gridGap="15px" pl="30px" mt="15px">
+              <CustomTag
+                onClick={() => onCategoryChange('')}
+                isActive={appModel.influencerCategory === ''}
+              >
+                All Influencers
+              </CustomTag>
+
+              <Tooltip
+                placement="bottom"
+                title="Celebrities, whether it be an actor/actress, singer or internet personality, and they usually have at least one million followers"
+              >
+                <CustomTag
+                  onClick={() => onCategoryChange('megaInfluencer')}
+                  isActive={appModel.influencerCategory === 'megaInfluencer'}
+                >
+                  Mega-Influencer
+                </CustomTag>
+              </Tooltip>
+              <Tooltip
+                placement="bottom"
+                title="Who have a following of 100,000 to 1 million."
+              >
+                <CustomTag
+                  onClick={() => onCategoryChange('macroInfluencer')}
+                  isActive={appModel.influencerCategory === 'macroInfluencer'}
+                >
+                  Macro-Influencer
+                </CustomTag>
+              </Tooltip>
+              <Tooltip
+                placement="bottom"
+                title="Micro-influencers have anywhere from 10,000 to 100,000 followers and usually have some experience working with brands."
+              >
+                <CustomTag
+                  onClick={() => onCategoryChange('microInfluencer')}
+                  isActive={appModel.influencerCategory === 'microInfluencer'}
+                >
+                  Micro-Influencer
+                </CustomTag>
+              </Tooltip>
+              <Tooltip
+                placement="bottom"
+                title="Nano-influencers are individuals who have influence within their local community. They typically have a very social media following (less than 10,000)."
+              >
+                <CustomTag
+                  onClick={() => onCategoryChange('nanoInfluencer')}
+                  isActive={appModel.influencerCategory === 'nanoInfluencer'}
+                >
+                  Nano-Influencer
+                </CustomTag>
+              </Tooltip>
+            </Grid>
 
             <Layout.Grid
               gridGap={2}
