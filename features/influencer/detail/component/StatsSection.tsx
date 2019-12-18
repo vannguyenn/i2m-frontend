@@ -244,6 +244,12 @@ export const StatsSection: React.FunctionComponent = observer(() => {
             {engagementEvaluation.value}
           </EngagementEvaluation>
         </Layout.Flex>
+        <Layout.Flex flexDirection="column" width="100%" alignItems="center">
+          <CardTitle>Last Post Taken At</CardTitle>
+          <NumberTag style={{ fontSize: '24px' }}>
+            {moment(get(influencer, 'lastPostTakenAt')).format('DD/MM/YYYY')}
+          </NumberTag>
+        </Layout.Flex>
       </Layout.Flex>
       <Layout.Grid
         gridGap={10}

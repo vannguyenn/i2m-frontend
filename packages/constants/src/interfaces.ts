@@ -77,6 +77,7 @@ export interface IInfluencerProps {
   averageEngagementPerVideo: number
   averageLikePerPost: number
   averageViewPerVideo: number
+  lastPostTakenAt: any
 }
 
 export interface ITopInfluencerProps {
