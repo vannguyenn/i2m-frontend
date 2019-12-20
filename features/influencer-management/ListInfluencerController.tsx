@@ -36,6 +36,7 @@ import {
   MODE,
   IInfluencerProps,
   IEmailTemplateProps,
+  PATHS,
 } from '@frontend/constants'
 import numeral from 'numeral'
 import { field } from '@frontend/core/src/validate'
@@ -45,7 +46,7 @@ import { SelectField } from '@frontend/ui/src/select'
 import { AuthorizedUserBtnGr } from '../../components'
 import { Tag } from '@frontend/ui/src/tag'
 import { Checkbox } from '@frontend/ui/src/checkbox'
-
+import NextLink from 'next/link'
 const MODALPROPS = {
   title: 'Send Mail',
   footer: {
@@ -170,6 +171,7 @@ const InfluencerCard = styled(Layout.Flex)`
 const Fullname = styled.div`
   font-size: 20px;
   font-weight: 600;
+  cursor: pointer;
 `
 const Username = styled.div`
   color: ${({ theme }) => theme.colors.grey65};
@@ -560,7 +562,14 @@ export const ListInfluencerController: React.FunctionComponent = observer(
                                     justifyContent="center"
                                     pl="10px"
                                   >
-                                    <Fullname>{influencer.fullName}</Fullname>
+                                    <NextLink
+                                      href={`${PATHS.influencerDetail}?id=${get(
+                                        influencer,
+                                        'id',
+                                      )}&tab=stats`}
+                                    >
+                                      <Fullname>{influencer.fullName}</Fullname>
+                                    </NextLink>
                                     <Username>{`@${
                                       influencer.username
                                     }`}</Username>

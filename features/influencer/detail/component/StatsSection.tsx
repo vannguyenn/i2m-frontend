@@ -125,7 +125,7 @@ export const StatsSection: React.FunctionComponent = observer(() => {
   } = useInfluencerDetailContext().useStatsSection()
 
   const followerLabels = map(followersData, ({ createdDate }) =>
-    moment(createdDate).format('DD/MM'),
+    moment(createdDate).format('DD/MM/YYYY'),
   )
 
   const engagementLabels = map(engagementData, ({ createdDate }) =>

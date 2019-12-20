@@ -26,7 +26,7 @@ import { Upload } from 'antd'
 import { Grid } from '@frontend/ui/src/layout'
 import { SearchContainer } from '../../components/SearchContainer'
 import { MediumModal } from '@frontend/ui/src/modal'
-import { IPasswordUpdate } from '../../models/ProfileModel'
+import { IPasswordUpdate, IUser } from '../../models/ProfileModel'
 import { Icon } from '@frontend/ui/src/icon'
 
 const CONSTANTS = {
@@ -198,13 +198,8 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
     appModel.profileModel.getCurrentUser()
   })
   const token = appModel.authModel.token
-  const currentUser = {
-    ...appModel.profileModel.currentUser,
-    categories: map(
-      appModel.profileModel.currentUser.categories,
-      ({ id }) => id,
-    ),
-  }
+  const currentUser = appModel.profileModel.currentUser
+
   const profileImage = currentUser && currentUser.imgUrl
 
   const categories = appModel.authModel.categories
@@ -212,7 +207,7 @@ export const MyAccountController: React.FunctionComponent = observer(() => {
     value: cate.id,
     label: cate.name,
   }))
-  // console.log(currentUser)
+
   const handleSubmit = async (value: any) => {
     try {
       await appModel.profileModel.updateCurrentUser(value)

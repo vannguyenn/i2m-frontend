@@ -12,13 +12,22 @@ export interface IUser {
   emailVerified?: boolean
 }
 
+export interface IUserResponse {
+  id: string
+  fullName: string
+  email: string
+  imgUrl: string
+  categories: string[]
+  emailVerified?: boolean
+}
+
 export interface ICategory {
   id: string
   name: string
 }
 export interface IUserUpdate {
   fullName: string
-  categories: ICategory[]
+  categories: string[]
 }
 export interface IPasswordUpdate {
   id: string
@@ -27,7 +36,7 @@ export interface IPasswordUpdate {
 }
 
 export class ProfileModel {
-  @observable currentUser: IUser
+  @observable currentUser: IUserResponse
   @observable loading: boolean
   appModel: AppModel
 
@@ -37,29 +46,37 @@ export class ProfileModel {
 
   @action
   init = (currentUser: IUser) => {
-    this.currentUser = currentUser
+    this.currentUser = {
+      ...currentUser,
+      categories: map(currentUser.categories, ({ id }) => id),
+    }
   }
 
   @action
   getCurrentUser = async () => {
     try {
       const { data } = await profileService.getCurrentUser<IUser>()
-
-      runInAction(() => {
-        this.currentUser = data
-      })
-
-      return data
+      this.currentUser = {
+        ...data,
+        categories: map(data.categories, ({ id }) => id),
+      }
     } catch (error) {
       console.log('TODO: ', error)
     }
   }
 
   @action
-  async updateCurrentUser(data: IUser) {
+  async updateCurrentUser(updateData: IUserUpdate) {
     try {
-      await profileService.updateCurrentUser<IUserUpdate>(data.id, data)
-      return Promise.resolve()
+      const { data } = await profileService.updateCurrentUser<IUser>(
+        updateData.id,
+        updateData,
+      )
+      this.currentUser = {
+        ...data,
+        categories: map(data.categories, ({ id }) => id),
+      }
+      return data
     } catch (error) {
       return Promise.reject(error)
     }

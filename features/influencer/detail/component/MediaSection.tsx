@@ -31,7 +31,7 @@ export const MediaSection: React.FunctionComponent = observer(() => {
   } = useInfluencerDetailContext().useMediaSection()
   const [modalVisible, changeModalVisible] = React.useState(false)
   const [currentSelectedPost, changeCurrentSelectedPost] = React.useState(
-    undefined
+    undefined,
   )
 
   const onCardClick = (currentPost: IPostProps) => {
@@ -59,7 +59,7 @@ export const MediaSection: React.FunctionComponent = observer(() => {
               src={
                 `https://www.instagram.com/p/${get(
                   mostLikedPost,
-                  'code'
+                  'code',
                 )}/media` || '/static/image/cover1.jpg'
               }
             />
@@ -89,7 +89,7 @@ export const MediaSection: React.FunctionComponent = observer(() => {
               src={
                 `https://www.instagram.com/p/${get(
                   mostCommentedPost,
-                  'code'
+                  'code',
                 )}/media` || '/static/image/cover2.jpg'
               }
             />
@@ -106,7 +106,7 @@ export const MediaSection: React.FunctionComponent = observer(() => {
               />
               <NumberTag style={{ marginLeft: '10px' }}>
                 {numeral(get(mostCommentedPost, 'commentCount')).format(
-                  '(0.0a)'
+                  '(0.0a)',
                 )}
               </NumberTag>
             </Layout.Flex>
@@ -121,7 +121,7 @@ export const MediaSection: React.FunctionComponent = observer(() => {
               src={
                 `https://www.instagram.com/p/${get(
                   mostEngagementPost,
-                  'code'
+                  'code',
                 )}/media` || '/static/image/cover3.jpg'
               }
             />
