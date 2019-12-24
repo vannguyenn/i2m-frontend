@@ -63,9 +63,9 @@ export class AppModel {
         this.globalSearch,
         this.minFollowers,
         this.maxFollowers,
-        this.minEngagement,
-        this.maxEngagement,
-        this.currentCategories
+        this.minEngagement / 100,
+        this.maxEngagement / 100,
+        this.currentCategories,
       )
 
       runInAction(() => {
