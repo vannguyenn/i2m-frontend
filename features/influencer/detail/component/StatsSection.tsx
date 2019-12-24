@@ -66,7 +66,7 @@ const engagementOptions = {
         ticks: {
           // Include a dollar sign in the ticks
           callback(value, index, values) {
-            return numeral(value).format('(0.0%)')
+            return numeral(value).format('(0.00%)')
           },
         },
       },
@@ -77,7 +77,7 @@ const engagementOptions = {
       label(tooltipItem, data) {
         return `Engagement: ${numeral(
           data.datasets[0].data[tooltipItem.index],
-        ).format('(0.0%)')}`
+        ).format('(0.00%)')}`
       },
     },
   },
